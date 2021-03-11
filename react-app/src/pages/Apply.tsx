@@ -1,15 +1,46 @@
-import react from 'react';
+import react, { useEffect, useState } from 'react';
 import './apply.css';
 import { Form, Col, Button } from "react-bootstrap";
+import { info } from 'console';
 
 
 const Apply = () => {
+    // const [getFile, setFile] = useState([]);
+    // function GetData() {
 
+    //     let formData = new FormData();
+    //     formData.append("file", file);
+    // // useEffect(() => {
+    // fetch("/upload", formData).then(response =>
+    //     response.json().then(data => {
+    //         setFile(data);
+    //         console.log(data);
+    //     })
+    // );
+    // // }, []);
+    // }
+    // function selectFile(e) {
+    //     setFile(e.target.file);
+    // }
     return (
         <div className="main-form">
-            <h2>General Details</h2>
-            <br></br>
-            <Form action="/upload" method="POST" encType="multipart/form-data" name="file">
+            <Form action="/upload" method="POST" encType="multipart/form-data">
+
+                <h2>Resume Upload</h2>
+                <br></br>
+
+                <Form.Group>
+                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" name="file" />
+                </Form.Group>
+                {/* <Button variant="primary" type="submit">
+                    Upload
+                </Button> */}
+                <input type="button" value="submit" />
+                <br></br>
+                
+                <br></br>
+                <h2>General Details</h2>
+                <br></br>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
                         <Form.Label>First Name</Form.Label>
@@ -130,14 +161,6 @@ const Apply = () => {
                     </Form.Group>
                 </Form.Row>
 
-                <br></br>
-                <h2>Resume Upload</h2>
-                <br></br>
-
-                <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" />
-                </Form.Group>
-
                 <Form.Group id="formGridCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
@@ -145,6 +168,7 @@ const Apply = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+
             </Form>
         </div>
     );

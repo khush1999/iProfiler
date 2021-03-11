@@ -31,9 +31,14 @@ def upload_file():
     #   mongo.save_file(f.filename, f)
     #   mongo.send_file()
       data = resumeparse.read_file(filename)
+      print(data)
       with open("sample.json", "w") as outfile:
         json.dump(data, outfile)
 
-   return render_template('index.html', data=data)
+   return data
+
+@app.route('/files', methods=['GET'])
+def form_files():
+    return "hello there!"
 
 app.run(debug=True)
