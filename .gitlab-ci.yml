@@ -24,4 +24,5 @@ react_build:
       - node_modules/
   artifacts:
     paths:
+      - cd react-app
       - build/
