@@ -9,6 +9,7 @@ react_build:
     - iprofiler
   before_script:
     - echo "Installing NPM Dependencies and building React app"
+    - whoami
     - cd react-app
   script:
     - npm install
