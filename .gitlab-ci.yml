@@ -14,10 +14,12 @@ react_build:
     - npm run build
   after_script:
     - echo "Installation and build successful"
+    - pwd
+    - echo "Got the PWD"
   cache:
     key: install-cache
     paths:
       - node_modules/
   artifacts:
     paths:
-      - react-app/build/
+      - build/
