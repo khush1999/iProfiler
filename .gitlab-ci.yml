@@ -21,5 +21,6 @@ react_build:
     paths:
       - node_modules/
   artifacts:
+    when: always
     paths:
       - build/
