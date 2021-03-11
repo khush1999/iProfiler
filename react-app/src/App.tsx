@@ -15,17 +15,11 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>My Token = {token}</p>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <form action = "/" method = "POST"
+         encType = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <input type = "submit"/>
+        </form>
       </header>
     </div>
   );
