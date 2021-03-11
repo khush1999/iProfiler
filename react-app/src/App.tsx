@@ -1,6 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { NavigationBar } from './components/NavigationBar';
+import {BrowserRouter,Route} from "react-router-dom";
+import { Banner } from './components/Banner';
+import { Homepage } from './pages/Homepage';
+import Footer from './components/Footer';
+import Pricing from './pages/Pricing';
+import Apply from './pages/Apply';
 declare global {
   interface Window {
       token:any;
@@ -12,15 +19,13 @@ let token = window.token;
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>My Token = {token}</p>
-        <form action = "/" method = "POST"
-         encType = "multipart/form-data">
-         <input type = "file" name = "file" />
-         <input type = "submit"/>
-        </form>
-      </header>
+       <BrowserRouter>
+      <NavigationBar />
+      <Route exact path="/" component={Homepage} />
+      <Route exact path="/Pricing" component={Pricing} />
+      <Route exact path="/Apply" component={Apply} />
+      <Footer />
+      </BrowserRouter>
     </div>
   );
 }

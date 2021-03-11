@@ -1,0 +1,33 @@
+.abt-profiler{
+    border-right: 1px solid #ccc;
+}
+
+.des1 p{
+    margin-bottom: 0;
+}
+
+.main {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.hr-style {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 50%;               
+    background-color: grey;
+    height: 1px;
+}
+
+.des2{
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.button {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
