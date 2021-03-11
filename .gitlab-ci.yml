@@ -1,6 +1,8 @@
 image: node:alpine
 
 stages:
+    tags:
+        - iprofiler
   - build
 
 react_build:
