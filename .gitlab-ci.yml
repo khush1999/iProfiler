@@ -3,10 +3,6 @@ image: node:alpine
 stages:
   - build
 
-job:
-  tags:
-    - iprofiler
-
 react_build:
   stage: build
   before_script:
