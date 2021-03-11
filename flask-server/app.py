@@ -20,8 +20,20 @@ mongo = PyMongo(app)
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
 
-# @app.route('/upload')
-# def upload_file1():
-#    return render_template('uploading.html')
+@app.route('/upload', methods=['GET', 'POST'])
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      print("********************************************")
+      filename = secure_filename(f.filename)
+      f.save(filename)
+      new_path = os.path.abspath(filename)
+    #   mongo.save_file(f.filename, f)
+    #   mongo.send_file()
+      data = resumeparse.read_file(filename)
+      with open("sample.json", "w") as outfile:
+        json.dump(data, outfile)
+
+   return render_template('index.html', data=data)
 
 app.run(debug=True)
