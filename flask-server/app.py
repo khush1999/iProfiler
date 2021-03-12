@@ -33,7 +33,7 @@ def upload_file():
     #   mongo.send_file()
     data = resumeparse.read_file(filename)
     print(data)
-    with open("sample.json", "w") as outfile:
+    with open("../react-app/src/sample.json", "w") as outfile:
       json.dump(data, outfile)
   return data
 

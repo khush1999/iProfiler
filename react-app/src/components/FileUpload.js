@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState,useEffect } from 'react';
 import Message from './Message';
 import Progress from './Progress';
 import axios from 'axios';
+import Apply from '../pages/Apply';
+
 
 const FileUpload = () => {
   const [file, setFile] = useState('');
@@ -9,13 +11,16 @@ const FileUpload = () => {
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
   const [uploadPercentage, setUploadPercentage] = useState(0);
+  
+
 
   const onChange = e => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
   };
 
-  const onSubmit = async e => {
+  
+  const OnSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
@@ -49,12 +54,38 @@ const FileUpload = () => {
         setMessage(err.response.data.msg);
       }
     }
+
+
+    // fetch("/upload")
+    // .then(res => res.json())
+    // .then((out) => {
+    //   console.log('Checkout this JSON! ', out);
+    //   form=out;
+    //   console.log("***********",form);
+    // })
+    // .catch(err => { throw err });
+
+    
   };
 
+//   useEffect(()=>{
+//     if(data=="yes")
+//     {
+//     fetch("/upload").then(res => {
+//         if(res.ok){
+//         return res.json();
+//         }
+
+//     }).then(jsonRes => setData(jsonRes));
+//   }
+// },[data]);
+  
+  console.log("$$$$$$$$$$$$$$",data);
+  //onClick={() => { addToWishList(dataVal); ModalSetState() }
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={OnSubmit}>
         <div className='custom-file mb-4'>
           <input
             type='file'
@@ -83,6 +114,7 @@ const FileUpload = () => {
           </div>
         </div>
       ) : null}
+      <Apply />
     </Fragment>
   );
 };
