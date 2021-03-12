@@ -1,15 +1,37 @@
-import react from 'react';
+import react, { useEffect, useState } from 'react';
 import './apply.css';
 import { Form, Col, Button } from "react-bootstrap";
 
 
 const Apply = () => {
-
+    useEffect(() => {
+        fetch("/upload").then(response =>
+            response.json().then(data => {
+                console.log(data);
+            })
+        );
+    }, []);
     return (
         <div className="main-form">
-            <h2>General Details</h2>
-            <br></br>
+                            <h2>Resume Uploads</h2>
+                <br></br>
+
             <Form action="/upload" method="POST" encType="multipart/form-data" name="file">
+
+                <Form.Group>
+                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" />
+                </Form.Group>
+
+                <Form.Group id="formGridCheckbox">
+                    <Form.Check type="checkbox" label="Check me out" />
+                </Form.Group>
+
+                {/* <Button variant="primary" type="submit" >
+                    Submit
+                </Button> */}
+                <input type="submit" value="submit"/>            
+                <h2>General Details</h2>
+                <br></br>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
                         <Form.Label>First Name</Form.Label>
@@ -131,20 +153,7 @@ const Apply = () => {
                 </Form.Row>
 
                 <br></br>
-                <h2>Resume Upload</h2>
-                <br></br>
-
-                <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" />
-                </Form.Group>
-
-                <Form.Group id="formGridCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
+                
             </Form>
         </div>
     );
