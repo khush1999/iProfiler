@@ -7,8 +7,7 @@ import { Banner } from './components/Banner';
 import { Homepage } from './pages/Homepage';
 import Footer from './components/Footer';
 import Pricing from './pages/Pricing';
-import Apply from './pages/Apply';
-import FormUpload from './components/FormUpload';
+import FileUpload from './components/FileUpload';
 declare global {
   interface Window {
       token:any;
@@ -24,7 +23,7 @@ function App() {
       <NavigationBar />
       <Route exact path="/" component={Homepage} />
       <Route exact path="/Pricing" component={Pricing} />
-      <Route exact path="/Apply" component={Apply} />
+      <Route exact path="/Apply" component={FileUpload} />
       <Footer />
       </BrowserRouter>
     </div>

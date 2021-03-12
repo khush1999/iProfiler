@@ -2,30 +2,54 @@ import react, { useEffect, useState } from 'react';
 import './apply.css';
 import { Form, Col, Button } from "react-bootstrap";
 import { info } from 'console';
+import FileUpload from '../components/FileUpload';
+import React from 'react';
+import FormPrefill from '../components/FormPrefill';
+import axios from 'axios';
+
+// interface Iform{
+//     name: string;
+//     email: string;
+//     phone: string;
+// }
 
 
 const Apply = () => {
-    const[data,setData] = useState<Array<Object>>([]);
-    
-    function GetData() {
-    console.log("ABCD*******************");
-    useEffect(()=>{
-        fetch("/upload").then(res => {
-            if(res.ok){
-            return res.json();
-            }
+    // try{
+    //     let resumedata = await axios
+    //     .get("/upload")
+    //     .then((response) => {
+    //         if(response.status===200)
+    //         return response.data;
+    //     });
+    //     console.log(resumedata)
+    //     res.send(resumedata);
 
-        }).then(jsonRes => setData(jsonRes));
-    })
+    // }catch(error){
+    //     console.log("error:",error);
+    //     res.send("error in fetching in userlist");
+    //  }
 
-    console.log("******************************");
-    console.log(data);
-    }
-    // function selectFile(e) {
-    //     setFile(e.target.file);
-    // }
+    //const {name,email,phone}=data;
+//    console.log("+++++++++++++++=",name);
+//    const [data, setData] = useState("");
+
+//    useEffect(()=>{
+//     if(data=="yes")
+//     {
+//     fetch("/upload").then(res => {
+//         if(res.ok){
+//         return res.json();
+//         }
+
+//     }).then(jsonRes => setData(jsonRes));
+//   }
+// },[data]);
+  
+//   console.log("$$$$$$$$$$$$$$",data);
+
     return (
-        <div className="main-form">
+            <div className="main-form">
             <Form action="/upload" method="POST" encType="multipart/form-data">
 
                 <h2>Resume Upload</h2>
@@ -37,7 +61,7 @@ const Apply = () => {
                 {/* <Button variant="primary" type="submit">
                     Upload
                 </Button> */}
-                <input type="submit" value="submit" onSubmit = {() => GetData} />
+                <input type="submit" value="submit" />
                 <br></br>
                 
                 <br></br>
@@ -62,7 +86,7 @@ const Apply = () => {
                     </Form.Group>
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter Email" />
+                        <Form.Control type="email" placeholder="Enter Email"  />
                     </Form.Group>
                 </Form.Row>
 
@@ -92,7 +116,7 @@ const Apply = () => {
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridPhone1">
                         <Form.Label>Contact Number</Form.Label>
-                        <Form.Control placeholder="eg:- 932154XXXX" />
+                        <Form.Control placeholder="eg:- 932154XXXX"  />
                     </Form.Group>
                     <Form.Group as={Col} controlId="Phone2">
                         <Form.Label>Alternate Contact Number</Form.Label>
@@ -170,7 +194,6 @@ const Apply = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
-
             </Form>
         </div>
     );
