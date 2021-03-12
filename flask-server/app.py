@@ -22,20 +22,20 @@ def my_index():
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
-   if request.method == 'POST':
-      f = request.files['file']
-      print("********************************************")
-      filename = secure_filename(f.filename)
-      f.save(filename)
-      new_path = os.path.abspath(filename)
+  global data
+  if request.method == 'POST':
+    f = request.files['file']
+    print("********************************************")
+    filename = secure_filename(f.filename)
+    f.save(filename)
+    new_path = os.path.abspath(filename)
     #   mongo.save_file(f.filename, f)
     #   mongo.send_file()
-      data = resumeparse.read_file(filename)
-      print(data)
-      with open("sample.json", "w") as outfile:
-        json.dump(data, outfile)
-
-   return data
+    data = resumeparse.read_file(filename)
+    print(data)
+    with open("sample.json", "w") as outfile:
+      json.dump(data, outfile)
+  return data
 
 # @app.route('/files', methods=['GET'])
 # def form_files():
