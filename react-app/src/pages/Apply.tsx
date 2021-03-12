@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import react from 'react';
 import './apply.css';
 import { Form, Col, Button } from "react-bootstrap";
@@ -10,6 +11,53 @@ const Apply = () => {
             <h2>General Details</h2>
             <br></br>
             <Form>
+=======
+import react, { useEffect, useState } from 'react';
+import './apply.css';
+import { Form, Col, Button } from "react-bootstrap";
+import { info } from 'console';
+
+
+const Apply = () => {
+    const[data,setData] = useState<Array<Object>>([]);
+    
+    function GetData() {
+    console.log("ABCD*******************");
+    useEffect(()=>{
+        fetch("/upload").then(res => {
+            if(res.ok){
+            return res.json();
+            }
+
+        }).then(jsonRes => setData(jsonRes));
+    })
+
+    console.log("******************************");
+    console.log(data);
+    }
+    // function selectFile(e) {
+    //     setFile(e.target.file);
+    // }
+    return (
+        <div className="main-form">
+            <Form action="/upload" method="POST" encType="multipart/form-data">
+
+                <h2>Resume Upload</h2>
+                <br></br>
+
+                <Form.Group>
+                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" name="file" />
+                </Form.Group>
+                {/* <Button variant="primary" type="submit">
+                    Upload
+                </Button> */}
+                <input type="submit" value="submit" onSubmit = {() => GetData} />
+                <br></br>
+                
+                <br></br>
+                <h2>General Details</h2>
+                <br></br>
+>>>>>>> b210bb7003e33b59c55613b05d3e2106e04955fc
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
                         <Form.Label>First Name</Form.Label>
@@ -130,6 +178,7 @@ const Apply = () => {
                     </Form.Group>
                 </Form.Row>
 
+<<<<<<< HEAD
                 <br></br>
                 <h2>Resume Upload</h2>
                 <br></br>
@@ -138,6 +187,8 @@ const Apply = () => {
                     <Form.File id="exampleFormControlFile1" label="Upload your Resume" />
                 </Form.Group>
 
+=======
+>>>>>>> b210bb7003e33b59c55613b05d3e2106e04955fc
                 <Form.Group id="formGridCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
@@ -145,9 +196,17 @@ const Apply = () => {
                 <Button variant="primary" type="submit">
                     Submit
                 </Button>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b210bb7003e33b59c55613b05d3e2106e04955fc
             </Form>
         </div>
     );
 }
 
+<<<<<<< HEAD
 export default Apply
+=======
+export default Apply;
+>>>>>>> b210bb7003e33b59c55613b05d3e2106e04955fc

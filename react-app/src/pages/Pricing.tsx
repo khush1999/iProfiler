@@ -83,4 +83,8 @@ const Pricing = () => {
     );
 }
 
+<<<<<<< HEAD
 export default Pricing
+=======
+export default Pricing;
+>>>>>>> b210bb7003e33b59c55613b05d3e2106e04955fc
