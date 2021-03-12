@@ -5,20 +5,22 @@ import { info } from 'console';
 
 
 const Apply = () => {
-    // const [getFile, setFile] = useState([]);
-    // function GetData() {
+    const[data,setData] = useState<Array<Object>>([]);
+    
+    function GetData() {
+    console.log("ABCD*******************");
+    useEffect(()=>{
+        fetch("/upload").then(res => {
+            if(res.ok){
+            return res.json();
+            }
 
-    //     let formData = new FormData();
-    //     formData.append("file", file);
-    // // useEffect(() => {
-    // fetch("/upload", formData).then(response =>
-    //     response.json().then(data => {
-    //         setFile(data);
-    //         console.log(data);
-    //     })
-    // );
-    // // }, []);
-    // }
+        }).then(jsonRes => setData(jsonRes));
+    })
+
+    console.log("******************************");
+    console.log(data);
+    }
     // function selectFile(e) {
     //     setFile(e.target.file);
     // }
@@ -35,7 +37,7 @@ const Apply = () => {
                 {/* <Button variant="primary" type="submit">
                     Upload
                 </Button> */}
-                <input type="button" value="submit" />
+                <input type="submit" value="submit" onSubmit = {() => GetData} />
                 <br></br>
                 
                 <br></br>

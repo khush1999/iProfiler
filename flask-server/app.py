@@ -37,8 +37,8 @@ def upload_file():
 
    return data
 
-@app.route('/files', methods=['GET'])
-def form_files():
-    return "hello there!"
+# @app.route('/files', methods=['GET'])
+# def form_files():
+#     return "hello there!"
 
 app.run(debug=True)
