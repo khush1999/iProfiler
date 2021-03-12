@@ -1,0 +1,69 @@
+.Carousel-caption {
+    top: 20%;
+    bottom: auto;
+    
+}
+
+.discover1 {
+    background-color: #5f9ea0;
+}
+
+.discover2 {
+    background-color:#ffc299;
+}
+
+.discover3 {
+    background-color: #8cd9ad;
+}
+
+.heading{
+    text-align: center;
+    font-weight: bold;
+}
+
+.sub-heading1{
+    color: #5f9ea0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.sub-heading2{
+    color: #ffc299;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.sub-heading3{
+    color: #8cd9ad;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.sub-discover{
+    text-align: left;
+}
+
+.content1{
+    color: black;
+}
+
+.content2{
+    color: grey;
+}
+
+.about{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.icon{
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+.main-content{
+background-color: #f2f2f2;
+}
