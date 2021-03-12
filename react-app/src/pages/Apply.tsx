@@ -4,7 +4,6 @@ import { Form, Col, Button } from "react-bootstrap";
 import { info } from 'console';
 import FileUpload from '../components/FileUpload';
 import React from 'react';
-import FormPrefill from '../components/FormPrefill';
 import axios from 'axios';
 
 // interface Iform{

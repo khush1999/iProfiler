@@ -80,7 +80,7 @@ const FileUpload = () => {
 //   }
 // },[data]);
   
-  console.log("$$$$$$$$$$$$$$",data);
+  // console.log("$$$$$$$$$$$$$$",data);
   //onClick={() => { addToWishList(dataVal); ModalSetState() }
   return (
     <Fragment>
