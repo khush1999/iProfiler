@@ -31,6 +31,7 @@ def upload_file():
         new_path = os.path.abspath(filename)
     #   mongo.save_file(f.filename, f)
     #   mongo.send_file()
+<<<<<<< HEAD
         data = resumeparse.read_file(filename)
         print(data)
         with open("sample.json", "w") as outfile:
@@ -38,5 +39,17 @@ def upload_file():
 
     return data
 
+=======
+      data = resumeparse.read_file(filename)
+      print(data)
+      with open("sample.json", "w") as outfile:
+        json.dump(data, outfile)
+
+   return data
+
+@app.route('/files', methods=['GET'])
+def form_files():
+    return "hello there!"
+>>>>>>> ff41e71c938f9e59b7ed684450ab832b51a1df15
 
 app.run(host='localhost', port=8080)

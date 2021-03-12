@@ -1,9 +1,11 @@
 import react, { useEffect, useState } from 'react';
 import './apply.css';
 import { Form, Col, Button } from "react-bootstrap";
+import { info } from 'console';
 
 
 const Apply = () => {
+<<<<<<< HEAD
     useEffect(() => {
         fetch("/upload").then(response =>
             response.json().then(data => {
@@ -30,6 +32,42 @@ const Apply = () => {
                     Submit
                 </Button> */}
                 <input type="submit" value="submit"/>            
+=======
+    // const [getFile, setFile] = useState([]);
+    // function GetData() {
+
+    //     let formData = new FormData();
+    //     formData.append("file", file);
+    // // useEffect(() => {
+    // fetch("/upload", formData).then(response =>
+    //     response.json().then(data => {
+    //         setFile(data);
+    //         console.log(data);
+    //     })
+    // );
+    // // }, []);
+    // }
+    // function selectFile(e) {
+    //     setFile(e.target.file);
+    // }
+    return (
+        <div className="main-form">
+            <Form action="/upload" method="POST" encType="multipart/form-data">
+
+                <h2>Resume Upload</h2>
+                <br></br>
+
+                <Form.Group>
+                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" name="file" />
+                </Form.Group>
+                {/* <Button variant="primary" type="submit">
+                    Upload
+                </Button> */}
+                <input type="button" value="submit" />
+                <br></br>
+                
+                <br></br>
+>>>>>>> ff41e71c938f9e59b7ed684450ab832b51a1df15
                 <h2>General Details</h2>
                 <br></br>
                 <Form.Row>
@@ -152,8 +190,19 @@ const Apply = () => {
                     </Form.Group>
                 </Form.Row>
 
+<<<<<<< HEAD
                 <br></br>
                 
+=======
+                <Form.Group id="formGridCheckbox">
+                    <Form.Check type="checkbox" label="Check me out" />
+                </Form.Group>
+
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+
+>>>>>>> ff41e71c938f9e59b7ed684450ab832b51a1df15
             </Form>
         </div>
     );
