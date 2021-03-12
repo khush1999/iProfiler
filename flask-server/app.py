@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
 
-@app.route('/upload', methods=['POST'])
+@app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
   global data
   if request.method == 'POST':
