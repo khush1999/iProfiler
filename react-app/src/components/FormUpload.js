@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import UploadService from "../services/UploadFile";
 
-export interface fromIInterface {
-    name: string;
-    url: string;
-}
-
-const FormUpload = () => {
-  const [selectedFiles, setSelectedFiles] = useState('');
-  const [currentFile, setCurrentFile] = useState('');
+const UploadFiles = () => {
+  const [selectedFiles, setSelectedFiles] = useState(undefined);
+  const [currentFile, setCurrentFile] = useState(undefined);
   const [progress, setProgress] = useState(0);
   const [message, setMessage] = useState("");
-  const [fileInfos, setFileInfos] = useState<fromIInterface[]>([]);
+  const [fileInfos, setFileInfos] = useState([]);
 
   useEffect(() => {
     UploadService.getFiles().then((response) => {
@@ -26,26 +21,34 @@ const FormUpload = () => {
   const upload = () => {
     let currentFile = selectedFiles[0];
 
-    setProgress(0);
+    // setProgress(0);
     setCurrentFile(currentFile);
+    console.log("Current File 1:" + currentFile);
 
     UploadService.upload(currentFile, (event) => {
+      console.log("ASTHA.................");
+      console.log("Current File 2:" + currentFile);
       setProgress(Math.round((100 * event.loaded) / event.total));
+      console.log("Progressss.................");
     })
       .then((response) => {
+        console.log("ISHA.................");
         setMessage(response.data.message);
+        console.log(message);
         return UploadService.getFiles();
       })
       .then((files) => {
+        console.log("Pratik.................");
         setFileInfos(files.data);
       })
       .catch(() => {
+        console.log("Khushal.................");
         setProgress(0);
         setMessage("Could not upload the file!");
-        setCurrentFile('');
+        setCurrentFile(undefined);
       });
 
-    setSelectedFiles('');
+    setSelectedFiles(undefined);
   };
 
   return (
@@ -56,8 +59,8 @@ const FormUpload = () => {
             className="progress-bar progress-bar-info progress-bar-striped"
             role="progressbar"
             aria-valuenow={progress}
-            aria-valuemin= {0}
-            aria-valuemax= {100}
+            aria-valuemin="0"
+            aria-valuemax="100"
             style={{ width: progress + "%" }}
           >
             {progress}%
@@ -66,7 +69,7 @@ const FormUpload = () => {
       )}
 
       <label className="btn btn-default">
-        <input type="file" name="file"  onChange={selectFile} />
+        <input type="file" onChange={selectFile} />
       </label>
 
       <button
@@ -87,7 +90,7 @@ const FormUpload = () => {
           {fileInfos &&
             fileInfos.map((file, index) => (
               <li className="list-group-item" key={index}>
-                <a href= {file.url}> {file.name}</a>
+                <a href={file.url}>{file.name}</a>
               </li>
             ))}
         </ul>
@@ -96,4 +99,4 @@ const FormUpload = () => {
   );
 };
 
-export default FormUpload;
+export default UploadFiles;

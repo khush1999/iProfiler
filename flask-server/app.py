@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['POST'])
 def upload_file():
    if request.method == 'POST':
       f = request.files['file']
@@ -37,8 +37,10 @@ def upload_file():
 
    return data
 
-# @app.route('/files', methods=['GET'])
-# def form_files():
-#     return "hello there!"
+@app.route('/files', methods=['GET'])
+def form_files():
+    abc = request.get_json();
+    print(abc)
+    return abc
 
 app.run(debug=True)
