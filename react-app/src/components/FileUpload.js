@@ -28,7 +28,8 @@ const FileUpload = () => {
   };
 
   
-  const OnSubmit = async e => {
+  const OnSubmit = async e =>
+  {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
