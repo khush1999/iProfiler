@@ -11,7 +11,7 @@ react_build:
     - echo "Installed node using NVM"
   script:
     - npm install
-    - npm run build
+    - CI='' npm run build
   after_script:
     - echo "Installation and build successful"
   cache:
