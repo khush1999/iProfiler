@@ -6,17 +6,25 @@ import Apply from '../pages/Apply';
 
 
 const FileUpload = () => {
+  const ip = {
+    "email": "", "phone": "", "name": "",
+    "total_exp": 0, "university": [],
+    "designition": [], "degree": [],
+    "skills": [], "Companies worked at": [],
+  }
   const [file, setFile] = useState('');
+  const [data, setData] = useState(ip);
   const [filename, setFilename] = useState('Choose File');
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
   const [uploadPercentage, setUploadPercentage] = useState(0);
-  
+  let form;
 
 
   const onChange = e => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
+    
   };
 
   
@@ -24,7 +32,6 @@ const FileUpload = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
-
     try {
       const res = await axios.post('/upload', formData, {
         headers: {
@@ -55,16 +62,18 @@ const FileUpload = () => {
       }
     }
 
+    fetch("/upload")
+    .then(res => res.json())
+    .then((out) => {
+      console.log('Checkout this JSON! ', out);
+      form = out;
+      setData(out)
 
-    // fetch("/upload")
-    // .then(res => res.json())
-    // .then((out) => {
-    //   console.log('Checkout this JSON! ', out);
-    //   form=out;
-    //   console.log("***********",form);
-    // })
-    // .catch(err => { throw err });
+      console.log("***********",form);
+    })
+    .catch(err => { throw err });
 
+    // console.log('here is my form!!',form)
     
   };
 
@@ -85,7 +94,7 @@ const FileUpload = () => {
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
-      <form onSubmit={OnSubmit}>
+      <form onSubmit={OnSubmit} className="mt-5">
         <div className='custom-file mb-4'>
           <input
             type='file'
@@ -114,7 +123,10 @@ const FileUpload = () => {
           </div>
         </div>
       ) : null}
-      <Apply />
+      {
+        console.log("Value is =", data)
+      }
+      <Apply passData={data}/>
     </Fragment>
   );
 };

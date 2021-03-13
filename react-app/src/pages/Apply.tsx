@@ -1,47 +1,42 @@
 import './apply.css';
 import { Form, Col, Button } from "react-bootstrap";
+import { useState } from 'react';
+interface IForm {
+    email: string;
+    phone: string;
+    name: string;
+    total_exp: number;
+    university: string[];
+    designition: string[];
+    degree: string[];
+    skills: string[];
+    Companies_worked_at: string[];
+}
 
-// interface Iform{
-//     name: string;
-//     email: string;
-//     phone: string;
-// }
+type TForm = {
+    passData: IForm,
+}
 
+const Apply = ({ passData }: TForm) => {
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
+    const [total_exp, setTotalExp] = useState(0)
+    const [university, setUniversity] = useState([])
+    const [designation, setDesignation] = useState([])
+    const [degree, setDegree] = useState([])
+    const [skills, setSkills] = useState([])
+    const [worked,setWorked] = useState([])
 
-const Apply = () => {
-    // try{
-    //     let resumedata = await axios
-    //     .get("/upload")
-    //     .then((response) => {
-    //         if(response.status===200)
-    //         return response.data;
-    //     });
-    //     console.log(resumedata)
-    //     res.send(resumedata);
-
-    // }catch(error){
-    //     console.log("error:",error);
-    //     res.send("error in fetching in userlist");
-    //  }
-
-    //const {name,email,phone}=data;
-//    console.log("+++++++++++++++=",name);
-//    const [data, setData] = useState("");
-
-//    useEffect(()=>{
-//     if(data=="yes")
-//     {
-//     fetch("/upload").then(res => {
-//         if(res.ok){
-//         return res.json();
-//         }
-
-//     }).then(jsonRes => setData(jsonRes));
-//   }
-// },[data]);
-  
-//   console.log("$$$$$$$$$$$$$$",data);
-
+    setName(passData.name);
+    setEmail(passData.email);
+    // setPhone(passData.phone);
+    // setTotalExp(passData.total_exp);
+    // setUniversity(passData.university);
+    // setDesignation(passData.designition);
+    // setPhone(passData.phone);
+    // setTotalExp(passData.total_exp);
+    
     return (
             <div className="main-form">
             <Form action="/upload" method="POST" encType="multipart/form-data">
@@ -57,15 +52,16 @@ const Apply = () => {
                 </Button> */}
                 <br></br>
                 <br></br>
+
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
                         <Form.Label>First Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter First Name" />
+                        <Form.Control type="text" placeholder="Enter First Name" defaultValue={passData.name} onChange={(e) => setName(e.target.value)}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridLastName">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Last Name" />
+                        <Form.Control type="text" placeholder="Enter Last Name" defaultValue={passData.name} onChange={(e) => setEmail(e.target.value)}/>
                     </Form.Group>
                 </Form.Row>
 
@@ -74,15 +70,17 @@ const Apply = () => {
                         <Form.Label>Select DOB</Form.Label>
                         <Form.Control type="date" name="dob" placeholder="Date of Birth" />
                     </Form.Group>
+
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" placeholder="Enter Email"  />
+                        <Form.Control type="email" placeholder="Enter Email"  defaultValue={ passData.email}/>
                     </Form.Group>
+
                 </Form.Row>
 
                 <Form.Group controlId="formGridAddress">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control placeholder="1234 Main St" />
+                    <Form.Control placeholder="1234 Main St" defaultValue={ passData.email}/>
                 </Form.Group>
 
                 <Form.Row>
@@ -101,26 +99,31 @@ const Apply = () => {
                         <Form.Label>Zip</Form.Label>
                         <Form.Control placeholder="Enter 6 digit pincode" />
                     </Form.Group>
+
                 </Form.Row>
 
                 <Form.Row>
+
                     <Form.Group as={Col} controlId="formGridPhone1">
                         <Form.Label>Contact Number</Form.Label>
-                        <Form.Control placeholder="eg:- 932154XXXX"  />
+                        <Form.Control placeholder="eg:- 932154XXXX" defaultValue={passData.phone} />
                     </Form.Group>
+
                     <Form.Group as={Col} controlId="Phone2">
                         <Form.Label>Alternate Contact Number</Form.Label>
                         <Form.Control placeholder="eg:- 932154XXXX" />
                     </Form.Group>
+
                 </Form.Row>
 
                 <br></br>
                 <h2>Educational Details</h2>
                 <br></br>
+
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridPostGraduation">
                         <Form.Label>Post Graduation Course</Form.Label>
-                        <Form.Control type="text" placeholder="Enter PG Course" />
+                        <Form.Control type="text" placeholder="Enter PG Course"/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPGCollege">
@@ -163,17 +166,17 @@ const Apply = () => {
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridSkill1">
                         <Form.Label>Skill 1</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Skill" />
+                        <Form.Control type="text" placeholder="Enter Skill" defaultValue={passData.skills[1]}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridSkill2">
                         <Form.Label>Skill 2</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Skill" />
+                        <Form.Control type="text" placeholder="Enter Skill" defaultValue={passData.skills[2]}/>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridSkill3">
                         <Form.Label>Skill 3</Form.Label>
-                        <Form.Control type="text" placeholder="Enter Skill" />
+                        <Form.Control type="text" placeholder="Enter Skill" defaultValue={passData.skills[0]} />
                     </Form.Group>
                 </Form.Row>
 
