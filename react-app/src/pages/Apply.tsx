@@ -5,51 +5,23 @@ import { info } from 'console';
 
 
 const Apply = () => {
-<<<<<<< HEAD
+    const [getFile, setFile] = useState([]);
+    function GetData() {
+
+        // let formData = new FormData();
+        // formData.append("file", file);
     useEffect(() => {
-        fetch("/upload").then(response =>
-            response.json().then(data => {
-                console.log(data);
-            })
-        );
+    fetch("/upload").then(response =>
+        response.json().then(data => {
+            setFile(data);
+            console.log(data);
+        })
+    );
     }, []);
-    return (
-        <div className="main-form">
-                            <h2>Resume Uploads</h2>
-                <br></br>
-
-            <Form action="/upload" method="POST" encType="multipart/form-data" name="file">
-
-                <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" />
-                </Form.Group>
-
-                <Form.Group id="formGridCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-
-                {/* <Button variant="primary" type="submit" >
-                    Submit
-                </Button> */}
-                <input type="submit" value="submit"/>            
-=======
-    // const [getFile, setFile] = useState([]);
-    // function GetData() {
-
-    //     let formData = new FormData();
-    //     formData.append("file", file);
-    // // useEffect(() => {
-    // fetch("/upload", formData).then(response =>
-    //     response.json().then(data => {
-    //         setFile(data);
-    //         console.log(data);
-    //     })
-    // );
-    // // }, []);
-    // }
-    // function selectFile(e) {
-    //     setFile(e.target.file);
-    // }
+    }
+    function selectFile(e) {
+        setFile(e.target.file);
+    }
     return (
         <div className="main-form">
             <Form action="/upload" method="POST" encType="multipart/form-data">
@@ -63,11 +35,10 @@ const Apply = () => {
                 {/* <Button variant="primary" type="submit">
                     Upload
                 </Button> */}
-                <input type="button" value="submit" />
+                <input type="button" value="submit"/>
                 <br></br>
                 
                 <br></br>
->>>>>>> ff41e71c938f9e59b7ed684450ab832b51a1df15
                 <h2>General Details</h2>
                 <br></br>
                 <Form.Row>
@@ -190,10 +161,6 @@ const Apply = () => {
                     </Form.Group>
                 </Form.Row>
 
-<<<<<<< HEAD
-                <br></br>
-                
-=======
                 <Form.Group id="formGridCheckbox">
                     <Form.Check type="checkbox" label="Check me out" />
                 </Form.Group>
@@ -202,7 +169,6 @@ const Apply = () => {
                     Submit
                 </Button>
 
->>>>>>> ff41e71c938f9e59b7ed684450ab832b51a1df15
             </Form>
         </div>
     );
