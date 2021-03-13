@@ -3,6 +3,7 @@ import { Carousel, Col, Row } from "react-bootstrap";
 import { Banner } from "../components/Banner";
 import './homepage.css';
 import logo from './logo.png';
+import Footer from '../components/Footer';
 
 export const Homepage = () => (
   <main>
@@ -112,5 +113,6 @@ FIlters provided by the application would help HR to segregate hundreds of unwan
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    <Footer />
   </main>
 )
