@@ -1,7 +1,13 @@
 .Carousel-caption {
     top: 20%;
     bottom: auto;
-    
+    height: 60%;
+}
+
+.caption-row {
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .discover1 {
@@ -22,18 +28,24 @@
 }
 
 .sub-heading1{
+    position: relative;
+    height: 10%;
     color: #5f9ea0;
     font-size: 1rem;
     font-weight: bold;
 }
 
 .sub-heading2{
+    position: relative;
+    height: 10%;
     color: #ffc299;
     font-size: 1rem;
     font-weight: bold;
 }
 
 .sub-heading3{
+    position: relative;
+    height: 10%;
     color: #8cd9ad;
     font-size: 1rem;
     font-weight: bold;
@@ -41,18 +53,22 @@
 
 .sub-discover{
     text-align: left;
+    height: 100%;
 }
 
 .content1{
+    position: relative;
+    height: 40%;
     color: black;
 }
 
 .content2{
+    position: relative;
+    height: 50%;
     color: grey;
 }
 
 .about{
-    text-align: center;
     font-size: 1rem;
     font-weight: bold;
 }
@@ -66,4 +82,14 @@
 
 .main-content{
 background-color: #f2f2f2;
+}
+
+@media only screen and (max-width: 767px) and (min-width: 480px) {
+    .discover1, .discover2, .discover3 {
+        display: none;
+    }
+
+    .about {
+        text-align: center;
+    }
 }

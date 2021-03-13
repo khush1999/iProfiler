@@ -13,7 +13,6 @@ const Styles = styled.div`
     position: relative;
     z-index: -2;
     margin-bottom: 0;
-    margin-top: 5%;
     
   }
   .overlay {
@@ -31,7 +30,7 @@ const Styles = styled.div`
 
 export const Banner = () => (
   <Styles>
-    <Jumbo fluid className="jumbo">
+    <Jumbo fluid className="jumbo mt-5">
       <div className="overlay">
         <Container className="main">
           <div className="des1">
