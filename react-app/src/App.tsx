@@ -8,6 +8,8 @@ import { Homepage } from './pages/Homepage';
 import Pricing from './pages/Pricing';
 import FileUpload from './components/FileUpload';
 import { Login } from './pages/Login';
+import { SignUp } from './pages/SignUp';
+import { DashboardPage } from './pages/HrDashboard';
 
 declare global {
   interface Window {
@@ -26,6 +28,8 @@ function App() {
         <Route exact path="/Pricing" component={Pricing} />
         <Route exact path="/Apply" component={FileUpload} />
         <Route exact path="/Login" component={Login} />
+        <Route exact path="/SignUp" component={SignUp} />
+        <Route exact path="/DashboardPage" component={DashboardPage} />
       </BrowserRouter>
     </div>
   );
