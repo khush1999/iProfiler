@@ -127,7 +127,7 @@ const FileUpload = () => {
       {
         console.log("Value is =", data)
       }
-      <Apply passData={data}/>
+      <Apply passData={data}/>    
     </Fragment>
   );
 };
