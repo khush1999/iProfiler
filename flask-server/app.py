@@ -13,8 +13,8 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__app__")
 # Mongo Setup
-app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mongodb.net/applicants?retryWrites=true&w=majority'
-mongo = PyMongo(app)
+# app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mongodb.net/applicants?retryWrites=true&w=majority'
+# mongo = PyMongo(app)
 
 @app.route("/")
 def my_index():
@@ -37,10 +37,10 @@ def upload_file():
       json.dump(data, outfile)
   return data
 
-@app.route('/files', methods=['GET'])
-def form_files():
-    abc = request.get_json();
-    print(abc)
-    return abc
+# @app.route('/files', methods=['GET'])
+# def form_files():
+#     abc = request.get_json();
+#     print(abc)
+#     return abc
 
 app.run(debug=True)
