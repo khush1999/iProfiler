@@ -19,7 +19,7 @@ let token = window.token;
 function App() {
   return (
     <div className="App">
-       <BrowserRouter>
+      <BrowserRouter>
       <NavigationBar />
       <Route exact path="/" component={Homepage} />
       <Route exact path="/Pricing" component={Pricing} />
