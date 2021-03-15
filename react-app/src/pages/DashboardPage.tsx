@@ -141,7 +141,7 @@ const DashboardPage = () => {
             </div>
             <h2> Seperation </h2>
             {
-                    userData && isSearched && data.filter(user => (user.fname == searchTerm || user.city == searchTerm || user.designition == searchTerm)).map((user) => (
+                    userData && isSearched && data.filter(user => (user.fname == searchTerm || user.lname == searchTerm|| user.city == searchTerm || user.designition == searchTerm)).map((user) => (
                         <div className="preview">
                             <Applicant passData={user} />
                         </div>
