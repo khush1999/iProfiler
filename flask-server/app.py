@@ -91,7 +91,7 @@ def create():
             'resume': request.form.get('resume_id'),
         })
         print(list(mongo.db.users.find()))
-    return "Doneeeee!!!!!!!"
+    return render_template("index.html", flask_token="Hello   world");
     # else:
     #     f = request.files['file']
     #     print("********************************************")

@@ -2,6 +2,9 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
+import AppLogo from '../assets/appLogo.png';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 const Styles = styled.div`
   .navbar {
@@ -13,37 +16,39 @@ const Styles = styled.div`
       color: white;
     }
   }
+  .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, 
+  .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: white;
+}
 `;
 
-export const NavigationBar = () => (
-  <Styles>
-    <Navbar expand="lg" fixed="top">
-      <Navbar.Brand href="/">iProfiler</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="ml-auto">
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/">Home</Link>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/Pricing">Pricing</Link>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/Login">Login</Link>
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/Apply">Apply</Link>
-            </Nav.Link>
-          </Nav.Item>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  </Styles >
-)
+export const NavigationBar = () => {
+  return (
+    <Styles>
+      <Navbar expand="lg" fixed="top">
+        <Navbar.Brand href="/"><img src={AppLogo} width="30" height="30"
+          className="d-inline-block align-top" alt="React Bootstrap logo"></img>
+        iProfiler
+      </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            <LinkContainer to="/Pricing">
+              <Nav.Link>Pricing</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Apply">
+              <Nav.Link>Apply</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Login">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Contact">
+              <Nav.Link>Contact Us</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
+    </Styles >
+  );
+};
+

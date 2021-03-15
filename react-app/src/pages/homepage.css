@@ -82,6 +82,12 @@
 
 .main-content{
 background-color: #f2f2f2;
+width: 100%;
+margin-left: 0;
+}
+
+.about {
+    text-align: justify;
 }
 
 @media only screen and (max-width: 767px) and (min-width: 480px) {

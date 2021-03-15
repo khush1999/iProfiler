@@ -3,10 +3,10 @@ import { Carousel, Col, Row } from "react-bootstrap";
 import { Banner } from "../components/Banner";
 import './homepage.css';
 import logo from './logo.png';
-import Footer from '../components/Footer';
 
 export const Homepage = () => (
   <main>
+    <a id="top"></a>
     <Banner />
     <br />
     <Row className="main-content">
@@ -16,7 +16,7 @@ export const Homepage = () => (
       <Col className="about">
         <p className="p-5">
           <br />
-          <h1>Why Iprofiler?</h1>
+          <h1>Why iProfiler?</h1>
           <br />
       It’s always a tedious task for HR to evaluate the hundreds of resumes/CVs incoming on every job posting. To filter based candidates out of the pool of them, iProfiler comes to the rescue.
 Using AI resume parsing, these CVs could be categorized in just a few minutes.
@@ -43,7 +43,7 @@ FIlters provided by the application would help HR to segregate hundreds of unwan
                 <h4>Find talent with a human machine collaboration</h4>
               </div>
               <div className="content2">
-                <p>Humans are innately creative whereas machines can generate data-centric insights.
+                <p className="text-justify">Humans are innately creative whereas machines can generate data-centric insights.
                   Iprofiler brings first of its kind talent intelligence to source, screen and assess candidates.</p>
               </div>
             </Col>
@@ -77,7 +77,7 @@ FIlters provided by the application would help HR to segregate hundreds of unwan
               <div className="content1">
                 <h4>Profile shortlisting is an important process in recruitment.</h4>
               </div>
-              <div className="content2"><p>With Iprofiler, more detailed profiling solution that helps to incorporate
+              <div className="content2"><p className="text-justify">With Iprofiler, more detailed profiling solution that helps to incorporate
                 qualitative and quantitative parameters.</p></div>
             </Col>
           </Row>
@@ -105,7 +105,7 @@ FIlters provided by the application would help HR to segregate hundreds of unwan
                 <h4>Build a structured and efficient shortlisting process</h4>
               </div>
               <div className="content2">
-                <p>An efficient shortlisting process to keep track of talent pipeline and
+                <p className="text-justify">An efficient shortlisting process to keep track of talent pipeline and
                    generate insightful candidate list all on the same platform.</p>
               </div>
             </Col>
@@ -113,6 +113,5 @@ FIlters provided by the application would help HR to segregate hundreds of unwan
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    <Footer />
   </main>
 )
