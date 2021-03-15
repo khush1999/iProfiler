@@ -8,7 +8,7 @@ export const SignUp = () => (
     <Container style={mainWidth} className="mt-5 bg-light text-dark shadow-sm p-3 mb-5 bg-white rounde">
         <h3 className="text-center">Join Us To Hire !</h3>
         <br />
-        <Form>
+        <Form action = "/auth" method = "POST">
             <Form.Group as={Row} controlId="SignUpEmail">
                 <Form.Label column sm={4}>
                     Company Name
@@ -43,7 +43,8 @@ export const SignUp = () => (
                     <Form.Control type="password" placeholder="Confirm Password" />
                 </Col>
             </Form.Group>
-            <Button variant="primary" size="lg" block type="submit">Sign in</Button>
+            <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4'/>
+            {/* <Button variant="primary" size="lg" block type="submit">Sign in</Button> */}
         </Form>
         <br />
         <hr />

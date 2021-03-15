@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect, session
 from flask_pymongo import PyMongo
+import bcrypt
 import urllib.request
 import json
 import requests
@@ -92,15 +93,96 @@ def create():
         })
         print(list(mongo.db.users.find()))
     return "Doneeeee!!!!!!!"
-    # else:
-    #     f = request.files['file']
-    #     print("********************************************")
-    #     filename = secure_filename(f.filename)
-    #     f.save(filename)
-    #     data = resumeparse.read_file(filename)
-    #     with open("sample.json", "w") as outfile:
-    #         json.dump(data, outfile)
-    #     return data
 
+
+
+# HR 
+
+app.secret_key = "secret"
+#connoct to your Mongo DB database
+@app.route("/auth", methods=['post', 'get'])
+def index():
+    message = ''
+    #if method post in index
+    if "email" in session:
+        return redirect(url_for("logged_in"))
+    if request.method == "POST":
+        user = request.form.get("fullname")
+        email = request.form.get("email")
+        password1 = request.form.get("password1")
+        password2 = request.form.get("password2")
+        #if found in database showcase that it's found 
+        user_found = mongo.db.LoginAuth.find_one({"name": user})
+        email_found = mongo.db.LoginAuth.find_one({"email": email})
+        if user_found:
+            message = 'There already is a user by that name'
+            return render_template('index.html', message=message)
+        if email_found:
+            message = 'This email already exists in database'
+            return render_template('index.html', message=message)
+        if password1 != password2:
+            message = 'Passwords should match!'
+            return render_template('index.html', message=message)
+        else:
+            #hash the password and encode it
+            hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
+            #assing them in a dictionary in key value pairs
+            user_input = {'name': user, 'email': email, 'password': hashed}
+            #insert it in the record collection
+            mongo.db.LoginAuth.insert_one(user_input)
+            #find the new created account and its email
+            user_data = mongo.db.LoginAuth.find_one({"email": email})
+            new_email = user_data['email']
+            #if registered redirect to logged in as the registered user
+            return "You are Logged in!!!!"
+    return render_template('index.html')
+
+
+
+@app.route("/login", methods=["POST", "GET"])
+def login():
+    message = 'Please login to your account'
+    if "email" in session:
+        return redirect(url_for("logged_in"))
+
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        #check if email exists in database
+        email_found = mongo.db.LoginAuth.find_one({"email": email})
+        if email_found:
+            email_val = email_found['email']
+            passwordcheck = email_found['password']
+            #encode the password and check if it matches
+            if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
+                session["email"] = email_val
+                return redirect(url_for('logged_in'))
+            else:
+                if "email" in session:
+                    return redirect(url_for("logged_in"))
+                message = 'Wrong password'
+                return "Try to Login Again!!!!"
+        else:
+            message = 'Email not found'
+            return "Try to Login Again!!!!"
+        
+        return "Try to Login Again!!!!"
+
+@app.route('/logged_in')
+def logged_in():
+    if "email" in session:
+        email = session["email"]
+        return "You are Logged in!!!!"
+    else:
+        return redirect(url_for("login"))
+
+@app.route("/logout", methods=["POST", "GET"])
+def logout():
+    if "email" in session:
+        session.pop("email", None)
+        return "Signed Out!!!!"
+    else:
+        return render_template('index.html')
 
 app.run(debug="true")
