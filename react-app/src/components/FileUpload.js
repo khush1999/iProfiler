@@ -9,7 +9,7 @@ const FileUpload = () => {
   const ip = {
     "email": "", "phone": "", "name": "",
     "total_exp": 0, "university": [],
-    "designition": [], "degree": [],
+    "designition": "", "degree": [],
     "skills": [], "Companies worked at": [],
   }
   const [file, setFile] = useState('');

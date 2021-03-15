@@ -25,7 +25,7 @@ interface IForm {
     fname: string;
     lname: string;
     total_exp: number;
-    designition: string[];
+    designition: string;
     pgDegree: string;
     ugDegree: string;
     pg_University: string;
@@ -53,13 +53,15 @@ const DashboardPage = () => {
     const ip = {
         "email": "", "phone1": "", "phone2": "", "fname": "", "lname": "", "dob": "",
         "total_exp": 0, "ug_University": "", "pg_University": "",
-        "designition": [], "ugDegree": "", "pgDegree": "", "pgPercentage": "", "ugPercentage": "",
+        "designition": "", "ugDegree": "", "pgDegree": "", "pgPercentage": "", "ugPercentage": "",
         "skills1": "", "skills2": "", "skills3": "",
         "Companies_worked_at": [], "address": "", "city": "", "state": "", "zip": "", "resume": ""
     }
 
     const [userData, setUserData] = useState(false);
     const [data, setData] = useState([ip]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [isSearched, setIsSearched] = useState(false);
     // let userData: TForm = new Array<IForm>();
     // const applicants = useSelector((state) => state.users.profile);
     // var applicant: TForm;
@@ -125,6 +127,10 @@ const DashboardPage = () => {
             {GetData()}
 
             <div className="container">
+            <input type="search" name="search" id="" placeholder="Search..." onChange={(e) => {
+                            setIsSearched(!isSearched);
+                            setSearchTerm(e.target.value)
+                        }} />
                 <div className="row">
                     <div className="col-sm">
                         {userData && data.map(user =>
@@ -133,6 +139,14 @@ const DashboardPage = () => {
                     </div>
                 </div>
             </div>
+            <h2> Seperation </h2>
+            {
+                    userData && isSearched && data.filter(user => (user.fname == searchTerm || user.city == searchTerm || user.designition == searchTerm)).map((user) => (
+                        <div className="preview">
+                            <Applicant passData={user} />
+                        </div>
+                    ))
+            }
         </>
 
     );

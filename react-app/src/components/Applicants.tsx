@@ -8,7 +8,7 @@ interface IForm {
   fname: string;
   lname: string;
   total_exp: number;
-  designition: string[];
+  designition: string;
   pgDegree: string;
   ugDegree: string;
   pg_University: string;
@@ -32,7 +32,7 @@ type TForm = {
 }
 
 const Applicants = ({ passData }: TForm) => {
-  console.log(passData);
+  // console.log(passData);
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Body>
