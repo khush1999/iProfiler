@@ -17,7 +17,7 @@ const UploadFiles = () => {
   const selectFile = (event) => {
     setSelectedFiles(event.target.files);
   };
-
+  
   const upload = () => {
     let currentFile = selectedFiles[0];
 

@@ -1,19 +1,40 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { Cards } from './Card';
+import { Card } from "react-bootstrap";
 
-const divColor = { backgroundColor: '#cce7ff' };
+interface IForm {
+  email: string;
+  phone: string;
+  fname: string;
+  lname: string;
+  total_exp: number;
+  university: string[];
+  designition: string[];
+  degree: string[];
+  skills1: string;
+  skills2: string;
+  skills3: string;
+  Companies_worked_at: string[];
+}
 
-export const Applicants = () => (
-    <Container style={divColor} className="mt-5 pt-2 pb-2">
-        <Row>
-            <Col md={2}>
-                <a href="/">Apply Filters</a>
-            </Col>
-            <Col md={2}>
-                <a href="/">Send Invitations</a>
-            </Col>
-        </Row>
-        <Cards /><Cards /><Cards />
-    </Container>
-);
+type TForm = {
+  passData: IForm,
+}
+
+const Applicant = () => {
+    return (
+    <Card style={{ width: '18rem' }}>
+    <Card.Body>
+        <Card.Title> Helloooooooooo </Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">brooooooo</Card.Subtitle>
+        <Card.Text>
+        qwerty
+        </Card.Text>
+        <Card.Link href="#">Card Link</Card.Link>
+        <Card.Link href="#">Another Link</Card.Link>
+    </Card.Body>
+</Card>
+    );
+  };
+  
+export default Applicant;
+

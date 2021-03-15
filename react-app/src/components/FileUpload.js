@@ -18,12 +18,6 @@ const FileUpload = () => {
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
   const [uploadPercentage, setUploadPercentage] = useState(0);
-<<<<<<< HEAD
-  let form;
-=======
-
->>>>>>> isha.gupta1/iprofiler-master
-
 
   const onChange = e => {
     setFile(e.target.files[0]);
@@ -31,7 +25,8 @@ const FileUpload = () => {
     
   };
 
-
+  let form;
+  
   const OnSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();

@@ -15,6 +15,9 @@ app = Flask("__app__")
 # Mongo Setup
 app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mongodb.net/applicants?retryWrites=true&w=majority'
 mongo = PyMongo(app)
+db = mongo
+filename = ""
+
 
 @app.route("/")
 def my_index():
@@ -23,26 +26,81 @@ def my_index():
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
-  global data
-  if request.method == 'POST':
-    f = request.files['file']
-    print("********************************************")
-    filename = secure_filename(f.filename)
-    f.save(filename)
-    new_path = os.path.abspath(filename)
-    #   mongo.save_file(f.filename, f)
-    #   mongo.send_file()
-    data = resumeparse.read_file(filename)
-    print(data)
-    with open("../react-app/src/sample.json", "w") as outfile:
-      json.dump(data, outfile)
-  return data
+    global data
+    if request.method == 'POST':
+        f = request.files['file']
+        print("********************************************")
+        # fileName = str(uuid.uuid4())[:8]
+        filename = secure_filename(f.filename)
+        f.save(filename)
+        print(f.filename)
+        print(filename)
+        # new_path = os.path.abspath(filename)
+        filenam = f.filename
+        mongo.save_file(filename, f)
+        #   mongo.send_file()
+        data = resumeparse.read_file(filename)
+        data["resume_id"] = filename
+        print(data)
+        with open("../react-app/src/sample.json", "w") as outfile:
+            json.dump(data, outfile)
+    return data
 
-# @app.route('/files', methods=['GET'])
-# def form_files():
-#     abc = request.get_json();
-#     print(abc)
-#     return abc
 
-app.run(debug=True)
-app.py
+@app.route('/getData', methods=['GET', 'POST'])
+def form_files():
+    result = []
+    abc = mongo.db.users.find()
+    for a in abc:
+        a['_id'] = str(a['_id'])
+        result.append(a)
+    res = json.dumps(result)
+    print(result)
+    return res
+
+
+@app.route('/create', methods=['GET', 'POST'])
+def create():
+    global data
+    if request.method == 'POST':
+        print("Came inside", request.form.get('skills1'))
+        mongo.db.users.insert_one({
+            'fname': request.form.get('fname'),
+            'lname': request.form.get('lname'),
+            'dob': request.form.get('dob'),
+            'email': request.form.get('email'),
+            'address': request.form.get('address'),
+            'city': request.form.get('city'),
+            'state': request.form.get('state'),
+            'zip': request.form.get('zip'),
+            'phone1': request.form.get('phone1'),
+            'phone2': request.form.get('phone2'),
+            'pgDegree': request.form.get('pgDegree'),
+            'pg_University': request.form.get('pg_University'),
+            'pgPercentage': request.form.get('pgPercentage'),
+            'ugDegree': request.form.get('ugDegree'),
+            'ug_University': request.form.get('ug_University'),
+            'ugPercentage': request.form.get('ugPercentage'),
+            'ugDegree': request.form.get('ugDegree'),
+            'skills1': request.form.get('skills1'),
+            'skills2': request.form.get('skills2'),
+            'skills3': request.form.get('skills3'),
+            'total_exp': request.form.get('total_exp'),
+            'designition': request.form.get('designition'),
+            'Companies worked at': request.form.get('Companies worked at'),
+            'resume': request.form.get('resume_id'),
+        })
+        print(list(mongo.db.users.find()))
+    return "Doneeeee!!!!!!!"
+    # else:
+    #     f = request.files['file']
+    #     print("********************************************")
+    #     filename = secure_filename(f.filename)
+    #     f.save(filename)
+    #     data = resumeparse.read_file(filename)
+    #     with open("sample.json", "w") as outfile:
+    #         json.dump(data, outfile)
+    #     return data
+
+
+app.run(debug="true")
