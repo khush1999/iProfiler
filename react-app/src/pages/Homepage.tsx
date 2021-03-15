@@ -113,6 +113,5 @@ FIlters provided by the application would help HR to segregate hundreds of unwan
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    <Footer />
   </main>
 )
