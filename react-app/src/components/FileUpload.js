@@ -51,7 +51,7 @@ const FileUpload = () => {
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });
-
+      setData(res.data);
       setMessage('File Uploaded');
     } catch (err) {
       if (err.response.status === 500) {
@@ -61,16 +61,16 @@ const FileUpload = () => {
       }
     }
 
-    fetch("/upload")
-    .then(res => res.json())
-    .then((out) => {
-      console.log('Checkout this JSON! ', out);
-      form = out;
-      setData(out)
+    // fetch("/upload")
+    // .then(res => res.json())
+    // .then((out) => {
+    //   console.log('Checkout this JSON! ', out);
+    //   form = out;
+    //   setData(out)
 
-      console.log("***********",form);
-    })
-    .catch(err => { throw err });
+    //   console.log("***********",form);
+    // })
+    // .catch(err => { throw err });
 
   };
 
