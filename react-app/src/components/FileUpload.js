@@ -1,9 +1,9 @@
-import React, { Fragment, useState,useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Message from './Message';
 import Progress from './Progress';
 import axios from 'axios';
 import Apply from '../pages/Apply';
-
+import './fileUpload.css';
 
 const FileUpload = () => {
   const ip = {
@@ -18,7 +18,11 @@ const FileUpload = () => {
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
   const [uploadPercentage, setUploadPercentage] = useState(0);
+<<<<<<< HEAD
   let form;
+=======
+
+>>>>>>> isha.gupta1/iprofiler-master
 
 
   const onChange = e => {
@@ -27,9 +31,8 @@ const FileUpload = () => {
     
   };
 
-  
-  const OnSubmit = async e =>
-  {
+
+  const OnSubmit = async e => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
@@ -74,28 +77,26 @@ const FileUpload = () => {
     })
     .catch(err => { throw err });
 
-    // console.log('here is my form!!',form)
-    
   };
 
-//   useEffect(()=>{
-//     if(data=="yes")
-//     {
-//     fetch("/upload").then(res => {
-//         if(res.ok){
-//         return res.json();
-//         }
+  //   useEffect(()=>{
+  //     if(data=="yes")
+  //     {
+  //     fetch("/upload").then(res => {
+  //         if(res.ok){
+  //         return res.json();
+  //         }
 
-//     }).then(jsonRes => setData(jsonRes));
-//   }
-// },[data]);
-  
+  //     }).then(jsonRes => setData(jsonRes));
+  //   }
+  // },[data]);
+
   // console.log("$$$$$$$$$$$$$$",data);
   //onClick={() => { addToWishList(dataVal); ModalSetState() }
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
-      <form onSubmit={OnSubmit} className="mt-5">
+      <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
         <div className='custom-file mb-4'>
           <input
             type='file'
