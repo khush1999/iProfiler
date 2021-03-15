@@ -45,11 +45,12 @@ def upload_file():
     return data
 
 
-@app.route('/files', methods=['GET'])
+@app.route('/getData', methods=['GET'])
 def form_files():
-    abc = request.get_json()
-    print(abc)
-    return abc
+    applicant_data = list(mongo.db.users.find())
+    applicant_Data = json.dumps(applicant_data)
+    print(applicant_Data)
+    return applicant_Data
 
 
 @app.route('/create', methods=['GET', 'POST'])
