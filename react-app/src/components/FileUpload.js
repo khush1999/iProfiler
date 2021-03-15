@@ -64,38 +64,15 @@ const FileUpload = () => {
         setMessage(err.response.data.msg);
       }
     }
-
-    // fetch("/upload")
-    // .then(res => res.json())
-    // .then((out) => {
-    //   console.log('Checkout this JSON! ', out);
-    //   form = out;
-    //   setData(out)
-
-    //   console.log("***********",form);
-    // })
-    // .catch(err => { throw err });
   };
 
-  //   useEffect(()=>{
-  //     if(data=="yes")
-  //     {
-  //     fetch("/upload").then(res => {
-  //         if(res.ok){
-  //         return res.json();
-  //         }
-
-  //     }).then(jsonRes => setData(jsonRes));
-  //   }
-  // },[data]);
-
-  // console.log("$$$$$$$$$$$$$$",data);
-  //onClick={() => { addToWishList(dataVal); ModalSetState() }
   return (
     <Fragment>
       {message ? <Message msg={message} /> : null}
       <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
         <div className="custom-file mb-4">
+          <h2>Resume Upload</h2>
+          <br></br>
           <input
             type="file"
             className="custom-file-input"

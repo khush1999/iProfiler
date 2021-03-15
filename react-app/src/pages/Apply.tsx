@@ -79,16 +79,6 @@ const Apply = ({ passData }: TForm) => {
             <Form action = "/create" method = "POST"
          encType = "multipart/form-data">
 
-                <h2>Resume Upload</h2>
-                <br></br>
-
-                <Form.Group>
-                    <Form.File id="exampleFormControlFile1" label="Upload your Resume" name="file" />
-                </Form.Group>
-                {/* <Button variant="primary" type="submit">
-                    Upload
-                </Button> */}
-                <br></br>
                 <br></br>
 
                 <Form.Row>
