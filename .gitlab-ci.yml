@@ -1,5 +1,5 @@
 stages:
-  - build
+  # - build
   - py_build
 
 react_build:
@@ -26,6 +26,7 @@ python_build:
     - iprofiler
   before_script:
     - echo "Installing Python Dependencies"
+    - apt-get install python3-venv
     - python3 -m venv venv
     - source ./venv/bin/activate
   script:
