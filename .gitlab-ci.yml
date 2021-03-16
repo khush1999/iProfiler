@@ -1,24 +1,25 @@
 stages:
-  # - build
+  - build
   - py_build
+  - py_run
 
-# react_build:
-#   stage: build
-#   tags:
-#     - iprofiler
-#   before_script:
-#     - echo "Installing NPM Dependencies and building React app"
-#     - cd react-app
-#     - echo "Installed node using NVM"
-#   script:
-#     - npm install
-#     - CI='' npm run build
-#   after_script:
-#     - echo "Installation and build successful"
-#   cache:
-#     key: install-cache
-#     paths:
-#       - node_modules/
+react_build:
+  stage: build
+  tags:
+    - iprofiler
+  before_script:
+    - echo "Installing NPM Dependencies and building React app"
+    - cd react-app
+    - echo "Installed node using NVM"
+  script:
+    - npm install
+    - CI='' npm run build
+  after_script:
+    - echo "Installation and build successful"
+  cache:
+    key: install-cache
+    paths:
+      - node_modules/
 
 python_build:
   stage: py_build
@@ -26,15 +27,24 @@ python_build:
     - iprofiler
   before_script:
     - echo "Installing Python Dependencies"
-    - python3 -m venv venv
-    - source ./venv/bin/activate
   script:
     - pip install wheel
     - pip install -r requirements.txt
-    - cd flask-server && python3 app.py
+    # - cd flask-server && python3 app.py
   after_script:
     - echo "Installation and build successful Python Build"
-    - deactivate
+
+python_run:
+  stage: py_run
+  tags:
+    - iprofiler
+  before_script:
+    - echo "Running Python Files"
+  script:
+    - cd flask-server && python3 app.py
+  after_script:
+    - echo "Final build ran successful"
+
   # artifacts:
   #   paths:
   #     - build/*
