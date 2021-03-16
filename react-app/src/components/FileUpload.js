@@ -4,6 +4,7 @@ import Progress from "./Progress";
 import axios from "axios";
 import Apply from "../pages/Apply";
 import "./fileUpload.css";
+import { NavigationBar } from "./NavigationBar";
 
 const FileUpload = () => {
   const ip = {
@@ -68,6 +69,7 @@ const FileUpload = () => {
 
   return (
     <Fragment>
+      <NavigationBar />
       {message ? <Message msg={message} /> : null}
       <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
         <div className="custom-file mb-4">

@@ -1,11 +1,14 @@
 import React from "react";
 import { Carousel, Col, Row } from "react-bootstrap";
 import { Banner } from "../components/Banner";
+import Footer from "../components/Footer";
+import { NavigationBar } from "../components/NavigationBar";
 import './homepage.css';
 import logo from './logo.png';
 
 export const Homepage = () => (
   <main>
+    <NavigationBar />
     <a id="top"></a>
     <Banner />
     <br />
@@ -113,5 +116,6 @@ FIlters provided by the application would help HR to segregate hundreds of unwan
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
+    <Footer />
   </main>
 )

@@ -36,7 +36,7 @@ type TForm = {
 const Applicants = ({ passData }: TForm) => {
   // console.log(passData);
   return (
-    <Card style={{ width: '18rem', backgroundColor: "#2525a7" }} className="text-white mb-2">
+    <Card style={{ width: '18rem', backgroundColor: "#595959" }} className="text-white mb-2">
       <Card.Img variant="top" src={profile} width="100%" />
       <Card.Body>
         <Card.Title> {passData.fname}{" "}{passData.lname} </Card.Title>

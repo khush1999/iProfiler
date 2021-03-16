@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { NavigationBar } from './components/NavigationBar';
 import { BrowserRouter, Route } from "react-router-dom";
 import { Homepage } from './pages/Homepage';
-import Footer from './components/Footer';
 import Pricing from './pages/Pricing';
 import FileUpload from './components/FileUpload';
 import DashboardPage from './pages/DashboardPage';
@@ -25,14 +23,12 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Fragment>
-          <NavigationBar />
           <Route exact path="/" component={Homepage} />
           <Route exact path="/Pricing" component={Pricing} />
           <Route exact path="/Apply" component={FileUpload} />
           <Route exact path="/Login" component={Login} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/DashboardPage" component={DashboardPage} />
-          <Footer />
         </Fragment>
       </BrowserRouter>
     </div>

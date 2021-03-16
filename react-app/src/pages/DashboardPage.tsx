@@ -1,22 +1,9 @@
 import Applicant from '../components/Applicants';
-import { Nav, Navbar } from 'react-bootstrap';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Row, Col, Dropdown } from 'react-bootstrap';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import './DashboardPage.css'
-
-const Styles = styled.div`
-  .navbar {
-    background-color: #222;
-  }
-  a, .navbar-brand, .navbar-nav .nav-link {
-    color: #bbb;
-    &:hover {
-      color: white;
-    }
-  }
-`
+import React, { useState, useEffect } from 'react';
+import './DashboardPage.css';
+import { Search, Briefcase, House, Person, Filter, ChevronBarRight } from 'react-bootstrap-icons';
 
 interface IForm {
     email: string;
@@ -75,32 +62,17 @@ const DashboardPage = () => {
     }
     return (
         <>
-            <Styles>
-                <Navbar expand="lg" fixed="top">
-                    <Navbar.Brand href="/">Welcome, Start Hiring</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto">
-                            <Nav.Item>
-                                <Nav.Link>
-                                    <Link to="/">Home</Link>
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link>
-                                    <Link to="/">Logout</Link>
-                                </Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-            </Styles >
-
             {GetData()}
             <div className="main-dashboard">
                 <div className="sidebar">
-                    <a className="active" href="#">Applicants</a>
-                    <a href="#">Job Postings</a>
+                    <div className="sidebar-head">
+                        <h3>iProfiler</h3>
+                    </div>
+                    <a href="/"><House />Home</a>
+                    <a className="active" href="#"> <Person />
+                    Applicants</a>
+                    <a href="#"><Briefcase />Job Postings</a>
+                    <a href="#"><ChevronBarRight />Logout</a>
                 </div>
 
                 <div className="content">
@@ -108,11 +80,33 @@ const DashboardPage = () => {
 
                     </div>
                     <div className="search">
+                        <Search />
                         <input type="search" name="search" id="" placeholder="Search..."
                             className="search-input" onChange={(e) => {
                                 setIsSearched(!isSearched);
                                 setSearchTerm(e.target.value)
                             }} />
+                    </div>
+                    <div className="filter">
+                        <Row className="mr-lg-4 ml-lg-4 pr-0">
+                            <Col md={11}>
+                                <h4>Displaying Applicants</h4>
+                            </Col>
+                            <Col md={1} className="p-lg-0 ">
+                                <Filter />
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                        Filter
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#">Skills</Dropdown.Item>
+                                        <Dropdown.Item href="#">Designation</Dropdown.Item>
+                                        <Dropdown.Item href="#">Experience</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                        </Row>
                     </div>
                     <div className="grid-container">
                         {userData && data.map(user =>
