@@ -1,10 +1,11 @@
 import Applicant from '../components/Applicants';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link,  useHistory } from 'react-router-dom';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Applicants from '../components/Applicants';
+import { Homepage } from './Homepage';
 
 const Styles = styled.div`
   .navbar {
@@ -17,7 +18,6 @@ const Styles = styled.div`
     }
   }
 `
-
 interface IForm {
     email: string;
     phone1: string;
@@ -44,10 +44,6 @@ interface IForm {
     resume: string;
 }
 
-// type TForm = {
-//     passData: IForm[],
-// }
-
 const DashboardPage = () => {
 
     const ip = {
@@ -62,20 +58,10 @@ const DashboardPage = () => {
     const [data, setData] = useState([ip]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
-    // let userData: TForm = new Array<IForm>();
-    // const applicants = useSelector((state) => state.users.profile);
-    // var applicant: TForm;
+    const [message, setMessage] = useState('')
+    const history = useHistory();
 
     function GetData() {
-        // fetch("/getData")
-        // .then(res => res.json())
-        // .then((out) => {
-        // console.log('Checkout this JSON! ', out);
-        // applicant = out;
-        // console.log("***********",applicant);
-        // })
-        // .catch(err => { throw err });
-
         useEffect(() => {
             if (userData == false) {
                 axios.get("/getData")
@@ -86,8 +72,31 @@ const DashboardPage = () => {
                     })
             }
         }, [data]);
-
     }
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        // const formData = new FormData();
+        // formData.append("email", email);
+        // formData.append("password", password);
+        try {
+            const res = await axios.get('/logout');
+            console.log("$$$$$$$$$$$$$$$$$$$$$$")
+            console.log(res.data);
+            if(res.data === "EmailID") {
+                history.push('/Login');
+            }
+    
+            } catch (err) {
+            if (err.response.status == 500) {
+                setMessage("There was a problem with the server");
+            } else {
+                setMessage(err.response.data.msg);
+            }
+            }
+            
+    }
+    
     return (
         <>
             <Styles>
@@ -112,9 +121,9 @@ const DashboardPage = () => {
                                 </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link>
-                                    <Link to="/">Logout</Link>
-                                </Nav.Link>
+                            <Nav.Link>
+                                <button type="submit" onClick={handleClick} > Logout </button>
+                            </Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Collapse>

@@ -12,6 +12,9 @@ react_build:
   script:
     - npm install
     - CI='' npm run build
+    - cd ..
+    - pip install -r requirements.txt
+    - cd flask-server && python3 app.py
   after_script:
     - echo "Installation and build successful"
   cache:
