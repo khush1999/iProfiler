@@ -30,6 +30,7 @@ python_build:
     - source ./venv/bin/activate
   script:
     - pip install wheel
+    - python3 setup.py install
     - pip install -r requirements.txt
     - cd flask-server && python3 app.py
   after_script:
