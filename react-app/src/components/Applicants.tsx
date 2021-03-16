@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 import { ArrowRight } from "react-bootstrap-icons";
 import profile from '../assets/cardImage.png';
 
@@ -36,19 +36,30 @@ type TForm = {
 const Applicants = ({ passData }: TForm) => {
   // console.log(passData);
   return (
-    <Card style={{ width: '18rem', backgroundColor: "#d4d4f7" }} className="text-white mb-2">
-      <Card.Img variant="top" src={profile} width="100%" />
+    <Card style={{ width: '18rem', backgroundColor: "#f8f8ff" }} className="shadow p-3 mb-5 
+    bg-white rounded">
       <Card.Body>
-        <Card.Title> {passData.fname}{" "}{passData.lname} </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{passData.pgDegree}{", "}{passData.ugDegree}
+        <Card.Title className="text-left">{passData.fname}{" "}{passData.lname}</Card.Title>
+        <hr />
+        <Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}{","}{passData.pgDegree}
         </Card.Subtitle>
-        <Card.Text>
-          <ArrowRight />{passData.skills1}<br />
-          <ArrowRight />{passData.skills2}<br />
-          <ArrowRight />{passData.skills3}
+        <Card.Text className="text-left">
+          <h6>Total Experience: {passData.total_exp}</h6>
+          <h6>Skills:</h6>
+          <ul>
+            <li>{passData.skills1}</li>
+            <li>{passData.skills2}</li>
+            <li>{passData.skills3}</li>
+          </ul>
         </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Row>
+          <Col sm={6}>
+            <Button variant="primary">View Profile</Button>
+          </Col>
+          <Col sm={6}>
+            <Button variant="primary">View Resume</Button>
+          </Col>
+        </Row>
       </Card.Body>
     </Card>
   );

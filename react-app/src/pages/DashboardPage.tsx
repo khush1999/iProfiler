@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './DashboardPage.css';
 import { Search, Briefcase, House, Person, Filter, ChevronBarRight } from 'react-bootstrap-icons';
+import 'font-awesome/css/font-awesome.min.css';
 
 interface IForm {
     email: string;
@@ -68,11 +69,15 @@ const DashboardPage = () => {
                     <div className="sidebar-head">
                         <h3>iProfiler</h3>
                     </div>
-                    <House /><a href="/">Home</a>
-                    <Person /><a className="active" href="#">
+                    <a href="/"><i className="fa fa-fw fa-home pr-2" style={{ fontSize: '1.75em' }} />
+                    Home</a>
+                    <a className="active" href="#"><i className="fa fa-fw fa-user pr-2"
+                        style={{ fontSize: '1.75em' }} />
                         Applicants</a>
-                    <Briefcase /><a href="#">Job Postings</a>
-                    <ChevronBarRight /><a href="#">Logout</a>
+                    <a href="#"><i className="fa fa-fw fa-briefcase pr-2" style={{ fontSize: '1.75em' }} />
+                    Job Postings</a>
+                    <a href="#"><i className="fa fa-fw fa-power-off pr-2" style={{ fontSize: '1.75em' }} />
+                        Logout</a>
                 </div>
 
                 <div className="content">
@@ -80,7 +85,6 @@ const DashboardPage = () => {
 
                     </div>
                     <div className="search">
-                        <Search />
                         <input type="search" name="search" id="" placeholder="Search..."
                             className="search-input" onChange={(e) => {
                                 setIsSearched(!isSearched);
@@ -88,14 +92,13 @@ const DashboardPage = () => {
                             }} />
                     </div>
                     <div className="filter">
-                        <Row className="mr-lg-4 ml-lg-4 pr-0">
-                            <Col md={11}>
+                        <Row className="dashboard-row">
+                            <Col sm={11}>
                                 <h4>Displaying Applicants</h4>
                             </Col>
-                            <Col md={1} className="p-lg-0 ">
-                                <Filter />
+                            <Col sm={1}>
                                 <Dropdown>
-                                    <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                         Filter
                                     </Dropdown.Toggle>
 
@@ -108,7 +111,7 @@ const DashboardPage = () => {
                             </Col>
                         </Row>
                     </div>
-                    <div className="grid-container">
+                    <div className="grid-container justify-content-around">
                         {userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
