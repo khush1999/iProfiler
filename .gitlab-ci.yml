@@ -26,12 +26,15 @@ python_build:
     - iprofiler
   before_script:
     - echo "Installing Python Dependencies"
+    - python3 -m venv venv
+    - source ./venv/bin/activate
   script:
     - pip install wheel
     - pip install -r requirements.txt
     - cd flask-server && python3 app.py
   after_script:
     - echo "Installation and build successful Python Build"
+    - deactivate
   # artifacts:
   #   paths:
   #     - build/*
