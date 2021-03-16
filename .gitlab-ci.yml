@@ -26,7 +26,6 @@ python_build:
     - iprofiler
   before_script:
     - echo "Installing Python Dependencies"
-    - sudo apt-get install python3-venv
     - python3 -m venv venv
     - source ./venv/bin/activate
   script:
