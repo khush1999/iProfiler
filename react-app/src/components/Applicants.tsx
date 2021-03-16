@@ -1,5 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { ArrowRight } from "react-bootstrap-icons";
+import profile from '../assets/cardImage.png';
 
 interface IForm {
   email: string;
@@ -8,7 +10,7 @@ interface IForm {
   fname: string;
   lname: string;
   total_exp: number;
-  designition: string[];
+  designition: string;
   pgDegree: string;
   ugDegree: string;
   pg_University: string;
@@ -32,14 +34,18 @@ type TForm = {
 }
 
 const Applicants = ({ passData }: TForm) => {
-  console.log(passData);
+  // console.log(passData);
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', backgroundColor: "#2525a7" }} className="text-white mb-2">
+      <Card.Img variant="top" src={profile} width="100%" />
       <Card.Body>
-        <Card.Title> {passData.fname} </Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">brooooooo</Card.Subtitle>
+        <Card.Title> {passData.fname}{" "}{passData.lname} </Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{passData.pgDegree}{", "}{passData.ugDegree}
+        </Card.Subtitle>
         <Card.Text>
-          qwerty
+          <ArrowRight />{passData.skills1}<br />
+          <ArrowRight />{passData.skills2}<br />
+          <ArrowRight />{passData.skills3}
         </Card.Text>
         <Card.Link href="#">Card Link</Card.Link>
         <Card.Link href="#">Another Link</Card.Link>
