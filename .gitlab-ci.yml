@@ -2,23 +2,23 @@ stages:
   # - build
   - py_build
 
-react_build:
-  stage: build
-  tags:
-    - iprofiler
-  before_script:
-    - echo "Installing NPM Dependencies and building React app"
-    - cd react-app
-    - echo "Installed node using NVM"
-  script:
-    - npm install
-    - CI='' npm run build
-  after_script:
-    - echo "Installation and build successful"
-  cache:
-    key: install-cache
-    paths:
-      - node_modules/
+# react_build:
+#   stage: build
+#   tags:
+#     - iprofiler
+#   before_script:
+#     - echo "Installing NPM Dependencies and building React app"
+#     - cd react-app
+#     - echo "Installed node using NVM"
+#   script:
+#     - npm install
+#     - CI='' npm run build
+#   after_script:
+#     - echo "Installation and build successful"
+#   cache:
+#     key: install-cache
+#     paths:
+#       - node_modules/
 
 python_build:
   stage: py_build
