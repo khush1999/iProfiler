@@ -1,5 +1,6 @@
 stages:
   - build
+  - py_build
 
 react_build:
   stage: build
@@ -12,15 +13,25 @@ react_build:
   script:
     - npm install
     - CI='' npm run build
-    - cd ..
-    - pip install -r requirements.txt
-    - cd flask-server && python3 app.py
   after_script:
     - echo "Installation and build successful"
   cache:
     key: install-cache
     paths:
       - node_modules/
+
+python_build:
+  stage: py_build
+  tags:
+    - iprofiler
+  before_script:
+    - echo "Installing Python Dependencies"
+  script:
+    - pip install wheel
+    - pip install -r requirements.txt
+    - cd flask-server && python3 app.py
+  after_script:
+    - echo "Installation and build successful Python Build"
   # artifacts:
   #   paths:
   #     - build/*
