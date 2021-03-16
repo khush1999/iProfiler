@@ -91,6 +91,7 @@
     flex:1;
     background-color: #FFFFFF;
     border: 0px;
+    background-image: url('../assets/search.jpeg');
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;

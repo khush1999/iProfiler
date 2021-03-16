@@ -68,11 +68,11 @@ const DashboardPage = () => {
                     <div className="sidebar-head">
                         <h3>iProfiler</h3>
                     </div>
-                    <a href="/"><House />Home</a>
-                    <a className="active" href="#"> <Person />
-                    Applicants</a>
-                    <a href="#"><Briefcase />Job Postings</a>
-                    <a href="#"><ChevronBarRight />Logout</a>
+                    <House /><a href="/">Home</a>
+                    <Person /><a className="active" href="#">
+                        Applicants</a>
+                    <Briefcase /><a href="#">Job Postings</a>
+                    <ChevronBarRight /><a href="#">Logout</a>
                 </div>
 
                 <div className="content">
