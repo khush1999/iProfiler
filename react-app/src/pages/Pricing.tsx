@@ -1,13 +1,10 @@
 import React from "react";
 import { Button, Card, CardDeck, OverlayTrigger } from "react-bootstrap";
 import './price.css';
-import { ArrowRight } from 'react-bootstrap-icons';
-import { NavigationBar } from "../components/NavigationBar";
 
 const Pricing = () => {
   return (
     <div>
-      <NavigationBar />
       <div className="price-head">
         <h1>Choose Your Plan For AI Powered ATS</h1>
         <br />
@@ -15,9 +12,13 @@ const Pricing = () => {
         <p className="price-text">So We Have Modified Our Pricing Plans To Help You And Your Business Adjust To These Changes.
         </p>
       </div>
+      <br />
+      <Button variant="primary" size="lg" block>
+        Free Trial
+      </Button>
 
       <CardDeck className="price">
-        <Card>
+        <Card className="card">
           <Card.Header className="card-head">
             Basic
             </Card.Header>
@@ -26,19 +27,16 @@ const Pricing = () => {
             <Card.Text className="card-text">
               <div className="amt"><sup>$</sup> 59 /<sub>month</sub></div>
               <div className="feat">
-                <ArrowRight />All Features<br />
-                <ArrowRight />5 Active Jobs<br />
-                <ArrowRight />Unlimited Users
+                All Features<br />
+            5 Active Jobs<br />
+            Unlimited Users
             </div>
             </Card.Text>
+            <br />
+            <Button variant="primary" size="lg" block>Get Started</Button>
           </Card.Body>
-          <Card.Footer>
-            <div className="text-center">
-              <button type="button" className="btn btn-primary">Get Started</button>
-            </div>
-          </Card.Footer>
         </Card>
-        <Card>
+        <Card className="card">
           <Card.Header className="card-head">
             Standard
             </Card.Header>
@@ -47,19 +45,16 @@ const Pricing = () => {
             <Card.Text className="card-text">
               <div className="amt"><sup>$</sup> 89 /<sub>month</sub></div>
               <div className="feat">
-                <ArrowRight />All Features<br />
-                <ArrowRight />10 Active Jobs<br />
-                <ArrowRight />Unlimited Users
+                All Features<br />
+            10 Active Jobs<br />
+            Unlimited Users
             </div>
             </Card.Text>
+            <br />
+            <Button variant="primary" size="lg" block>Get Started</Button>
           </Card.Body>
-          <Card.Footer>
-            <div className="text-center">
-              <button type="button" className="btn btn-primary">Get Started</button>
-            </div>
-          </Card.Footer>
         </Card>
-        <Card>
+        <Card className="card">
           <Card.Header className="card-head">
             Pro
             </Card.Header>
@@ -68,17 +63,14 @@ const Pricing = () => {
             <Card.Text className="card-text">
               <div className="amt"><sup>$</sup> 149 /<sub>month</sub></div>
               <div className="feat">
-                <ArrowRight />All Features<br />
-                <ArrowRight />20 Active Jobs<br />
-                <ArrowRight />Unlimited Users
+                All Features<br />
+            20 Active Jobs<br />
+            Unlimited Users
             </div>
             </Card.Text>
+            <br />
+            <Button variant="primary" size="lg" block>Get Started</Button>
           </Card.Body>
-          <Card.Footer>
-            <div className="text-center">
-              <button type="button" className="btn btn-primary">Get Started</button>
-            </div>
-          </Card.Footer>
         </Card>
       </CardDeck>
     </div>

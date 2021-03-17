@@ -10,8 +10,8 @@ const mainWidth = { width: "60%" };
 
 export const Login = () => {
 
-    const [email, setEmail] = useState('abc@xyz.com')
-    const [password, setPassword] = useState('*********')
+    const [email, setEmail] = useState('Email')
+    const [password, setPassword] = useState('Password')
     const [message, setMessage] = useState('')
     const history = useHistory();
     const handleClick = () => history.push('/Pricing');

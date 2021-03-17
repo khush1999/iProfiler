@@ -1,10 +1,11 @@
 import Applicant from '../components/Applicants';
-import { Row, Col, Dropdown } from 'react-bootstrap';
+import { Row, Col, Dropdown, Nav } from 'react-bootstrap';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './DashboardPage.css';
 import { Search, Briefcase, House, Person, Filter, ChevronBarRight } from 'react-bootstrap-icons';
 import 'font-awesome/css/font-awesome.min.css';
+import { Link, useHistory } from 'react-router-dom';
 
 interface IForm {
     email: string;
@@ -46,6 +47,9 @@ const DashboardPage = () => {
     const [data, setData] = useState([ip]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
+    const [message, setMessage] = useState('');
+
+    const history = useHistory();
 
     function GetData() {
 
@@ -58,12 +62,38 @@ const DashboardPage = () => {
                         setUserData(true);
                     })
             }
+            else {
+                setIsSearched(!setIsSearched)
+            }
         }, [data]);
+
+    }
+    const handleClick = async (e) => {
+        e.preventDefault();
+        // const formData = new FormData();
+        // formData.append("email", email);
+        // formData.append("password", password);
+        try {
+            const res = await axios.get('/logout');
+            console.log("$$$$$$$$$$$$$$$$$$$$$$")
+            console.log(res.data);
+            if (res.data === "EmailID") {
+                history.push('/Login');
+            }
+
+        } catch (err) {
+            if (err.response.status == 500) {
+                setMessage("There was a problem with the server");
+            } else {
+                setMessage(err.response.data.msg);
+            }
+        }
+
     }
 
     return (
         <>
-            { GetData()}
+            {GetData()}
             <div className="main-dashboard">
                 <div className="sidebar">
                     <div className="sidebar-head">
@@ -76,8 +106,8 @@ const DashboardPage = () => {
                         Applicants</a>
                     <a href="#"><i className="fa fa-fw fa-briefcase pr-2" style={{ fontSize: '1.75em' }} />
                     Job Postings</a>
-                    <a href="#"><i className="fa fa-fw fa-power-off pr-2" style={{ fontSize: '1.75em' }} />
-                        Logout</a>
+                    <a href="#" onClick={handleClick}><i className="fa fa-fw fa-power-off pr-2" style={{ fontSize: '1.75em' }} />
+                    Logout</a>
                 </div>
 
                 <div className="content">
@@ -85,7 +115,7 @@ const DashboardPage = () => {
 
                     </div>
                     <div className="search">
-                        <input type="search" name="search" id="" placeholder="Search..."
+                        <input type="search" name="search" id="" placeholder="Search Applicant by Name"
                             className="search-input" onChange={(e) => {
                                 setIsSearched(!isSearched);
                                 setSearchTerm(e.target.value)
@@ -103,30 +133,53 @@ const DashboardPage = () => {
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#">Skills</Dropdown.Item>
-                                        <Dropdown.Item href="#">Designation</Dropdown.Item>
-                                        <Dropdown.Item href="#">Experience</Dropdown.Item>
+                                        <Dropdown.Item href="#" onClick={() => {
+                                            console.log("reached inside*****************")
+                                            data.filter(user => (user.skills1 == "C++" ||
+                                                user.skills2 == "Java" || user.skills3 == "Python")).map((user) => (
+                                                    <div className="preview">
+                                                        {                                                    console.log("Looping inside")}                            <Applicant passData={user} />
+                                                    </div>
+                                                ))
+                                        }}>Skills</Dropdown.Item>
+                                        <Dropdown.Item href="#" onClick={() => {
+                                            data.filter(user => (user.designition.toLowerCase().includes("sde-1") ||
+                                                user.designition.toLowerCase().includes("sdet-1"))).map((user) => (
+                                                    <div className="preview">
+                                                        <Applicant passData={user} />
+                                                    </div>
+                                                ))
+                                        }}>Designation</Dropdown.Item>
+                                        <Dropdown.Item href="#" onClick={() => {
+                                            data.filter(user => (user.total_exp < 5)).map((user) => (
+                                                <div className="preview">
+                                                    <Applicant passData={user} />
+                                                </div>
+                                            ))
+                                        }}>Experience</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </Col>
                         </Row>
                     </div>
                     <div className="grid-container justify-content-around">
-                        {userData && data.map(user =>
+                        {!isSearched && userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
                     </div>
+                    <hr />
+                    <div className="grid-container justify-content-around">
+                        {
+                            userData && isSearched && data.filter(user => (user.fname == searchTerm ||
+                                user.lname == searchTerm || user.city == searchTerm || user.designition
+                                == searchTerm)).map((user) => (
+
+                                    <Applicant passData={user} />
+
+                                ))
+                        }
+                    </div>
                 </div>
-                <h2> Seperation </h2>
-                {
-                    userData && isSearched && data.filter(user => (user.fname == searchTerm ||
-                        user.lname == searchTerm || user.city == searchTerm || user.designition
-                        == searchTerm)).map((user) => (
-                            <div className="preview">
-                                <Applicant passData={user} />
-                            </div>
-                        ))
-                }
             </div>
         </>
 

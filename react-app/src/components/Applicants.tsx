@@ -54,10 +54,10 @@ const Applicants = ({ passData }: TForm) => {
         </Card.Text>
         <Row>
           <Col sm={6}>
-            <Button variant="primary">View Profile</Button>
+            <Button variant="primary align-self-end">View Profile</Button>
           </Col>
           <Col sm={6}>
-            <Button variant="primary">View Resume</Button>
+            <Button variant="primary align-self-end">View Resume</Button>
           </Col>
         </Row>
       </Card.Body>

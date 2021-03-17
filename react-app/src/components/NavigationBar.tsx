@@ -2,7 +2,6 @@ import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
-import AppLogo from '../assets/appLogo.png';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
@@ -20,15 +19,19 @@ const Styles = styled.div`
   .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
     color: white;
 }
+.navbar-light .navbar-toggler {
+    color: white;
+    border-color: white;
+    background-color: gray;
+}
 `;
 
 export const NavigationBar = () => {
   return (
     <Styles>
       <Navbar expand="lg" fixed="top">
-        <Navbar.Brand href="/"><img src={AppLogo} width="30" height="30"
-          className="d-inline-block align-top" alt="React Bootstrap logo"></img>
-        iProfiler
+        <Navbar.Brand href="/">
+          iProfiler
       </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
