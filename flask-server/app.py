@@ -9,6 +9,7 @@ import os
 from werkzeug.utils import secure_filename
 from resume_parser import resumeparse
 import spacy
+import uuid
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__app__")
@@ -20,7 +21,7 @@ mongo = PyMongo(app)
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
 
-@app.route('/upload', methods=['GET', 'POST'])
+@app.route('/upload', methods=['POST','GET'])
 def upload_file():
   global data
   if request.method == 'POST':
@@ -32,6 +33,7 @@ def upload_file():
     #   mongo.save_file(f.filename, f)
     #   mongo.send_file()
     data = resumeparse.read_file(filename)
+    data["id"] = str(uuid.uuid4())[:8]
     print(data)
     with open("../react-app/src/sample.json", "w") as outfile:
       json.dump(data, outfile)
@@ -39,6 +41,16 @@ def upload_file():
 
 # @app.route('/files', methods=['GET'])
 # def form_files():
-#     return "hello there!"
+#     abc = request.get_json();
+#     print(abc)
+#     return abc
+@app.route('/check/create',methods=['GET','POST'])
+def create():
+  if request.method == 'POST':
+    f = open("../react-app/src/sample.json","r") 
+    y=json.load(f)
+    print("database",y["name"])
+    mongo.db.users.insert_one(y)
+  return "Success!!!!!!!"
 
 app.run(debug=True)
