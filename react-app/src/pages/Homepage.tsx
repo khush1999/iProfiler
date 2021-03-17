@@ -6,6 +6,7 @@ import { NavigationBar } from "../components/NavigationBar";
 import './homepage.css';
 import logo from './logo.png';
 
+
 export const Homepage = () => (
   <main>
     <NavigationBar />

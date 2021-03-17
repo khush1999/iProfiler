@@ -3,7 +3,6 @@ import { Row, Col, Dropdown, Nav } from 'react-bootstrap';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './DashboardPage.css';
-import { Search, Briefcase, House, Person, Filter, ChevronBarRight } from 'react-bootstrap-icons';
 import 'font-awesome/css/font-awesome.min.css';
 import { Link, useHistory } from 'react-router-dom';
 
@@ -48,6 +47,11 @@ const DashboardPage = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
     const [message, setMessage] = useState('');
+    const [DropSkill,setDropSkill] = useState('');
+    const [DropExp,setDropExp] = useState('');
+    const [DropRole,setDropRole] = useState('');
+    var exp,exp1;
+    
 
     const history = useHistory();
 
@@ -91,6 +95,18 @@ const DashboardPage = () => {
 
     }
 
+    const Courses = (courseType: string) => {
+        setDropSkill(courseType);
+    }
+
+    const Experience = (expType: string) => {
+        setDropExp(expType);
+    }
+
+    const Role = (roleType: string) => {
+        setDropRole(roleType);
+    }
+
     return (
         <>
             {GetData()}
@@ -111,64 +127,75 @@ const DashboardPage = () => {
                 </div>
 
                 <div className="content">
-                    <div>
 
-                    </div>
-                    <div className="search">
-                        <input type="search" name="search" id="" placeholder="Search Applicant by Name"
-                            className="search-input" onChange={(e) => {
-                                setIsSearched(!isSearched);
-                                setSearchTerm(e.target.value)
-                            }} />
-                    </div>
+                    <h4 className="mt-2 ml-2">Displaying Applicants</h4>
+
                     <div className="filter">
-                        <Row className="dashboard-row">
-                            <Col sm={11}>
-                                <h4>Displaying Applicants</h4>
-                            </Col>
-                            <Col sm={1}>
+                        <Row className="filter-row">
+                            <Col md={5} className="dashboard-filters">
                                 <Dropdown>
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Filter
+                                        Skills
                                     </Dropdown.Toggle>
-
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href="#" onClick={() => {
-                                            console.log("reached inside*****************")
-                                            data.filter(user => (user.skills1 == "C & C++" ||
-                                                user.skills2 == "Python" || user.skills3 == "JavaScript")).map((user) => (
-                                                    <div className="preview">
-                                                        {console.log("Looping inside")}                            
-                                                        <Applicant passData={user} />
-                                                    </div>
-                                                ))
-                                        }}>Skills</Dropdown.Item>
-                                        <Dropdown.Item href="#" onClick={() => {
-                                            data.filter(user => (user.designition.toLowerCase().includes("sde-1") ||
-                                                user.designition.toLowerCase().includes("sdet-1"))).map((user) => (
-                                                    <div className="preview">
-                                                        <Applicant passData={user} />
-                                                    </div>
-                                                ))
-                                        }}>Designation</Dropdown.Item>
-                                        <Dropdown.Item href="#" onClick={() => {
-                                            data.filter(user => (user.total_exp < 5)).map((user) => (
-                                                <div className="preview">
-                                                    <Applicant passData={user} />
-                                                </div>
-                                            ))
-                                        }}>Experience</Dropdown.Item>
-                                    </Dropdown.Menu>
+                                    <div className="custom">
+                                    <select onChange={(e) => Courses(e.target.value)}>
+                                        <option value="Java">Java</option>
+                                        <option value="Python">Python</option>
+                                        <option value="Django">Django</option>
+                                        <option value="C">C/C++</option>
+                                        <option value="React">React</option>
+                                        <option value="Javascript">Javascript</option>
+                                    </select>
+                                    </div>
                                 </Dropdown>
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        Experience
+                                    </Dropdown.Toggle>
+                                    <div className="custom">
+                                    <select onChange={(e) => Experience(e.target.value)}>
+                                        <option>0-3 Years</option>
+                                        <option>3-6 Years</option>
+                                        <option>6-9 Years</option>
+                                        <option>{">"}9 Years</option>
+                                    </select>
+                                    </div>
+                                </Dropdown>
+
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        Designation
+                                    </Dropdown.Toggle>
+                                    <div className="custom">
+                                    <select onChange={(e) => Role(e.target.value)}>
+                                        <option>SDE</option>
+                                        <option>SDET</option>
+                                        <option>HR</option>
+                                        <option>DevOps</option>
+                                    </select>
+                                    </div>
+                                </Dropdown>
+                            </Col>
+                            <Col md={7} className="pr-0">
+                                <div className="search mr-0">
+                                    <input type="search" name="search" id="" placeholder="Search Applicant by Name"
+                                        className="search-input" onChange={(e) => {
+                                            setIsSearched(!isSearched);
+                                            setSearchTerm(e.target.value)
+                                        }} />
+                                </div>
                             </Col>
                         </Row>
                     </div>
+
+
                     <div className="grid-container justify-content-around">
-                        {!isSearched && userData && data.map(user =>
+                        {!isSearched &&  (DropSkill==="") && userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
                     </div>
                     <hr />
+                    
                     <div className="grid-container justify-content-around">
                         {
                             userData && isSearched && data.filter(user => (user.fname == searchTerm ||
@@ -180,6 +207,49 @@ const DashboardPage = () => {
                                 ))
                         }
                     </div>
+
+                    <div className="grid-container justify-content-around">
+                        {
+                            (DropSkill!="") && data.filter(user => (user.skills1 == DropSkill ||
+                            user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => (
+                                <div>
+                                                        {console.log("Looping inside",user)} 
+                                                        <Applicant passData={user} />
+                                </div>
+
+                                ))
+                        }
+                    </div>
+
+                    <div className="grid-container justify-content-around">
+                        
+        
+                            {(DropExp!="") && data.filter(user => (DropExp=="0-3 Years" ? 
+                            user.total_exp<=3:(DropExp=="3-6 Years" ? 
+                            (user.total_exp>3 && user.total_exp<=6):(DropExp=="6-9 Years" ? (user.total_exp>6 && user.total_exp<=9) :(user.total_exp>9))))).map((user) => (
+                                <div>
+                                                        {console.log("Looping inside",user)} 
+                                                        <Applicant passData={user} />
+                                </div>
+                               
+
+                                ))}
+                            
+                        
+                    </div>
+
+                    <div className="grid-container justify-content-around">
+                        {
+                            (DropRole!="") && data.filter(user => (user.designition=== DropRole)).map((user) => (
+                                <div>
+                                                        {console.log("Looping inside",user)} 
+                                                        <Applicant passData={user} />
+                                </div>
+
+                                ))
+                        }
+                    </div>
+
                 </div>
             </div>
         </>
