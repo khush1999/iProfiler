@@ -1,23 +1,11 @@
 import Applicant from '../components/Applicants';
-import { Nav, Navbar } from 'react-bootstrap';
-import styled from 'styled-components';
-import { Link,  useHistory } from 'react-router-dom';
+import { Row, Col, Dropdown } from 'react-bootstrap';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Applicants from '../components/Applicants';
-import { Homepage } from './Homepage';
+import './DashboardPage.css';
+import { Search, Briefcase, House, Person, Filter, ChevronBarRight } from 'react-bootstrap-icons';
+import 'font-awesome/css/font-awesome.min.css';
 
-const Styles = styled.div`
-  .navbar {
-    background-color: #222;
-  }
-  a, .navbar-brand, .navbar-nav .nav-link {
-    color: #bbb;
-    &:hover {
-      color: white;
-    }
-  }
-`
 interface IForm {
     email: string;
     phone1: string;
@@ -58,10 +46,9 @@ const DashboardPage = () => {
     const [data, setData] = useState([ip]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
-    const [message, setMessage] = useState('')
-    const history = useHistory();
 
     function GetData() {
+
         useEffect(() => {
             if (userData == false) {
                 axios.get("/getData")
@@ -71,91 +58,100 @@ const DashboardPage = () => {
                         setUserData(true);
                     })
             }
+            else {
+                setIsSearched(!setIsSearched)
+            }
         }, [data]);
-    }
 
-    const handleClick = async (e) => {
-        e.preventDefault();
-        // const formData = new FormData();
-        // formData.append("email", email);
-        // formData.append("password", password);
-        try {
-            const res = await axios.get('/logout');
-            console.log("$$$$$$$$$$$$$$$$$$$$$$")
-            console.log(res.data);
-            if(res.data === "EmailID") {
-                history.push('/Login');
-            }
-    
-            } catch (err) {
-            if (err.response.status == 500) {
-                setMessage("There was a problem with the server");
-            } else {
-                setMessage(err.response.data.msg);
-            }
-            }
-            
     }
     
     return (
         <>
-            <Styles>
-                <Navbar expand="lg" fixed="top">
-                    <Navbar.Brand href="/">Welcome, Start Hiring</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto">
-                            <Nav.Item>
-                                <Nav.Link>
-                                    <Link to="/">Home</Link>
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link>
-                                    <Link to="/">Applicants</Link>
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                                <Nav.Link>
-                                    <Link to="/">Job Postings</Link>
-                                </Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                            <Nav.Link>
-                                <button type="submit" onClick={handleClick} > Logout </button>
-                            </Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-            </Styles >
-            <br />
-            <br />
-            <br />
-            {/* <Applicant /> */}
             {GetData()}
+            <div className="main-dashboard">
+                <div className="sidebar">
+                    <div className="sidebar-head">
+                        <h3>iProfiler</h3>
+                    </div>
+                    <a href="/"><i className="fa fa-fw fa-home pr-2" style={{ fontSize: '1.75em' }} />
+                    Home</a>
+                    <a className="active" href="#"><i className="fa fa-fw fa-user pr-2"
+                        style={{ fontSize: '1.75em' }} />
+                        Applicants</a>
+                    <a href="#"><i className="fa fa-fw fa-briefcase pr-2" style={{ fontSize: '1.75em' }} />
+                    Job Postings</a>
+                    <a href="#"><i className="fa fa-fw fa-power-off pr-2" style={{ fontSize: '1.75em' }} />
+                        Logout</a>
+                </div>
 
-            <div className="container">
-            <input type="search" name="search" id="" placeholder="Search..." onChange={(e) => {
-                            setIsSearched(!isSearched);
-                            setSearchTerm(e.target.value)
-                        }} />
-                <div className="row">
-                    <div className="col-sm">
-                        {userData && data.map(user =>
+                <div className="content">
+                    <div>
+
+                    </div>
+                    <div className="search">
+                        <input type="search" name="search" id="" placeholder="Search..."
+                            className="search-input" onChange={(e) => {
+                                setIsSearched(!isSearched);
+                                setSearchTerm(e.target.value)
+                            }} />
+                    </div>
+                    <div className="filter">
+                        <Row className="dashboard-row">
+                            <Col sm={11}>
+                                <h4>Displaying Applicants</h4>
+                            </Col>
+                            <Col sm={1}>
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        Filter
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#" onClick={() => {
+                                            console.log("reached inside*****************")
+                                            data.filter(user => (user.skills1=="C++" ||
+                                                user.skills2=="Java" || user.skills3=="Python")).map((user) => (
+                            <div className="preview">
+{                                                    console.log("Looping inside")                        }                            <Applicant passData={user} />
+                            </div>
+                        ))
+                                        }}>Skills</Dropdown.Item>
+                                        <Dropdown.Item href="#" onClick={() => { data.filter(user => (user.designition.toLowerCase().includes("sde-1") ||
+                        user.designition.toLowerCase().includes("sdet-1") )).map((user) => (
+                            <div className="preview">
+                                <Applicant passData={user} />
+                            </div>
+                        ))
+                                        }}>Designation</Dropdown.Item>
+                                        <Dropdown.Item href="#" onClick={() => {
+                                            data.filter(user => (user.total_exp < 5)).map((user) => (
+                                                <div className="preview">
+                                                    <Applicant passData={user} />
+                                                </div>
+                                            ))
+                                        }}>Experience</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                        </Row>
+                    </div>
+                    <div className="grid-container justify-content-around">
+                        {!isSearched&&userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
                     </div>
                 </div>
+                <h2> Seperation </h2>
+                {
+                    userData && isSearched && data.filter(user => (user.fname == searchTerm ||
+                        user.lname == searchTerm || user.city == searchTerm || user.designition
+                        == searchTerm)).map((user) => (
+                            <div className="preview">
+                                <Applicant passData={user} />
+                            </div>
+                        ))
+                }
             </div>
-            <h2> Seperation </h2>
-            {
-                    userData && isSearched && data.filter(user => (user.fname == searchTerm || user.lname == searchTerm|| user.city == searchTerm || user.designition == searchTerm)).map((user) => (
-                        <div className="preview">
-                            <Applicant passData={user} />
-                        </div>
-                    ))
-            }
         </>
 
     );
