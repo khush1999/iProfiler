@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/react/css/main.86828aa1.chunk.css",
+    "main.js": "/static/react/js/main.c93bc1f2.chunk.js",
+    "main.js.map": "/static/react/js/main.c93bc1f2.chunk.js.map",
+    "runtime-main.js": "/static/react/js/runtime-main.e57fe4ee.js",
+    "runtime-main.js.map": "/static/react/js/runtime-main.e57fe4ee.js.map",
+    "js/2.5dceb5f3.chunk.js": "/static/react/js/2.5dceb5f3.chunk.js",
+    "js/2.5dceb5f3.chunk.js.map": "/static/react/js/2.5dceb5f3.chunk.js.map",
+    "js/3.d19aa72b.chunk.js": "/static/react/js/3.d19aa72b.chunk.js",
+    "js/3.d19aa72b.chunk.js.map": "/static/react/js/3.d19aa72b.chunk.js.map",
+    "../../templates/index.html": "/static/react/../../templates/index.html",
+    "css/main.86828aa1.chunk.css.map": "/static/react/css/main.86828aa1.chunk.css.map",
+    "js/2.5dceb5f3.chunk.js.LICENSE.txt": "/static/react/js/2.5dceb5f3.chunk.js.LICENSE.txt",
+    "media/banner.ee286853.jpg": "/static/react/media/banner.ee286853.jpg",
+    "service-worker.js": "/static/react/service-worker.js",
+    "service-worker.js.map": "/static/react/service-worker.js.map"
+  },
+  "entrypoints": [
+    "js/runtime-main.e57fe4ee.js",
+    "js/2.5dceb5f3.chunk.js",
+    "css/main.86828aa1.chunk.css",
+    "js/main.c93bc1f2.chunk.js"
+  ]
+}
