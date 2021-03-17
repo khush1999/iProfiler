@@ -8,6 +8,7 @@ import FileUpload from './components/FileUpload';
 import DashboardPage from './pages/DashboardPage';
 import { Login } from './pages/Login';
 import { SignUp } from './pages/SignUp';
+import Contact from './components/Contact';
 
 declare global {
   interface Window {
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/Login" component={Login} />
           <Route exact path="/SignUp" component={SignUp} />
           <Route exact path="/DashboardPage" component={DashboardPage} />
+          <Route exact path="/Contact" component={Contact} />
         </Fragment>
       </BrowserRouter>
     </div>

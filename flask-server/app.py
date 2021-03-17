@@ -88,9 +88,10 @@ def create():
             'skills2': request.form.get('skills2'),
             'skills3': request.form.get('skills3'),
             'total_exp': request.form.get('total_exp'),
-            'designition': request.form.get('designition'),
+            'designition': request.form.get('desig'),
             'Companies worked at': request.form.get('Companies worked at'),
             'resume': request.form.get('resume_id'),
+
         })
         print(list(mongo.db.users.find()))
     return "Doneeeee!!!!!!!"
