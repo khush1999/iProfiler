@@ -11,15 +11,15 @@
 }
 
 .discover1 {
-    background-color: #5f9ea0;
+    background-color: cadetblue;
 }
 
 .discover2 {
-    background-color:#ffc299;
+    background-color:orangered;
 }
 
 .discover3 {
-    background-color: #8cd9ad;
+    background-color: seagreen;
 }
 
 .heading{
@@ -30,7 +30,7 @@
 .sub-heading1{
     position: relative;
     height: 10%;
-    color: #5f9ea0;
+    color: cadetblue;
     font-size: 1rem;
     font-weight: bold;
 }
@@ -38,7 +38,7 @@
 .sub-heading2{
     position: relative;
     height: 10%;
-    color: #ffc299;
+    color: orangered;
     font-size: 1rem;
     font-weight: bold;
 }
@@ -46,7 +46,7 @@
 .sub-heading3{
     position: relative;
     height: 10%;
-    color: #8cd9ad;
+    color: seagreen;
     font-size: 1rem;
     font-weight: bold;
 }
@@ -82,6 +82,17 @@
 
 .main-content{
 background-color: #f2f2f2;
+width: 100%;
+margin-left: 0;
+}
+
+.about {
+    text-align: justify;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
 }
 
 @media only screen and (max-width: 767px) and (min-width: 480px) {

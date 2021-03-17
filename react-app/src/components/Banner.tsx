@@ -34,7 +34,7 @@ export const Banner = () => (
       <div className="overlay">
         <Container className="main">
           <div className="des1">
-            <h1>Iprofiler</h1>
+            <h1>iProfiler</h1>
             <p>Take the hassle out,</p>
             <p>for the remote recruitment process</p>
           </div>
