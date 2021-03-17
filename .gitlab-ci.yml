@@ -1,5 +1,7 @@
 stages:
   - build
+  - py_build
+  - py_run
 
 react_build:
   stage: build
@@ -18,6 +20,31 @@ react_build:
     key: install-cache
     paths:
       - node_modules/
+
+python_build:
+  stage: py_build
+  tags:
+    - iprofiler
+  before_script:
+    - echo "Installing Python Dependencies"
+  script:
+    - pip install wheel
+    - pip install -r requirements.txt
+    # - cd flask-server && python3 app.py
+  after_script:
+    - echo "Installation and build successful Python Build"
+
+python_run:
+  stage: py_run
+  tags:
+    - iprofiler
+  before_script:
+    - echo "Running Python Files"
+  script:
+    - cd flask-server && python3 app.py
+  after_script:
+    - echo "Final build ran successful"
+
   # artifacts:
   #   paths:
   #     - build/*

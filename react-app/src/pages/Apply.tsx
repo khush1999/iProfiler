@@ -86,7 +86,8 @@ const Apply = ({ passData }: TForm) => {
                 encType="multipart/form-data">
 
                 <br></br>
-
+                <h2>General Details</h2>
+                <br></br>
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
                         <Form.Label>First Name</Form.Label>
@@ -214,11 +215,7 @@ const Apply = ({ passData }: TForm) => {
                     </Form.Group>
                 </Form.Row>
 
-                <Form.Group id="formGridCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-
-                <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4'
+                <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4 mb-4'
                     onClick={handleShow} />
             </Form>
         </div>

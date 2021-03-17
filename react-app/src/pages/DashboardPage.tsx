@@ -59,11 +59,11 @@ const DashboardPage = () => {
                     })
             }
         }, [data]);
-
     }
+
     return (
         <>
-            {GetData()}
+            { GetData()}
             <div className="main-dashboard">
                 <div className="sidebar">
                     <div className="sidebar-head">

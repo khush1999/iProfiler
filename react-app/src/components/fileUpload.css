@@ -9,3 +9,11 @@
 .mr-5, .mx-5 {
     margin-right: 8rem!important;
 }
+
+.load{
+    position: fixed;
+      top: 70%;
+      left: 50%;
+      margin-top: -50px;
+      margin-left: -100px;
+    }

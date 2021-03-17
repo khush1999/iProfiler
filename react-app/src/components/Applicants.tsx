@@ -41,7 +41,7 @@ const Applicants = ({ passData }: TForm) => {
       <Card.Body>
         <Card.Title className="text-left">{passData.fname}{" "}{passData.lname}</Card.Title>
         <hr />
-        <Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}{","}{passData.pgDegree}
+        <Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}{" "}{passData.pgDegree}
         </Card.Subtitle>
         <Card.Text className="text-left">
           <h6>Total Experience: {passData.total_exp}</h6>
