@@ -72,7 +72,7 @@ const Apply = ({ passData }: TForm) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Modal heading</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Woohoo, Your Application has been submitted !!</Modal.Body>
+                <Modal.Body>Your Application has been submitted !!</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
@@ -151,6 +151,11 @@ const Apply = ({ passData }: TForm) => {
 
                 </Form.Row>
 
+                <Form.Group controlId="formGridSkillDes">
+                    <Form.Label>Designation</Form.Label>
+                    <Form.Control id ="desig" name="desig" type="text" placeholder="Write Designation applying for" />
+                </Form.Group>
+
                 <br></br>
                 <h2>Educational Details</h2>
                 <br></br>
@@ -192,11 +197,6 @@ const Apply = ({ passData }: TForm) => {
                 <br></br>
                 <h2>Job Skills</h2>
                 <br></br>
-
-                <Form.Group controlId="formGridSkillDes">
-                    <Form.Label>Skills Description</Form.Label>
-                    <Form.Control type="description" placeholder="Write Description" />
-                </Form.Group>
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridSkill1">
