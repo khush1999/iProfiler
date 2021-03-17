@@ -14,18 +14,21 @@ export const Homepage = () => (
     <Banner />
     <br />
     <Row className="main-content">
-    <Row className="profile-head">
-          Why Iprofiler?
-        </Row>
-     <Row className="about">
-        <p className="p-5">  
+      <Col lg={5} className="icon">
+        <img src={logo} alt="website-logo" width="400" height="400" />
+      </Col>
+      <Col className="about">
+        <p className="p-5">
+          <br />
+          <h1>Why iProfiler?</h1>
+          <br />
       It’s always a tedious task for HR to evaluate the hundreds of resumes/CVs incoming on every job posting. To filter based candidates out of the pool of them, iProfiler comes to the rescue.
 Using AI resume parsing, these CVs could be categorized in just a few minutes.
 FIlters provided by the application would help HR to segregate hundreds of unwanted profiles of users and only relevant will be saved for the later stage.
 	Thus iProfiler is a handy tool for all HR representatives.
 </p>
-      </Row>
-      </Row>
+      </Col>
+    </Row>
     <br />
     <Carousel>
       <Carousel.Item>

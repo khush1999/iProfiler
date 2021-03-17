@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     background-color: black;
       color: cornsilk;
       font-size: 20px;
@@ -9,17 +9,13 @@
 
 .bottom-text{
     text-align: center;
-}
+} */
 
-a:link {
+a {
   color: black;
-  background-color: transparent;
   text-decoration: none;
 }
 
 a:hover {
-  color: blue;
-  background-color: transparent;
-  text-decoration: underline;
+  text-decoration: none;
 }
-

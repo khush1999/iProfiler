@@ -1,25 +1,30 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.86828aa1.chunk.css",
-    "main.js": "/static/react/js/main.c93bc1f2.chunk.js",
-    "main.js.map": "/static/react/js/main.c93bc1f2.chunk.js.map",
-    "runtime-main.js": "/static/react/js/runtime-main.e57fe4ee.js",
-    "runtime-main.js.map": "/static/react/js/runtime-main.e57fe4ee.js.map",
-    "js/2.5dceb5f3.chunk.js": "/static/react/js/2.5dceb5f3.chunk.js",
-    "js/2.5dceb5f3.chunk.js.map": "/static/react/js/2.5dceb5f3.chunk.js.map",
-    "js/3.d19aa72b.chunk.js": "/static/react/js/3.d19aa72b.chunk.js",
-    "js/3.d19aa72b.chunk.js.map": "/static/react/js/3.d19aa72b.chunk.js.map",
+    "main.css": "/static/react/css/main.5407f428.chunk.css",
+    "main.js": "/static/react/js/main.9a7b6637.chunk.js",
+    "main.js.map": "/static/react/js/main.9a7b6637.chunk.js.map",
+    "runtime-main.js": "/static/react/js/runtime-main.570b9dbd.js",
+    "runtime-main.js.map": "/static/react/js/runtime-main.570b9dbd.js.map",
+    "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
+    "js/2.7bb93169.chunk.js": "/static/react/js/2.7bb93169.chunk.js",
+    "js/2.7bb93169.chunk.js.map": "/static/react/js/2.7bb93169.chunk.js.map",
+    "js/3.a908ce4f.chunk.js": "/static/react/js/3.a908ce4f.chunk.js",
+    "js/3.a908ce4f.chunk.js.map": "/static/react/js/3.a908ce4f.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
-    "css/main.86828aa1.chunk.css.map": "/static/react/css/main.86828aa1.chunk.css.map",
-    "js/2.5dceb5f3.chunk.js.LICENSE.txt": "/static/react/js/2.5dceb5f3.chunk.js.LICENSE.txt",
+    "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
+    "css/main.5407f428.chunk.css.map": "/static/react/css/main.5407f428.chunk.css.map",
+    "js/2.7bb93169.chunk.js.LICENSE.txt": "/static/react/js/2.7bb93169.chunk.js.LICENSE.txt",
     "media/banner.ee286853.jpg": "/static/react/media/banner.ee286853.jpg",
+    "media/font-awesome.min.css": "/static/react/media/fontawesome-webfont.f691f37e.woff",
+    "media/logo.dbf0fc2c.png": "/static/react/media/logo.dbf0fc2c.png",
     "service-worker.js": "/static/react/service-worker.js",
     "service-worker.js.map": "/static/react/service-worker.js.map"
   },
   "entrypoints": [
-    "js/runtime-main.e57fe4ee.js",
-    "js/2.5dceb5f3.chunk.js",
-    "css/main.86828aa1.chunk.css",
-    "js/main.c93bc1f2.chunk.js"
+    "js/runtime-main.570b9dbd.js",
+    "css/2.26dd8153.chunk.css",
+    "js/2.7bb93169.chunk.js",
+    "css/main.5407f428.chunk.css",
+    "js/main.9a7b6637.chunk.js"
   ]
 }
