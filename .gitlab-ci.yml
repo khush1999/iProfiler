@@ -41,7 +41,7 @@ python_run:
   before_script:
     - echo "Running Python Files"
   script:
-    - cd flask-server && python3 app.py
+    - cd flask-server && python3.7 app.py
   after_script:
     - echo "Final build ran successful"
 
