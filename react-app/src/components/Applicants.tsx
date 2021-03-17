@@ -41,7 +41,7 @@ const Applicants = ({ passData }: TForm) => {
       <Card.Body>
         <Card.Title className="text-left">{passData.fname}{" "}{passData.lname}</Card.Title>
         <hr />
-        <Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}{","}{passData.pgDegree}
+        <Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}{" "}{passData.pgDegree}
         </Card.Subtitle>
         <Card.Text className="text-left">
           <h6>Total Experience: {passData.total_exp}</h6>
@@ -54,10 +54,10 @@ const Applicants = ({ passData }: TForm) => {
         </Card.Text>
         <Row>
           <Col sm={6}>
-            <Button variant="primary">View Profile</Button>
+            <Button variant="primary align-self-end">View Profile</Button>
           </Col>
           <Col sm={6}>
-            <Button variant="primary">View Resume</Button>
+            <Button variant="primary align-self-end">View Resume</Button>
           </Col>
         </Row>
       </Card.Body>

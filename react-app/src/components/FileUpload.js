@@ -4,6 +4,7 @@ import Progress from "./Progress";
 import axios from "axios";
 import Apply from "../pages/Apply";
 import "./fileUpload.css";
+import { NavigationBar } from "./NavigationBar";
 
 const FileUpload = () => {
   const ip = {
@@ -23,6 +24,8 @@ const FileUpload = () => {
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isForm, setIsForm] = useState(false);
 
   const onChange = (e) => {
     setFile(e.target.files[0]);
@@ -30,6 +33,14 @@ const FileUpload = () => {
   };
 
   let form;
+
+  const FormDisplay = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsForm(true);
+      setIsLoading(false);
+    }, 10000);
+  }
 
   const OnSubmit = async (e) => {
     e.preventDefault();
@@ -64,14 +75,16 @@ const FileUpload = () => {
         setMessage(err.response.data.msg);
       }
     }
+    FormDisplay();
   };
 
   return (
     <Fragment>
+      <NavigationBar />
       {message ? <Message msg={message} /> : null}
       <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
+        <h2>Resume Upload</h2>
         <div className="custom-file mb-4">
-          <h2>Resume Upload</h2>
           <br></br>
           <input
             type="file"
@@ -92,16 +105,9 @@ const FileUpload = () => {
           className="btn btn-primary btn-block mt-4"
         />
       </form>
-      {uploadedFile ? (
-        <div className="row mt-5">
-          <div className="col-md-6 m-auto">
-            <h3 className="text-center">{uploadedFile.fileName}</h3>
-            <img style={{ width: "100%" }} src={uploadedFile.filePath} alt="" />
-          </div>
-        </div>
-      ) : null}
       {console.log("Value is =", data)}
-      <Apply passData={data} />
+      {isLoading ? <div className="load"><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" /></div> : " "}
+      {isForm ? <Apply passData={data} /> : " "}
     </Fragment>
   );
 };

@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
     background-color: black;
       color: cornsilk;
       font-size: 20px;
@@ -9,4 +9,13 @@
 
 .bottom-text{
     text-align: center;
+} */
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
 }

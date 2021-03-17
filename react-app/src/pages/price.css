@@ -1,5 +1,8 @@
 .price{
     margin-top:5%;
+    width:100%;
+    margin-left: 0;
+    margin-bottom: 10%;
 }
 
 .price-head{
@@ -24,6 +27,7 @@
 .card-title{
     text-align: center;
     color: grey;
+    font-size: 1rem;
 }
 
 .card-text{
@@ -41,5 +45,18 @@
 
 .feat{
     font-size: 20px;
-    font-style: oblique;
+    font-style: italic;
+    text-align: center;
+    font-weight: bold;
+}
+ 
+.card{
+    margin-bottom: 5%;
+}
+.card:hover {
+    box-shadow: 3px 3px 8px hsl(0, 0%, 70%);
+  }
+
+.btn{
+    text-align: center;
 }
