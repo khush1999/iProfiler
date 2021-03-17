@@ -135,10 +135,11 @@ const DashboardPage = () => {
                                     <Dropdown.Menu>
                                         <Dropdown.Item href="#" onClick={() => {
                                             console.log("reached inside*****************")
-                                            data.filter(user => (user.skills1 == "C++" ||
-                                                user.skills2 == "Java" || user.skills3 == "Python")).map((user) => (
+                                            data.filter(user => (user.skills1 == "C & C++" ||
+                                                user.skills2 == "Python" || user.skills3 == "JavaScript")).map((user) => (
                                                     <div className="preview">
-                                                        {                                                    console.log("Looping inside")}                            <Applicant passData={user} />
+                                                        {console.log("Looping inside")}                            
+                                                        <Applicant passData={user} />
                                                     </div>
                                                 ))
                                         }}>Skills</Dropdown.Item>

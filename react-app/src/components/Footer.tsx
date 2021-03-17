@@ -7,8 +7,8 @@ const Footer = () => {
     return (
         <footer className="text-center text-black main-footer">
             <div className="text-center p-3">
-                © 2020 Copyright:
-          <a className="text-black" href="#top">iProfiler.com</a>
+                © 2021 Copyright: {" "}
+          <a className="text-black" href="#top"> iProfiler.com</a>
             </div>
         </footer>
     );

@@ -59,7 +59,7 @@ const Pricing = () => {
             Pro
             </Card.Header>
           <Card.Body>
-            <Card.Title className="card-title">Great for scaling up businesses and SMB's</Card.Title>
+            <Card.Title className="card-title">Great for scaling up Small and Medium businesses </Card.Title>
             <Card.Text className="card-text">
               <div className="amt"><sup>$</sup> 149 /<sub>month</sub></div>
               <div className="feat">

@@ -11,11 +11,11 @@
 }
 
 .discover1 {
-    background-color: cadetblue;
+    background-color: rgb(122, 74, 185);
 }
 
 .discover2 {
-    background-color:orangered;
+    background-color:coral;
 }
 
 .discover3 {
@@ -30,7 +30,7 @@
 .sub-heading1{
     position: relative;
     height: 10%;
-    color: cadetblue;
+    color: rgb(122, 74, 185);
     font-size: 1rem;
     font-weight: bold;
 }
@@ -38,7 +38,7 @@
 .sub-heading2{
     position: relative;
     height: 10%;
-    color: orangered;
+    color: coral;
     font-size: 1rem;
     font-weight: bold;
 }
