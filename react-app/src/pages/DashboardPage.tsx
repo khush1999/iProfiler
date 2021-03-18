@@ -44,13 +44,17 @@ const DashboardPage = () => {
 
     const [userData, setUserData] = useState(false);
     const [data, setData] = useState([ip]);
+    const [Defdata, setDefData] = useState([ip]);    
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
     const [message, setMessage] = useState('');
     const [DropSkill,setDropSkill] = useState('');
     const [DropExp,setDropExp] = useState('');
     const [DropRole,setDropRole] = useState('');
-    var exp,exp1;
+    const [prevSkill, setPrevSkill] = useState('');
+    const [prevExp, setPrevExp] = useState('');
+    const [prevDes, setPrevDes] = useState('');
+    var exp, exp1;
     
 
     const history = useHistory();
@@ -63,6 +67,8 @@ const DashboardPage = () => {
                     .then(res => {
                         console.log("////////////////////////////////////", res.data);
                         setData(res.data);
+                        setDefData(res.data);
+
                         setUserData(true);
                     })
             }
@@ -94,17 +100,34 @@ const DashboardPage = () => {
         }
 
     }
-
+    //fine
     const Courses = (courseType: string) => {
+        if ((prevSkill != courseType || courseType==="All")&&(prevExp==="")&&(prevDes==="") ){
+            setData(Defdata)
+        }
         setDropSkill(courseType);
+        setPrevSkill(courseType);
+        // setSkillData(data)
     }
 
+    //fine
     const Experience = (expType: string) => {
+        if ((prevExp!= expType|| expType==="All")&&(prevExp==="")&&(prevDes==="") )
+        {
+            setData(Defdata)
+        }
         setDropExp(expType);
+        setPrevExp(expType)
     }
+
 
     const Role = (roleType: string) => {
+    if ((prevDes!= roleType || roleType==="All")&&(prevExp==="")&&(prevDes==="") )
+        {
+            setData(Defdata)
+        }
         setDropRole(roleType);
+        setPrevDes(roleType);
     }
 
     return (
@@ -132,13 +155,15 @@ const DashboardPage = () => {
 
                     <div className="filter">
                         <Row className="filter-row">
-                            <Col md={5} className="dashboard-filters">
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                            <Col md={5} className="dashboard-filters">                               <Dropdown>
+                                    {/* <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                         Skills
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
-                                    <select onChange={(e) => Courses(e.target.value)}>
+                                    </Dropdown.Toggle> */}
+                                <label>Skills</label>
+ 
+                                <div className="select">
+                                      <select onChange={(e) => Courses(e.target.value)}>
+                                        {/* <option value="All">All</option> */}
                                         <option value="Java">Java</option>
                                         <option value="Python">Python</option>
                                         <option value="Django">Django</option>
@@ -149,12 +174,14 @@ const DashboardPage = () => {
                                     </div>
                                 </Dropdown>
                                 <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                    {/* <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                         Experience
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
+                                    </Dropdown.Toggle> */}
+                                    <div className="select">
+                                        <label>Experience</label>
                                     <select onChange={(e) => Experience(e.target.value)}>
-                                        <option>0-3 Years</option>
+                                        {/* <option value="All">All</option> */}
+                                            <option>0-3 Years</option>
                                         <option>3-6 Years</option>
                                         <option>6-9 Years</option>
                                         <option>{">"}9 Years</option>
@@ -163,11 +190,13 @@ const DashboardPage = () => {
                                 </Dropdown>
 
                                 <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                    {/* <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                         Designation
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
+                                    </Dropdown.Toggle> */}
+                                    <div className="select">
+                                    <label>Roles</label>    
                                     <select onChange={(e) => Role(e.target.value)}>
+                                       {/* <option value="All">All</option> */}
                                         <option>SDE</option>
                                         <option>SDET</option>
                                         <option>HR</option>
@@ -187,7 +216,6 @@ const DashboardPage = () => {
                             </Col>
                         </Row>
                     </div>
-
 
                     <div className="grid-container justify-content-around">
                         {!isSearched &&  (DropSkill==="") && userData && data.map(user =>
@@ -210,11 +238,11 @@ const DashboardPage = () => {
 
                     <div className="grid-container justify-content-around">
                         {
-                            (DropSkill!="") && data.filter(user => (user.skills1 == DropSkill ||
+                            (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
                             user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => (
                                 <div>
-                                                        {console.log("Looping inside",user)} 
-                                                        <Applicant passData={user} />
+                                {console.log("Looping inside",user)} 
+                                <Applicant passData={user} />
                                 </div>
 
                                 ))
@@ -231,8 +259,6 @@ const DashboardPage = () => {
                                                         {console.log("Looping inside",user)} 
                                                         <Applicant passData={user} />
                                 </div>
-                               
-
                                 ))}
                             
                         

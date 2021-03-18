@@ -40,7 +40,7 @@ const FileUpload = () => {
       setIsForm(true);
       setIsLoading(false);
     }, 10000);
-  }
+  };
 
   const OnSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +70,9 @@ const FileUpload = () => {
       setMessage("File Uploaded");
     } catch (err) {
       if (err.response.status === 500) {
-        setMessage("There was a problem with the server");
+        setMessage(
+          "Your resume is not ATS Comaptible, Please try with another format"
+        );
       } else {
         setMessage(err.response.data.msg);
       }
@@ -81,32 +83,42 @@ const FileUpload = () => {
   return (
     <Fragment>
       <NavigationBar />
-      {message ? <Message msg={message} /> : null}
-      <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
-        <h2>Resume Upload</h2>
-        <div className="custom-file mb-4">
-          <br></br>
+      <div>
+        <br />
+        <br />
+        {message ? <Message msg={message} /> : null}
+        <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
+          <h2>Resume Upload</h2>
+          <div className="custom-file mb-4">
+            <br></br>
+            <input
+              type="file"
+              className="custom-file-input"
+              id="customFile"
+              onChange={onChange}
+            />
+            <label className="custom-file-label" htmlFor="customFile">
+              {filename}
+            </label>
+          </div>
+
+          <Progress percentage={uploadPercentage} />
+
           <input
-            type="file"
-            className="custom-file-input"
-            id="customFile"
-            onChange={onChange}
+            type="submit"
+            value="Upload"
+            className="btn btn-primary btn-block mt-4"
           />
-          <label className="custom-file-label" htmlFor="customFile">
-            {filename}
-          </label>
-        </div>
-
-        <Progress percentage={uploadPercentage} />
-
-        <input
-          type="submit"
-          value="Upload"
-          className="btn btn-primary btn-block mt-4"
-        />
-      </form>
+        </form>
+      </div>
       {console.log("Value is =", data)}
-      {isLoading ? <div className="load"><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" /></div> : " "}
+      {isLoading ? (
+        <div className="load">
+          <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" />
+        </div>
+      ) : (
+        " "
+      )}
       {isForm ? <Apply passData={data} /> : " "}
     </Fragment>
   );

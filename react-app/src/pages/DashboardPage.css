@@ -109,26 +109,26 @@
   width: 100%;
 }
 
-.custom-select {
-  position: relative;
-  font-family: Arial;
-}
-
-.custom-select select {
-  display: none; 
-}
-
-.select-selected {
-  background-color: DodgerBlue;
-}
-
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
+select { 
+				appearance: none; 
+				outline: 0; 
+				background: #555555; 
+				background-image: none; 
+				width: 100%; 
+				height: 100%; 
+				color: white; 
+				cursor: pointer; 
+				/* border:1px solid black;  */
+				border-radius:3px; 
+			} 
+			.select { 
+				position: relative; 
+				display: block; 
+				width: 10em; 
+				height: 2em; 
+				line-height: 3; 
+				overflow: hidden; 
+				border-radius: .25em; 
+				padding-bottom:10px; 
+				
+			} 
