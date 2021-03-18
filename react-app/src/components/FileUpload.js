@@ -83,34 +83,32 @@ const FileUpload = () => {
   return (
     <Fragment>
       <NavigationBar />
-      <div>
-        <br />
-        <br />
-        {message ? <Message msg={message} /> : null}
-        <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
-          <h2>Resume Upload</h2>
-          <div className="custom-file mb-4">
-            <br></br>
-            <input
-              type="file"
-              className="custom-file-input"
-              id="customFile"
-              onChange={onChange}
-            />
-            <label className="custom-file-label" htmlFor="customFile">
-              {filename}
-            </label>
-          </div>
-
-          <Progress percentage={uploadPercentage} />
-
+      <br /> <br /> <br />
+      {message ? <Message msg={message} /> : null}
+      <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
+        <h2>Resume Upload</h2>
+        <div className="custom-file mb-4">
+          <br></br>
           <input
-            type="submit"
-            value="Upload"
-            className="btn btn-primary btn-block mt-4"
+            type="file"
+            className="custom-file-input"
+            id="customFile"
+            onChange={onChange}
+            required
           />
-        </form>
-      </div>
+          <label className="custom-file-label" htmlFor="customFile">
+            {filename}
+          </label>
+        </div>
+
+        <Progress percentage={uploadPercentage} />
+
+        <input
+          type="submit"
+          value="Upload"
+          className="btn btn-primary btn-block mt-4"
+        />
+      </form>
       {console.log("Value is =", data)}
       {isLoading ? (
         <div className="load">

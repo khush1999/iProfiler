@@ -54,7 +54,7 @@ export const SignUp = () => {
                             Company Name
                     </Form.Label>
                         <Col sm={8}>
-                            <Form.Control type="text" placeholder={companyName} id="company_name" name="company_name" onChange={(e) => setCompanyName(e.target.value)} />
+                            <Form.Control type="text" required placeholder={companyName} id="company_name" name="company_name" onChange={(e) => setCompanyName(e.target.value)} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} controlId="SignUpEmail">
@@ -62,7 +62,7 @@ export const SignUp = () => {
                             Company Email
                     </Form.Label>
                         <Col sm={8}>
-                            <Form.Control type="email" placeholder={email} id="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                            <Form.Control type="email" required placeholder={email} id="email" name="email" onChange={(e) => setEmail(e.target.value)} />
                         </Col>
                     </Form.Group>
 
@@ -71,7 +71,7 @@ export const SignUp = () => {
                             Password
                     </Form.Label>
                         <Col sm={8}>
-                            <Form.Control type="password" placeholder={password1} id="password1" name="password1" onChange={(e) => setPassword1(e.target.value)} />
+                            <Form.Control type="password" required placeholder={password1} id="password1" name="password1" onChange={(e) => setPassword1(e.target.value)} />
                         </Col>
                     </Form.Group>
 
@@ -80,7 +80,7 @@ export const SignUp = () => {
                             Confirm Password
                     </Form.Label>
                         <Col sm={8}>
-                            <Form.Control type="password" placeholder={password2} id="password2" name="password2" onChange={(e) => setPassword2(e.target.value)} />
+                            <Form.Control type="password" required placeholder={password2} id="password2" name="password2" onChange={(e) => setPassword2(e.target.value)} />
                         </Col>
                     </Form.Group>
                     {/* <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4'/> */}
