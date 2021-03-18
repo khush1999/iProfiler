@@ -41,7 +41,7 @@ python_run:
   before_script:
     - echo "Running Python Files"
   script:
-    - cd flask-server && nohup python3.7 app.py
+    - pm2 restart iprofiler
   after_script:
     - echo "Final build ran successful"
 
