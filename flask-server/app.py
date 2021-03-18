@@ -94,7 +94,7 @@ def create():
 
         })
         print(list(mongo.db.users.find()))
-    return "Doneeeee!!!!!!!"
+    return """ <h2> We have received your response , you can now close this window!! </h2> """
 
 
 # HR
@@ -129,8 +129,7 @@ def index():
             # hash the password and encode it
             hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
             # assing them in a dictionary in key value pairs
-            user_input = {'company_name': user,
-                          'email': email, 'password': hashed}
+            user_input = {'company_name': user, 'email': email, 'password': hashed}
             # insert it in the record collection
             mongo.db.LoginAuth.insert_one(user_input)
             # find the new created account and its email

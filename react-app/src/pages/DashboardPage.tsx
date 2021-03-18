@@ -44,13 +44,17 @@ const DashboardPage = () => {
 
     const [userData, setUserData] = useState(false);
     const [data, setData] = useState([ip]);
+    const [Defdata, setDefData] = useState([ip]);    
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
     const [message, setMessage] = useState('');
     const [DropSkill,setDropSkill] = useState('');
     const [DropExp,setDropExp] = useState('');
     const [DropRole,setDropRole] = useState('');
-    var exp,exp1;
+    const [prevSkill, setPrevSkill] = useState('');
+    const [prevExp, setPrevExp] = useState('');
+    const [prevDes, setPrevDes] = useState('');
+    var exp, exp1;
     
 
     const history = useHistory();
@@ -63,6 +67,8 @@ const DashboardPage = () => {
                     .then(res => {
                         console.log("////////////////////////////////////", res.data);
                         setData(res.data);
+                        setDefData(res.data);
+
                         setUserData(true);
                     })
             }
@@ -94,17 +100,34 @@ const DashboardPage = () => {
         }
 
     }
-
+    //fine
     const Courses = (courseType: string) => {
+        if ((prevSkill != courseType || courseType==="All")&&(prevExp==="")&&(prevDes==="") ){
+            setData(Defdata)
+        }
         setDropSkill(courseType);
+        setPrevSkill(courseType);
+        // setSkillData(data)
     }
 
+    //fine
     const Experience = (expType: string) => {
+        if ((prevExp!= expType|| expType==="All")&&(prevExp==="")&&(prevDes==="") )
+        {
+            setData(Defdata)
+        }
         setDropExp(expType);
+        setPrevExp(expType)
     }
+
 
     const Role = (roleType: string) => {
+    if ((prevDes!= roleType || roleType==="All")&&(prevExp==="")&&(prevDes==="") )
+        {
+            setData(Defdata)
+        }
         setDropRole(roleType);
+        setPrevDes(roleType);
     }
 
     return (
@@ -132,13 +155,11 @@ const DashboardPage = () => {
 
                     <div className="filter">
                         <Row className="filter-row">
-                            <Col md={5} className="dashboard-filters">
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Skills
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
+                            <Col md={7} className="dashboard-filters">                               
+                            <div className="select">
                                     <select onChange={(e) => Courses(e.target.value)}>
+                                    <option value="none" selected disabled hidden>Skills</option>
+                                        <option value="All">All</option>
                                         <option value="Java">Java</option>
                                         <option value="Python">Python</option>
                                         <option value="Django">Django</option>
@@ -147,36 +168,33 @@ const DashboardPage = () => {
                                         <option value="Javascript">Javascript</option>
                                     </select>
                                     </div>
-                                </Dropdown>
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Experience
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
-                                    <select onChange={(e) => Experience(e.target.value)}>
-                                        <option>0-3 Years</option>
-                                        <option>3-6 Years</option>
-                                        <option>6-9 Years</option>
-                                        <option>{">"}9 Years</option>
-                                    </select>
-                                    </div>
-                                </Dropdown>
-
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Designation
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
-                                    <select onChange={(e) => Role(e.target.value)}>
-                                        <option>SDE</option>
-                                        <option>SDET</option>
-                                        <option>HR</option>
-                                        <option>DevOps</option>
-                                    </select>
-                                    </div>
-                                </Dropdown>
+                                
+                                    
+                                <div className="select">
+                                <select onChange={(e) => Experience(e.target.value)}>
+                                    <option value="none" selected disabled hidden>Experience</option>
+                                    <option value="All">All</option>
+                                    <option  value="0-3 Years">0-3 Years</option>
+                                    <option value="3-6 Years">3-6 Years</option>
+                                    <option  value="6-9 Years">6-9 Years</option>
+                                    <option  value=">9 Years">{">"}9 Years</option>
+                                </select>
+                                </div>
+                            
+                                    
+                                
+                                <div className="select">
+                                <select onChange={(e) => Role(e.target.value)}>
+                                <option value="none" selected disabled hidden>Designation</option>
+                                    <option value="All">All</option>
+                                    <option value="SDE">SDE</option>
+                                    <option value="SDET">SDET</option>
+                                    <option value="HR">HR</option>
+                                    <option value="DevOps">DevOps</option>
+                                </select>
+                                </div>
                             </Col>
-                            <Col md={7} className="pr-0">
+                            <Col md={5} className="pr-0">
                                 <div className="search mr-0">
                                     <input type="search" name="search" id="" placeholder="Search Applicant by Name"
                                         className="search-input" onChange={(e) => {
@@ -187,7 +205,6 @@ const DashboardPage = () => {
                             </Col>
                         </Row>
                     </div>
-
 
                     <div className="grid-container justify-content-around">
                         {!isSearched &&  (DropSkill==="") && userData && data.map(user =>
@@ -210,11 +227,11 @@ const DashboardPage = () => {
 
                     <div className="grid-container justify-content-around">
                         {
-                            (DropSkill!="") && data.filter(user => (user.skills1 == DropSkill ||
+                            (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
                             user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => (
                                 <div>
-                                                        {console.log("Looping inside",user)} 
-                                                        <Applicant passData={user} />
+                                {console.log("Looping inside",user)} 
+                                <Applicant passData={user} />
                                 </div>
 
                                 ))
@@ -231,8 +248,6 @@ const DashboardPage = () => {
                                                         {console.log("Looping inside",user)} 
                                                         <Applicant passData={user} />
                                 </div>
-                               
-
                                 ))}
                             
                         
@@ -251,6 +266,16 @@ const DashboardPage = () => {
                     </div>
 
                 </div>
+                <h2> Seperation </h2>
+                {
+                    userData && isSearched && data.filter(user => (user.fname == searchTerm ||
+                        user.lname == searchTerm || user.city == searchTerm || user.designition
+                        == searchTerm)).map((user) => (
+                            <div className="preview">
+                                <Applicant passData={user} />
+                            </div>
+                        ))
+                }
             </div>
         </>
 

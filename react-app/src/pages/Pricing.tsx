@@ -1,10 +1,13 @@
 import React from "react";
 import { Button, Card, CardDeck, OverlayTrigger } from "react-bootstrap";
+import { Link } from "react-bootstrap-icons";
+import { NavigationBar } from "../components/NavigationBar";
 import './price.css';
 
 const Pricing = () => {
   return (
     <div>
+      <NavigationBar />
       <div className="price-head">
         <h1>Choose Your Plan For AI Powered ATS</h1>
         <br />
@@ -13,9 +16,11 @@ const Pricing = () => {
         </p>
       </div>
       <br />
-      <Button variant="primary" size="lg" block>
-        Free Trial
-      </Button>
+      <Link to="/Login">
+        <Button variant="primary" size="lg" block>
+          7 Day Free Trial
+        </Button>
+      </Link>
 
       <CardDeck className="price">
         <Card className="card">

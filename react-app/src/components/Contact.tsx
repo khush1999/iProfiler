@@ -1,10 +1,13 @@
 import React from 'react'
 import './contact.css';
 import 'font-awesome/css/font-awesome.min.css';
+import { NavigationBar } from './NavigationBar';
 
 export default function Contact() {
     return (
-        <div>
+        <>
+        <NavigationBar />
+        <div className="margins">
             <section className="contact-page-sec">
             <div className="container">
             <div className="row">
@@ -93,5 +96,6 @@ export default function Contact() {
         </div>
     </section>
         </div>
+        </>
     )
 }

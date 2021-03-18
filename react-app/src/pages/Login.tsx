@@ -41,7 +41,7 @@ export const Login = () => {
         }
 
     }
-
+    
     return (
         <>
             <NavigationBar />
@@ -68,10 +68,10 @@ export const Login = () => {
                         <br /><br />
                         <Form action="/login" method="POST">
                             <Form.Group controlId="loginEmail">
-                                <Form.Control type="email" id="email" name="email" placeholder={email} onChange={(e) => setEmail(e.target.value)} />
+                                <Form.Control type="email" id="email" name="email" required placeholder={email} onChange={(e) => setEmail(e.target.value)} />
                             </Form.Group>
                             <Form.Group controlId="loginPassword">
-                                <Form.Control type="password" id="password" name="password" placeholder={password} onChange={(e) => setPassword(e.target.value)} />
+                                <Form.Control type="password" id="password" name="password" required placeholder={password} onChange={(e) => setPassword(e.target.value)} />
                             </Form.Group>
 
                             <Button variant="primary" size="lg" block type="submit" onClick={handleClick1}>

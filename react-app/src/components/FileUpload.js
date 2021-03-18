@@ -81,6 +81,7 @@ const FileUpload = () => {
   return (
     <Fragment>
       <NavigationBar />
+      <br/> <br/> <br/>
       {message ? <Message msg={message} /> : null}
       <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
         <h2>Resume Upload</h2>
@@ -90,7 +91,7 @@ const FileUpload = () => {
             type="file"
             className="custom-file-input"
             id="customFile"
-            onChange={onChange}
+            onChange={onChange} required
           />
           <label className="custom-file-label" htmlFor="customFile">
             {filename}
