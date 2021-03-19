@@ -38,7 +38,7 @@ export const Login = () => {
                 setPwdError("You entered wrong password!!");
             }
 
-            else if(res.data === "Email not found") {
+            else if (res.data === "Email not found") {
                 setEmailError("You entered wrong Email!!");
             }
         } catch (err) {
@@ -49,47 +49,47 @@ export const Login = () => {
             }
         }
     }
-    
+
     return (
         <>
             <NavigationBar />
-            <Container style={mainWidth} className="text-center shadow-sm mb-5 bg-white rounde">
+            <Container style={mainWidth} className="login-container text-center shadow-lg mb-5 bg-white rounde">
                 <Row>
-                    <Col sm={5} style={divColor} className="text-white font-weight-bold p-3">
+                    <Col sm={5} style={divColor} className="text-white font-weight-bold p-3 col-container-1">
                         <div>
                             <h3>Best Hiring Platform</h3>
                         </div>
-                        <img src= {loginSvg} alt="logo"/>                        
+                        <img src={loginSvg} alt="logo" />
                         <div>
                             <p>Reduce Your Hiring Cost With Us !</p>
                             <p>Choose Your Plan & Start Hiring Now</p>
                             <Button variant="dark" onClick={handleClick}>Buy Now {'>>'}</Button> {' '}
                         </div>
                     </Col>
-                    <Col sm={7} className="bg-light text-dark parent">
-                    <div className="child">
-                        <h2 className="mb-4 font-weight-bold">Employer Login</h2>
-                        <Form action="/login" method="POST">
-                            <Form.Group controlId="loginEmail">
-                                <Form.Control type="email" id="email" name="email" required placeholder={email} onChange={(e) => setEmail(e.target.value)} />
-                                <div className="text-danger">
-                                    {emailError}
-                                </div>
-                            </Form.Group>
-                            <Form.Group controlId="loginPassword">
-                                <Form.Control type="password" id="password" name="password" required placeholder={password} onChange={(e) => setPassword(e.target.value)} />
-                                <div className="text-danger">
-                                    {pwdError}
-                                </div>
-                            </Form.Group>
+                    <Col sm={7} className="bg-light text-dark parent col-container-2">
+                        <div className="child">
+                            <h2 className="mb-4 font-weight-bold heading">Employer Login</h2>
+                            <Form action="/login" method="POST">
+                                <Form.Group controlId="loginEmail">
+                                    <Form.Control type="email" id="email" name="email" required placeholder={email} onChange={(e) => setEmail(e.target.value)} />
+                                    <div className="text-danger">
+                                        {emailError}
+                                    </div>
+                                </Form.Group>
+                                <Form.Group controlId="loginPassword">
+                                    <Form.Control type="password" id="password" name="password" required placeholder={password} onChange={(e) => setPassword(e.target.value)} />
+                                    <div className="text-danger">
+                                        {pwdError}
+                                    </div>
+                                </Form.Group>
 
-                            <Button variant="dark" size="lg" block type="submit" onClick={handleClick1}>
-                                Login
+                                <Button variant="dark" size="lg" block type="submit" onClick={handleClick1}>
+                                    Login
                             </Button>
-                        </Form>
-                       
-                        <hr />
-                        <p>New Client ?{" "}<Link to="/SignUp">Sign Up</Link></p>
+                            </Form>
+
+                            <hr />
+                            <p>New Client ?{" "}<Link to="/SignUp">Sign Up</Link></p>
                         </div>
                     </Col>
                 </Row>
