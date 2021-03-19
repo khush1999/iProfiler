@@ -37,12 +37,15 @@ export const SignUp = () => {
              else{
                 setErrorMsg(res.data)
             }
-
-
-        } catch (err) {
-            if (err.response.status == 500) {
+        }
+        catch (err)
+        {
+            if (err.response.status == 500)
+            {
                 setMessage("There was a problem with the server");
-            } else {
+            }
+            else
+            {
                 setMessage(err.response.data.msg);
             }
         }
