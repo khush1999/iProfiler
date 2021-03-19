@@ -91,6 +91,7 @@ const DashboardPage = () => {
 
     }
 
+
     return (
         <>
             {GetData()}
@@ -111,55 +112,59 @@ const DashboardPage = () => {
                 </div>
 
                 <div className="content">
-                    <div>
 
-                    </div>
-                    <div className="search">
-                        <input type="search" name="search" id="" placeholder="Search Applicant by Name"
-                            className="search-input" onChange={(e) => {
-                                setIsSearched(!isSearched);
-                                setSearchTerm(e.target.value)
-                            }} />
-                    </div>
+                    <h4 className="mt-2 ml-2">Displaying Applicants</h4>
+
                     <div className="filter">
-                        <Row className="dashboard-row">
-                            <Col sm={11}>
-                                <h4>Displaying Applicants</h4>
-                            </Col>
-                            <Col sm={1}>
+                        <Row className="filter-row">
+                            <Col md={5} className="dashboard-filters">
                                 <Dropdown>
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Filter
+                                        Skills
                                     </Dropdown.Toggle>
 
                                     <Dropdown.Menu>
-                                        <Dropdown.Item href="#" onClick={() => {
-                                            console.log("reached inside*****************")
-                                            data.filter(user => (user.skills1 == "C & C++" ||
-                                                user.skills2 == "Python" || user.skills3 == "JavaScript")).map((user) => (
-                                                    <div className="preview">
-                                                        {console.log("Looping inside")}                            
-                                                        <Applicant passData={user} />
-                                                    </div>
-                                                ))
-                                        }}>Skills</Dropdown.Item>
-                                        <Dropdown.Item href="#" onClick={() => {
-                                            data.filter(user => (user.designition.toLowerCase().includes("sde-1") ||
-                                                user.designition.toLowerCase().includes("sdet-1"))).map((user) => (
-                                                    <div className="preview">
-                                                        <Applicant passData={user} />
-                                                    </div>
-                                                ))
-                                        }}>Designation</Dropdown.Item>
-                                        <Dropdown.Item href="#" onClick={() => {
-                                            data.filter(user => (user.total_exp < 5)).map((user) => (
-                                                <div className="preview">
-                                                    <Applicant passData={user} />
-                                                </div>
-                                            ))
-                                        }}>Experience</Dropdown.Item>
+                                        <Dropdown.Item href="#">Java</Dropdown.Item>
+                                        <Dropdown.Item href="#">Python</Dropdown.Item>
+                                        <Dropdown.Item href="#">Django</Dropdown.Item>
+                                        <Dropdown.Item href="#">C/C++</Dropdown.Item>
+                                        <Dropdown.Item href="#">React</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        Experience
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#">0-3 Years</Dropdown.Item>
+                                        <Dropdown.Item href="#">3-6 Years</Dropdown.Item>
+                                        <Dropdown.Item href="#">6-9 Years</Dropdown.Item>
+                                        <Dropdown.Item href="#">{">"}9 Years</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        Designation
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#">SDE</Dropdown.Item>
+                                        <Dropdown.Item href="#">SDET</Dropdown.Item>
+                                        <Dropdown.Item href="#">HR</Dropdown.Item>
+                                        <Dropdown.Item href="#">DevOps</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
+                            </Col>
+                            <Col md={7} className="pr-0">
+                                <div className="search mr-0">
+                                    <input type="search" name="search" id="" placeholder="Search Applicant by Name"
+                                        className="search-input" onChange={(e) => {
+                                            setIsSearched(!isSearched);
+                                            setSearchTerm(e.target.value)
+                                        }} />
+                                </div>
                             </Col>
                         </Row>
                     </div>
