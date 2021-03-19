@@ -4,7 +4,7 @@ import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { NavigationBar } from '../components/NavigationBar';
 
-const mainWidth = { width: "60%" };
+const mainWidth = { width: "60%", marginTop: "10rem" };
 
 export const SignUp = () => {
     const [email, setEmail] = useState('')
@@ -12,6 +12,9 @@ export const SignUp = () => {
     const [password2, setPassword2] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [message, setMessage] = useState('')
+    const [emailError, setEmailError] = useState('')
+    const [pwdMatchError, setPwdMatchError] = useState('')
+
     const history = useHistory();
 
     const handleClick = async (e) => {
@@ -34,6 +37,14 @@ export const SignUp = () => {
                 history.push('/Login');
             }
 
+            else if(res.data === "This email already exists in database") {
+                setEmailError("Email Id already exist!");
+            }
+
+            else if(res.data === "Passwords should match!") {
+                setPwdMatchError("Passwords should match!");
+            }
+
         } catch (err) {
             if (err.response.status == 500) {
                 setMessage("There was a problem with the server");
@@ -45,7 +56,7 @@ export const SignUp = () => {
     return (
         <>
             <NavigationBar />
-            <Container style={mainWidth} className="mt-5 bg-light text-dark shadow-sm p-3 mb-5 bg-white rounde">
+            <Container style={mainWidth} className="bg-light text-dark shadow-sm p-3 mb-5 bg-white rounde">
                 <h3 className="text-center">Join Us To Hire !</h3>
                 <br />
                 <Form action="/auth" method="POST">
@@ -63,6 +74,9 @@ export const SignUp = () => {
                     </Form.Label>
                         <Col sm={8}>
                             <Form.Control type="email" required placeholder={email} id="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                            <div className="text-danger">
+                                {emailError} 
+                            </div>
                         </Col>
                     </Form.Group>
 
@@ -81,10 +95,15 @@ export const SignUp = () => {
                     </Form.Label>
                         <Col sm={8}>
                             <Form.Control type="password" required placeholder={password2} id="password2" name="password2" onChange={(e) => setPassword2(e.target.value)} />
+                            <div className="text-danger">
+                                {pwdMatchError}
+                            </div>
                         </Col>
                     </Form.Group>
                     {/* <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4'/> */}
-                    <Button variant="primary" size="lg" block type="submit" onClick={handleClick}> Sign in </Button>
+                    <div className="">
+                        <Button variant="primary" size="lg" block type="submit" onClick={handleClick}> Create Account </Button>
+                    </div>
                 </Form>
                 <br />
                 <hr />

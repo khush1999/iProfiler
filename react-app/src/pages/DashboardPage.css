@@ -43,6 +43,10 @@
   color: white;
 }
 
+.display-applicant {
+  margin-top: 2rem;
+  margin-left: 6.5%;
+}
 div.content {
   margin-left: 220px;
   padding: 1px 16px;
@@ -116,6 +120,7 @@ div.content {
 
 .filter-row {
   align-items: center;
+  margin: 2% 3% 2% 2.5%;
 }
 
 select { 
@@ -124,7 +129,9 @@ select {
   -ms-appearance: none; 
   appearance: none; 
   outline: 0; 
-  background: gray; 
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
   background-image: none; 
   border:1px solid black; 
 } 
@@ -134,7 +141,7 @@ select {
   width: 10em; 
   height: 3em; 
   line-height: 3; 
-  background: #2C3E50; 
+  background: ##007bff; 
   overflow: hidden; 
   border-radius: .25em; 
 } 
@@ -156,11 +163,11 @@ select::-ms-expand {
   right: 0; 
   bottom: 0; 
   padding: 0 1em; 
-  background: #34495E; 
+  background: #007bff; 
   pointer-events: none; 
 } 
 .select:hover::after { 
-  color: #F39C12; 
+  color: white; 
 } 
 
 .select::after { 

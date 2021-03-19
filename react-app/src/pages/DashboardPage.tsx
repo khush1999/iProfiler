@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import './DashboardPage.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { Link, useHistory } from 'react-router-dom';
+import iprofiler from '../components/iprofiler.png';
 
 interface IForm {
     email: string;
@@ -135,8 +136,8 @@ const DashboardPage = () => {
             {GetData()}
             <div className="main-dashboard">
                 <div className="sidebar">
-                    <div className="sidebar-head">
-                        <h3>iProfiler</h3>
+                    <div>
+                        <img src={iprofiler} alt="iprofiler"/>
                     </div>
                     <a href="/"><i className="fa fa-fw fa-home pr-2" style={{ fontSize: '1.75em' }} />
                     Home</a>
@@ -151,11 +152,11 @@ const DashboardPage = () => {
 
                 <div className="content">
 
-                    <h4 className="mt-2 ml-2">Displaying Applicants</h4>
+                    <h4 className="display-applicant">Displaying Applicants</h4>
 
                     <div className="filter">
                         <Row className="filter-row">
-                            <Col md={7} className="dashboard-filters">                               
+                            <Col md={6} className="dashboard-filters">                               
                             <div className="select">
                                     <select onChange={(e) => Courses(e.target.value)}>
                                     <option value="none" selected disabled hidden>Skills</option>
@@ -194,7 +195,7 @@ const DashboardPage = () => {
                                 </select>
                                 </div>
                             </Col>
-                            <Col md={5} className="pr-0">
+                            <Col md={6} className="pr-0">
                                 <div className="search mr-0">
                                     <input type="search" name="search" id="" placeholder="Search Applicant by Name"
                                         className="search-input" onChange={(e) => {
@@ -206,79 +207,52 @@ const DashboardPage = () => {
                         </Row>
                     </div>
 
-                    <div className="grid-container justify-content-around">
+                <div className="grid-container justify-content-around">
                         {!isSearched &&  (DropSkill==="") && userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
-                    </div>
-                    <hr />
+
+                        <hr />
                     
-                    <div className="grid-container justify-content-around">
-                        {
-                            userData && isSearched && data.filter(user => (user.fname == searchTerm ||
-                                user.lname == searchTerm || user.city == searchTerm || user.designition
-                                == searchTerm)).map((user) => (
-
-                                    <Applicant passData={user} />
-
-                                ))
-                        }
-                    </div>
-
-                    <div className="grid-container justify-content-around">
-                        {
-                            (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
-                            user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => (
-                                <div>
-                                {console.log("Looping inside",user)} 
+                    
+                    {
+                        userData && isSearched && data.filter(user => (user.fname == searchTerm ||
+                            user.lname == searchTerm || user.city == searchTerm || user.designition
+                            == searchTerm)).map((user) => (
                                 <Applicant passData={user} />
-                                </div>
+                            ))
+                    }
 
-                                ))
-                        }
-                    </div>
+                    {
+                        (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
+                        user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => ( 
+                            <Applicant passData={user} />
+                            ))
+                    }
+    
+                        {(DropExp!="") && data.filter(user => (DropExp=="0-3 Years" ? 
+                        user.total_exp<=3:(DropExp=="3-6 Years" ? 
+                        (user.total_exp>3 && user.total_exp<=6):(DropExp=="6-9 Years" ? (user.total_exp>6 && user.total_exp<=9) :(user.total_exp>9))))).map((user) => (
+                            <Applicant passData={user} />
+                        ))}
+                
+                    {
+                        (DropRole!="") && data.filter(user => (user.designition=== DropRole)).map((user) => (
+                            <Applicant passData={user} />
+                        ))
+                    }
 
-                    <div className="grid-container justify-content-around">
-                        
-        
-                            {(DropExp!="") && data.filter(user => (DropExp=="0-3 Years" ? 
-                            user.total_exp<=3:(DropExp=="3-6 Years" ? 
-                            (user.total_exp>3 && user.total_exp<=6):(DropExp=="6-9 Years" ? (user.total_exp>6 && user.total_exp<=9) :(user.total_exp>9))))).map((user) => (
-                                <div>
-                                                        {console.log("Looping inside",user)} 
-                                                        <Applicant passData={user} />
-                                </div>
-                                ))}
-                            
-                        
-                    </div>
-
-                    <div className="grid-container justify-content-around">
-                        {
-                            (DropRole!="") && data.filter(user => (user.designition=== DropRole)).map((user) => (
-                                <div>
-                                                        {console.log("Looping inside",user)} 
-                                                        <Applicant passData={user} />
-                                </div>
-
-                                ))
-                        }
-                    </div>
-
-                </div>
-                <h2> Seperation </h2>
-                {
+                    {
                     userData && isSearched && data.filter(user => (user.fname == searchTerm ||
                         user.lname == searchTerm || user.city == searchTerm || user.designition
                         == searchTerm)).map((user) => (
-                            <div className="preview">
-                                <Applicant passData={user} />
-                            </div>
+                            <Applicant passData={user} />
                         ))
-                }
+                    }
+                </div>
+            </div>
             </div>
         </>
-
     );
 };
 

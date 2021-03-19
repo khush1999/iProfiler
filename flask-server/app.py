@@ -116,9 +116,9 @@ def index():
         # if found in database showcase that it's found
         user_found = mongo.db.LoginAuth.find_one({"company_name": user})
         email_found = mongo.db.LoginAuth.find_one({"email": email})
-        if user_found:
-            message = 'There already is a user by that name'
-            return message
+        # if user_found:
+        #     message = 'There already is a user by that name'
+        #     return message
         if email_found:
             message = 'This email already exists in database'
             return message
