@@ -68,7 +68,7 @@ export const Login = () => {
                     </Col>
                     <Col sm={7} className="bg-light text-dark parent">
                     <div className="child">
-                        <h2>Employer Login</h2>
+                        <h2 className="mb-4 font-weight-bold">Employer Login</h2>
                         <Form action="/login" method="POST">
                             <Form.Group controlId="loginEmail">
                                 <Form.Control type="email" id="email" name="email" required placeholder={email} onChange={(e) => setEmail(e.target.value)} />

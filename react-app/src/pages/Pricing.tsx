@@ -1,6 +1,6 @@
 import React from "react";
 import { NavigationBar } from "../components/NavigationBar";
-import './price.css';
+import './pricing.css';
 
 const Pricing = () => {
   return (
@@ -13,7 +13,7 @@ const Pricing = () => {
       <ul className="pricingTable-firstTable">
         <li className="pricingTable-firstTable_table">
           <h1 className="pricingTable-firstTable_table__header">Basic</h1>
-          <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>59</span><span>Month</span></p>
+          <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>59</span><span>/Month</span></p>
           <ul className="pricingTable-firstTable_table__options">
             <li> All Basic Features </li>
             <li> 5 Active Job Postings </li>
@@ -23,7 +23,7 @@ const Pricing = () => {
         </li>
         <li className="pricingTable-firstTable_table">
         <h1 className="pricingTable-firstTable_table__header">Standard</h1>
-        <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>89</span><span>Month</span></p>
+        <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>89</span><span>/Month</span></p>
         <ul className="pricingTable-firstTable_table__options">
           <li> All Basic Features </li>
           <li> 10 Active Job Postings </li>
@@ -34,7 +34,7 @@ const Pricing = () => {
         </li>
         <li className="pricingTable-firstTable_table">
         <h1 className="pricingTable-firstTable_table__header">Pro</h1>
-        <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>149</span><span>Month</span></p>
+        <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>149</span><span>/Month</span></p>
         <ul className="pricingTable-firstTable_table__options">
           <li> All Standard Features </li>
           <li> 20 Active Job Postings </li>

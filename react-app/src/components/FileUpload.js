@@ -84,9 +84,8 @@ const FileUpload = () => {
   return (
     <Fragment>
       <NavigationBar />
-      <br/> <br/> <br/>
       {message ? <Message msg={message} /> : null}
-      <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
+      <form onSubmit={OnSubmit} className="form-upload ml-5 mr-5">
         <h2>Resume Upload</h2>
         <div className="custom-file mb-4">
           <br></br>

@@ -33,6 +33,14 @@ const Styles = styled.div`
 .nav-link {
   padding: 0.5rem 2.5rem;
 }
+
+.brand-border {
+  border-bottom: none;
+}
+.brand-border:hover {
+  border-bottom: none;
+}
+
 .navbar-light .navbar-toggler {
     color: white;
     border-color: white;
@@ -44,7 +52,7 @@ export const NavigationBar = () => {
   return (
     <Styles>
       <Navbar expand="lg" fixed="top">
-        <Navbar.Brand href="/" >
+        <Navbar.Brand href="/" className="brand-border">
           <img src={iprofiler} alt="iprofiler" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

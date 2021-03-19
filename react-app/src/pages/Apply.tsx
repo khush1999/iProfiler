@@ -91,7 +91,7 @@ const Apply = ({ passData }: TForm) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                </Modal.Footer>
+                    </Modal.Footer>
             </Modal>
             <Form noValidate validated={validated} action="/create" method="POST"
                 encType="multipart/form-data" onSubmit={handleSubmit1}>

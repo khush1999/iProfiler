@@ -110,6 +110,7 @@
     text-transform: uppercase;
     letter-spacing: 0.13em;
     transition: all 0.5s ease;
+    font-weight: 900;
 }
 @media screen and (max-width: 988px) {
     .pricingTable-firstTable_table:nth-of-type(2):before {
