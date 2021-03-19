@@ -10,6 +10,7 @@ import uuid
 from werkzeug.utils import secure_filename
 from resume_parser import resumeparse
 import spacy
+import uuid
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__app__")
@@ -87,12 +88,13 @@ def create():
             'skills2': request.form.get('skills2'),
             'skills3': request.form.get('skills3'),
             'total_exp': request.form.get('total_exp'),
-            'designition': request.form.get('designition'),
+            'designition': request.form.get('desig'),
             'Companies worked at': request.form.get('Companies worked at'),
             'resume': request.form.get('resume_id'),
+
         })
         print(list(mongo.db.users.find()))
-    return "Doneeeee!!!!!!!"
+    return """ <h2> We have received your response , you can now close this window!! </h2> """
 
 
 # HR
@@ -114,9 +116,9 @@ def index():
         # if found in database showcase that it's found
         user_found = mongo.db.LoginAuth.find_one({"company_name": user})
         email_found = mongo.db.LoginAuth.find_one({"email": email})
-        if user_found:
-            message = 'There already is a user by that name'
-            return message
+        # if user_found:
+        #     message = 'There already is a user by that name'
+        #     return message
         if email_found:
             message = 'This email already exists in database'
             return message
@@ -127,8 +129,7 @@ def index():
             # hash the password and encode it
             hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
             # assing them in a dictionary in key value pairs
-            user_input = {'company_name': user,
-                          'email': email, 'password': hashed}
+            user_input = {'company_name': user, 'email': email, 'password': hashed}
             # insert it in the record collection
             mongo.db.LoginAuth.insert_one(user_input)
             # find the new created account and its email

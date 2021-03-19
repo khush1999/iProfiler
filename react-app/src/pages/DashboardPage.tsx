@@ -3,9 +3,9 @@ import { Row, Col, Dropdown, Nav } from 'react-bootstrap';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './DashboardPage.css';
-import { Search, Briefcase, House, Person, Filter, ChevronBarRight } from 'react-bootstrap-icons';
 import 'font-awesome/css/font-awesome.min.css';
 import { Link, useHistory } from 'react-router-dom';
+import iprofiler from '../components/iprofiler.png';
 
 interface IForm {
     email: string;
@@ -45,9 +45,18 @@ const DashboardPage = () => {
 
     const [userData, setUserData] = useState(false);
     const [data, setData] = useState([ip]);
+    const [Defdata, setDefData] = useState([ip]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
     const [message, setMessage] = useState('');
+    const [DropSkill, setDropSkill] = useState('');
+    const [DropExp, setDropExp] = useState('');
+    const [DropRole, setDropRole] = useState('');
+    const [prevSkill, setPrevSkill] = useState('');
+    const [prevExp, setPrevExp] = useState('');
+    const [prevDes, setPrevDes] = useState('');
+    var exp, exp1;
+
 
     const history = useHistory();
 
@@ -59,6 +68,8 @@ const DashboardPage = () => {
                     .then(res => {
                         console.log("////////////////////////////////////", res.data);
                         setData(res.data);
+                        setDefData(res.data);
+
                         setUserData(true);
                     })
             }
@@ -90,6 +101,33 @@ const DashboardPage = () => {
         }
 
     }
+    //fine
+    const Courses = (courseType: string) => {
+        if ((prevSkill != courseType || courseType === "All") && (prevExp === "") && (prevDes === "")) {
+            setData(Defdata)
+        }
+        setDropSkill(courseType);
+        setPrevSkill(courseType);
+        // setSkillData(data)
+    }
+
+    //fine
+    const Experience = (expType: string) => {
+        if ((prevExp != expType || expType === "All") && (prevExp === "") && (prevDes === "")) {
+            setData(Defdata)
+        }
+        setDropExp(expType);
+        setPrevExp(expType)
+    }
+
+
+    const Role = (roleType: string) => {
+        if ((prevDes != roleType || roleType === "All") && (prevExp === "") && (prevDes === "")) {
+            setData(Defdata)
+        }
+        setDropRole(roleType);
+        setPrevDes(roleType);
+    }
 
 
     return (
@@ -97,8 +135,8 @@ const DashboardPage = () => {
             {GetData()}
             <div className="main-dashboard">
                 <div className="sidebar">
-                    <div className="sidebar-head">
-                        <h3>iProfiler</h3>
+                    <div>
+                        <img src={iprofiler} alt="iprofiler" />
                     </div>
                     <a href="/"><i className="fa fa-fw fa-home pr-2" style={{ fontSize: '1.75em' }} />
                     Home</a>
@@ -113,51 +151,50 @@ const DashboardPage = () => {
 
                 <div className="content">
 
-                    <h4 className="mt-2 ml-2">Displaying Applicants</h4>
+                    <h4 className="display-applicant">Displaying Applicants</h4>
 
                     <div className="filter">
                         <Row className="filter-row">
-                            <Col md={5} className="dashboard-filters">
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Skills
-                                    </Dropdown.Toggle>
+                            <Col md={6} className="dashboard-filters">
+                                <div className="select">
+                                    <select onChange={(e) => Courses(e.target.value)}>
+                                        <option value="none" selected disabled hidden>Skills</option>
+                                        <option value="All">All</option>
+                                        <option value="Java">Java</option>
+                                        <option value="Python">Python</option>
+                                        <option value="Django">Django</option>
+                                        <option value="C">C/C++</option>
+                                        <option value="React">React</option>
+                                        <option value="Javascript">Javascript</option>
+                                    </select>
+                                </div>
 
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href="#">Java</Dropdown.Item>
-                                        <Dropdown.Item href="#">Python</Dropdown.Item>
-                                        <Dropdown.Item href="#">Django</Dropdown.Item>
-                                        <Dropdown.Item href="#">C/C++</Dropdown.Item>
-                                        <Dropdown.Item href="#">React</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Experience
-                                    </Dropdown.Toggle>
 
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href="#">0-3 Years</Dropdown.Item>
-                                        <Dropdown.Item href="#">3-6 Years</Dropdown.Item>
-                                        <Dropdown.Item href="#">6-9 Years</Dropdown.Item>
-                                        <Dropdown.Item href="#">{">"}9 Years</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+                                <div className="select">
+                                    <select onChange={(e) => Experience(e.target.value)}>
+                                        <option value="none" selected disabled hidden>Experience</option>
+                                        <option value="All">All</option>
+                                        <option value="0-3 Years">0-3 Years</option>
+                                        <option value="3-6 Years">3-6 Years</option>
+                                        <option value="6-9 Years">6-9 Years</option>
+                                        <option value=">9 Years">{">"}9 Years</option>
+                                    </select>
+                                </div>
 
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Designation
-                                    </Dropdown.Toggle>
 
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item href="#">SDE</Dropdown.Item>
-                                        <Dropdown.Item href="#">SDET</Dropdown.Item>
-                                        <Dropdown.Item href="#">HR</Dropdown.Item>
-                                        <Dropdown.Item href="#">DevOps</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
+
+                                <div className="select">
+                                    <select onChange={(e) => Role(e.target.value)}>
+                                        <option value="none" selected disabled hidden>Designation</option>
+                                        <option value="All">All</option>
+                                        <option value="SDE">SDE</option>
+                                        <option value="SDET">SDET</option>
+                                        <option value="HR">HR</option>
+                                        <option value="DevOps">DevOps</option>
+                                    </select>
+                                </div>
                             </Col>
-                            <Col md={7} className="pr-0">
+                            <Col md={6} className="pr-0">
                                 <div className="search mr-0">
                                     <input type="search" name="search" id="" placeholder="Search Applicant by Name"
                                         className="search-input" onChange={(e) => {
@@ -168,27 +205,50 @@ const DashboardPage = () => {
                             </Col>
                         </Row>
                     </div>
+
                     <div className="grid-container justify-content-around">
-                        {!isSearched && userData && data.map(user =>
+                        {!isSearched && (DropSkill === "") && userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
-                    </div>
-                    <hr />
-                    <div className="grid-container justify-content-around">
+
                         {
                             userData && isSearched && data.filter(user => (user.fname == searchTerm ||
                                 user.lname == searchTerm || user.city == searchTerm || user.designition
                                 == searchTerm)).map((user) => (
-
                                     <Applicant passData={user} />
+                                ))
+                        }
 
+                        {
+                            (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
+                                user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => (
+                                    <Applicant passData={user} />
+                                ))
+                        }
+
+                        {(DropExp != "") && data.filter(user => (DropExp == "0-3 Years" ?
+                            user.total_exp <= 3 : (DropExp == "3-6 Years" ?
+                                (user.total_exp > 3 && user.total_exp <= 6) : (DropExp == "6-9 Years" ? (user.total_exp > 6 && user.total_exp <= 9) : (user.total_exp > 9))))).map((user) => (
+                                    <Applicant passData={user} />
+                                ))}
+
+                        {
+                            (DropRole != "") && data.filter(user => (user.designition === DropRole)).map((user) => (
+                                <Applicant passData={user} />
+                            ))
+                        }
+
+                        {
+                            userData && isSearched && data.filter(user => (user.fname == searchTerm ||
+                                user.lname == searchTerm || user.city == searchTerm || user.designition
+                                == searchTerm)).map((user) => (
+                                    <Applicant passData={user} />
                                 ))
                         }
                     </div>
                 </div>
             </div>
         </>
-
     );
 };
 
