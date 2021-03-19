@@ -133,12 +133,11 @@ const DashboardPage = () => {
                     <div className="filter">
                         <Row className="filter-row">
                             <Col md={5} className="dashboard-filters">
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Skills
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
+
+    
+                                    <div className="select">
                                     <select onChange={(e) => Courses(e.target.value)}>
+                                    <option value="none" selected disabled hidden>Skills</option>
                                         <option value="Java">Java</option>
                                         <option value="Python">Python</option>
                                         <option value="Django">Django</option>
@@ -147,34 +146,30 @@ const DashboardPage = () => {
                                         <option value="Javascript">Javascript</option>
                                     </select>
                                     </div>
-                                </Dropdown>
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Experience
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
+                                
+                                    
+                                    <div className="select">
                                     <select onChange={(e) => Experience(e.target.value)}>
-                                        <option>0-3 Years</option>
-                                        <option>3-6 Years</option>
-                                        <option>6-9 Years</option>
-                                        <option>{">"}9 Years</option>
+                                        <option value="none" selected disabled hidden>Experience</option>
+                                        <option  value="0-3 Years">0-3 Years</option>
+                                        <option value="3-6 Years">3-6 Years</option>
+                                        <option  value="6-9 Years">6-9 Years</option>
+                                        <option  value=">9 Years">{">"}9 Years</option>
                                     </select>
                                     </div>
-                                </Dropdown>
-
-                                <Dropdown>
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                        Designation
-                                    </Dropdown.Toggle>
-                                    <div className="custom">
+                            
+                                    
+                                
+                                    <div className="select">
                                     <select onChange={(e) => Role(e.target.value)}>
-                                        <option>SDE</option>
-                                        <option>SDET</option>
-                                        <option>HR</option>
-                                        <option>DevOps</option>
+                                    <option value="none" selected disabled hidden>Designation</option>
+                                        <option value="SDE">SDE</option>
+                                        <option value="SDET">SDET</option>
+                                        <option value="HR">HR</option>
+                                        <option value="DevOps">DevOps</option>
                                     </select>
                                     </div>
-                                </Dropdown>
+                                
                             </Col>
                             <Col md={7} className="pr-0">
                                 <div className="search mr-0">
