@@ -43,7 +43,7 @@ def upload_file():
         #   mongo.send_file()
         data = resumeparse.read_file(filename)
         data["resume_id"] = filename
-        print(data)
+        # print(data)
         with open("../react-app/src/sample.json", "w") as outfile:
             json.dump(data, outfile)
     return data
@@ -57,7 +57,7 @@ def form_files():
         a['_id'] = str(a['_id'])
         result.append(a)
     res = json.dumps(result)
-    print(result)
+    # print(result)
     return res
 
 
@@ -93,7 +93,7 @@ def create():
             'resume': request.form.get('resume_id'),
 
         })
-        print(list(mongo.db.users.find()))
+        # print(list(mongo.db.users.find()))
     return """ <h2> We have received your response , you can now close this window!! </h2> """
 
 
@@ -115,6 +115,7 @@ def index():
         password2 = request.form.get("password2")
         # if found in database showcase that it's found
         user_found = mongo.db.LoginAuth.find_one({"company_name": user})
+        print(user_found)
         email_found = mongo.db.LoginAuth.find_one({"email": email})
         if user_found:
             message = 'There already is a user by that name'
@@ -193,4 +194,4 @@ def logout():
         return "YO logged out here"
 
 
-app.run(debug="true", host='0.0.0.0', port=5000)
+app.run(debug="true")

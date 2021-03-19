@@ -12,6 +12,7 @@ export const SignUp = () => {
     const [password2, setPassword2] = useState('')
     const [companyName, setCompanyName] = useState('')
     const [message, setMessage] = useState('')
+    const [errorMsg, setErrorMsg] = useState('')
     const history = useHistory();
 
     const handleClick = async (e) => {
@@ -33,6 +34,10 @@ export const SignUp = () => {
             if (res.data === "You are Logged in!!!!") {
                 history.push('/Login');
             }
+             else{
+                setErrorMsg(res.data)
+            }
+
 
         } catch (err) {
             if (err.response.status == 500) {
@@ -48,7 +53,8 @@ export const SignUp = () => {
             <Container style={mainWidth} className="mt-5 bg-light text-dark shadow-sm p-3 mb-5 bg-white rounde">
                 <h3 className="text-center">Join Us To Hire !</h3>
                 <br />
-                <Form action="/auth" method="POST">
+                <Form>
+                   <div className="text-danger">{errorMsg!=""?errorMsg:message}</div>
                     <Form.Group as={Row} controlId="SignUpEmail">
                         <Form.Label column sm={4}>
                             Company Name

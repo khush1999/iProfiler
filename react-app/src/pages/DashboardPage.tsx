@@ -210,10 +210,6 @@ const DashboardPage = () => {
                         {!isSearched &&  (DropSkill==="") && userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
-                    </div>
-                    <hr />
-                    
-                    <div className="grid-container justify-content-around">
                         {
                             userData && isSearched && data.filter(user => (user.fname == searchTerm ||
                                 user.lname == searchTerm || user.city == searchTerm || user.designition
@@ -223,43 +219,21 @@ const DashboardPage = () => {
 
                                 ))
                         }
-                    </div>
-
-                    <div className="grid-container justify-content-around">
                         {
                             (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
                             user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => (
-                                <div>
-                                {console.log("Looping inside",user)} 
                                 <Applicant passData={user} />
-                                </div>
-
                                 ))
                         }
-                    </div>
-
-                    <div className="grid-container justify-content-around">
-                        
-        
                             {(DropExp!="") && data.filter(user => (DropExp=="0-3 Years" ? 
                             user.total_exp<=3:(DropExp=="3-6 Years" ? 
-                            (user.total_exp>3 && user.total_exp<=6):(DropExp=="6-9 Years" ? (user.total_exp>6 && user.total_exp<=9) :(user.total_exp>9))))).map((user) => (
-                                <div>
-                                                        {console.log("Looping inside",user)} 
-                                                        <Applicant passData={user} />
-                                </div>
-                                ))}
-                            
-                        
-                    </div>
+                                    (user.total_exp > 3 && user.total_exp <= 6) : (DropExp == "6-9 Years" ? (user.total_exp > 6 && user.total_exp <= 9) : (user.total_exp > 9))))).map((user) => (
+                                        <Applicant passData={user} />
 
-                    <div className="grid-container justify-content-around">
+                                ))}
                         {
                             (DropRole!="") && data.filter(user => (user.designition=== DropRole)).map((user) => (
-                                <div>
-                                                        {console.log("Looping inside",user)} 
-                                                        <Applicant passData={user} />
-                                </div>
+                                <Applicant passData={user} />
 
                                 ))
                         }
@@ -271,9 +245,7 @@ const DashboardPage = () => {
                     userData && isSearched && data.filter(user => (user.fname == searchTerm ||
                         user.lname == searchTerm || user.city == searchTerm || user.designition
                         == searchTerm)).map((user) => (
-                            <div className="preview">
-                                <Applicant passData={user} />
-                            </div>
+                        <Applicant passData={user} />
                         ))
                 }
             </div>

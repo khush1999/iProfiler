@@ -13,6 +13,7 @@ export const Login = () => {
     const [email, setEmail] = useState('Email')
     const [password, setPassword] = useState('Password')
     const [message, setMessage] = useState('')
+    const [errorMsg, setErrorMsg] = useState('')
     const history = useHistory();
     const handleClick = () => history.push('/Pricing');
     const handleClick1 = async (e) => {
@@ -30,6 +31,9 @@ export const Login = () => {
             console.log(res.data);
             if (res.data.includes('@gmail.com')) {
                 history.push('/DashboardPage');
+            }
+            else{
+                setErrorMsg(res.data)
             }
 
         } catch (err) {
@@ -72,6 +76,7 @@ export const Login = () => {
                             </Form.Group>
                             <Form.Group controlId="loginPassword">
                                 <Form.Control type="password" id="password" name="password" required placeholder={password} onChange={(e) => setPassword(e.target.value)} />
+                            <div className="text-danger">{errorMsg}</div>
                             </Form.Group>
 
                             <Button variant="primary" size="lg" block type="submit" onClick={handleClick1}>
