@@ -16,7 +16,8 @@ const FileUpload = () => {
     designition: "",
     degree: [],
     skills: [],
-    "Companies worked at": [],
+    Companies_worked_at: [],
+    resume_id: "",
   };
   const [file, setFile] = useState("");
   const [data, setData] = useState(ip);

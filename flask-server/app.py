@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, session
+from flask import Flask, render_template, request, url_for, redirect, session, abort, jsonify, send_from_directory 
 from flask_pymongo import PyMongo
 import bcrypt
 import urllib.request
@@ -19,8 +19,7 @@ app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mong
 mongo = PyMongo(app)
 db = mongo
 filename = ""
-
-
+app.config['UPLOAD_FOLDER'] = '../react-app/src/resumes/'
 @app.route("/")
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
@@ -34,20 +33,33 @@ def upload_file():
         print("********************************************")
         # fileName = str(uuid.uuid4())[:8]
         filename = secure_filename(f.filename)
-        f.save(filename)
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        f.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
         print(f.filename)
         print(filename)
-        # new_path = os.path.abspath(filename)
         filenam = f.filename
         mongo.save_file(filename, f)
         #   mongo.send_file()
         data = resumeparse.read_file(filename)
         data["resume_id"] = filename
-        print(data)
+        # print(data)
+        # with open(os.path.join("static/resumes", filename), "wb") as fp:
+        #     fp.write(request.data)
+
         with open("../react-app/src/sample.json", "w") as outfile:
             json.dump(data, outfile)
     return data
 
+# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+# https://medium.com/excited-developers/file-upload-with-react-flask-e115e6f2bf99
+
+# @app.route("/upload/<path>")
+# def get_file(path=None):
+#     if path is not None:
+#         print("Download a file......")
+#         return send_from_directory(app.config['UPLOAD_URI'], path)
+#     else:
+#         print("Sorryyyyyyyyyyyyyyyyyy!")
 
 @app.route('/getData', methods=['GET', 'POST'])
 def form_files():
@@ -57,15 +69,15 @@ def form_files():
         a['_id'] = str(a['_id'])
         result.append(a)
     res = json.dumps(result)
-    print(result)
+    # print(result)
     return res
-
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     global data
     if request.method == 'POST':
-        print("Came inside", request.form.get('skills1'))
+        print("Came inside ***************************")
+        print(request.form.get('skills1'))
         mongo.db.users.insert_one({
             'fname': request.form.get('fname'),
             'lname': request.form.get('lname'),
@@ -89,11 +101,11 @@ def create():
             'skills3': request.form.get('skills3'),
             'total_exp': request.form.get('total_exp'),
             'designition': request.form.get('desig'),
-            'Companies worked at': request.form.get('Companies worked at'),
-            'resume': request.form.get('resume_id'),
+            'Companies worked at': request.form.get('Companies_worked_at'),
+            'resume_id': request.form.get('resume_id'),
 
         })
-        print(list(mongo.db.users.find()))
+        # print(list(mongo.db.users.find()))
     return """ <h2> We have received your response , you can now close this window!! </h2> """
 
 

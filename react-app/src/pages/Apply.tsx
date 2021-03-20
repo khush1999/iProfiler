@@ -14,6 +14,7 @@ interface IForm {
     degree: string[];
     skills: string[];
     Companies_worked_at: string[];
+    resume_id: string;
 }
 
 type TForm = {
@@ -21,7 +22,10 @@ type TForm = {
 }
 
 const Apply = ({ passData }: TForm) => {
-    let fname = "", lname = "", email = "", phone = "", total_exp = 0, ug_University = "", pg_University = "", ugDegree = "", pgDegree = "", skills1 = "", skills2 = "", skills3 = "";
+    let fname = "", lname = "", email = "", phone = "", total_exp = 0, ug_University = "", pg_University = "", ugDegree = "", pgDegree = "", skills1 = "", skills2 = "", skills3 = "", Companies_worked_at = "", resume_id = "";
+    console.log("This is passData ********************");
+    console.log(passData);
+    
     if (passData != null) {
         fname = passData.name.split(" ")[0];
         lname = passData.name.split(" ")[1];
@@ -35,6 +39,7 @@ const Apply = ({ passData }: TForm) => {
         skills1 = passData.skills[0];
         skills2 = passData.skills[1];
         skills3 = passData.skills[2];
+        resume_id = passData.resume_id;
     }
 
     const [show, setShow] = useState(false);
@@ -246,6 +251,16 @@ const Apply = ({ passData }: TForm) => {
                         <Form.Control.Feedback type="invalid"> Mention your skill </Form.Control.Feedback>
                     </Form.Group>
                 </Form.Row>
+                
+                <Form.Group as={Col} controlId="formGridResume">
+                        <Form.Label> Previous Company </Form.Label>
+                        <Form.Control type="text" id="Companies_worked_at" required name="Companies_worked_at" defaultValue={Companies_worked_at} onChange={(e) => Companies_worked_at = e.target.value}/>
+                </Form.Group>
+
+                <Form.Group as={Col} controlId="formGridResume">
+                        <Form.Label> Resume Name</Form.Label>
+                        <Form.Control type="text" id="resume_id" required name="resume_id" defaultValue={resume_id} onChange={(e) => resume_id = e.target.value} />
+                </Form.Group>
 
                 <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4 mb-4' />
             </Form>
