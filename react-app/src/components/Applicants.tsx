@@ -1,7 +1,7 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
-import { ArrowRight } from "react-bootstrap-icons";
-import profile from '../assets/cardImage.png';
+import { Link } from "react-router-dom";
 
 interface IForm {
   email: string;
@@ -20,21 +20,41 @@ interface IForm {
   skills1: string;
   skills2: string;
   skills3: string;
-  Companies_worked_at: string[];
+  Companies_worked_at: string;
   address: string;
   dob: string;
   city: string;
   state: string;
   zip: string;
-  resume: string;
+  resume_id: string;
 }
 
 type TForm = {
   passData: IForm,
 }
 
-const Applicants = ({ passData }: TForm) => {
-  // console.log(passData);
+const Applicants = ({ passData }: TForm) => {  
+
+  // const [getResume, setGetResume] = useState('');
+  let setGetResume;
+  if(passData != null) {
+    setGetResume = passData.resume_id;
+  }
+  
+  console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+  console.log(setGetResume);
+  // function handleResume() {
+  //   console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+  //   console.log(passData.resume_id);
+  //   axios.get('/upload/', {
+  //     params: {
+  //       path: setGetResume
+  //     }
+  //   })
+  //   .then(function (response) {
+  //     console.log(response);
+  //   })
+  // }
   return (
     <Card style={{ width: '18rem', backgroundColor: "#f8f8ff" }} className="shadow p-3 mb-5 
     bg-white rounded">
@@ -57,7 +77,9 @@ const Applicants = ({ passData }: TForm) => {
             <Button variant="primary align-self-end">View Profile</Button>
           </Col>
           <Col sm={6}>
-            <Button variant="primary align-self-end">View Resume</Button>
+            {/* <Button variant="primary align-self-end" onClick = {handleResume}>View Resume</Button> */}
+            {/* <Link to={`../resumes/${setGetResume}`} target="_blank" download> Download</Link> */}
+            <a href={require('../resumes/Resume.pdf')} target="_blank">Download Pdf</a>
           </Col>
         </Row>
       </Card.Body>
