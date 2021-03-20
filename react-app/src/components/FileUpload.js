@@ -90,12 +90,12 @@ const FileUpload = () => {
   return (
     <Fragment>
       <NavigationBar />
-      <Container style={mainWidth} className="text-center shadow-lg mb-5 bg-white rounde">
+      <Container style={mainWidth} className="text-center shadow-lg mb-5 bg-white rounde upload-main">
         <Row>
-          <Col sm={6} style={divColor} className="text-white font-weight-bold p-4">
+          <Col sm={6} style={divColor} className="text-white font-weight-bold p-4 jd-col">
             <JobDes />
           </Col>
-          <Col sm={6} className="bg-light text-dark form-container">
+          <Col sm={6} className="bg-light text-dark form-container upload-col">
             <form onSubmit={OnSubmit} className="form-upload">
               {message ? <Message msg={message} /> : null}
               <h2>Resume Upload</h2>
