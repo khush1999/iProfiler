@@ -12,6 +12,7 @@
 
 .form-upload {
     margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 .load{
@@ -20,4 +21,10 @@
     left: 50%;
     margin-top: -50px;
     margin-left: -100px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
