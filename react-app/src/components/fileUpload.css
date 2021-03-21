@@ -10,10 +10,14 @@
     margin-right: 8rem!important;
 }
 
+.form-upload {
+    margin-top: 5rem;
+}
+
 .load{
     position: fixed;
-      top: 70%;
-      left: 50%;
-      margin-top: -50px;
-      margin-left: -100px;
-    }
+    top: 70%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -100px;
+}

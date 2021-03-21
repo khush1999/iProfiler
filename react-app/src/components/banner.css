@@ -18,6 +18,8 @@
     width: 50%;               
     background-color: grey;
     height: 1px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .des2{

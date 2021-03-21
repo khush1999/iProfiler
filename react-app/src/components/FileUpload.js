@@ -26,10 +26,13 @@ const FileUpload = () => {
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isForm, setIsForm] = useState(false);
+  const [disableButton, setDisableButton] = useState(true);
+  const [progressBar, setProgressBar] = useState(true);
 
   const onChange = (e) => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
+    setDisableButton(!disableButton)
   };
 
   let form;
@@ -39,7 +42,7 @@ const FileUpload = () => {
     setTimeout(() => {
       setIsForm(true);
       setIsLoading(false);
-    }, 10000);
+    }, 5000);
   }
 
   const OnSubmit = async (e) => {
@@ -59,7 +62,7 @@ const FileUpload = () => {
           );
 
           // Clear percentage
-          setTimeout(() => setUploadPercentage(0), 10000);
+          setTimeout(() => setProgressBar(!progressBar), 10000);
         },
       });
 
@@ -82,7 +85,7 @@ const FileUpload = () => {
     <Fragment>
       <NavigationBar />
       {message ? <Message msg={message} /> : null}
-      <form onSubmit={OnSubmit} className="mt-5 ml-5 mr-5">
+      <form onSubmit={OnSubmit} className="form-upload ml-5 mr-5">
         <h2>Resume Upload</h2>
         <div className="custom-file mb-4">
           <br></br>
@@ -90,20 +93,20 @@ const FileUpload = () => {
             type="file"
             className="custom-file-input"
             id="customFile"
-            onChange={onChange}
+            onChange={onChange} required
           />
           <label className="custom-file-label" htmlFor="customFile">
             {filename}
           </label>
         </div>
 
-        <Progress percentage={uploadPercentage} />
+      { progressBar && <Progress percentage={uploadPercentage} /> }
 
-        <input
+      { !disableButton && <input
           type="submit"
           value="Upload"
           className="btn btn-primary btn-block mt-4"
-        />
+      /> }
       </form>
       {console.log("Value is =", data)}
       {isLoading ? <div className="load"><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" /></div> : " "}

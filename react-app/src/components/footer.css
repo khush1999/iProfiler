@@ -11,8 +11,13 @@
     text-align: center;
 } */
 
+footer {
+  background-image: linear-gradient(127deg, #a759d1 0%, #8261ee 91%);
+  padding-top: 10px;
+}
+
 a {
-  color: black;
+  color:white;
   text-decoration: none;
 }
 
