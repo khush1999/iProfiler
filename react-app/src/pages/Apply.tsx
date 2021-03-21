@@ -238,16 +238,6 @@ const Apply = ({ passData }: TForm) => {
                     </Form.Group>
                 </Form.Row>
 
-                <Form.Group as={Col} controlId="formGridResume">
-                    <Form.Label> Previous Company </Form.Label>
-                    <Form.Control type="text" id="Companies_worked_at" required name="Companies_worked_at" defaultValue={Companies_worked_at} onChange={(e) => Companies_worked_at = e.target.value} />
-                </Form.Group>
-
-                <Form.Group as={Col} controlId="formGridResume">
-                    <Form.Label> Resume Name</Form.Label>
-                    <Form.Control type="text" id="resume_id" required name="resume_id" defaultValue={resume_id} onChange={(e) => resume_id = e.target.value} />
-                </Form.Group>
-
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridAddress">
                         <Form.Label>Total Experience </Form.Label>

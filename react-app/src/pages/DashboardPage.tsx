@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import './DashboardPage.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { Link, useHistory } from 'react-router-dom';
-import iprofiler from '../components/iprofiler.png';
+import iprofiler from '../assets/iprofiler.png';
 
 interface IForm {
     email: string;
