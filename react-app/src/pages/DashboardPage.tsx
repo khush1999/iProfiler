@@ -24,13 +24,13 @@ interface IForm {
     skills1: string;
     skills2: string;
     skills3: string;
-    Companies_worked_at: string[];
+    Companies_worked_at: string;
     address: string;
     dob: string;
     city: string;
     state: string;
     zip: string;
-    resume: string;
+    resume_id: string;
 }
 
 const DashboardPage = () => {
@@ -40,7 +40,7 @@ const DashboardPage = () => {
         "total_exp": 0, "ug_University": "", "pg_University": "",
         "designition": "", "ugDegree": "", "pgDegree": "", "pgPercentage": "", "ugPercentage": "",
         "skills1": "", "skills2": "", "skills3": "",
-        "Companies_worked_at": [], "address": "", "city": "", "state": "", "zip": "", "resume": ""
+        "Companies_worked_at": "", "address": "", "city": "", "state": "", "zip": "", "resume_id": ""
     }
 
     const [userData, setUserData] = useState(false);
