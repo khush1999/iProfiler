@@ -135,7 +135,7 @@ const Apply = ({ passData }: TForm) => {
 
                 <Form.Group controlId="formGridAddress">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control name="address" id="address" placeholder="1234 Main St" />
+                    <Form.Control name="address" id="address" placeholder="1234 Main St" required />
                 </Form.Group>
 
                 <Form.Row>
@@ -168,7 +168,7 @@ const Apply = ({ passData }: TForm) => {
 
                     <Form.Group as={Col} controlId="Phone2">
                         <Form.Label>Alternate Contact Number</Form.Label>
-                        <Form.Control id="phone2" name="phone2" placeholder="eg:- 932154XXXX" />
+                        <Form.Control id="phone2" name="phone2" placeholder="eg:- 932154XXXX" required />
                     </Form.Group>
 
                 </Form.Row>
@@ -180,17 +180,17 @@ const Apply = ({ passData }: TForm) => {
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridPostGraduation">
                         <Form.Label>Post Graduation Course</Form.Label>
-                        <Form.Control type="text" id="pgDegree" name="pgDegree" placeholder="Enter PG Course" defaultValue={pgDegree} onChange={(e) => pgDegree = e.target.value} />
+                        <Form.Control type="text" id="pgDegree" name="pgDegree" placeholder="Enter PG Course" defaultValue={pgDegree} onChange={(e) => pgDegree = e.target.value} required />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPGCollege">
                         <Form.Label>College</Form.Label>
-                        <Form.Control type="text" id="pg_University" name="pg_University" placeholder="Enter PG College" defaultValue={pg_University} onChange={(e) => pg_University = e.target.value} />
+                        <Form.Control type="text" id="pg_University" name="pg_University" placeholder="Enter PG College" defaultValue={pg_University} onChange={(e) => pg_University = e.target.value} required />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPGPercentage">
                         <Form.Label>Percentage</Form.Label>
-                        <Form.Control type="text" id="pgPercentage" name="pgPercentage" placeholder="Enter PG Percentage" />
+                        <Form.Control type="text" id="pgPercentage" name="pgPercentage" placeholder="Enter PG Percentage" required />
                     </Form.Group>
                 </Form.Row>
 

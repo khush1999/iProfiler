@@ -1,13 +1,12 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import { Button, Container, Row, Col, Form } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
-import { NavigationBar } from '../components/NavigationBar';
-import loginSvg from './login.svg';
-import './login.css';
+import axios from "axios";
+import React, { useState } from "react";
+import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import { Link, useHistory } from "react-router-dom";
+import { NavigationBar } from "../components/NavigationBar";
+import loginSvg from "./login.svg";
+import "./login.css";
 
-
-const divColor = { backgroundColor: '#AE4DFF' };
+const divColor = { backgroundColor: "#AE4DFF" };
 const mainWidth = { width: "60%", marginTop: "10rem" };
 export const Login = () => {
 
