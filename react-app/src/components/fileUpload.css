@@ -12,6 +12,7 @@
 
 .form-upload {
     margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 .load{
@@ -20,4 +21,36 @@
     left: 50%;
     margin-top: -50px;
     margin-left: -100px;
+}
+
+.upload-main {
+    border-radius: 25px;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jd-col {
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.upload-col {
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+@media only screen and (max-width: 650px) {
+    .jd-col {
+        border-radius: 0;
+    }
+    .upload-col {
+        border-radius: 0;
+    }
+    .upload-main {
+        border-radius: 0;
+    }
 }

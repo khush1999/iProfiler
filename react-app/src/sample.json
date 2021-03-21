@@ -1,1 +1,42 @@
-{"email": "agarwal.parth.101@protonmail.com", "phone": "", "name": "Parth Agarwal", "total_exp": 0, "university": ["jaypee institute of information technology", "institute of information technology"], "designition": [], "degree": [], "skills": ["C & C++", "Python", "JavaScript", "PHP", "SQL", "Frameworks", "Django & DRf", "ElectronJS", "Flutter", "Unity 3D", "Databases", "MySQL", "MariaDB", "MongoDB", "PostgreSQL", "Tools", "Git & Github", "Chrome DevTools", "Dialogflow", "cURL", "Postwoman", "Others", "NodeJS", "CapacitorJS", "Ethereum", "PostGISet:"], "Companies worked at": [], "resume_id": "Resume.pdf"}
+{
+    "email": "agarwal.parth.101@protonmail.com",
+    "phone": "",
+    "name": "Parth Agarwal",
+    "total_exp": 0,
+    "university": [
+        "jaypee institute of information technology",
+        "institute of information technology"
+    ],
+    "designition": [],
+    "degree": [],
+    "skills": [
+        "C & C++",
+        "Python",
+        "JavaScript",
+        "PHP",
+        "SQL",
+        "Frameworks",
+        "Django & DRf",
+        "ElectronJS",
+        "Flutter",
+        "Unity 3D",
+        "Databases",
+        "MySQL",
+        "MariaDB",
+        "MongoDB",
+        "PostgreSQL",
+        "Tools",
+        "Git & Github",
+        "Chrome DevTools",
+        "Dialogflow",
+        "cURL",
+        "Postwoman",
+        "Others",
+        "NodeJS",
+        "CapacitorJS",
+        "Ethereum",
+        "PostGISet:"
+    ],
+    "Companies worked at": [],
+    "resume_id": "Resume.pdf"
+}

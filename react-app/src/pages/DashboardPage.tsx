@@ -45,18 +45,18 @@ const DashboardPage = () => {
 
     const [userData, setUserData] = useState(false);
     const [data, setData] = useState([ip]);
-    const [Defdata, setDefData] = useState([ip]);    
+    const [Defdata, setDefData] = useState([ip]);
     const [searchTerm, setSearchTerm] = useState('');
     const [isSearched, setIsSearched] = useState(false);
     const [message, setMessage] = useState('');
-    const [DropSkill,setDropSkill] = useState('');
-    const [DropExp,setDropExp] = useState('');
-    const [DropRole,setDropRole] = useState('');
+    const [DropSkill, setDropSkill] = useState('');
+    const [DropExp, setDropExp] = useState('');
+    const [DropRole, setDropRole] = useState('');
     const [prevSkill, setPrevSkill] = useState('');
     const [prevExp, setPrevExp] = useState('');
     const [prevDes, setPrevDes] = useState('');
     var exp, exp1;
-    
+
 
     const history = useHistory();
 
@@ -103,7 +103,7 @@ const DashboardPage = () => {
     }
     //fine
     const Courses = (courseType: string) => {
-        if ((prevSkill != courseType || courseType==="All")&&(prevExp==="")&&(prevDes==="") ){
+        if ((prevSkill != courseType || courseType === "All") && (prevExp === "") && (prevDes === "")) {
             setData(Defdata)
         }
         setDropSkill(courseType);
@@ -113,8 +113,7 @@ const DashboardPage = () => {
 
     //fine
     const Experience = (expType: string) => {
-        if ((prevExp!= expType|| expType==="All")&&(prevExp==="")&&(prevDes==="") )
-        {
+        if ((prevExp != expType || expType === "All") && (prevExp === "") && (prevDes === "")) {
             setData(Defdata)
         }
         setDropExp(expType);
@@ -123,13 +122,13 @@ const DashboardPage = () => {
 
 
     const Role = (roleType: string) => {
-    if ((prevDes!= roleType || roleType==="All")&&(prevExp==="")&&(prevDes==="") )
-        {
+        if ((prevDes != roleType || roleType === "All") && (prevExp === "") && (prevDes === "")) {
             setData(Defdata)
         }
         setDropRole(roleType);
         setPrevDes(roleType);
     }
+
 
     return (
         <>
@@ -137,7 +136,7 @@ const DashboardPage = () => {
             <div className="main-dashboard">
                 <div className="sidebar">
                     <div>
-                        <img src={iprofiler} alt="iprofiler"/>
+                        <img src={iprofiler} alt="iprofiler" />
                     </div>
                     <a href="/"><i className="fa fa-fw fa-home pr-2" style={{ fontSize: '1.75em' }} />
                     Home</a>
@@ -156,10 +155,10 @@ const DashboardPage = () => {
 
                     <div className="filter">
                         <Row className="filter-row">
-                            <Col md={6} className="dashboard-filters">                               
-                            <div className="select">
+                            <Col md={6} className="dashboard-filters">
+                                <div className="select">
                                     <select onChange={(e) => Courses(e.target.value)}>
-                                    <option value="none" selected disabled hidden>Skills</option>
+                                        <option value="none" selected disabled hidden>Skills</option>
                                         <option value="All">All</option>
                                         <option value="Java">Java</option>
                                         <option value="Python">Python</option>
@@ -168,31 +167,31 @@ const DashboardPage = () => {
                                         <option value="React">React</option>
                                         <option value="Javascript">Javascript</option>
                                     </select>
-                                    </div>
-                                
-                                    
-                                <div className="select">
-                                <select onChange={(e) => Experience(e.target.value)}>
-                                    <option value="none" selected disabled hidden>Experience</option>
-                                    <option value="All">All</option>
-                                    <option  value="0-3 Years">0-3 Years</option>
-                                    <option value="3-6 Years">3-6 Years</option>
-                                    <option  value="6-9 Years">6-9 Years</option>
-                                    <option  value=">9 Years">{">"}9 Years</option>
-                                </select>
                                 </div>
-                            
-                                    
-                                
+
+
                                 <div className="select">
-                                <select onChange={(e) => Role(e.target.value)}>
-                                <option value="none" selected disabled hidden>Designation</option>
-                                    <option value="All">All</option>
-                                    <option value="SDE">SDE</option>
-                                    <option value="SDET">SDET</option>
-                                    <option value="HR">HR</option>
-                                    <option value="DevOps">DevOps</option>
-                                </select>
+                                    <select onChange={(e) => Experience(e.target.value)}>
+                                        <option value="none" selected disabled hidden>Experience</option>
+                                        <option value="All">All</option>
+                                        <option value="0-3 Years">0-3 Years</option>
+                                        <option value="3-6 Years">3-6 Years</option>
+                                        <option value="6-9 Years">6-9 Years</option>
+                                        <option value=">9 Years">{">"}9 Years</option>
+                                    </select>
+                                </div>
+
+
+
+                                <div className="select">
+                                    <select onChange={(e) => Role(e.target.value)}>
+                                        <option value="none" selected disabled hidden>Designation</option>
+                                        <option value="All">All</option>
+                                        <option value="SDE">SDE</option>
+                                        <option value="SDET">SDET</option>
+                                        <option value="HR">HR</option>
+                                        <option value="DevOps">DevOps</option>
+                                    </select>
                                 </div>
                             </Col>
                             <Col md={6} className="pr-0">
@@ -207,47 +206,47 @@ const DashboardPage = () => {
                         </Row>
                     </div>
 
-                <div className="grid-container justify-content-around">
-                        {!isSearched &&  (DropSkill==="") && userData && data.map(user =>
+                    <div className="grid-container justify-content-around">
+                        {!isSearched && (DropSkill === "") && userData && data.map(user =>
                             <Applicant passData={user} />
                         )}
 
-                    {
-                        userData && isSearched && data.filter(user => (user.fname == searchTerm ||
-                            user.lname == searchTerm || user.city == searchTerm || user.designition
-                            == searchTerm)).map((user) => (
+                        {
+                            userData && isSearched && data.filter(user => (user.fname == searchTerm ||
+                                user.lname == searchTerm || user.city == searchTerm || user.designition
+                                == searchTerm)).map((user) => (
+                                    <Applicant passData={user} />
+                                ))
+                        }
+
+                        {
+                            (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
+                                user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => (
+                                    <Applicant passData={user} />
+                                ))
+                        }
+
+                        {(DropExp != "") && data.filter(user => (DropExp == "0-3 Years" ?
+                            user.total_exp <= 3 : (DropExp == "3-6 Years" ?
+                                (user.total_exp > 3 && user.total_exp <= 6) : (DropExp == "6-9 Years" ? (user.total_exp > 6 && user.total_exp <= 9) : (user.total_exp > 9))))).map((user) => (
+                                    <Applicant passData={user} />
+                                ))}
+
+                        {
+                            (DropRole != "") && data.filter(user => (user.designition === DropRole)).map((user) => (
                                 <Applicant passData={user} />
                             ))
-                    }
+                        }
 
-                    {
-                        (DropSkill != "") && data.filter(user => (user.skills1 == DropSkill ||
-                        user.skills2 == DropSkill || user.skills3 == DropSkill)).map((user) => ( 
-                            <Applicant passData={user} />
-                            ))
-                    }
-    
-                        {(DropExp!="") && data.filter(user => (DropExp=="0-3 Years" ? 
-                        user.total_exp<=3:(DropExp=="3-6 Years" ? 
-                        (user.total_exp>3 && user.total_exp<=6):(DropExp=="6-9 Years" ? (user.total_exp>6 && user.total_exp<=9) :(user.total_exp>9))))).map((user) => (
-                            <Applicant passData={user} />
-                        ))}
-                
-                    {
-                        (DropRole!="") && data.filter(user => (user.designition=== DropRole)).map((user) => (
-                            <Applicant passData={user} />
-                        ))
-                    }
-
-                    {
-                    userData && isSearched && data.filter(user => (user.fname == searchTerm ||
-                        user.lname == searchTerm || user.city == searchTerm || user.designition
-                        == searchTerm)).map((user) => (
-                            <Applicant passData={user} />
-                        ))
-                    }
+                        {
+                            userData && isSearched && data.filter(user => (user.fname == searchTerm ||
+                                user.lname == searchTerm || user.city == searchTerm || user.designition
+                                == searchTerm)).map((user) => (
+                                    <Applicant passData={user} />
+                                ))
+                        }
+                    </div>
                 </div>
-            </div>
             </div>
         </>
     );

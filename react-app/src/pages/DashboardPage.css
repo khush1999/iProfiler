@@ -104,7 +104,7 @@ div.content {
 }
 
 .filter {
-  padding-left: 40px;
+  padding-left: 30px;
   padding-right: 40px;
 }
 
@@ -141,7 +141,7 @@ select {
   width: 10em; 
   height: 3em; 
   line-height: 3; 
-  background: ##007bff; 
+  background: #007bff; 
   overflow: hidden; 
   border-radius: .25em; 
 } 
