@@ -1,0 +1,22 @@
+.skills-jd {
+    background-color: #fff;
+    color: #8a2be2;
+    border-radius: 20px;
+    padding: 0.5rem;
+}
+
+.apply-heading {
+    background-color: blueviolet;
+    border-radius: 10px;
+    line-height: 3rem;
+}
+
+.jd-about {
+    text-align: justify;
+    background-color: white;
+    color: blueviolet;
+    border-radius: 15px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+}

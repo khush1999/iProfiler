@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect, session, abort, jsonify, send_from_directory 
+from flask import Flask, render_template, request, url_for, redirect, session, send_file, send_from_directory
 from flask_pymongo import PyMongo
 import bcrypt
 import urllib.request
@@ -20,6 +20,7 @@ mongo = PyMongo(app)
 db = mongo
 filename = ""
 app.config['UPLOAD_FOLDER'] = '../react-app/src/resumes/'
+
 @app.route("/")
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
@@ -42,24 +43,21 @@ def upload_file():
         #   mongo.send_file()
         data = resumeparse.read_file(filename)
         data["resume_id"] = filename
-        # print(data)
-        # with open(os.path.join("static/resumes", filename), "wb") as fp:
-        #     fp.write(request.data)
-
+        
         with open("../react-app/src/sample.json", "w") as outfile:
             json.dump(data, outfile)
     return data
 
-# ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-# https://medium.com/excited-developers/file-upload-with-react-flask-e115e6f2bf99
 
-# @app.route("/upload/<path>")
-# def get_file(path=None):
-#     if path is not None:
-#         print("Download a file......")
-#         return send_from_directory(app.config['UPLOAD_URI'], path)
-#     else:
-#         print("Sorryyyyyyyyyyyyyyyyyy!")
+@app.route("/getData/<path>")
+def get_file(path=None):
+    if path is not None:
+        print("Download a file......")
+        # return send_file(path)
+        return send_from_directory(app.config['UPLOAD_FOLDER'], path)
+    else:
+        print("Sorryyyyyyyyyyyyyyyyyy!")
+
 
 @app.route('/getData', methods=['GET', 'POST'])
 def form_files():
@@ -69,15 +67,15 @@ def form_files():
         a['_id'] = str(a['_id'])
         result.append(a)
     res = json.dumps(result)
-    # print(result)
+    print(result)
     return res
+
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     global data
     if request.method == 'POST':
-        print("Came inside ***************************")
-        print(request.form.get('skills1'))
+        print("Came inside", request.form.get('skills1'))
         mongo.db.users.insert_one({
             'fname': request.form.get('fname'),
             'lname': request.form.get('lname'),
@@ -101,11 +99,11 @@ def create():
             'skills3': request.form.get('skills3'),
             'total_exp': request.form.get('total_exp'),
             'designition': request.form.get('desig'),
-            'Companies worked at': request.form.get('Companies_worked_at'),
+            'Companies worked at': request.form.get('Companies worked at'),
             'resume_id': request.form.get('resume_id'),
 
         })
-        # print(list(mongo.db.users.find()))
+        print(list(mongo.db.users.find()))
     return """ <h2> We have received your response , you can now close this window!! </h2> """
 
 
@@ -141,7 +139,8 @@ def index():
             # hash the password and encode it
             hashed = bcrypt.hashpw(password2.encode('utf-8'), bcrypt.gensalt())
             # assing them in a dictionary in key value pairs
-            user_input = {'company_name': user, 'email': email, 'password': hashed}
+            user_input = {'company_name': user,
+                          'email': email, 'password': hashed}
             # insert it in the record collection
             mongo.db.LoginAuth.insert_one(user_input)
             # find the new created account and its email
@@ -205,4 +204,4 @@ def logout():
         return "YO logged out here"
 
 
-app.run(debug="true", host='0.0.0.0', port=5000)
+app.run(debug="true")

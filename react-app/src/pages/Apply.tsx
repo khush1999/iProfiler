@@ -25,7 +25,7 @@ const Apply = ({ passData }: TForm) => {
     let fname = "", lname = "", email = "", phone = "", total_exp = 0, ug_University = "", pg_University = "", ugDegree = "", pgDegree = "", skills1 = "", skills2 = "", skills3 = "", Companies_worked_at = "", resume_id = "";
     console.log("This is passData ********************");
     console.log(passData);
-    
+
     if (passData != null) {
         fname = passData.name.split(" ")[0];
         lname = passData.name.split(" ")[1];
@@ -46,47 +46,47 @@ const Apply = ({ passData }: TForm) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const OnSubmit = async (jsondata) => {
-        if (jsondata != null) {
-            try {
-                console.log(jsondata)
-                const res = await axios.post("/create", jsondata,
-                    {
-                        headers: {
-                            "content_type": "application/json",
-                        },
-                    }
-                );
+    // const OnSubmit = async (jsondata) => {
+    //     if (jsondata != null) {
+    //         try {
+    //             console.log(jsondata)
+    //             const res = await axios.post("/create", jsondata,
+    //                 {
+    //                     headers: {
+    //                         "content_type": "application/json",
+    //                     },
+    //                 }
+    //             );
 
-            }
-            catch (err) {
-                if (err.response.status === 500) {
-                    console.log('There was a problem with the server');
-                } else {
-                    console.log(err.response.data.msg);
-                }
-            }
+    //         }
+    //         catch (err) {
+    //             if (err.response.status === 500) {
+    //                 console.log('There was a problem with the server');
+    //             } else {
+    //                 console.log(err.response.data.msg);
+    //             }
+    //         }
 
-        }
-    };
+    //     }
+    // };
 
     // Form Validation:
     const [validated, setValidated] = useState(false);
-
     const handleSubmit1 = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
         }
-        
-        if(form.checkValidity() === true) {
+
+        if (form.checkValidity() === true) {
             handleShow();
         }
         setValidated(true);
     };
+
     return (
-        <div className="main-form">
+        <div className="main-form mb-4 shadow-lg p-4">
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Modal heading</Modal.Title>
@@ -96,7 +96,7 @@ const Apply = ({ passData }: TForm) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    </Modal.Footer>
+                </Modal.Footer>
             </Modal>
             <Form noValidate validated={validated} action="/create" method="POST"
                 encType="multipart/form-data" onSubmit={handleSubmit1}>
@@ -127,24 +127,17 @@ const Apply = ({ passData }: TForm) => {
 
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" id="email" name="email" placeholder="Enter Email" required defaultValue={email} onChange={(e) => email = e.target.value} />
+                        <Form.Control type="email" id="email" name="email" placeholder="Enter Email" required defaultValue={email} onChange={(e) => email = e.target.value} 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
                         <Form.Control.Feedback type="invalid"> Please Enter valid Email. </Form.Control.Feedback>
                     </Form.Group>
 
                 </Form.Row>
-                
-                <Form.Row>
-                <Form.Group as={Col} controlId="formGridAddress">
-                    <Form.Label>Total Experience </Form.Label>
-                    <Form.Control name="total_exp" id="total_exp" required placeholder=" Experience in years" />
-                    <Form.Control.Feedback type="invalid"> Please Enter total experience (in years..) </Form.Control.Feedback>
-                </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridAddress">
+                <Form.Group controlId="formGridAddress">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control name="address" id="address" placeholder="1234 Main St" />
+                    <Form.Control name="address" id="address" placeholder="1234 Main St" required />
                 </Form.Group>
-                </Form.Row>
 
                 <Form.Row>
                     <Form.Group as={Col} controlId="formGridCity">
@@ -161,7 +154,7 @@ const Apply = ({ passData }: TForm) => {
 
                     <Form.Group as={Col} controlId="formGridZip">
                         <Form.Label>Zip</Form.Label>
-                        <Form.Control name="zip" id="zip" required placeholder="Enter 6 digit pincode" />
+                        <Form.Control name="zip" id="zip" minLength={6} maxLength={6} required placeholder="Enter 6 digit pincode" />
                     </Form.Group>
 
                 </Form.Row>
@@ -170,22 +163,16 @@ const Apply = ({ passData }: TForm) => {
 
                     <Form.Group as={Col} controlId="formGridPhone1">
                         <Form.Label>Contact Number</Form.Label>
-                        <Form.Control id="phone1" name="phone1" required placeholder="eg:- 932154XXXX" defaultValue={phone} onChange={(e) => phone = e.target.value} />
-                        <Form.Control.Feedback type="invalid"> Please Enter phone no. </Form.Control.Feedback>
+                        <Form.Control type="tel" id="phone1" name="phone1" maxLength={10} minLength={10} required placeholder="eg:- 932154XXXX" defaultValue={phone.length != 10 ? "Enter your 10 digit mobile number" : phone} onChange={(e) => phone = e.target.value} />
+                        <Form.Control.Feedback type="invalid"> Please Enter valid phone no. </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="Phone2">
                         <Form.Label>Alternate Contact Number</Form.Label>
-                        <Form.Control id="phone2" name="phone2" placeholder="eg:- 932154XXXX" />
+                        <Form.Control type="tel" id="phone2" name="phone2" maxLength={10} minLength={10} placeholder="eg:- 932154XXXX" />
                     </Form.Group>
 
                 </Form.Row>
-
-                <Form.Group controlId="formGridSkillDes">
-                    <Form.Label>Designation</Form.Label>
-                    <Form.Control id ="desig" name="desig" required type="text" placeholder="Write Designation applying for" />
-                    <Form.Control.Feedback type="invalid"> Please Enter Post applying for. </Form.Control.Feedback>
-                </Form.Group>
 
                 <br></br>
                 <h2>Educational Details</h2>
@@ -229,7 +216,7 @@ const Apply = ({ passData }: TForm) => {
                 </Form.Row>
 
                 <br></br>
-                <h2>Job Skills</h2>
+                <h2>Job Skills and Past Experience</h2>
                 <br></br>
 
                 <Form.Row>
@@ -251,20 +238,37 @@ const Apply = ({ passData }: TForm) => {
                         <Form.Control.Feedback type="invalid"> Mention your skill </Form.Control.Feedback>
                     </Form.Group>
                 </Form.Row>
-                
-                <Form.Group as={Col} controlId="formGridResume">
-                        <Form.Label> Previous Company </Form.Label>
-                        <Form.Control type="text" id="Companies_worked_at" required name="Companies_worked_at" defaultValue={Companies_worked_at} onChange={(e) => Companies_worked_at = e.target.value}/>
-                </Form.Group>
 
-                <Form.Group as={Col} controlId="formGridResume">
-                        <Form.Label> Resume Name</Form.Label>
-                        <Form.Control type="text" id="resume_id" required name="resume_id" defaultValue={resume_id} onChange={(e) => resume_id = e.target.value} />
-                </Form.Group>
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridAddress">
+                        <Form.Label>Total Experience </Form.Label>
+                        <Form.Control name="total_exp" id="total_exp" required placeholder=" Experience in years" />
+                        <Form.Control.Feedback type="invalid"> Please Enter total experience (in years..) </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridSkillDes">
+                        <Form.Label>Designation</Form.Label>
+                        <Form.Control id="desig" name="desig" required type="text" placeholder="Write Designation applying for" />
+                        <Form.Control.Feedback type="invalid"> Please Enter Post applying for. </Form.Control.Feedback>
+                    </Form.Group>
+                </Form.Row>
 
-                <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4 mb-4' />
+                <Form.Row>
+                    <Form.Group as={Col} controlId="formGridPreCom">
+                        <Form.Label>Previous Company</Form.Label>
+                        <Form.Control name="Companies_worked_at" id="Companies_worked_at" required placeholder="Previous Company" />
+                        <Form.Control.Feedback type="invalid">Please enter previous company. Write NA if not available </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridSkillDes">
+                        <Form.Label>Resume ID</Form.Label>
+                        <Form.Control id="resume_id" name="resume_id" required type="text" placeholder="Resume ID" value={resume_id} />
+                        <Form.Control.Feedback type="invalid"> Please enter resume ID </Form.Control.Feedback>
+                    </Form.Group>
+                </Form.Row>
+
+                <input type='submit' value='Submit' className='btn btn-dark btn-block mt-4 mb-4 
+                apply-button' style={{ width: "30%" }} />
             </Form>
-        </div>
+        </div >
     );
 }
 
