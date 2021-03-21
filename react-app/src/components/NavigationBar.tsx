@@ -3,11 +3,17 @@ import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import iprofiler from './iprofiler.png';
+import iprofilerlogo from '../assets/iprofilerlogo.png';
 
 const Styles = styled.div`
   .navbar {
     background-color: #FFFFFF;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+    border-radius: 40px;
+    min-height: 80px;
+    margin-top:10px;
+    margin-left:10px;
+    margin-right:10px;
   }
   img {
     height: 4rem;
@@ -44,7 +50,6 @@ const Styles = styled.div`
 .navbar-light .navbar-toggler {
     color: white;
     border-color: white;
-    background-color: gray;
 }
 `;
 
@@ -53,7 +58,7 @@ export const NavigationBar = () => {
     <Styles>
       <Navbar expand="lg" fixed="top">
         <Navbar.Brand href="/" className="brand-border">
-          <img src={iprofiler} alt="iprofiler" />
+          <img src={iprofilerlogo} alt="iprofiler" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
