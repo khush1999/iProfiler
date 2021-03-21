@@ -16,11 +16,11 @@ footer {
   padding-top: 10px;
 }
 
-a {
+.footer-text {
   color:white;
   text-decoration: none;
 }
 
-a:hover {
+.footer-text:hover {
   text-decoration: none;
 }

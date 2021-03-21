@@ -1,0 +1,18 @@
+
+.parent-sign {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-link {
+    color: white;
+}
+
+.sign-link:hover {
+    color: black;
+}
+
+.sign-container {
+    border-radius: 40px 15px 40px 15px;
+}

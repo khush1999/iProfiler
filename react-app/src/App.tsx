@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route } from "react-router-dom";
-import { Homepage } from './pages/Homepage';
 import Pricing from './pages/Pricing';
 import FileUpload from './components/FileUpload';
 import DashboardPage from './pages/DashboardPage';
