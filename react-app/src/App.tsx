@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route } from "react-router-dom";
-import { Homepage } from './pages/Homepage';
+// import { Homepage } from './pages/Homepage';
 import Pricing from './pages/Pricing';
 import FileUpload from './components/FileUpload';
 import DashboardPage from './pages/DashboardPage';
@@ -24,7 +24,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Fragment>
-          <Route exact path="/" component={Homepage} />
+          {/* <Route exact path="/" component={Homepage} /> */}
           <Route exact path="/Pricing" component={Pricing} />
           <Route exact path="/Apply" component={FileUpload} />
           <Route exact path="/Login" component={Login} />

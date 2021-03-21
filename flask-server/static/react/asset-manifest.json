@@ -1,33 +1,31 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.0ecfd8de.chunk.css",
-    "main.js": "/static/react/js/main.3c2feaad.chunk.js",
-    "main.js.map": "/static/react/js/main.3c2feaad.chunk.js.map",
-    "runtime-main.js": "/static/react/js/runtime-main.6cebf9df.js",
-    "runtime-main.js.map": "/static/react/js/runtime-main.6cebf9df.js.map",
+    "main.css": "/static/react/css/main.3990f4b8.chunk.css",
+    "main.js": "/static/react/js/main.6da3bf01.chunk.js",
+    "main.js.map": "/static/react/js/main.6da3bf01.chunk.js.map",
+    "runtime-main.js": "/static/react/js/runtime-main.1591e24b.js",
+    "runtime-main.js.map": "/static/react/js/runtime-main.1591e24b.js.map",
     "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
-    "js/2.4989d094.chunk.js": "/static/react/js/2.4989d094.chunk.js",
-    "js/2.4989d094.chunk.js.map": "/static/react/js/2.4989d094.chunk.js.map",
-    "js/3.d4b26d61.chunk.js": "/static/react/js/3.d4b26d61.chunk.js",
-    "js/3.d4b26d61.chunk.js.map": "/static/react/js/3.d4b26d61.chunk.js.map",
+    "js/2.1856f671.chunk.js": "/static/react/js/2.1856f671.chunk.js",
+    "js/2.1856f671.chunk.js.map": "/static/react/js/2.1856f671.chunk.js.map",
+    "js/3.034294c8.chunk.js": "/static/react/js/3.034294c8.chunk.js",
+    "js/3.034294c8.chunk.js.map": "/static/react/js/3.034294c8.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
     "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
-    "css/main.0ecfd8de.chunk.css.map": "/static/react/css/main.0ecfd8de.chunk.css.map",
-    "js/2.4989d094.chunk.js.LICENSE.txt": "/static/react/js/2.4989d094.chunk.js.LICENSE.txt",
+    "css/main.3990f4b8.chunk.css.map": "/static/react/css/main.3990f4b8.chunk.css.map",
+    "js/2.1856f671.chunk.js.LICENSE.txt": "/static/react/js/2.1856f671.chunk.js.LICENSE.txt",
     "media/Resume.pdf": "/static/react/media/Resume.8356be25.pdf",
-    "media/banner.ee286853.jpg": "/static/react/media/banner.ee286853.jpg",
     "media/font-awesome.min.css": "/static/react/media/fontawesome-webfont.f691f37e.woff",
     "media/iprofiler.e1dba81e.png": "/static/react/media/iprofiler.e1dba81e.png",
     "media/login.bdd13956.svg": "/static/react/media/login.bdd13956.svg",
-    "media/logo.dbf0fc2c.png": "/static/react/media/logo.dbf0fc2c.png",
     "service-worker.js": "/static/react/service-worker.js",
     "service-worker.js.map": "/static/react/service-worker.js.map"
   },
   "entrypoints": [
-    "js/runtime-main.6cebf9df.js",
+    "js/runtime-main.1591e24b.js",
     "css/2.26dd8153.chunk.css",
-    "js/2.4989d094.chunk.js",
-    "css/main.0ecfd8de.chunk.css",
-    "js/main.3c2feaad.chunk.js"
+    "js/2.1856f671.chunk.js",
+    "css/main.3990f4b8.chunk.css",
+    "js/main.6da3bf01.chunk.js"
   ]
 }
