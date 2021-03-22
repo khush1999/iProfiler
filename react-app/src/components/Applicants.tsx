@@ -99,8 +99,8 @@ const Applicants = ({ passData }: TForm) => {
         {passData.pgDegree.length()>1?({passData.ugDegree} + {'-'} + {passData.pgdegree}):{passData.ugDegree}}
         </Card.Subtitle> */}
 
-        {passData.pgDegree.length>1?(<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree} {' | '} {passData.pgDegree}</Card.Subtitle>) 
-        : (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}</Card.Subtitle>)}
+        {passData.pgDegree.length > 1 ? (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree} {' | '} {passData.pgDegree}</Card.Subtitle>)
+          : (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}</Card.Subtitle>)}
 
         <Card.Text className="text-left">
           <h6>Total Experience: {passData.total_exp}</h6>
@@ -114,14 +114,14 @@ const Applicants = ({ passData }: TForm) => {
         <Row>
           <Col sm={6}>
             <Link to={{
-              pathname:"/UserProfile",
-              state:passData
+              pathname: "/UserProfile",
+              state: passData
             }}>
-            <Button variant="primary align-self-end">View Profile</Button>
+              <Button variant="dark align-self-end">View Profile</Button>
             </Link>
           </Col>
           <Col sm={6}>
-            <Button variant="primary align-self-end" onClick={handleResume}>
+            <Button variant="dark align-self-end" onClick={handleResume}>
               View Resume
             </Button>
 

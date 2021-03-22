@@ -3,7 +3,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
 import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import iprofilerlogo from '../assets/iprofilerlogo.png';
+import iprofilerlogo from '../assets/LogoFinal.png';
 
 const Styles = styled.div`
   .navbar {

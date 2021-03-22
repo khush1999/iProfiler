@@ -27,103 +27,107 @@ interface IForm {
     state: string;
     zip: string;
     resume_id: string;
-  }
-  
-  
-export const UserProfile = (props: { location: { state: IForm; }; }) => {
-    
-    let profile = props.location.state;
-    return(
-        <>
-        <NavigationBar />
-        <div className="profile">
-        <div className="page-content page-container" id="page-content">
-        <div className="padding">
-        <div className="row container d-flex justify-content-center">
-            <div className="row-xl-6 row-md-30">
-                <div className="card user-card-full">
-                    <div className="row m-l-0 m-r-0">
-                        <div className="row-sm-4 bg-c-lite-green user-profile">
-                            <div className="card-block text-center text-white">
-                                <div className="m-b-25"> <img src={userprofile} width="300" height="200" className="img-radius" alt="User-Profile-Image" /> </div>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="card-block">
-                                <h3 className="f-w-600 below-space profile-heading">{profile.fname}{' '}{profile.lname}</h3>
-                                <h5 className="f-w-600 below-space">{profile.email}</h5>
-                                <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Personal Information</h6>
-                                <div className="row pro">
-                                    <div className="col">
-                                    <p className="m-b-10 f-w-600">Contact</p>
-                                        <h6 className="text-muted f-w-400">{profile.phone1}</h6> 
-                                    </div>
-                                    <div className="col">
-                                    <p className="m-b-10 f-w-600">Address</p>
-                                        <h6 className="text-muted f-w-400">{profile.address}{','}{profile.city}{','}{profile.state}{'-'}{profile.zip}</h6>
-                                    </div>
-                                    <br/>
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">Date of Birth</p>
-                                        <h6 className="text-muted f-w-400">{profile.dob}</h6>
-                                    </div>
-                                </div>
-                                <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Educational Details</h6>
-                                <div className="row pro">
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">Degree</p>
-                                        <h6 className="text-muted f-w-400 below-space">{profile.ugDegree}</h6>
-                                    </div>
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">college</p>
-                                        <h6 className="text-muted f-w-400 below-space">{profile.ug_University}</h6>
-                                    </div>
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">%</p>
-                                        <h6 className="text-muted f-w-400 below-space">{profile.ugPercentage}</h6>
-                                    </div>
-                                </div>
-                                <div className="row pro">
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">Degree</p>
-                                        <h6 className="text-muted f-w-400 below-space">{profile.pgDegree}</h6>
-                                    </div>
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">college</p>
-                                        <h6 className="text-muted f-w-400 below-space">{profile.pg_University}</h6>
-                                    </div>
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">%</p>
-                                        <h6 className="text-muted f-w-400 below-space">{profile.pgPercentage}</h6>
-                                    </div>
-                                </div>
-                                <br/>
-                                <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Skills</h6>
-                                <div className="row pro">
-                                    <div className="col">
-                                        <h6 className="text-muted f-w-400">{profile.skills1}</h6>
-                                    </div>
-                                    <div className="col">
-                                        <h6 className="text-muted f-w-400 ">{profile.skills2}</h6>
-                                    </div>
-                                    <div className="col">
-                                         <h6 className="text-muted f-w-400">{profile.skills3}</h6>
-                                    </div>
-                                </div>
+}
 
-                                <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Work History</h6>
-                                <div className="row pro">
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">Company</p>
-                                        <h6 className="text-muted f-w-400">{profile.Companies_worked_at}</h6>
-                                    </div>
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">Designation</p>
-                                        <h6 className="text-muted f-w-400">{profile.designition}</h6>
-                                    </div>
-                                    <div className="col">
-                                        <p className="m-b-10 f-w-600">Experience</p>
-                                        <h6 className="text-muted f-w-400">{profile.total_exp} yrs</h6>
+
+export const UserProfile = (props: { location: { state: IForm; }; }) => {
+
+    let profile = props.location.state;
+    return (
+        <>
+            <NavigationBar />
+            <div className="profile">
+                <div className="page-content page-container" id="page-content">
+                    <div className="padding">
+                        <div className="row container d-flex justify-content-center">
+                            <div className="row-xl-6 row-md-30">
+                                <div className="card user-card-full">
+                                    <div className="row m-l-0 m-r-0">
+                                        <div className="row-sm-4 bg-c-lite-green user-profile">
+                                            <div className="card-block text-center text-white">
+                                                <div className="m-b-25"> <img src={userprofile} width="300" height="200" className="img-radius" alt="User-Profile-Image" /> </div>
+                                            </div>
+                                        </div>
+                                        <div className="row pro">
+                                            <div className="card-block">
+                                                <h3 className="f-w-600 below-space profile-heading">{profile.fname}{' '}{profile.lname}</h3>
+                                                <h5 className="f-w-600 below-space">{profile.email}</h5>
+                                                <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Personal Information</h6>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Contact</p>
+                                                        <h6 className="text-muted f-w-400">{profile.phone1}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Address</p>
+                                                        <h6 className="text-muted f-w-400">{profile.address}{','}{profile.city}{','}{profile.state}{'-'}{profile.zip}</h6>
+                                                    </div>
+                                                    <br />
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Date of Birth</p>
+                                                        <h6 className="text-muted f-w-400">{profile.dob}</h6>
+                                                    </div>
+                                                </div>
+                                                <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Educational Details</h6>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Degree</p>
+                                                        <h6 className="text-muted f-w-400 below-space">{profile.ugDegree}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">college</p>
+                                                        <h6 className="text-muted f-w-400 below-space">{profile.ug_University}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">%</p>
+                                                        <h6 className="text-muted f-w-400 below-space">{profile.ugPercentage}</h6>
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Degree</p>
+                                                        <h6 className="text-muted f-w-400 below-space">{profile.pgDegree}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">college</p>
+                                                        <h6 className="text-muted f-w-400 below-space">{profile.pg_University}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">%</p>
+                                                        <h6 className="text-muted f-w-400 below-space">{profile.pgPercentage}</h6>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Skills</h6>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <h6 className="text-muted f-w-400">{profile.skills1}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <h6 className="text-muted f-w-400 ">{profile.skills2}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <h6 className="text-muted f-w-400">{profile.skills3}</h6>
+                                                    </div>
+                                                </div>
+
+                                                <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Work History</h6>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Company</p>
+                                                        <h6 className="text-muted f-w-400">{profile.Companies_worked_at}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Designation</p>
+                                                        <h6 className="text-muted f-w-400">{profile.designition}</h6>
+                                                    </div>
+                                                    <div className="col">
+                                                        <p className="m-b-10 f-w-600">Experience</p>
+                                                        <h6 className="text-muted f-w-400">{profile.total_exp} yrs</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -131,10 +135,6 @@ export const UserProfile = (props: { location: { state: IForm; }; }) => {
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-</div>
-</>
-);
-    }
+        </>
+    );
+}
