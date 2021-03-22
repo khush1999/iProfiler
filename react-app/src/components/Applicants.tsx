@@ -82,6 +82,7 @@ const Applicants = ({ passData }: TForm) => {
       });
   }
   const url = "http://127.0.0.1:5000/getData/" + passData.resume_id;
+
   return (
     <Card
       style={{ width: "18rem", backgroundColor: "#f8f8ff" }}
