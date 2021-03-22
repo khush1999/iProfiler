@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { UserProfile } from "../pages/UserProfile";
 
 interface IForm {
   email: string;
@@ -82,6 +83,7 @@ const Applicants = ({ passData }: TForm) => {
       });
   }
   const url = "http://127.0.0.1:5000/getData/" + passData.resume_id;
+
   return (
     <Card
       style={{ width: "18rem", backgroundColor: "#f8f8ff" }}
@@ -111,7 +113,12 @@ const Applicants = ({ passData }: TForm) => {
         </Card.Text>
         <Row>
           <Col sm={6}>
+            <Link to={{
+              pathname:"/UserProfile",
+              state:passData
+            }}>
             <Button variant="primary align-self-end">View Profile</Button>
+            </Link>
           </Col>
           <Col sm={6}>
             <Button variant="primary align-self-end" onClick={handleResume}>
