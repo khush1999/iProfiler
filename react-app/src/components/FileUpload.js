@@ -9,7 +9,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { JobDes } from "./JobDes";
 
 const mainWidth = { width: "80%", marginTop: "10rem" };
-const divColor = { backgroundColor: '#AE4DFF' };
+const divColor = { backgroundColor: "#AE4DFF" };
 
 const FileUpload = () => {
   const ip = {
@@ -38,7 +38,7 @@ const FileUpload = () => {
   const onChange = (e) => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
-    setDisableButton(!disableButton)
+    setDisableButton(!disableButton);
   };
 
   let form;
@@ -49,7 +49,7 @@ const FileUpload = () => {
       setIsForm(true);
       setIsLoading(false);
     }, 5000);
-  }
+  };
 
   const OnSubmit = async (e) => {
     e.preventDefault();
@@ -79,7 +79,9 @@ const FileUpload = () => {
       setMessage("File Uploaded");
     } catch (err) {
       if (err.response.status === 500) {
-        setMessage("There was a problem with the server");
+        setMessage(
+          "Your resume is not ATS Comaptible, Please try with another format"
+        );
       } else {
         setMessage(err.response.data.msg);
       }
@@ -90,9 +92,16 @@ const FileUpload = () => {
   return (
     <Fragment>
       <NavigationBar />
-      <Container style={mainWidth} className="text-center shadow-lg mb-5 bg-white rounde upload-main">
+      <Container
+        style={mainWidth}
+        className="text-center shadow-lg mb-5 bg-white rounde upload-main"
+      >
         <Row>
-          <Col sm={6} style={divColor} className="text-white font-weight-bold p-4 jd-col">
+          <Col
+            sm={6}
+            style={divColor}
+            className="text-white font-weight-bold p-4 jd-col"
+          >
             <JobDes />
           </Col>
           <Col sm={6} className="bg-light text-dark form-container upload-col">
@@ -105,28 +114,40 @@ const FileUpload = () => {
                   type="file"
                   className="custom-file-input"
                   id="customFile"
-                  onChange={onChange} required
+                  onChange={onChange}
+                  required
                 />
-                <label className="custom-file-label text-left" htmlFor="customFile">
+                <label
+                  className="custom-file-label text-left"
+                  htmlFor="customFile"
+                >
                   {filename}
                 </label>
               </div>
 
               {progressBar && <Progress percentage={uploadPercentage} />}
 
-              {!disableButton && <input
-                type="submit"
-                value="Upload"
-                className="btn btn-dark btn-block mt-4"
-              />}
+              {!disableButton && (
+                <input
+                  type="submit"
+                  value="Upload"
+                  className="btn btn-dark btn-block mt-4"
+                />
+              )}
             </form>
           </Col>
         </Row>
-      </Container >
-      { console.log("Value is =", data)}
-      { isLoading ? <div className="load"><img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" /></div> : " "}
-      { isForm ? <Apply passData={data} /> : " "}
-    </Fragment >
+      </Container>
+      {console.log("Value is =", data)}
+      {isLoading ? (
+        <div className="load">
+          <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" />
+        </div>
+      ) : (
+        " "
+      )}
+      {isForm ? <Apply passData={data} /> : " "}
+    </Fragment>
   );
 };
 

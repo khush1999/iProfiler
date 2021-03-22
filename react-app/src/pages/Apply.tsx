@@ -46,33 +46,32 @@ const Apply = ({ passData }: TForm) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const OnSubmit = async (jsondata) => {
-        if (jsondata != null) {
-            try {
-                console.log(jsondata)
-                const res = await axios.post("/create", jsondata,
-                    {
-                        headers: {
-                            "content_type": "application/json",
-                        },
-                    }
-                );
+    // const OnSubmit = async (jsondata) => {
+    //     if (jsondata != null) {
+    //         try {
+    //             console.log(jsondata)
+    //             const res = await axios.post("/create", jsondata,
+    //                 {
+    //                     headers: {
+    //                         "content_type": "application/json",
+    //                     },
+    //                 }
+    //             );
 
-            }
-            catch (err) {
-                if (err.response.status === 500) {
-                    console.log('There was a problem with the server');
-                } else {
-                    console.log(err.response.data.msg);
-                }
-            }
+    //         }
+    //         catch (err) {
+    //             if (err.response.status === 500) {
+    //                 console.log('There was a problem with the server');
+    //             } else {
+    //                 console.log(err.response.data.msg);
+    //             }
+    //         }
 
-        }
-    };
+    //     }
+    // };
 
     // Form Validation:
     const [validated, setValidated] = useState(false);
-
     const handleSubmit1 = (event) => {
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
@@ -85,6 +84,7 @@ const Apply = ({ passData }: TForm) => {
         }
         setValidated(true);
     };
+
     return (
         <div className="main-form mb-4 shadow-lg p-4">
             <Modal show={show} onHide={handleClose}>
@@ -127,7 +127,8 @@ const Apply = ({ passData }: TForm) => {
 
                     <Form.Group as={Col} controlId="formGridEmail">
                         <Form.Label>Email</Form.Label>
-                        <Form.Control type="email" id="email" name="email" placeholder="Enter Email" required defaultValue={email} onChange={(e) => email = e.target.value} />
+                        <Form.Control type="email" id="email" name="email" placeholder="Enter Email" required defaultValue={email} onChange={(e) => email = e.target.value} 
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" />
                         <Form.Control.Feedback type="invalid"> Please Enter valid Email. </Form.Control.Feedback>
                     </Form.Group>
 
@@ -135,7 +136,7 @@ const Apply = ({ passData }: TForm) => {
 
                 <Form.Group controlId="formGridAddress">
                     <Form.Label>Address</Form.Label>
-                    <Form.Control name="address" id="address" placeholder="1234 Main St" />
+                    <Form.Control name="address" id="address" placeholder="1234 Main St" required />
                 </Form.Group>
 
                 <Form.Row>
@@ -153,7 +154,7 @@ const Apply = ({ passData }: TForm) => {
 
                     <Form.Group as={Col} controlId="formGridZip">
                         <Form.Label>Zip</Form.Label>
-                        <Form.Control name="zip" id="zip" required placeholder="Enter 6 digit pincode" />
+                        <Form.Control name="zip" id="zip" minLength={6} maxLength={6} required placeholder="Enter 6 digit pincode" />
                     </Form.Group>
 
                 </Form.Row>
@@ -162,13 +163,13 @@ const Apply = ({ passData }: TForm) => {
 
                     <Form.Group as={Col} controlId="formGridPhone1">
                         <Form.Label>Contact Number</Form.Label>
-                        <Form.Control id="phone1" name="phone1" required placeholder="eg:- 932154XXXX" defaultValue={phone} onChange={(e) => phone = e.target.value} />
-                        <Form.Control.Feedback type="invalid"> Please Enter phone no. </Form.Control.Feedback>
+                        <Form.Control type="tel" id="phone1" name="phone1" maxLength={10} minLength={10} required placeholder="eg:- 932154XXXX" defaultValue={phone.length != 10 ? "Enter your 10 digit mobile number" : phone} onChange={(e) => phone = e.target.value} />
+                        <Form.Control.Feedback type="invalid"> Please Enter valid phone no. </Form.Control.Feedback>
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="Phone2">
                         <Form.Label>Alternate Contact Number</Form.Label>
-                        <Form.Control id="phone2" name="phone2" placeholder="eg:- 932154XXXX" />
+                        <Form.Control type="tel" id="phone2" name="phone2" maxLength={10} minLength={10} placeholder="eg:- 932154XXXX" />
                     </Form.Group>
 
                 </Form.Row>
