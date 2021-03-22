@@ -36,6 +36,7 @@ interface IForm {
 }
 
 const DashboardPage = () => {
+  console.log("DashhhhhhhhhhhBoarddddddddddddddd")
   const ip = {
     email: "",
     phone1: "",
@@ -75,6 +76,7 @@ const DashboardPage = () => {
   const [prevExp, setPrevExp] = useState("");
   const [prevDes, setPrevDes] = useState("");
   const [applicantData, setApplicantData] = useState(data);
+  const [homePage, setHomePage] = useState(false);
 
   const history = useHistory();
 
@@ -177,13 +179,16 @@ const DashboardPage = () => {
           <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
             <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
           </Navbar.Brand>
-          <a href="/">
+          <Link to={{
+            pathname: "/",
+            state: !homePage
+          }} >
             <i
               className="fa fa-home pr-2"
               style={{ fontSize: "1.75em" }}
             />
             Home
-          </a>
+          </Link>
           <a className="active sidebar-link" href="#">
             <i
               className="fa fa-user pr-2"
