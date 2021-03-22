@@ -4,16 +4,16 @@ import "font-awesome/css/font-awesome.min.css";
 import { NavigationBar } from "./NavigationBar";
 import emailjs from "emailjs-com";
 
-export default function Contact() {
+export default function InviteApplicant() {
   function sendEmail(e) {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "service_7rxqjtc",
-        "template_zl1oogq",
+        "service_i5xkb9q",
+        "template_he26z9a",
         e.target,
-        "user_s3by4SVXrmIx9wtg3Gpf2"
+        "user_g4abNbCtzFbXRaay1AgZK"
       )
       .then(
         (result) => {
@@ -32,44 +32,14 @@ export default function Contact() {
         <section className="contact-page-sec">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
+              <div className="col-md">
                 <div className="contact-info">
                   <div className="contact-info-item">
                     <div className="contact-info-icon">
-                      <i className="fa fa-map-marker"></i>
+                      <i className="fa fa-user-plus"></i>
                     </div>
                     <div className="contact-info-text">
-                      <h2>address</h2>
-                      <span>1215 Ring Road, iProfiler </span>
-                      <span>Banglore , INDIA</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="contact-info">
-                  <div className="contact-info-item">
-                    <div className="contact-info-icon">
-                      <i className="fa fa-envelope"></i>
-                    </div>
-                    <div className="contact-info-text">
-                      <h2>E-mail us at </h2>
-                      <span>info@iprofiler.com</span>
-                      <span>queries@iprofiler.com</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="contact-info">
-                  <div className="contact-info-item">
-                    <div className="contact-info-icon">
-                      <i className="fa fa-clock-o"></i>
-                    </div>
-                    <div className="contact-info-text">
-                      <h2> Office working hours </h2>
-                      <span> Mon - Thu 10:00 am - 7.00 pm</span>
-                      <span> Fri - Sat 11.00 am - 5.00 pm</span>
+                      <h2>Send an invitation to the Candidate</h2>\{" "}
                     </div>
                   </div>
                 </div>
@@ -85,7 +55,7 @@ export default function Contact() {
                         <div className="single-input-field">
                           <input
                             type="text"
-                            placeholder="Your Name"
+                            placeholder="Enter the Candidate's Name"
                             name="name"
                           />
                         </div>
@@ -94,7 +64,7 @@ export default function Contact() {
                         <div className="single-input-field">
                           <input
                             type="email"
-                            placeholder="E-mail"
+                            placeholder="Enter the Candidate's E-mail ID"
                             name="email"
                             required
                           />
@@ -104,7 +74,7 @@ export default function Contact() {
                         <div className="single-input-field">
                           <input
                             type="text"
-                            placeholder="Phone Number"
+                            placeholder="Enter the Candidate's Phone Number"
                             name="phone"
                           />
                         </div>
@@ -127,7 +97,7 @@ export default function Contact() {
                         </div>
                       </div>
                       <div className="single-input-fieldsbtn">
-                        <input type="submit" value="Send Now" />
+                        <input type="submit" value="Send Invitation" />
                       </div>
                     </div>
                   </form>
