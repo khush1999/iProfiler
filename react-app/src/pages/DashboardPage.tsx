@@ -1,5 +1,5 @@
 import Applicant from "../components/Applicants";
-import { Row, Col, Dropdown, Nav, Navbar } from "react-bootstrap";
+import { Row, Col, Dropdown, Nav, Navbar, Button } from "react-bootstrap";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./DashboardPage.css";
@@ -7,7 +7,8 @@ import "font-awesome/css/font-awesome.min.css";
 import { Link, useHistory } from "react-router-dom";
 import iprofiler from "../assets/LogoFinal.png";
 import { LinkContainer } from "react-router-bootstrap";
-import Fuse from 'fuse.js'
+import Fuse from 'fuse.js';
+import FilterForm from "../components/FilterForm";
 
 interface IForm {
   email: string;
@@ -77,8 +78,13 @@ const DashboardPage = () => {
   const [prevDes, setPrevDes] = useState("");
   const [applicantData, setApplicantData] = useState(data);
   const [homePage, setHomePage] = useState(false);
+  const [show, setShow] = useState(false);
+
 
   const history = useHistory();
+
+  const handleShow = () => { setShow(true) };
+  const handleClose = () => { setShow(false) };
 
   function GetData() {
     useEffect(() => {
@@ -175,6 +181,7 @@ const DashboardPage = () => {
     <>
       {GetData()}
       <div className="main-dashboard">
+        <FilterForm show={show} handleClose={handleClose} />
         <div className="sidebar" id="side">
           <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
             <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
@@ -228,7 +235,7 @@ const DashboardPage = () => {
           <div className="filter">
             <Row className="filter-row">
               <Col md={6} className="dashboard-filters">
-                <div className="select">
+                {/* <div className="select">
                   <select onChange={(e) => Courses(e.target.value)}>
                     <option value="none" selected disabled hidden>
                       Skills
@@ -267,7 +274,10 @@ const DashboardPage = () => {
                     <option value="HR">HR</option>
                     <option value="DevOps">DevOps</option>
                   </select>
-                </div>
+                </div> */}
+                <Button variant="dark" onClick={handleShow}>
+                  Filters
+                </Button>
               </Col>
               <Col md={6} className="pr-0">
                 <div className="search mr-0">
