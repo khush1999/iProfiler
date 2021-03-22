@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { UserProfile } from "../pages/UserProfile";
 
 interface IForm {
   email: string;
@@ -98,8 +99,8 @@ const Applicants = ({ passData }: TForm) => {
         {passData.pgDegree.length()>1?({passData.ugDegree} + {'-'} + {passData.pgdegree}):{passData.ugDegree}}
         </Card.Subtitle> */}
 
-        {passData.pgDegree.length>1?(<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree} {' | '} {passData.pgDegree}</Card.Subtitle>) 
-        : (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}</Card.Subtitle>)}
+        {passData.pgDegree.length > 1 ? (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree} {' | '} {passData.pgDegree}</Card.Subtitle>)
+          : (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}</Card.Subtitle>)}
 
         <Card.Text className="text-left">
           <h6>Total Experience: {passData.total_exp}</h6>
@@ -112,10 +113,15 @@ const Applicants = ({ passData }: TForm) => {
         </Card.Text>
         <Row>
           <Col sm={6}>
-            <Button variant="primary align-self-end">View Profile</Button>
+            <Link to={{
+              pathname: "/UserProfile",
+              state: passData
+            }}>
+              <Button variant="dark align-self-end">View Profile</Button>
+            </Link>
           </Col>
           <Col sm={6}>
-            <Button variant="primary align-self-end" onClick={handleResume}>
+            <Button variant="dark align-self-end" onClick={handleResume}>
               View Resume
             </Button>
 

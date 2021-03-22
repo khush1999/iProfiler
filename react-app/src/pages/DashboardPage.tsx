@@ -1,12 +1,13 @@
 import Applicant from "../components/Applicants";
-import { Row, Col, Dropdown, Nav } from "react-bootstrap";
+import { Row, Col, Dropdown, Nav, Navbar } from "react-bootstrap";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./DashboardPage.css";
 import "font-awesome/css/font-awesome.min.css";
 import { Link, useHistory } from "react-router-dom";
-import iprofiler from "../assets/iprofiler.png";
+import iprofiler from "../assets/LogoFinal.png";
 import { LinkContainer } from "react-router-bootstrap";
+import Fuse from 'fuse.js'
 
 interface IForm {
   email: string;
@@ -73,7 +74,7 @@ const DashboardPage = () => {
   const [prevSkill, setPrevSkill] = useState("");
   const [prevExp, setPrevExp] = useState("");
   const [prevDes, setPrevDes] = useState("");
-  var exp, exp1;
+  const [applicantData, setApplicantData] = useState(data);
 
   const history = useHistory();
 
@@ -84,7 +85,7 @@ const DashboardPage = () => {
           console.log("////////////////////////////////////", res.data);
           setData(res.data);
           setDefData(res.data);
-
+          setApplicantData(res.data);
           setUserData(true);
         });
       } else {
@@ -146,39 +147,60 @@ const DashboardPage = () => {
     setDropRole(roleType);
     setPrevDes(roleType);
   };
-  const list = "/readcsv" + data[0].email;
+
+  const searchData = (pattern) => {
+    if (!pattern) {
+      setApplicantData(data);
+      return;
+    }
+    const fuse = new Fuse(applicantData, {
+      keys: ["fname", "lname"],
+    });
+
+    const result = fuse.search(pattern);
+    const matches: IForm[] = [];
+    if (!result.length) {
+      setApplicantData([]);
+    } else {
+      result.forEach(({ item }) => {
+        matches.push(item);
+      });
+      setApplicantData(matches);
+    }
+  };
+
   return (
     <>
       {GetData()}
       <div className="main-dashboard">
-        <div className="sidebar">
-          <div>
-            <img src={iprofiler} alt="iprofiler" />
-          </div>
+        <div className="sidebar" id="side">
+          <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
+            <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
+          </Navbar.Brand>
           <a href="/">
             <i
-              className="fa fa-fw fa-home pr-2"
+              className="fa fa-home pr-2"
               style={{ fontSize: "1.75em" }}
             />
             Home
           </a>
-          <a className="active" href="#">
+          <a className="active sidebar-link" href="#">
             <i
-              className="fa fa-fw fa-user pr-2"
+              className="fa fa-user pr-2"
               style={{ fontSize: "1.75em" }}
             />
             Applicants
           </a>
           <a href="#">
             <i
-              className="fa fa-fw fa-briefcase pr-2"
+              className="fa fa-briefcase pr-2"
               style={{ fontSize: "1.75em" }}
             />
             Job Postings
           </a>
           <a href="#" onClick={handleClick}>
             <i
-              className="fa fa-fw fa-power-off pr-2"
+              className="fa fa-power-off pr-2"
               style={{ fontSize: "1.75em" }}
             />
             Logout
@@ -187,12 +209,12 @@ const DashboardPage = () => {
 
         <div className="content">
           <Row className="heading-style">
-            <h4 className="display-applicant">Displaying Applicants</h4>
+            <h3 className="display-applicant">Displaying Applicants</h3>
             <LinkContainer to="/SendEmail">
               <Nav.Link>
                 <i
                   className="fa fa-user-plus"
-                  style={{ fontSize: "1.75em", marginTop: "1.3rem" }}
+                  style={{ fontSize: "1.75em", color: "#AE4DFF" }}
                 ></i>
               </Nav.Link>
             </LinkContainer>
@@ -252,7 +274,8 @@ const DashboardPage = () => {
                     className="search-input"
                     onChange={(e) => {
                       setIsSearched(!isSearched);
-                      setSearchTerm(e.target.value);
+                      // setSearchTerm(e.target.value);
+                      searchData(e.target.value);
                     }}
                   />
                 </div>
@@ -266,25 +289,18 @@ const DashboardPage = () => {
               userData &&
               data.map((user) => <Applicant passData={user} />)}
 
+            {/* For Search Functionality */}
             {userData &&
               isSearched &&
-              data
-                .filter(
-                  (user) =>
-                    user.fname == searchTerm ||
-                    user.lname == searchTerm ||
-                    user.city == searchTerm ||
-                    user.designition == searchTerm
-                )
-                .map((user) => <Applicant passData={user} />)}
+              applicantData.map((user) => <Applicant passData={user} />)}
 
             {DropSkill != "" &&
               data
                 .filter(
                   (user) =>
-                    user.skills1 == DropSkill ||
-                    user.skills2 == DropSkill ||
-                    user.skills3 == DropSkill
+                    user.skills1.toLowerCase() == DropSkill.toLowerCase() ||
+                    user.skills2.toLowerCase() == DropSkill.toLowerCase() ||
+                    user.skills3.toLowerCase() == DropSkill.toLowerCase()
                 )
                 .map((user) => <Applicant passData={user} />)}
 
@@ -294,28 +310,16 @@ const DashboardPage = () => {
                   DropExp == "0-3 Years"
                     ? user.total_exp <= 3
                     : DropExp == "3-6 Years"
-                    ? user.total_exp > 3 && user.total_exp <= 6
-                    : DropExp == "6-9 Years"
-                    ? user.total_exp > 6 && user.total_exp <= 9
-                    : user.total_exp > 9
+                      ? user.total_exp > 3 && user.total_exp <= 6
+                      : DropExp == "6-9 Years"
+                        ? user.total_exp > 6 && user.total_exp <= 9
+                        : user.total_exp > 9
                 )
                 .map((user) => <Applicant passData={user} />)}
 
             {DropRole != "" &&
               data
                 .filter((user) => user.designition === DropRole)
-                .map((user) => <Applicant passData={user} />)}
-
-            {userData &&
-              isSearched &&
-              data
-                .filter(
-                  (user) =>
-                    user.fname == searchTerm ||
-                    user.lname == searchTerm ||
-                    user.city == searchTerm ||
-                    user.designition == searchTerm
-                )
                 .map((user) => <Applicant passData={user} />)}
           </div>
         </div>
