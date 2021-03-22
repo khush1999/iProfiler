@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.8ee573f5.chunk.css",
-    "main.js": "/static/react/js/main.02092309.chunk.js",
-    "main.js.map": "/static/react/js/main.02092309.chunk.js.map",
+    "main.css": "/static/react/css/main.f67f1635.chunk.css",
+    "main.js": "/static/react/js/main.79c71312.chunk.js",
+    "main.js.map": "/static/react/js/main.79c71312.chunk.js.map",
     "runtime-main.js": "/static/react/js/runtime-main.7cd19893.js",
     "runtime-main.js.map": "/static/react/js/runtime-main.7cd19893.js.map",
     "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
@@ -12,7 +12,7 @@
     "js/3.d5fb9531.chunk.js.map": "/static/react/js/3.d5fb9531.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
     "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
-    "css/main.8ee573f5.chunk.css.map": "/static/react/css/main.8ee573f5.chunk.css.map",
+    "css/main.f67f1635.chunk.css.map": "/static/react/css/main.f67f1635.chunk.css.map",
     "js/2.ca97a401.chunk.js.LICENSE.txt": "/static/react/js/2.ca97a401.chunk.js.LICENSE.txt",
     "media/landingpage.css": "/static/react/media/bannerbg.b495063f.png",
     "media/font-awesome.min.css": "/static/react/media/fontawesome-webfont.f691f37e.woff",
@@ -28,7 +28,7 @@
     "js/runtime-main.7cd19893.js",
     "css/2.26dd8153.chunk.css",
     "js/2.ca97a401.chunk.js",
-    "css/main.8ee573f5.chunk.css",
-    "js/main.02092309.chunk.js"
+    "css/main.f67f1635.chunk.css",
+    "js/main.79c71312.chunk.js"
   ]
 }
