@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.fce6ae9a.chunk.css",
-    "main.js": "/static/react/js/main.29c4fd50.chunk.js",
-    "main.js.map": "/static/react/js/main.29c4fd50.chunk.js.map",
-    "runtime-main.js": "/static/react/js/runtime-main.6cebf9df.js",
-    "runtime-main.js.map": "/static/react/js/runtime-main.6cebf9df.js.map",
+    "main.css": "/static/react/css/main.35081dcc.chunk.css",
+    "main.js": "/static/react/js/main.0cdefb7f.chunk.js",
+    "main.js.map": "/static/react/js/main.0cdefb7f.chunk.js.map",
+    "runtime-main.js": "/static/react/js/runtime-main.45061d47.js",
+    "runtime-main.js.map": "/static/react/js/runtime-main.45061d47.js.map",
     "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
-    "js/2.2efafce7.chunk.js": "/static/react/js/2.2efafce7.chunk.js",
-    "js/2.2efafce7.chunk.js.map": "/static/react/js/2.2efafce7.chunk.js.map",
-    "js/3.d4b26d61.chunk.js": "/static/react/js/3.d4b26d61.chunk.js",
-    "js/3.d4b26d61.chunk.js.map": "/static/react/js/3.d4b26d61.chunk.js.map",
+    "js/2.d7479c27.chunk.js": "/static/react/js/2.d7479c27.chunk.js",
+    "js/2.d7479c27.chunk.js.map": "/static/react/js/2.d7479c27.chunk.js.map",
+    "js/3.c914aafe.chunk.js": "/static/react/js/3.c914aafe.chunk.js",
+    "js/3.c914aafe.chunk.js.map": "/static/react/js/3.c914aafe.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
     "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
-    "css/main.fce6ae9a.chunk.css.map": "/static/react/css/main.fce6ae9a.chunk.css.map",
-    "js/2.2efafce7.chunk.js.LICENSE.txt": "/static/react/js/2.2efafce7.chunk.js.LICENSE.txt",
+    "css/main.35081dcc.chunk.css.map": "/static/react/css/main.35081dcc.chunk.css.map",
+    "js/2.d7479c27.chunk.js.LICENSE.txt": "/static/react/js/2.d7479c27.chunk.js.LICENSE.txt",
     "media/landingpage.css": "/static/react/media/bannerbg.b495063f.png",
     "media/font-awesome.min.css": "/static/react/media/fontawesome-webfont.f691f37e.woff",
     "media/iprofiler.e1dba81e.png": "/static/react/media/iprofiler.e1dba81e.png",
@@ -21,14 +21,15 @@
     "media/login.bdd13956.svg": "/static/react/media/login.bdd13956.svg",
     "media/rightimg.24c2051c.png": "/static/react/media/rightimg.24c2051c.png",
     "media/signin.b494b87e.svg": "/static/react/media/signin.b494b87e.svg",
+    "media/userprofile.f672eee0.jpg": "/static/react/media/userprofile.f672eee0.jpg",
     "service-worker.js": "/static/react/service-worker.js",
     "service-worker.js.map": "/static/react/service-worker.js.map"
   },
   "entrypoints": [
-    "js/runtime-main.6cebf9df.js",
+    "js/runtime-main.45061d47.js",
     "css/2.26dd8153.chunk.css",
-    "js/2.2efafce7.chunk.js",
-    "css/main.fce6ae9a.chunk.css",
-    "js/main.29c4fd50.chunk.js"
+    "js/2.d7479c27.chunk.js",
+    "css/main.35081dcc.chunk.css",
+    "js/main.0cdefb7f.chunk.js"
   ]
 }
