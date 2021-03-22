@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { UserProfile } from "../pages/UserProfile";
 
 interface IForm {
   email: string;
@@ -55,7 +56,10 @@ const Applicants = ({ passData }: TForm) => {
   //     console.log(response);
   //   })
   // }
+
+
   return (
+    <>
     <Card style={{ width: '18rem', backgroundColor: "#f8f8ff" }} className="shadow p-3 mb-5 
     bg-white rounded">
       <Card.Body>
@@ -74,7 +78,12 @@ const Applicants = ({ passData }: TForm) => {
         </Card.Text>
         <Row>
           <Col sm={6}>
+            <Link to={{
+              pathname:"/UserProfile",
+              state:passData
+            }}>
             <Button variant="primary align-self-end">View Profile</Button>
+            </Link>
           </Col>
           <Col sm={6}>
             {/* <Button variant="primary align-self-end" onClick = {handleResume}>View Resume</Button> */}
@@ -84,6 +93,7 @@ const Applicants = ({ passData }: TForm) => {
         </Row>
       </Card.Body>
     </Card>
+    </>
   );
 };
 

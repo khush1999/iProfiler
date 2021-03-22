@@ -2,8 +2,21 @@ import React from 'react'
 import './contact.css';
 import 'font-awesome/css/font-awesome.min.css';
 import { NavigationBar } from './NavigationBar';
+import emailjs from 'emailjs-com';
 
 export default function Contact() {
+    function sendEmail(e) {
+        e.preventDefault();
+    
+        emailjs.sendForm('service_i5xkb9q', 'template_he26z9a', e.target, 'user_g4abNbCtzFbXRaay1AgZK')
+          .then((result) => {
+              console.log(result.text);
+          }, (error) => {
+              console.log(error.text);
+          });
+          e.target.reset()
+      }
+
     return (
         <>
         <NavigationBar />
@@ -58,7 +71,7 @@ export default function Contact() {
             <div className="col-md-8">
             <div className="contact-page-form">
                 <h2>Get in Touch</h2> 
-                <form action="contact-mail.php" method="post">
+                <form onSubmit={sendEmail}>
                 <div className="row">
                 <div className="col-md-6 col-sm-6 col-xs-12">
                     <div className="single-input-field">
