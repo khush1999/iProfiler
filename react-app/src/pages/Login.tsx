@@ -51,7 +51,7 @@ export const Login = () => {
 
     return (
         <>
-            <NavigationBar />
+            <NavigationBar navigationState={false} />
             <Container style={mainWidth} className="login-container text-center shadow-lg mb-5 bg-white rounde">
                 <Row>
                     <Col sm={5} style={divColor} className="text-white font-weight-bold p-3 col-container-1">
