@@ -36,8 +36,20 @@ interface IForm {
   resume_id: string;
 }
 
+interface IFilterData {
+  Skills: string,
+  Experience: string,
+  Designation: string
+}
+
+type TFilterData = {
+  myData: IFilterData[];
+}
+
+// props: { location: { state: IFilterData; }; }
+
 const DashboardPage = () => {
-  console.log("DashhhhhhhhhhhBoarddddddddddddddd")
+  // console.log("DashhhhhhhhhhhBoarddddddddddddddd", props.location.state);
   const ip = {
     email: "",
     phone1: "",
@@ -64,9 +76,16 @@ const DashboardPage = () => {
     resume_id: "",
   };
 
+  const filData = {
+    Skills: "",
+    Experience: "",
+    Designation: ""
+  }
+
   const [userData, setUserData] = useState(false);
   const [data, setData] = useState([ip]);
   const [Defdata, setDefData] = useState([ip]);
+  const [processedData, setProcessedData] = useState([ip]);
   const [searchTerm, setSearchTerm] = useState("");
   const [isSearched, setIsSearched] = useState(false);
   const [message, setMessage] = useState("");
@@ -79,12 +98,71 @@ const DashboardPage = () => {
   const [applicantData, setApplicantData] = useState(data);
   const [homePage, setHomePage] = useState(false);
   const [show, setShow] = useState(false);
+  const [multiFilterData, setMultiFilterData] = useState(filData);
+  const [isFiltered, setIsFiltered] = useState(false);
 
 
   const history = useHistory();
 
   const handleShow = () => { setShow(true) };
   const handleClose = () => { setShow(false) };
+  const handleFilterSubmit = async (filterData: any) => {
+    console.log("!!!!!!!!!!!!!!!!!!!!!", filterData);
+    setMultiFilterData(filterData);
+    setIsFiltered(true);
+    setData(Defdata);
+    //If Skills is not all and a selected one
+    if (multiFilterData.Skills != "") {
+      //filteredData consists of selected skill
+      setProcessedData(data.filter((user) =>
+      (
+        user.skills1.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
+        user.skills2.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
+        user.skills3.toLowerCase() == multiFilterData.Skills.toLowerCase()
+      )))
+      console.log("Ifffffff reached Skills", processedData)
+    } else {
+      //If skills is ALL
+      setProcessedData(Defdata);
+      console.log("Elseeeeee reached Skills", processedData)
+    }//Fine
+
+    //If length of processed data is zero too kalti maar
+    if (processedData.length === 0) {
+      console.log("Kalitiiiiiiiiii maaaaaaar rahaaaaaaaaa hoooon 1111111")
+      return;
+    }
+
+    //If experience is not ALL 
+    //if experience is ALL then final filtered result will be processedData
+    if (multiFilterData.Experience != "") {
+      setProcessedData(processedData.filter((user) =>
+        multiFilterData.Experience == "0-3 Years"
+          ? user.total_exp <= 3
+          : multiFilterData.Experience == "3-6 Years"
+            ? user.total_exp > 3 && user.total_exp <= 6
+            : multiFilterData.Experience == "6-9 Years"
+              ? user.total_exp > 6 && user.total_exp <= 9
+              : user.total_exp > 9))
+      console.log("reached experience", processedData)
+    }
+
+    //If Designation is not ALL 
+    //If processeddata length is greater than 0 then filter will be applied
+    //Else Function se exit final result is processedData
+    //Else processedData will remain same
+
+    if (processedData.length === 0) {
+      console.log("Kalitiiiiiiiiii maaaaaaar rahaaaaaaaaa hoooon 2222222")
+      return;
+    }
+
+    if (multiFilterData.Designation != "") {
+      setProcessedData(processedData.filter((user) =>
+        user.designition === multiFilterData.Designation))
+      console.log("reached designation", processedData)
+    }
+  };
 
   function GetData() {
     useEffect(() => {
@@ -181,7 +259,7 @@ const DashboardPage = () => {
     <>
       {GetData()}
       <div className="main-dashboard">
-        <FilterForm show={show} handleClose={handleClose} />
+        <FilterForm show={show} handleClose={handleClose} handleFilterSubmit={handleFilterSubmit} />
         <div className="sidebar" id="side">
           <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
             <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
@@ -235,46 +313,6 @@ const DashboardPage = () => {
           <div className="filter">
             <Row className="filter-row">
               <Col md={6} className="dashboard-filters">
-                {/* <div className="select">
-                  <select onChange={(e) => Courses(e.target.value)}>
-                    <option value="none" selected disabled hidden>
-                      Skills
-                    </option>
-                    <option value="All">All</option>
-                    <option value="Java">Java</option>
-                    <option value="Python">Python</option>
-                    <option value="Django">Django</option>
-                    <option value="C">C/C++</option>
-                    <option value="React">React</option>
-                    <option value="Javascript">Javascript</option>
-                  </select>
-                </div>
-
-                <div className="select">
-                  <select onChange={(e) => Experience(e.target.value)}>
-                    <option value="none" selected disabled hidden>
-                      Experience
-                    </option>
-                    <option value="All">All</option>
-                    <option value="0-3 Years">0-3 Years</option>
-                    <option value="3-6 Years">3-6 Years</option>
-                    <option value="6-9 Years">6-9 Years</option>
-                    <option value=">9 Years">{">"}9 Years</option>
-                  </select>
-                </div>
-
-                <div className="select">
-                  <select onChange={(e) => Role(e.target.value)}>
-                    <option value="none" selected disabled hidden>
-                      Designation
-                    </option>
-                    <option value="All">All</option>
-                    <option value="SDE">SDE</option>
-                    <option value="SDET">SDET</option>
-                    <option value="HR">HR</option>
-                    <option value="DevOps">DevOps</option>
-                  </select>
-                </div> */}
                 <Button variant="dark" onClick={handleShow}>
                   Filters
                 </Button>
@@ -289,7 +327,6 @@ const DashboardPage = () => {
                     className="search-input"
                     onChange={(e) => {
                       setIsSearched(!isSearched);
-                      // setSearchTerm(e.target.value);
                       searchData(e.target.value);
                     }}
                   />
@@ -299,8 +336,9 @@ const DashboardPage = () => {
           </div>
 
           <div className="grid-container justify-content-around">
+            {/* For displaying all data*/}
             {!isSearched &&
-              DropSkill === "" &&
+              !isFiltered &&
               userData &&
               data.map((user) => <Applicant passData={user} />)}
 
@@ -309,17 +347,31 @@ const DashboardPage = () => {
               isSearched &&
               applicantData.map((user) => <Applicant passData={user} />)}
 
-            {DropSkill != "" &&
-              data
+            {(isFiltered && processedData.length > 0)
+              ? (processedData.map((user) => <Applicant passData={user} />))
+              : (isFiltered) ? (<h2>No such results found !!</h2>) : ""
+            }
+
+            {/* {(multiFilterData.Skills != "" || multiFilterData.Experience != "" ||
+              multiFilterData.Designation != "") && data
                 .filter(
                   (user) =>
-                    user.skills1.toLowerCase() == DropSkill.toLowerCase() ||
-                    user.skills2.toLowerCase() == DropSkill.toLowerCase() ||
-                    user.skills3.toLowerCase() == DropSkill.toLowerCase()
+                    (user.skills1.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
+                      user.skills2.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
+                      user.skills3.toLowerCase() == multiFilterData.Skills.toLowerCase()) &&
+                    (
+                      multiFilterData.Experience == "0-3 Years"
+                        ? user.total_exp <= 3
+                        : multiFilterData.Experience == "3-6 Years"
+                          ? user.total_exp > 3 && user.total_exp <= 6
+                          : multiFilterData.Experience == "6-9 Years"
+                            ? user.total_exp > 6 && user.total_exp <= 9
+                            : user.total_exp > 9
+                    )
                 )
-                .map((user) => <Applicant passData={user} />)}
+                .map((user) => <Applicant passData={user} />)} */}
 
-            {DropExp != "" &&
+            {/* {DropExp != "" &&
               data
                 .filter((user) =>
                   DropExp == "0-3 Years"
@@ -335,7 +387,7 @@ const DashboardPage = () => {
             {DropRole != "" &&
               data
                 .filter((user) => user.designition === DropRole)
-                .map((user) => <Applicant passData={user} />)}
+                .map((user) => <Applicant passData={user} />)} */}
           </div>
         </div>
       </div>
