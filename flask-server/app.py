@@ -204,4 +204,4 @@ def logout():
         return "YO logged out here"
 
 
-app.run(debug="true")
+app.run(debug="true", host='0.0.0.0', port=5000)

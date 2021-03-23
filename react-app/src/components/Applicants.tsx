@@ -48,7 +48,7 @@ const Applicants = ({ passData }: TForm) => {
     console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     console.log(passData.resume_id);
     axios
-      .get(`http://127.0.0.1:5000/getData/` + passData.resume_id, {
+      .get(`http://0.0.0.0:5000/getData/` + passData.resume_id, {
         headers: {
           "Content-type": "application/pdf",
         },
@@ -82,7 +82,7 @@ const Applicants = ({ passData }: TForm) => {
         document.body.removeChild(link);
       });
   }
-  const url = "http://127.0.0.1:5000/getData/" + passData.resume_id;
+  // const url = "http://127.0.0.1:5000/getData/" + passData.resume_id;
 
   return (
     <Card
