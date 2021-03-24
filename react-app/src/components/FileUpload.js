@@ -91,7 +91,7 @@ const FileUpload = () => {
 
   return (
     <Fragment>
-      <NavigationBar />
+      <NavigationBar navigationState={false} />
       <Container
         style={mainWidth}
         className="text-center shadow-lg mb-5 bg-white rounde upload-main"

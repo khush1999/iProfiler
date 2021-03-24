@@ -1,27 +1,19 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "/static/react/css/main.fce6ae9a.chunk.css",
-    "main.js": "/static/react/js/main.062443c4.chunk.js",
-    "main.js.map": "/static/react/js/main.062443c4.chunk.js.map",
-    "runtime-main.js": "/static/react/js/runtime-main.6cebf9df.js",
-    "runtime-main.js.map": "/static/react/js/runtime-main.6cebf9df.js.map",
-=======
-    "main.css": "/static/react/css/main.16a9a597.chunk.css",
-    "main.js": "/static/react/js/main.19e8d814.chunk.js",
-    "main.js.map": "/static/react/js/main.19e8d814.chunk.js.map",
+    "main.css": "/static/react/css/main.0ce8ad56.chunk.css",
+    "main.js": "/static/react/js/main.554b84ea.chunk.js",
+    "main.js.map": "/static/react/js/main.554b84ea.chunk.js.map",
     "runtime-main.js": "/static/react/js/runtime-main.a47d63cc.js",
     "runtime-main.js.map": "/static/react/js/runtime-main.a47d63cc.js.map",
->>>>>>> bd3b14b2e553174c156d24ce9280f0a85dac5f0d
     "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
-    "js/2.6fa68832.chunk.js": "/static/react/js/2.6fa68832.chunk.js",
-    "js/2.6fa68832.chunk.js.map": "/static/react/js/2.6fa68832.chunk.js.map",
+    "js/2.6623c527.chunk.js": "/static/react/js/2.6623c527.chunk.js",
+    "js/2.6623c527.chunk.js.map": "/static/react/js/2.6623c527.chunk.js.map",
     "js/3.6010e145.chunk.js": "/static/react/js/3.6010e145.chunk.js",
     "js/3.6010e145.chunk.js.map": "/static/react/js/3.6010e145.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
     "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
-    "css/main.16a9a597.chunk.css.map": "/static/react/css/main.16a9a597.chunk.css.map",
-    "js/2.6fa68832.chunk.js.LICENSE.txt": "/static/react/js/2.6fa68832.chunk.js.LICENSE.txt",
+    "css/main.0ce8ad56.chunk.css.map": "/static/react/css/main.0ce8ad56.chunk.css.map",
+    "js/2.6623c527.chunk.js.LICENSE.txt": "/static/react/js/2.6623c527.chunk.js.LICENSE.txt",
     "media/LogoFinal.bb79a7c2.png": "/static/react/media/LogoFinal.bb79a7c2.png",
     "media/landingpage.css": "/static/react/media/bannerbg.b495063f.png",
     "media/font-awesome.min.css": "/static/react/media/fontawesome-webfont.f691f37e.woff",
@@ -36,14 +28,8 @@
   "entrypoints": [
     "js/runtime-main.a47d63cc.js",
     "css/2.26dd8153.chunk.css",
-<<<<<<< HEAD
-    "js/2.2efafce7.chunk.js",
-    "css/main.fce6ae9a.chunk.css",
-    "js/main.062443c4.chunk.js"
-=======
-    "js/2.6fa68832.chunk.js",
-    "css/main.16a9a597.chunk.css",
-    "js/main.19e8d814.chunk.js"
->>>>>>> bd3b14b2e553174c156d24ce9280f0a85dac5f0d
+    "js/2.6623c527.chunk.js",
+    "css/main.0ce8ad56.chunk.css",
+    "js/main.554b84ea.chunk.js"
   ]
 }
