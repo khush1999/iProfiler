@@ -7,7 +7,7 @@ import "font-awesome/css/font-awesome.min.css";
 import { Link, useHistory } from "react-router-dom";
 import iprofiler from "../assets/LogoFinal.png";
 import { LinkContainer } from "react-router-bootstrap";
-import Fuse from 'fuse.js';
+import Fuse from "fuse.js";
 import FilterForm from "../components/FilterForm";
 
 interface IForm {
@@ -37,19 +37,12 @@ interface IForm {
 }
 
 interface IFilterData {
-  Skills: string,
-  Experience: string,
-  Designation: string
+  Skills: string;
+  Experience: string;
+  Designation: string;
 }
-
-type TFilterData = {
-  myData: IFilterData[];
-}
-
-// props: { location: { state: IFilterData; }; }
 
 const DashboardPage = () => {
-  // console.log("DashhhhhhhhhhhBoarddddddddddddddd", props.location.state);
   const ip = {
     email: "",
     phone1: "",
@@ -79,89 +72,79 @@ const DashboardPage = () => {
   const filData = {
     Skills: "",
     Experience: "",
-    Designation: ""
-  }
+    Designation: "",
+  };
+  let processedData = [ip];
+
+  const [filteredProcessedData, setFileteredProcessedData] = useState([ip]);
 
   const [userData, setUserData] = useState(false);
   const [data, setData] = useState([ip]);
   const [Defdata, setDefData] = useState([ip]);
-  const [processedData, setProcessedData] = useState([ip]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [isSearched, setIsSearched] = useState(false);
-  const [message, setMessage] = useState("");
-  const [DropSkill, setDropSkill] = useState("");
-  const [DropExp, setDropExp] = useState("");
-  const [DropRole, setDropRole] = useState("");
-  const [prevSkill, setPrevSkill] = useState("");
-  const [prevExp, setPrevExp] = useState("");
-  const [prevDes, setPrevDes] = useState("");
   const [applicantData, setApplicantData] = useState(data);
   const [homePage, setHomePage] = useState(false);
   const [show, setShow] = useState(false);
-  const [multiFilterData, setMultiFilterData] = useState(filData);
   const [isFiltered, setIsFiltered] = useState(false);
-
+  const [message, setMessage] = useState("");
 
   const history = useHistory();
 
-  const handleShow = () => { setShow(true) };
-  const handleClose = () => { setShow(false) };
+  const handleShow = () => {
+    setShow(true);
+  };
+  const handleClose = () => {
+    setShow(false);
+  };
   const handleFilterSubmit = async (filterData: any) => {
     console.log("!!!!!!!!!!!!!!!!!!!!!", filterData);
-    setMultiFilterData(filterData);
-    setIsFiltered(true);
     setData(Defdata);
+
     //If Skills is not all and a selected one
-    if (multiFilterData.Skills != "") {
+    if (filterData.Skills != "") {
       //filteredData consists of selected skill
-      setProcessedData(data.filter((user) =>
-      (
-        user.skills1.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
-        user.skills2.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
-        user.skills3.toLowerCase() == multiFilterData.Skills.toLowerCase()
-      )))
-      console.log("Ifffffff reached Skills", processedData)
+      processedData = data.filter(
+        (user) =>
+          user.skills1.toLowerCase() == filterData.Skills.toLowerCase() ||
+          user.skills2.toLowerCase() == filterData.Skills.toLowerCase() ||
+          user.skills3.toLowerCase() == filterData.Skills.toLowerCase()
+      );
+      console.log("Ifffffff reached Skills", processedData);
     } else {
       //If skills is ALL
-      setProcessedData(Defdata);
-      console.log("Elseeeeee reached Skills", processedData)
-    }//Fine
+      processedData = Defdata;
+      console.log("Elseeeeee reached Skills", processedData);
+    } //Fine
 
-    //If length of processed data is zero too kalti maar
-    if (processedData.length === 0) {
-      console.log("Kalitiiiiiiiiii maaaaaaar rahaaaaaaaaa hoooon 1111111")
-      return;
+    if (processedData.length > 0) {
+      if (filterData.Experience != "") {
+        processedData = processedData.filter((user) => {
+          if (filterData.Experience.includes("0-3 Years")) {
+            return user.total_exp <= 3;
+          } else if (filterData.Experience.includes("3-6 Years")) {
+            return user.total_exp > 3 && user.total_exp <= 6;
+          } else if (filterData.Experience.includes("6-9 Years")) {
+            return user.total_exp > 6 && user.total_exp <= 9;
+          } else {
+            return user.total_exp > 9;
+          }
+        });
+        console.log("reached experience", processedData);
+      }
     }
 
-    //If experience is not ALL 
-    //if experience is ALL then final filtered result will be processedData
-    if (multiFilterData.Experience != "") {
-      setProcessedData(processedData.filter((user) =>
-        multiFilterData.Experience == "0-3 Years"
-          ? user.total_exp <= 3
-          : multiFilterData.Experience == "3-6 Years"
-            ? user.total_exp > 3 && user.total_exp <= 6
-            : multiFilterData.Experience == "6-9 Years"
-              ? user.total_exp > 6 && user.total_exp <= 9
-              : user.total_exp > 9))
-      console.log("reached experience", processedData)
+    if (processedData.length > 0) {
+      if (filterData.Designation != "") {
+        processedData = processedData.filter(
+          (user) => user.designition === filterData.Designation
+        );
+        console.log("reached designation", processedData);
+      }
     }
+    console.log();
 
-    //If Designation is not ALL 
-    //If processeddata length is greater than 0 then filter will be applied
-    //Else Function se exit final result is processedData
-    //Else processedData will remain same
-
-    if (processedData.length === 0) {
-      console.log("Kalitiiiiiiiiii maaaaaaar rahaaaaaaaaa hoooon 2222222")
-      return;
-    }
-
-    if (multiFilterData.Designation != "") {
-      setProcessedData(processedData.filter((user) =>
-        user.designition === multiFilterData.Designation))
-      console.log("reached designation", processedData)
-    }
+    setFileteredProcessedData(processedData);
+    setIsFiltered(true);
   };
 
   function GetData() {
@@ -198,42 +181,6 @@ const DashboardPage = () => {
     }
   };
 
-  const Courses = (courseType: string) => {
-    if (
-      (prevSkill != courseType || courseType === "All") &&
-      prevExp === "" &&
-      prevDes === ""
-    ) {
-      setData(Defdata);
-    }
-    setDropSkill(courseType);
-    setPrevSkill(courseType);
-  };
-
-  const Experience = (expType: string) => {
-    if (
-      (prevExp != expType || expType === "All") &&
-      prevExp === "" &&
-      prevDes === ""
-    ) {
-      setData(Defdata);
-    }
-    setDropExp(expType);
-    setPrevExp(expType);
-  };
-
-  const Role = (roleType: string) => {
-    if (
-      (prevDes != roleType || roleType === "All") &&
-      prevExp === "" &&
-      prevDes === ""
-    ) {
-      setData(Defdata);
-    }
-    setDropRole(roleType);
-    setPrevDes(roleType);
-  };
-
   const searchData = (pattern) => {
     if (!pattern) {
       setApplicantData(data);
@@ -259,26 +206,26 @@ const DashboardPage = () => {
     <>
       {GetData()}
       <div className="main-dashboard">
-        <FilterForm show={show} handleClose={handleClose} handleFilterSubmit={handleFilterSubmit} />
+        <FilterForm
+          show={show}
+          handleClose={handleClose}
+          handleFilterSubmit={handleFilterSubmit}
+        />
         <div className="sidebar" id="side">
           <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
             <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
           </Navbar.Brand>
-          <Link to={{
-            pathname: "/",
-            state: !homePage
-          }} >
-            <i
-              className="fa fa-home pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
+          <Link
+            to={{
+              pathname: "/",
+              state: !homePage,
+            }}
+          >
+            <i className="fa fa-home pr-2" style={{ fontSize: "1.75em" }} />
             Home
           </Link>
           <a className="active sidebar-link" href="#">
-            <i
-              className="fa fa-user pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
+            <i className="fa fa-user pr-2" style={{ fontSize: "1.75em" }} />
             Applicants
           </a>
           <a href="#">
@@ -335,59 +282,24 @@ const DashboardPage = () => {
             </Row>
           </div>
 
-          <div className="grid-container justify-content-around">
+          <p className="text-danger">{message}</p>
+          <div className="grid-container justify-content-center">
             {/* For displaying all data*/}
             {!isSearched &&
               !isFiltered &&
               userData &&
               data.map((user) => <Applicant passData={user} />)}
-
             {/* For Search Functionality */}
             {userData &&
               isSearched &&
               applicantData.map((user) => <Applicant passData={user} />)}
-
-            {(isFiltered && processedData.length > 0)
-              ? (processedData.map((user) => <Applicant passData={user} />))
-              : (isFiltered) ? (<h2>No such results found !!</h2>) : ""
-            }
-
-            {/* {(multiFilterData.Skills != "" || multiFilterData.Experience != "" ||
-              multiFilterData.Designation != "") && data
-                .filter(
-                  (user) =>
-                    (user.skills1.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
-                      user.skills2.toLowerCase() == multiFilterData.Skills.toLowerCase() ||
-                      user.skills3.toLowerCase() == multiFilterData.Skills.toLowerCase()) &&
-                    (
-                      multiFilterData.Experience == "0-3 Years"
-                        ? user.total_exp <= 3
-                        : multiFilterData.Experience == "3-6 Years"
-                          ? user.total_exp > 3 && user.total_exp <= 6
-                          : multiFilterData.Experience == "6-9 Years"
-                            ? user.total_exp > 6 && user.total_exp <= 9
-                            : user.total_exp > 9
-                    )
-                )
-                .map((user) => <Applicant passData={user} />)} */}
-
-            {/* {DropExp != "" &&
-              data
-                .filter((user) =>
-                  DropExp == "0-3 Years"
-                    ? user.total_exp <= 3
-                    : DropExp == "3-6 Years"
-                      ? user.total_exp > 3 && user.total_exp <= 6
-                      : DropExp == "6-9 Years"
-                        ? user.total_exp > 6 && user.total_exp <= 9
-                        : user.total_exp > 9
-                )
-                .map((user) => <Applicant passData={user} />)}
-
-            {DropRole != "" &&
-              data
-                .filter((user) => user.designition === DropRole)
-                .map((user) => <Applicant passData={user} />)} */}
+            {isFiltered && filteredProcessedData.length > 0 ? (
+              filteredProcessedData.map((user) => <Applicant passData={user} />)
+            ) : isFiltered ? (
+              <h2>No such results found !!</h2>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

@@ -4,8 +4,11 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 30% 30% 25%;
   padding: 10px;
+  grid-column-gap: 10px;
+  left: 0px;
+  right: 0px;
 }
 
 .sidebar {
@@ -57,7 +60,7 @@
 
 .display-applicant {
   margin-left: 5%;
-  color: #AE4DFF;
+  color: #ae4dff;
 }
 div.content {
   margin-left: 220px;
@@ -188,7 +191,7 @@ select::-ms-expand {
   right: 0;
   bottom: 0;
   padding: 0 1em;
-  background: #23272B;
+  background: #23272b;
   pointer-events: none;
 }
 .select:hover::after {
