@@ -91,16 +91,37 @@ const Applicants = ({ passData }: TForm) => {
     bg-white rounded"
     >
       <Card.Body>
-        <Card.Title className="text-left">
-          {passData.fname} {passData.lname}
-        </Card.Title>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Card.Title className="text-left">
+            {passData.fname} {passData.lname}
+          </Card.Title>
+          <Link
+            to={{
+              pathname: "/IncommingRounds",
+              state: passData,
+            }}
+          >
+            <i
+              className="fa fa-envelope"
+              style={{ fontSize: "1.75em", color: "#AE4DFF" }}
+            ></i>
+          </Link>
+        </div>
+
         <hr />
         {/* <Card.Subtitle className="mb-2 text-muted">
         {passData.pgDegree.length()>1?({passData.ugDegree} + {'-'} + {passData.pgdegree}):{passData.ugDegree}}
         </Card.Subtitle> */}
 
-        {passData.pgDegree.length > 1 ? (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree} {' | '} {passData.pgDegree}</Card.Subtitle>)
-          : (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}</Card.Subtitle>)}
+        {passData.pgDegree.length > 1 ? (
+          <Card.Subtitle className="mb-2 text-muted">
+            {passData.ugDegree} {" | "} {passData.pgDegree}
+          </Card.Subtitle>
+        ) : (
+          <Card.Subtitle className="mb-2 text-muted">
+            {passData.ugDegree}
+          </Card.Subtitle>
+        )}
 
         <Card.Text className="text-left">
           <h6>Total Experience: {passData.total_exp}</h6>
@@ -113,10 +134,12 @@ const Applicants = ({ passData }: TForm) => {
         </Card.Text>
         <Row>
           <Col sm={6}>
-            <Link to={{
-              pathname: "/UserProfile",
-              state: passData
-            }}>
+            <Link
+              to={{
+                pathname: "/UserProfile",
+                state: passData,
+              }}
+            >
               <Button variant="dark align-self-end">View Profile</Button>
             </Link>
           </Col>

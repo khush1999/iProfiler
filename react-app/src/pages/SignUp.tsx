@@ -53,7 +53,7 @@ export const SignUp = () => {
   };
   return (
     <>
-      <NavigationBar />
+      <NavigationBar navigationState={false} />
       <Container
         style={mainWidth}
         className="sign-container bg-light text-dark shadow-lg mb-5 bg-white rounde"
