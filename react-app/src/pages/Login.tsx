@@ -41,7 +41,7 @@ export const Login = () => {
                 setEmailError("You entered wrong Email!!");
             }
         } catch (err) {
-            if (err.response.status === 500) {
+                if (err.response.status === 500) {
                 setMessage("There was a problem with the server");
             } else {
                 setMessage(err.response.data.msg);

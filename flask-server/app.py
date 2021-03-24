@@ -21,6 +21,7 @@ db = mongo
 filename = ""
 app.config['UPLOAD_FOLDER'] = '../react-app/src/resumes/'
 
+
 @app.route("/")
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
@@ -31,19 +32,19 @@ def upload_file():
     global data
     if request.method == 'POST':
         f = request.files['file']
-        print("********************************************")
+        # print("********************************************")
         # fileName = str(uuid.uuid4())[:8]
         filename = secure_filename(f.filename)
         basedir = os.path.abspath(os.path.dirname(__file__))
         f.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
-        print(f.filename)
-        print(filename)
+        # print(f.filename)
+        # print(filename)
         filenam = f.filename
         mongo.save_file(filename, f)
         #   mongo.send_file()
         data = resumeparse.read_file(filename)
         data["resume_id"] = filename
-        
+
         with open("../react-app/src/sample.json", "w") as outfile:
             json.dump(data, outfile)
     return data
@@ -52,12 +53,11 @@ def upload_file():
 @app.route("/getData/<path>")
 def get_file(path=None):
     if path is not None:
-        print("Download a file......")
+        # print("Download a file......")
         # return send_file(path)
         return send_from_directory(app.config['UPLOAD_FOLDER'], path)
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
-
 
 @app.route('/getData', methods=['GET', 'POST'])
 def form_files():
@@ -67,7 +67,7 @@ def form_files():
         a['_id'] = str(a['_id'])
         result.append(a)
     res = json.dumps(result)
-    print(result)
+    # print(result)
     return res
 
 
@@ -103,8 +103,8 @@ def create():
             'resume_id': request.form.get('resume_id'),
 
         })
-        print(list(mongo.db.users.find()))
-    return """ <h2> We have received your response , you can now close this window!! </h2> """
+        # print(list(mongo.db.users.find()))
+    return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
 
 
 # HR
@@ -159,11 +159,11 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-        print("Email here!!!!!!!!!!!1")
-        print(email)  # check if email exists in database
+        # print("Email here!!!!!!!!!!!1")
+        # print(email)  # check if email exists in database
         email_found = mongo.db.LoginAuth.find_one({"email": email})
-        print("Email Found here!!!!!!!!!!!1")
-        print(email_found)
+        # print("Email Found here!!!!!!!!!!!1")
+        # print(email_found)
         if email_found:
             email_val = email_found['email']
             passwordcheck = email_found['password']
@@ -187,7 +187,7 @@ def login():
 def logged_in():
     if "email" in session:
         email = session["email"]
-        print("Logged_in here!!!!!!!!!!!1")
+        # print("Logged_in here!!!!!!!!!!!1")
         return email
     else:
         return redirect(url_for("login"))
@@ -195,13 +195,14 @@ def logged_in():
 
 @app.route("/logout", methods=["POST", "GET"])
 def logout():
-    print("Khush You are entered in logout!!!")
+    # print("Khush You are entered in logout!!!")
     if "email" in session:
         session.pop("email", None)
         return "EmailID"
     else:
-        print("Logged out here!!!!!!!!!!!1")
+        # print("Logged out here!!!!!!!!!!!1")
         return "YO logged out here"
 
 
 app.run(debug="true")
+# , host='0.0.0.0', port=5000
