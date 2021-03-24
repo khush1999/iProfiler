@@ -22,6 +22,10 @@ filename = ""
 app.config['UPLOAD_FOLDER'] = '../react-app/src/resumes/'
 
 
+@app.route("/check")
+def check():
+    return """ <h2> Health Check!!! 200 OK </h2> """
+
 @app.route("/")
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
