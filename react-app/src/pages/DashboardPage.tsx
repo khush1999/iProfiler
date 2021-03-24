@@ -101,7 +101,6 @@ const DashboardPage = () => {
   const [multiFilterData, setMultiFilterData] = useState(filData);
   const [isFiltered, setIsFiltered] = useState(false);
 
-
   const history = useHistory();
 
   const handleShow = () => { setShow(true) };
