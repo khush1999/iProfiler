@@ -48,7 +48,7 @@ const Applicants = ({ passData }: TForm) => {
     console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     console.log(passData.resume_id);
     axios
-      .get(`http://0.0.0.0:5000/getData/` + passData.resume_id, {
+      .get(`http://0.0.0.0:8000/getData/` + passData.resume_id, {
         headers: {
           "Content-type": "application/pdf",
         },
