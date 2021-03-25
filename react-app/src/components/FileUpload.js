@@ -99,7 +99,6 @@ const FileUpload = () => {
         <Row>
           <Col
             sm={6}
-            style={divColor}
             className="text-white font-weight-bold p-4 jd-col"
           >
             <JobDes />

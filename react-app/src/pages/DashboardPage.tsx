@@ -237,60 +237,69 @@ const DashboardPage = () => {
           handleClose={handleClose}
           handleFilterSubmit={handleFilterSubmit}
         />
-        <div className="sidebar" id="side">
-          <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
-            <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
+        <Navbar expand="lg" fixed="top">
+          <Navbar.Brand href="/" className="brand-border">
+            <img src={iprofiler} alt="iprofiler" className="logo-image" />
           </Navbar.Brand>
-          <Link
-            to={{
-              pathname: "/",
-              state: !homePage,
-            }}
-          >
-            <i className="fa fa-home pr-2" style={{ fontSize: "1.75em" }} />
-            Home
-          </Link>
-          <a className="active sidebar-link" href="#">
-            <i className="fa fa-user pr-2" style={{ fontSize: "1.75em" }} />
-            Applicants
-          </a>
-          <a href="#">
-            <i
-              className="fa fa-briefcase pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
-            Job Postings
-          </a>
-          <a href="#" onClick={handleClick}>
-            <i
-              className="fa fa-power-off pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
-            Logout
-          </a>
-        </div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              <LinkContainer to={{
+                pathname: "/",
+                state: !homePage,
+              }}>
+                <Nav.Link id="home-link">Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/DashboardPage">
+                <Nav.Link className="active">Applicants</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="#">
+                <Nav.Link>Job Postings</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="#" onClick={handleClick}>
+                <Nav.Link>Logout</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
-        <div className="content">
-          <Row className="heading-style">
-            <h3 className="display-applicant">Displaying Applicants</h3>
-            <LinkContainer to="/SendEmail">
-              <Nav.Link>
+        <div className="content shadow-lg">
+
+          <div>
+            <Row className="heading-style">
+              <h3 className="welcome-content">Welcome User</h3>
+              <div className="icons-container">
+                <LinkContainer to="/SendEmail">
+                  <Nav.Link className="p-0">
+                    <i
+                      className="fa fa-user-plus"
+                      style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                    ></i>
+                  </Nav.Link>
+                </LinkContainer>
                 <i
-                  className="fa fa-user-plus"
-                  style={{ fontSize: "1.75em", color: "#AE4DFF" }}
+                  className="fa fa-bell"
+                  style={{ fontSize: "1.75em", paddingLeft: "1.5rem", color: "darkslategray" }}
                 ></i>
-              </Nav.Link>
-            </LinkContainer>
-          </Row>
+                <i
+                  className="fa fa-user-circle-o"
+                  style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                ></i>
+              </div>
+            </Row>
+          </div>
 
           <div className="filter">
             <Row className="filter-row">
-              <Col md={6} className="dashboard-filters">
+              <Col md={7}>
+                <h3 className="display-applicant">Displaying Applicants</h3>
+              </Col>
+              <Col md={1} className="dashboard-filters">
                 <Button variant="dark" onClick={handleShow}>
                   Filters
                 </Button>
               </Col>
-              <Col md={6} className="pr-0">
+              <Col md={4} className="pr-0">
                 <div className="search mr-0">
                   <input
                     type="search"
@@ -307,6 +316,8 @@ const DashboardPage = () => {
               </Col>
             </Row>
           </div>
+
+          <hr className="filter-hr" />
 
           <p className="text-danger">{message}</p>
           <div className="grid-container justify-content-center">

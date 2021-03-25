@@ -1,5 +1,63 @@
-.main-dashboard {
-  background-color: #f9f9fb;
+.main-container {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+.navbar {
+  background-color: #FFFFFF;
+  box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+  border-radius: 40px;
+  min-height: 80px;
+  margin-top:10px;
+  margin-left:10px;
+  margin-right:10px;
+}
+.logo-image {
+  height: 4rem;
+}
+a, .navbar-nav .nav-link {
+  color: #000000;
+}
+
+a, .navbar-nav .nav-link:hover {
+  color: #000000;
+  border-bottom: 3px solid #AE4DFF;
+}
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, 
+.navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+  color: #000000;
+  border-bottom: 3px solid #AE4DFF;
+}
+
+#home-link :hover {
+  color: #000000;
+  border-bottom: 3px solid #AE4DFF;
+}
+
+#home-link {
+  color: rgba(0,0,0,.5);
+  border-bottom: none;
+}
+
+.navbar-nav {
+font-size: 1.3rem;
+padding-right: 2rem;
+}
+
+.nav-link {
+padding: 0.5rem 2.5rem;
+}
+
+.brand-border {
+border-bottom: none;
+}
+.brand-border:hover {
+border-bottom: none;
+}
+
+.navbar-light .navbar-toggler {
+  color: white;
+  border-color: white;
 }
 
 .grid-container {
@@ -55,24 +113,33 @@
 }
 
 .content {
-  background-color: #f2f2fe;
+  background-color: #D8BFFF;
+  margin-left: 8%;
+  margin-right: 8%;
+  margin-top: 8rem;
 }
 
+/* .header-division {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+} */
+
 .display-applicant {
-  margin-left: 5%;
-  color: #ae4dff;
+  font-weight: bold;
+  color: darkslategray;
 }
 div.content {
-  margin-left: 220px;
   padding: 1px 16px;
 }
 .heading-style {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
   justify-content: space-between;
   padding: 2rem;
+  background-image: linear-gradient(127deg, #a759d1 0%, #8261ee 91%);
+  color: white;
 }
 
 @media screen and (max-width: 1100px) {
@@ -132,8 +199,9 @@ div.content {
 }
 
 .filter {
-  padding-left: 30px;
+  padding-left: 40px;
   padding-right: 40px;
+  margin-top: 2%;
 }
 
 .dashboard-row {
@@ -148,7 +216,8 @@ div.content {
 
 .filter-row {
   align-items: center;
-  margin: 2% 3% 2% 2.5%;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 select {
@@ -207,4 +276,26 @@ select::-ms-expand {
   height: 5rem;
   width: 12rem;
   margin-top: 1rem;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.welcome-content {
+  font-weight: bold;
+  margin-left: 1rem;
+  color: whitesmoke;
+}
+
+.filter-hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 3px solid rgba(0,0,0,.1);
+  width: 80%;
+  margin-left: 9%;
+  margin-right: 9%;
 }
