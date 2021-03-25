@@ -1,5 +1,5 @@
 import Applicant from "../components/Applicants";
-import { Row, Col, Dropdown, Nav, Navbar, Button } from "react-bootstrap";
+import { Row, Col, Dropdown, Nav, Navbar, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./DashboardPage.css";
@@ -244,12 +244,12 @@ const DashboardPage = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <LinkContainer to={{
+              {/* <LinkContainer to={{
                 pathname: "/",
                 state: !homePage,
               }}>
                 <Nav.Link id="home-link">Home</Nav.Link>
-              </LinkContainer>
+              </LinkContainer> */}
               <LinkContainer to="/DashboardPage">
                 <Nav.Link className="active">Applicants</Nav.Link>
               </LinkContainer>
@@ -269,22 +269,60 @@ const DashboardPage = () => {
             <Row className="heading-style">
               <h3 className="welcome-content">Welcome User</h3>
               <div className="icons-container">
-                <LinkContainer to="/SendEmail">
-                  <Nav.Link className="p-0">
-                    <i
-                      className="fa fa-user-plus"
-                      style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
-                    ></i>
-                  </Nav.Link>
-                </LinkContainer>
-                <i
-                  className="fa fa-bell"
-                  style={{ fontSize: "1.75em", paddingLeft: "1.5rem", color: "darkslategray" }}
-                ></i>
-                <i
-                  className="fa fa-user-circle-o"
-                  style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
-                ></i>
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>
+                      Invite Applicant
+                    </Tooltip>
+                  }
+                >
+                  <LinkContainer to="/SendEmail">
+                    <Nav.Link className="p-0">
+                      <i
+                        className="fa fa-user-plus"
+                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                      ></i>
+                    </Nav.Link>
+                  </LinkContainer>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>
+                      Notifications
+                    </Tooltip>
+                  }
+                >
+                  <LinkContainer to="#">
+                    <Nav.Link className="p-0">
+                      <i
+                        className="fa fa-bell"
+                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                      ></i>
+                    </Nav.Link>
+                  </LinkContainer>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>
+                      Hello, User
+                    </Tooltip>
+                  }
+                >
+                  <LinkContainer to="#">
+                    <Nav.Link className="p-0">
+                      <i
+                        className="fa fa-user-circle-o"
+                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                      ></i>
+                    </Nav.Link>
+                  </LinkContainer>
+                </OverlayTrigger>
               </div>
             </Row>
           </div>

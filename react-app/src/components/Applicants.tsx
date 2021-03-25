@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { UserProfile } from "../pages/UserProfile";
 import "./Applicant.css";
@@ -53,17 +53,29 @@ const Applicants = ({ passData }: TForm) => {
           <Card.Title className="text-left card-name">
             <p className="card-display-name"><span>{passData.fname}</span><span>{passData.lname}</span></p>
           </Card.Title>
-          <Link
-            to={{
-              pathname: "/IncommingRounds",
-              state: passData,
-            }}
+
+          <OverlayTrigger
+            key="top"
+            placement="top"
+            overlay={
+              <Tooltip id={`tooltip-top`}>
+                Invite for Interview
+                    </Tooltip>
+            }
           >
-            <i
-              className="fa fa-envelope"
-              style={{ fontSize: "1.75em", color: "#AE4DFF" }}
-            ></i>
-          </Link>
+            <Link
+              to={{
+                pathname: "/IncommingRounds",
+                state: passData,
+              }}
+            >
+              <i
+                className="fa fa-envelope"
+                style={{ fontSize: "1.75em", color: "#AE4DFF" }}
+              ></i>
+            </Link>
+          </OverlayTrigger>
+
         </div>
 
         <hr className="card-hr" />
