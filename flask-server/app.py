@@ -13,7 +13,7 @@ import spacy
 import uuid
 
 nlp = spacy.load("en_core_web_sm")
-app = Flask("__app__")
+app = Flask("__name__")
 # Mongo Setup
 app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mongodb.net/applicants?retryWrites=true&w=majority'
 mongo = PyMongo(app)
@@ -207,5 +207,5 @@ def logout():
         # print("Logged out here!!!!!!!!!!!1")
         return "YO logged out here"
 
-
-app.run(debug="true", host='0.0.0.0', port=5000)
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
