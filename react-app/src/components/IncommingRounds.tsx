@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./contact.css";
 import "font-awesome/css/font-awesome.min.css";
 import { NavigationBar } from "./NavigationBar";
 import emailjs from "emailjs-com";
+import { useHistory } from "react-router-dom";
 
 interface IForm {
   email: string;
@@ -31,6 +32,10 @@ interface IForm {
 }
 
 export default function IncommingRounds(props: { location: { state: IForm } }) {
+  const [status, setStatus] = useState("");
+  const [sentMsg, setSentMsg] = useState("");
+  const history = useHistory();
+
   function sendEmail(e) {
     e.preventDefault();
 
@@ -44,6 +49,9 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
       .then(
         (result) => {
           console.log(result.text);
+          if (result.text === "OK") {
+            // setSentMsg(!sentMsg);
+          }
         },
         (error) => {
           console.log(error.text);
@@ -71,6 +79,7 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
                 </div>
               </div>
             </div>
+            {sentMsg && <h2>{sentMsg}</h2>}
             <div className="row">
               <div className="col-md-8">
                 <div className="contact-page-form">

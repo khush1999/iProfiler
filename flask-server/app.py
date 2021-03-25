@@ -53,11 +53,15 @@ def upload_file():
 @app.route("/getData/<path>")
 def get_file(path=None):
     if path is not None:
-        # print("Download a file......")
+        print("Download a file......")
+        return redirect(app.config['UPLOAD_FOLDER']+path)
         # return send_file(path)
-        return send_from_directory(app.config['UPLOAD_FOLDER'], path)
+        # with open(app.config['UPLOAD_FOLDER']+path, 'rb') as static_file:
+        #     return send_file(static_file, attachment_filename=path)
+        # return send_from_directory(app.config['UPLOAD_FOLDER'], path)
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
+
 
 @app.route('/getData', methods=['GET', 'POST'])
 def form_files():
@@ -116,8 +120,9 @@ app.secret_key = "secret"
 def index():
     message = ''
     # if method post in index
-    if "email" in session:
-        return redirect(url_for("logged_in"))
+    # if "email" in session:
+    #     return redirect(url_for("logged_in"))
+
     if request.method == "POST":
         user = request.form.get("company_name")
         email = request.form.get("email")
@@ -153,8 +158,8 @@ def index():
 @app.route("/login", methods=["POST", "GET"])
 def login():
     message = 'Please login to your account'
-    if "email" in session:
-        return redirect(url_for("logged_in"))
+    # if "email" in session:
+    #     return redirect(url_for("logged_in"))
 
     if request.method == "POST":
         email = request.form.get("email")
@@ -170,10 +175,9 @@ def login():
             # encode the password and check if it matches
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return redirect(url_for('logged_in'))
+                return email_val
+                # return redirect(url_for('logged_in'))
             else:
-                if "email" in session:
-                    return redirect(url_for("logged_in"))
                 message = 'Wrong password'
                 return message
         else:
@@ -183,14 +187,23 @@ def login():
         return "Try to Login Again!!!!"
 
 
-@app.route('/logged_in')
-def logged_in():
-    if "email" in session:
-        email = session["email"]
-        # print("Logged_in here!!!!!!!!!!!1")
-        return email
-    else:
-        return redirect(url_for("login"))
+# @app.route('/logged_in')
+# def logged_in():
+#     if "email" in session:
+#         email = session["email"]
+#         # print("Logged_in here!!!!!!!!!!!1")
+#         return email
+#     else:
+#         return redirect(url_for("login"))
+
+# @app.route('/checkLogin')
+# def checkLogin():
+#     if "email" in session:
+#         email = session["email"]
+#         # print("Logged_in here!!!!!!!!!!!1")
+#         return "Go To Dashboard"
+#     else:
+#         return redirect(url_for("login"))
 
 
 @app.route("/logout", methods=["POST", "GET"])
@@ -198,6 +211,7 @@ def logout():
     # print("Khush You are entered in logout!!!")
     if "email" in session:
         session.pop("email", None)
+        print(session)
         return "EmailID"
     else:
         # print("Logged out here!!!!!!!!!!!1")

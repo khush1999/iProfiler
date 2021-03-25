@@ -100,7 +100,7 @@ const DashboardPage = () => {
     console.log("!!!!!!!!!!!!!!!!!!!!!", filterData);
 
     setData(Defdata);
-    if(isSearched) {
+    if (isSearched) {
       setData(applicantData);
     }
 
@@ -174,8 +174,10 @@ const DashboardPage = () => {
       const res = await axios.get("/logout");
       console.log("$$$$$$$$$$$$$$$$$$$$$$");
       console.log(res.data);
+
       if (res.data === "EmailID") {
-        history.push("/Login");
+        // history.push("/Login");
+        history.go(-1);
       }
     } catch (err) {
       if (err.response.status == 500) {
@@ -192,7 +194,7 @@ const DashboardPage = () => {
       return;
     }
     // If filter is applied and then we search
-    if(isFiltered) {
+    if (isFiltered) {
       setApplicantData(processedData);
     }
 
@@ -211,7 +213,7 @@ const DashboardPage = () => {
       setApplicantData(matches);
     }
     setIsFiltered(false);
-};
+  };
 
   return (
     <>

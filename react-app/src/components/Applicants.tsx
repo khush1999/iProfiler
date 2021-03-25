@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { UserProfile } from "../pages/UserProfile";
 
 interface IForm {
@@ -37,6 +37,9 @@ type TForm = {
 const Applicants = ({ passData }: TForm) => {
   // const [getResume, setGetResume] = useState('');
   let setGetResume;
+  const status = useParams();
+  console.log(status);
+
   if (passData != null) {
     setGetResume = passData.resume_id;
   }
@@ -44,44 +47,6 @@ const Applicants = ({ passData }: TForm) => {
   // console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
   // console.log(setGetResume);
 
-  function handleResume() {
-    console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-    console.log(passData.resume_id);
-    axios
-      .get(`http://0.0.0.0:5000/getData/` + passData.resume_id, {
-        headers: {
-          "Content-type": "application/pdf",
-        },
-        responseType: "blob",
-      })
-      .then(function (response) {
-        console.log(response.data);
-        const blobUrl = URL.createObjectURL(response.data);
-
-        // Create a link element
-        const link = document.createElement("a");
-
-        // Set link's href to point to the Blob URL
-        link.href = blobUrl;
-        link.download = passData.resume_id;
-
-        // Append link to the body
-        document.body.appendChild(link);
-
-        // Dispatch click event on the link
-        // This is necessary as link.click() does not work on the latest firefox
-        link.dispatchEvent(
-          new MouseEvent("click", {
-            bubbles: true,
-            cancelable: true,
-            view: window,
-          })
-        );
-
-        // Remove link from body
-        document.body.removeChild(link);
-      });
-  }
   // const url = "http://127.0.0.1:5000/getData/" + passData.resume_id;
 
   return (
@@ -144,9 +109,7 @@ const Applicants = ({ passData }: TForm) => {
             </Link>
           </Col>
           <Col sm={6}>
-            <Button variant="dark align-self-end" onClick={handleResume}>
-              View Resume
-            </Button>
+            <Button variant="dark align-self-end">Available</Button>
 
             {/* <Link to={url} target="_blank" download>
               Download
