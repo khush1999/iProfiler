@@ -96,7 +96,7 @@ export const SignUp = () => {
                     onChange={(e) => setCompanyName(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group controlId="SignUpEmail">
+                <Form.Group controlId="SignUpPassword">
                   <Form.Control
                     type="email"
                     required
@@ -119,7 +119,7 @@ export const SignUp = () => {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="formHorizontalPassword">
+                <Form.Group controlId="formHorizontalConfirmPassword">
                   <Form.Control
                     type="password"
                     required
@@ -137,7 +137,7 @@ export const SignUp = () => {
                     size="lg"
                     block
                     type="submit"
-                    onClick={handleClick}
+                    onSubmit={handleClick}
                   >
                     {" "}
                     Create Account{" "}

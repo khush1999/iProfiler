@@ -34,14 +34,14 @@ export const Login = () => {
                 history.push('/DashboardPage');
             }
             else if (res.data === "Wrong password") {
-                setPwdError("You entered wrong password!!");
+                setPwdError("Invalid Password!!");
             }
 
             else if (res.data === "Email not found") {
-                setEmailError("You entered wrong Email!!");
+                setEmailError("Invalid Email!!");
             }
         } catch (err) {
-                if (err.response.status === 500) {
+            if (err.response.status === 500) {
                 setMessage("There was a problem with the server");
             } else {
                 setMessage(err.response.data.msg);

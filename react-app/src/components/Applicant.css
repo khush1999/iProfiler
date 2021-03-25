@@ -1,0 +1,116 @@
+.card-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-name {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.card-degree {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 1rem;
+}
+
+.card-hr {
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid rgba(0,0,0,.1);
+}
+
+.card-ul {
+    list-style: none;
+    padding: 15px;
+    font-size: 1.2em;
+    border-bottom: 2px solid rgba(0,0,0,.1);
+}
+
+.card-ul > li {
+    padding: 8px 0;
+}
+
+.card-ul>li:before {
+    content: "✓";
+    display: inline-block;
+    margin-right: 15px;
+    color: #fff;
+    background-color: #ae4dff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 0.7em;
+    padding: 2px;
+    text-align: center;
+}
+
+@media screen and (max-width: 1068px) {
+    .card-ul {
+        font-size: 0.85em;
+   }
+}
+@media screen and (max-width: 767px) {
+    .card-ul {
+        border-bottom: none;
+        padding: 0;
+        margin-right: 10%;
+   }
+}
+@media screen and (max-width: 610px) {
+    .card-ul {
+        font-size: 0.7em;
+        margin-right: 8%;
+   }
+}
+@media screen and (max-width: 480px) {
+    .card-ul {
+        font-size: 1.3em;
+        margin-right: none;
+        margin-bottom: 10px;
+   }
+}
+
+@media screen and (max-width: 767px) {
+    .card-ul > li {
+        text-align: left;
+   }
+}
+@media screen and (max-width: 610px) {
+    .card-ul > li {
+        padding: 5px 0;
+   }
+}
+@media screen and (max-width: 480px) {
+    .card-ul > li {
+        text-align: center;
+   }
+}
+
+@media screen and (max-width: 1068px) {
+    .card-ul > li:before {
+        width: 14px;
+        height: 14px;
+        padding: 1.5px;
+   }
+}
+@media screen and (max-width: 767px) {
+    .card-ul > li:before {
+        width: 12px;
+        height: 12px;
+   }
+}
+
+#button-content {
+    margin-top: 0;
+}
+
+.card-display-name {
+    font-size: 2rem;
+}
+
+.card-display-name span {
+    display: block;
+}
