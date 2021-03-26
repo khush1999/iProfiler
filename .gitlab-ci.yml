@@ -9,6 +9,8 @@ react_build:
     - iprofiler
   before_script:
     - echo "Installing NPM Dependencies and building React app"
+    - npm -v
+    - node -v
     - cd react-app
     - echo "Installed node using NVM"
   script:
