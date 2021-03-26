@@ -55,12 +55,6 @@ const Styles = styled.div`
 
 export const NavigationBar = (props) => {
 
-  // const history = useHistory();
-  // const handleClick = () => {
-  //   console.log("I am clicked!!!!!!!!!!");
-  //   history.push('/DashboardPage');
-  // }
-
   return (
     <Styles>
       <Navbar expand="lg" fixed="top">
