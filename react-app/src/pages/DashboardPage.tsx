@@ -1,12 +1,14 @@
 import Applicant from "../components/Applicants";
-import { Row, Col, Dropdown, Nav } from "react-bootstrap";
+import { Row, Col, Dropdown, Nav, Navbar, Button } from "react-bootstrap";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./DashboardPage.css";
 import "font-awesome/css/font-awesome.min.css";
 import { Link, useHistory } from "react-router-dom";
-import iprofiler from "../assets/iprofiler.png";
+import iprofiler from "../assets/LogoFinal.png";
 import { LinkContainer } from "react-router-bootstrap";
+import Fuse from "fuse.js";
+import FilterForm from "../components/FilterForm";
 
 interface IForm {
   email: string;
@@ -32,6 +34,12 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
+}
+
+interface IFilterData {
+  Skills: string;
+  Experience: string;
+  Designation: string;
 }
 
 const DashboardPage = () => {
@@ -61,21 +69,88 @@ const DashboardPage = () => {
     resume_id: "",
   };
 
+  const filData = {
+    Skills: "",
+    Experience: "",
+    Designation: "",
+  };
+  let processedData = [ip];
+
+  const [filteredProcessedData, setFileteredProcessedData] = useState([ip]);
+
   const [userData, setUserData] = useState(false);
   const [data, setData] = useState([ip]);
   const [Defdata, setDefData] = useState([ip]);
-  const [searchTerm, setSearchTerm] = useState("");
   const [isSearched, setIsSearched] = useState(false);
+  const [applicantData, setApplicantData] = useState(data);
+  const [homePage, setHomePage] = useState(false);
+  const [show, setShow] = useState(false);
+  const [isFiltered, setIsFiltered] = useState(false);
   const [message, setMessage] = useState("");
-  const [DropSkill, setDropSkill] = useState("");
-  const [DropExp, setDropExp] = useState("");
-  const [DropRole, setDropRole] = useState("");
-  const [prevSkill, setPrevSkill] = useState("");
-  const [prevExp, setPrevExp] = useState("");
-  const [prevDes, setPrevDes] = useState("");
-  var exp, exp1;
 
   const history = useHistory();
+
+  const handleShow = () => {
+    setShow(true);
+  };
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleFilterSubmit = async (filterData: any) => {
+    console.log("!!!!!!!!!!!!!!!!!!!!!", filterData);
+
+    setData(Defdata);
+    if(isSearched) {
+      setData(applicantData);
+    }
+
+    //If Skills is not all and a selected one
+    if (filterData.Skills != "") {
+      //filteredData consists of selected skill
+      processedData = data.filter(
+        (user) =>
+          user.skills1.toLowerCase() == filterData.Skills.toLowerCase() ||
+          user.skills2.toLowerCase() == filterData.Skills.toLowerCase() ||
+          user.skills3.toLowerCase() == filterData.Skills.toLowerCase()
+      );
+      console.log("Ifffffff reached Skills", processedData);
+    } else {
+      //If skills is ALL
+      processedData = Defdata;
+      console.log("Elseeeeee reached Skills", processedData);
+    } //Fine
+
+    if (processedData.length > 0) {
+      if (filterData.Experience != "") {
+        processedData = processedData.filter((user) => {
+          if (filterData.Experience.includes("0-3 Years")) {
+            return user.total_exp <= 3;
+          } else if (filterData.Experience.includes("3-6 Years")) {
+            return user.total_exp > 3 && user.total_exp <= 6;
+          } else if (filterData.Experience.includes("6-9 Years")) {
+            return user.total_exp > 6 && user.total_exp <= 9;
+          } else {
+            return user.total_exp > 9;
+          }
+        });
+        console.log("reached experience", processedData);
+      }
+    }
+
+    if (processedData.length > 0) {
+      if (filterData.Designation != "") {
+        processedData = processedData.filter(
+          (user) => user.designition === filterData.Designation
+        );
+        console.log("reached designation", processedData);
+      }
+    }
+    console.log();
+
+    setFileteredProcessedData(processedData);
+    setIsFiltered(true);
+    setIsSearched(false);
+  };
 
   function GetData() {
     useEffect(() => {
@@ -84,7 +159,7 @@ const DashboardPage = () => {
           console.log("////////////////////////////////////", res.data);
           setData(res.data);
           setDefData(res.data);
-
+          setApplicantData(res.data);
           setUserData(true);
         });
       } else {
@@ -111,74 +186,69 @@ const DashboardPage = () => {
     }
   };
 
-  const Courses = (courseType: string) => {
-    if (
-      (prevSkill != courseType || courseType === "All") &&
-      prevExp === "" &&
-      prevDes === ""
-    ) {
-      setData(Defdata);
+  const searchData = (pattern) => {
+    if (!pattern) {
+      setApplicantData(data);
+      return;
     }
-    setDropSkill(courseType);
-    setPrevSkill(courseType);
-  };
+    // If filter is applied and then we search
+    if(isFiltered) {
+      setApplicantData(processedData);
+    }
 
-  const Experience = (expType: string) => {
-    if (
-      (prevExp != expType || expType === "All") &&
-      prevExp === "" &&
-      prevDes === ""
-    ) {
-      setData(Defdata);
-    }
-    setDropExp(expType);
-    setPrevExp(expType);
-  };
+    const fuse = new Fuse(applicantData, {
+      keys: ["fname", "lname"],
+    });
 
-  const Role = (roleType: string) => {
-    if (
-      (prevDes != roleType || roleType === "All") &&
-      prevExp === "" &&
-      prevDes === ""
-    ) {
-      setData(Defdata);
+    const result = fuse.search(pattern);
+    const matches: IForm[] = [];
+    if (!result.length) {
+      setApplicantData([]);
+    } else {
+      result.forEach(({ item }) => {
+        matches.push(item);
+      });
+      setApplicantData(matches);
     }
-    setDropRole(roleType);
-    setPrevDes(roleType);
-  };
-  const list = "/readcsv" + data[0].email;
+    setIsFiltered(false);
+};
+
   return (
     <>
       {GetData()}
       <div className="main-dashboard">
-        <div className="sidebar">
-          <div>
-            <img src={iprofiler} alt="iprofiler" />
-          </div>
-          <a href="/">
-            <i
-              className="fa fa-fw fa-home pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
+        <FilterForm
+          show={show}
+          handleClose={handleClose}
+          handleFilterSubmit={handleFilterSubmit}
+        />
+        <div className="sidebar" id="side">
+          <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
+            <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
+          </Navbar.Brand>
+          <Link
+            to={{
+              pathname: "/",
+              state: !homePage,
+            }}
+          >
+            <i className="fa fa-home pr-2" style={{ fontSize: "1.75em" }} />
             Home
-          </a>
-          <a className="active" href="#">
-            <i
-              className="fa fa-fw fa-user pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
+          </Link>
+          <a className="active sidebar-link" href="#">
+            <i className="fa fa-user pr-2" style={{ fontSize: "1.75em" }} />
             Applicants
           </a>
           <a href="#">
             <i
-              className="fa fa-fw fa-briefcase pr-2"
+              className="fa fa-briefcase pr-2"
               style={{ fontSize: "1.75em" }}
             />
             Job Postings
           </a>
           <a href="#" onClick={handleClick}>
             <i
-              className="fa fa-fw fa-power-off pr-2"
+              className="fa fa-power-off pr-2"
               style={{ fontSize: "1.75em" }}
             />
             Logout
@@ -187,12 +257,12 @@ const DashboardPage = () => {
 
         <div className="content">
           <Row className="heading-style">
-            <h4 className="display-applicant">Displaying Applicants</h4>
+            <h3 className="display-applicant">Displaying Applicants</h3>
             <LinkContainer to="/SendEmail">
               <Nav.Link>
                 <i
                   className="fa fa-user-plus"
-                  style={{ fontSize: "1.75em", marginTop: "1.3rem" }}
+                  style={{ fontSize: "1.75em", color: "#AE4DFF" }}
                 ></i>
               </Nav.Link>
             </LinkContainer>
@@ -201,46 +271,9 @@ const DashboardPage = () => {
           <div className="filter">
             <Row className="filter-row">
               <Col md={6} className="dashboard-filters">
-                <div className="select">
-                  <select onChange={(e) => Courses(e.target.value)}>
-                    <option value="none" selected disabled hidden>
-                      Skills
-                    </option>
-                    <option value="All">All</option>
-                    <option value="Java">Java</option>
-                    <option value="Python">Python</option>
-                    <option value="Django">Django</option>
-                    <option value="C">C/C++</option>
-                    <option value="React">React</option>
-                    <option value="Javascript">Javascript</option>
-                  </select>
-                </div>
-
-                <div className="select">
-                  <select onChange={(e) => Experience(e.target.value)}>
-                    <option value="none" selected disabled hidden>
-                      Experience
-                    </option>
-                    <option value="All">All</option>
-                    <option value="0-3 Years">0-3 Years</option>
-                    <option value="3-6 Years">3-6 Years</option>
-                    <option value="6-9 Years">6-9 Years</option>
-                    <option value=">9 Years">{">"}9 Years</option>
-                  </select>
-                </div>
-
-                <div className="select">
-                  <select onChange={(e) => Role(e.target.value)}>
-                    <option value="none" selected disabled hidden>
-                      Designation
-                    </option>
-                    <option value="All">All</option>
-                    <option value="SDE">SDE</option>
-                    <option value="SDET">SDET</option>
-                    <option value="HR">HR</option>
-                    <option value="DevOps">DevOps</option>
-                  </select>
-                </div>
+                <Button variant="dark" onClick={handleShow}>
+                  Filters
+                </Button>
               </Col>
               <Col md={6} className="pr-0">
                 <div className="search mr-0">
@@ -252,7 +285,7 @@ const DashboardPage = () => {
                     className="search-input"
                     onChange={(e) => {
                       setIsSearched(!isSearched);
-                      setSearchTerm(e.target.value);
+                      searchData(e.target.value);
                     }}
                   />
                 </div>
@@ -260,63 +293,27 @@ const DashboardPage = () => {
             </Row>
           </div>
 
-          <div className="grid-container justify-content-around">
+          <p className="text-danger">{message}</p>
+          <div className="grid-container justify-content-center">
+            {/* For displaying all data*/}
             {!isSearched &&
-              DropSkill === "" &&
+              !isFiltered &&
               userData &&
               data.map((user) => <Applicant passData={user} />)}
 
+            {/* For Search Functionality */}
             {userData &&
               isSearched &&
-              data
-                .filter(
-                  (user) =>
-                    user.fname == searchTerm ||
-                    user.lname == searchTerm ||
-                    user.city == searchTerm ||
-                    user.designition == searchTerm
-                )
-                .map((user) => <Applicant passData={user} />)}
+              applicantData.map((user) => <Applicant passData={user} />)}
 
-            {DropSkill != "" &&
-              data
-                .filter(
-                  (user) =>
-                    user.skills1 == DropSkill ||
-                    user.skills2 == DropSkill ||
-                    user.skills3 == DropSkill
-                )
-                .map((user) => <Applicant passData={user} />)}
-
-            {DropExp != "" &&
-              data
-                .filter((user) =>
-                  DropExp == "0-3 Years"
-                    ? user.total_exp <= 3
-                    : DropExp == "3-6 Years"
-                    ? user.total_exp > 3 && user.total_exp <= 6
-                    : DropExp == "6-9 Years"
-                    ? user.total_exp > 6 && user.total_exp <= 9
-                    : user.total_exp > 9
-                )
-                .map((user) => <Applicant passData={user} />)}
-
-            {DropRole != "" &&
-              data
-                .filter((user) => user.designition === DropRole)
-                .map((user) => <Applicant passData={user} />)}
-
-            {userData &&
-              isSearched &&
-              data
-                .filter(
-                  (user) =>
-                    user.fname == searchTerm ||
-                    user.lname == searchTerm ||
-                    user.city == searchTerm ||
-                    user.designition == searchTerm
-                )
-                .map((user) => <Applicant passData={user} />)}
+            {/* For Filter Functionality */}
+            {isFiltered && filteredProcessedData.length > 0 ? (
+              filteredProcessedData.map((user) => <Applicant passData={user} />)
+            ) : isFiltered ? (
+              <h2>No such results found !!</h2>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>

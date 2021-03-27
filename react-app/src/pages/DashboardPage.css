@@ -4,48 +4,63 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 30% 30% 25%;
   padding: 10px;
+  grid-column-gap: 10px;
+  left: 0px;
+  right: 0px;
 }
 
 .sidebar {
   margin: 0;
   padding: 0;
   width: 220px;
-  background-color: #222222;
+  background-color: #ffffff;
   position: fixed;
   height: 100%;
   overflow: auto;
 }
 
-.sidebar-head {
-  background-color: #33cabb;
-  margin: 15px;
-  padding: 10px;
-  border-radius: 25px;
-  text-align: center;
+#sidebar-logo {
+  display: block;
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+}
+
+#sidebar-logo.active {
+  background-image: none;
+  color: white;
+}
+#sidebar-logo:hover:not(.active) {
+  background-image: none;
+  color: white;
 }
 
 .sidebar a {
   display: block;
-  color: #bbb;
+  color: black;
   padding: 16px;
   text-decoration: none;
 }
 
 .sidebar a.active {
-  background-color: #555;
+  background-image: linear-gradient(127deg, #a759d1 0%, #8261ee 91%);
   color: white;
 }
 
 .sidebar a:hover:not(.active) {
-  background-color: #555;
+  background-image: linear-gradient(127deg, #a759d1 0%, #8261ee 91%);
   color: white;
 }
 
+.content {
+  background-color: #f2f2fe;
+}
+
 .display-applicant {
-  margin-top: 2rem;
-  margin-left: 6.5%;
+  margin-left: 5%;
+  color: #ae4dff;
 }
 div.content {
   margin-left: 220px;
@@ -54,13 +69,19 @@ div.content {
 .heading-style {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  justify-content: space-between;
+  padding: 2rem;
 }
 
 @media screen and (max-width: 1100px) {
-  .sidebar {
+  #side {
     width: 100%;
     height: auto;
     position: relative;
+    display: flex;
+    align-items: center;
   }
   .sidebar a {
     float: left;
@@ -76,7 +97,7 @@ div.content {
 }
 
 @media screen and (max-width: 450px) {
-  .sidebar a {
+  #side {
     text-align: center;
     float: none;
   }
@@ -138,10 +159,9 @@ select {
   appearance: none;
   outline: 0;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #343a40;
+  border-color: #343a40;
   background-image: none;
-  border: 1px solid black;
 }
 .select {
   position: relative;
@@ -149,7 +169,7 @@ select {
   width: 10em;
   height: 3em;
   line-height: 3;
-  background: #007bff;
+  background: #343a40;
   overflow: hidden;
   border-radius: 0.25em;
 }
@@ -171,7 +191,7 @@ select::-ms-expand {
   right: 0;
   bottom: 0;
   padding: 0 1em;
-  background: #007bff;
+  background: #23272b;
   pointer-events: none;
 }
 .select:hover::after {
@@ -182,4 +202,10 @@ select::-ms-expand {
   -webkit-transition: 0.25s all ease;
   -o-transition: 0.25s all ease;
   transition: 0.25s all ease;
+}
+
+.logo-dashboard {
+  height: 5rem;
+  width: 12rem;
+  margin-top: 1rem;
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Route, Switch, BrowserRouter as Router, Link } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router, Link, useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import iprofilerlogo from '../assets/iprofilerlogo.png';
+import iprofilerlogo from '../assets/LogoFinal.png';
 
 const Styles = styled.div`
   .navbar {
@@ -53,7 +53,14 @@ const Styles = styled.div`
 }
 `;
 
-export const NavigationBar = () => {
+export const NavigationBar = (props) => {
+
+  // const history = useHistory();
+  // const handleClick = () => {
+  //   console.log("I am clicked!!!!!!!!!!");
+  //   history.push('/DashboardPage');
+  // }
+
   return (
     <Styles>
       <Navbar expand="lg" fixed="top">
@@ -63,18 +70,23 @@ export const NavigationBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
+            <LinkContainer to="/Contact">
+              <Nav.Link>Contact Us</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/Pricing">
               <Nav.Link>Pricing</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/Apply">
               <Nav.Link>Apply</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/Login">
-              <Nav.Link>Login</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/Contact">
-              <Nav.Link>Contact Us</Nav.Link>
-            </LinkContainer>
+            {props.navigationState ?
+              (<LinkContainer to="/DashboardPage">
+                <Nav.Link><i className="fa fa-user-circle" style={{ fontSize: "1.75em" }} />
+                </Nav.Link>
+              </LinkContainer>) :
+              (<LinkContainer to="/Login">
+                <Nav.Link>Login</Nav.Link>
+              </LinkContainer>)}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Card, Button, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { UserProfile } from "../pages/UserProfile";
 
 interface IForm {
@@ -28,6 +28,11 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
+
+}
+
+interface IState {
+  status?: string;
 }
 
 type TForm = {
@@ -36,6 +41,9 @@ type TForm = {
 
 const Applicants = ({ passData }: TForm) => {
   // const [getResume, setGetResume] = useState('');
+  // const [invite, setInvite] = useState(false);
+  // let location,history,status;
+
   let setGetResume;
   if (passData != null) {
     setGetResume = passData.resume_id;
@@ -43,12 +51,28 @@ const Applicants = ({ passData }: TForm) => {
 
   // console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
   // console.log(setGetResume);
+  // function handleInvite(){
+  //   setInvite(!invite);
+  //   history.push({
+  //     pathname: "/IncommingRounds",
+  //     state: passData,
+    
+  //   });
+
+  // }
+
+  // function HandleStatus(){
+  // location = useLocation();
+  // history = useHistory();
+  // status = (location.state as IState).status;
+  // console.log(status);
+  // }
 
   function handleResume() {
     console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     console.log(passData.resume_id);
     axios
-      .get(`http://127.0.0.1:5000/getData/` + passData.resume_id, {
+      .get(`http://0.0.0.0:5000/getData/` + passData.resume_id, {
         headers: {
           "Content-type": "application/pdf",
         },
@@ -82,25 +106,45 @@ const Applicants = ({ passData }: TForm) => {
         document.body.removeChild(link);
       });
   }
-  const url = "http://127.0.0.1:5000/getData/" + passData.resume_id;
+  // const url = "http://127.0.0.1:5000/getData/" + passData.resume_id;
 
   return (
+    <>
+    {/* {invite && HandleStatus()} */}
     <Card
       style={{ width: "18rem", backgroundColor: "#f8f8ff" }}
       className="shadow p-3 mb-5 
     bg-white rounded"
     >
       <Card.Body>
-        <Card.Title className="text-left">
-          {passData.fname} {passData.lname}
-        </Card.Title>
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <Card.Title className="text-left">
+            {passData.fname} {passData.lname}
+          </Card.Title>
+          <Link to ={{
+            pathname:"/IncommingRounds",
+            state: passData
+          }}>
+            <i
+              className="fa fa-envelope"
+              style={{ fontSize: "1.75em", color: "#AE4DFF" }}></i>
+              </Link>
+        </div>
+
         <hr />
         {/* <Card.Subtitle className="mb-2 text-muted">
         {passData.pgDegree.length()>1?({passData.ugDegree} + {'-'} + {passData.pgdegree}):{passData.ugDegree}}
         </Card.Subtitle> */}
 
-        {passData.pgDegree.length>1?(<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree} {' | '} {passData.pgDegree}</Card.Subtitle>) 
-        : (<Card.Subtitle className="mb-2 text-muted">{passData.ugDegree}</Card.Subtitle>)}
+        {passData.pgDegree.length > 1 ? (
+          <Card.Subtitle className="mb-2 text-muted">
+            {passData.ugDegree} {" | "} {passData.pgDegree}
+          </Card.Subtitle>
+        ) : (
+          <Card.Subtitle className="mb-2 text-muted">
+            {passData.ugDegree}
+          </Card.Subtitle>
+        )}
 
         <Card.Text className="text-left">
           <h6>Total Experience: {passData.total_exp}</h6>
@@ -113,16 +157,19 @@ const Applicants = ({ passData }: TForm) => {
         </Card.Text>
         <Row>
           <Col sm={6}>
-            <Link to={{
-              pathname:"/UserProfile",
-              state:passData
-            }}>
-            <Button variant="primary align-self-end">View Profile</Button>
+            <Link
+              to={{
+                pathname: "/UserProfile",
+                state: passData,
+              }}
+            >
+              <Button variant="dark align-self-end">View Profile</Button>
             </Link>
           </Col>
           <Col sm={6}>
-            <Button variant="primary align-self-end" onClick={handleResume}>
-              View Resume
+            <Button variant="dark align-self-end">
+              {/* {status=="OK"? "invited":"available"} */}
+              Avail
             </Button>
 
             {/* <Link to={url} target="_blank" download>
@@ -133,6 +180,7 @@ const Applicants = ({ passData }: TForm) => {
         </Row>
       </Card.Body>
     </Card>
+    </>
   );
 };
 

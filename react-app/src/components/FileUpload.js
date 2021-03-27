@@ -7,6 +7,7 @@ import "./fileUpload.css";
 import { NavigationBar } from "./NavigationBar";
 import { Row, Col, Container } from "react-bootstrap";
 import { JobDes } from "./JobDes";
+import loader from '../assets/loader.gif';
 
 const mainWidth = { width: "80%", marginTop: "10rem" };
 const divColor = { backgroundColor: "#AE4DFF" };
@@ -51,6 +52,18 @@ const FileUpload = () => {
     }, 5000);
   };
 
+  const Loader = () => {
+    return(
+      <>
+     <div className="loading-text">Keep calm, sit back, we are processing your resume!!
+     </div>
+     <div className="load"> 
+    <img src= {loader} />
+    </div>
+    </>
+    );
+  }
+
   const OnSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -91,7 +104,7 @@ const FileUpload = () => {
 
   return (
     <Fragment>
-      <NavigationBar />
+      <NavigationBar navigationState={false} />
       <Container
         style={mainWidth}
         className="text-center shadow-lg mb-5 bg-white rounde upload-main"
@@ -140,9 +153,7 @@ const FileUpload = () => {
       </Container>
       {console.log("Value is =", data)}
       {isLoading ? (
-        <div className="load">
-          <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" />
-        </div>
+          <Loader />
       ) : (
         " "
       )}

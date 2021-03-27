@@ -1,29 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import "./contact.css";
 import "font-awesome/css/font-awesome.min.css";
 import { NavigationBar } from "./NavigationBar";
 import emailjs from "emailjs-com";
+import { useHistory } from "react-router";
+import { ExecFileOptionsWithStringEncoding } from "node:child_process";
 
-export default function Contact() {
+interface IForm {
+  email: string;
+  phone1: string;
+  phone2: string;
+  fname: string;
+  lname: string;
+  total_exp: number;
+  designition: string;
+  pgDegree: string;
+  ugDegree: string;
+  pg_University: string;
+  ug_University: string;
+  ugPercentage: string;
+  pgPercentage: string;
+  skills1: string;
+  skills2: string;
+  skills3: string;
+  Companies_worked_at: string;
+  address: string;
+  dob: string;
+  city: string;
+  state: string;
+  zip: string;
+  resume_id: string;
+
+}
+
+export default function IncommingRounds(props: { location: { state: IForm } }) {
+
+  const history = useHistory();
+  const [status,setStatus] = useState("");
   function sendEmail(e) {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "service_7rxqjtc",
-        "template_zl1oogq",
+        "service_i5xkb9q",
+        "template_oswchzf",
         e.target,
-        "user_s3by4SVXrmIx9wtg3Gpf2"
+        "user_g4abNbCtzFbXRaay1AgZK"
       )
       .then(
         (result) => {
           console.log(result.text);
+          setStatus(result.text);
+          // history.push({
+          //   pathname: "/Applicant",
+          //   state: {status:status},
+          // });
+          // const fs = require('fs')
+          // fs.writeFile('status.json', status, (err) => {
+          //   if (err) throw err;
+          // })
         },
         (error) => {
           console.log(error.text);
         }
       );
     e.target.reset();
+
   }
   return (
     <>
@@ -32,44 +74,14 @@ export default function Contact() {
         <section className="contact-page-sec">
           <div className="container">
             <div className="row">
-              <div className="col-md-4">
-                <div className="contact-info">
-                  <div className="contact-info-item">
-                    <div className="contact-info-icon">
-                      <i className="fa fa-map-marker"></i>
-                    </div>
-                    <div className="contact-info-text">
-                      <h2>address</h2>
-                      <span>1215 Ring Road, iProfiler </span>
-                      <span>Banglore , INDIA</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
+              <div className="col-md">
                 <div className="contact-info">
                   <div className="contact-info-item">
                     <div className="contact-info-icon">
                       <i className="fa fa-envelope"></i>
                     </div>
                     <div className="contact-info-text">
-                      <h2>E-mail us at </h2>
-                      <span>info@iprofiler.com</span>
-                      <span>queries@iprofiler.com</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="contact-info">
-                  <div className="contact-info-item">
-                    <div className="contact-info-icon">
-                      <i className="fa fa-clock-o"></i>
-                    </div>
-                    <div className="contact-info-text">
-                      <h2> Office working hours </h2>
-                      <span> Mon - Thu 10:00 am - 7.00 pm</span>
-                      <span> Fri - Sat 11.00 am - 5.00 pm</span>
+                      <h2>Intimate Candidate For further rounds!!!!</h2>{" "}
                     </div>
                   </div>
                 </div>
@@ -85,8 +97,13 @@ export default function Contact() {
                         <div className="single-input-field">
                           <input
                             type="text"
-                            placeholder="Your Name"
+                            placeholder="Enter the Candidate's Name"
                             name="name"
+                            value={
+                              props.location.state.fname +
+                              " " +
+                              props.location.state.lname
+                            }
                           />
                         </div>
                       </div>
@@ -94,8 +111,9 @@ export default function Contact() {
                         <div className="single-input-field">
                           <input
                             type="email"
-                            placeholder="E-mail"
+                            placeholder="Enter the Candidate's E-mail ID"
                             name="email"
+                            value={props.location.state.email}
                             required
                           />
                         </div>
@@ -104,8 +122,9 @@ export default function Contact() {
                         <div className="single-input-field">
                           <input
                             type="text"
-                            placeholder="Phone Number"
+                            placeholder="Enter the Candidate's Phone Number"
                             name="phone"
+                            value={props.location.state.phone1}
                           />
                         </div>
                       </div>
@@ -115,6 +134,7 @@ export default function Contact() {
                             type="text"
                             placeholder="Subject"
                             name="subject"
+                            value="Selection For Further Rounds"
                           />
                         </div>
                       </div>
@@ -127,7 +147,7 @@ export default function Contact() {
                         </div>
                       </div>
                       <div className="single-input-fieldsbtn">
-                        <input type="submit" value="Send Now" />
+                        <input type="submit" value="Send Invitation" />
                       </div>
                     </div>
                   </form>

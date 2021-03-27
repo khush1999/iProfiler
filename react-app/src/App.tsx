@@ -9,8 +9,10 @@ import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
 import Contact from "./components/Contact";
 import { Landingpage } from "./pages/LandingPage";
-import SendEmail  from "./components/InviteApplicant";
+import SendEmail from "./components/InviteApplicant";
 import { UserProfile } from "./pages/UserProfile";
+import IncommingRounds from "./components/IncommingRounds";
+import Applicants from "./components/Applicants";
 
 declare global {
   interface Window {
@@ -34,6 +36,8 @@ function App() {
           <Route exact path="/Contact" component={Contact} />
           <Route exact path="/UserProfile" component={UserProfile} />
           <Route exact path="/SendEmail" component={SendEmail} />
+          <Route exact path="/IncommingRounds" component={IncommingRounds} />
+          <Route exact path="/Applicant" component={Applicants} />
         </Fragment>
       </BrowserRouter>
     </div>

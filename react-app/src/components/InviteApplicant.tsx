@@ -27,7 +27,7 @@ export default function InviteApplicant() {
   }
   return (
     <>
-      <NavigationBar />
+      <NavigationBar navigationState={false} />
       <div className="margins">
         <section className="contact-page-sec">
           <div className="container">

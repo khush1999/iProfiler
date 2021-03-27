@@ -41,7 +41,7 @@ export const Login = () => {
                 setEmailError("You entered wrong Email!!");
             }
         } catch (err) {
-            if (err.response.status === 500) {
+                if (err.response.status === 500) {
                 setMessage("There was a problem with the server");
             } else {
                 setMessage(err.response.data.msg);
@@ -51,7 +51,7 @@ export const Login = () => {
 
     return (
         <>
-            <NavigationBar />
+            <NavigationBar navigationState={false} />
             <Container style={mainWidth} className="login-container text-center shadow-lg mb-5 bg-white rounde">
                 <Row>
                     <Col sm={5} style={divColor} className="text-white font-weight-bold p-3 col-container-1">
