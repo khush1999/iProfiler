@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import { NavigationBar } from "../components/NavigationBar";
 import signup from "../assets/signin.svg";
+import { NavigationBar } from "../components/NavigationBar";
 import "./SignUp.css";
 
 const mainWidth = { width: "60%", marginTop: "10rem" };

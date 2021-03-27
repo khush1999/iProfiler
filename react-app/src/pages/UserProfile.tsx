@@ -1,10 +1,9 @@
-import { NavigationBar } from "../components/NavigationBar";
-import { useParams } from "react-router-dom";
-import './userprofile.css';
-import userprofile from '../assets/userprofile.jpg';
 import axios from "axios";
 import React from "react";
 import { Button } from "react-bootstrap";
+import userprofile from '../assets/userprofile.jpg';
+import { NavigationBar } from "../components/NavigationBar";
+import './userprofile.css';
 
 interface IForm {
     email: string;
@@ -40,7 +39,7 @@ export const UserProfile = (props: { location: { state: IForm; }; }) => {
     const handleResume = async () => {
         console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         console.log(profile.resume_id);
-        axios.get(`http://127.0.0.1:5000/getData/` + profile.resume_id, {
+        axios.get(`http://35.240.139.69:8080/getData/` + profile.resume_id, {
             headers: {
                 "Content-type": "application/pdf",
             },
@@ -81,7 +80,7 @@ export const UserProfile = (props: { location: { state: IForm; }; }) => {
             <div className="profile">
                 <div className="page-content page-container" id="page-content">
                     <div className="padding">
-                        <div className="row container d-flex justify-content-center">
+                        <div className="row container profiler-container d-flex justify-content-center">
                             <div className="row-xl-6 row-md-30">
                                 <div className="card user-card-full">
                                     <div className="row m-l-0 m-r-0">

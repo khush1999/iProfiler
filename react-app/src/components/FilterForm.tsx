@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 interface IProps {
     show: boolean;

@@ -1,17 +1,16 @@
 import React, { Fragment } from "react";
-import logo from "./logo.svg";
-import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
-import Pricing from "./pages/Pricing";
-import FileUpload from "./components/FileUpload";
-import DashboardPage from "./pages/DashboardPage";
-import { Login } from "./pages/Login";
-import { SignUp } from "./pages/SignUp";
+import "./App.css";
 import Contact from "./components/Contact";
-import { Landingpage } from "./pages/LandingPage";
-import SendEmail from "./components/InviteApplicant";
-import { UserProfile } from "./pages/UserProfile";
+import FileUpload from "./components/FileUpload";
 import IncommingRounds from "./components/IncommingRounds";
+import SendEmail from "./components/InviteApplicant";
+import DashboardPage from "./pages/DashboardPage";
+import { Landingpage } from "./pages/LandingPage";
+import { Login } from "./pages/Login";
+import Pricing from "./pages/Pricing";
+import { SignUp } from "./pages/SignUp";
+import { UserProfile } from "./pages/UserProfile";
 
 declare global {
   interface Window {

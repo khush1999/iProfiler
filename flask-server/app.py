@@ -1,16 +1,17 @@
-from flask import Flask, render_template, request, url_for, redirect, session, send_file, send_from_directory
-from flask_pymongo import PyMongo
-import bcrypt
-import urllib.request
 import json
-import requests
-import PyPDF2
 import os
+import urllib.request
 import uuid
-from werkzeug.utils import secure_filename
-from resume_parser import resumeparse
+
+import bcrypt
+import PyPDF2
+import requests
 import spacy
-import uuid
+from flask import (Flask, redirect, render_template, request, send_file,
+                   send_from_directory, session, url_for)
+from flask_pymongo import PyMongo
+from resume_parser import resumeparse
+from werkzeug.utils import secure_filename
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__name__")
@@ -40,7 +41,8 @@ def upload_file():
         # fileName = str(uuid.uuid4())[:8]
         filename = secure_filename(f.filename)
         basedir = os.path.abspath(os.path.dirname(__file__))
-        f.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
+        # f.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
+        f.save(filename)
         # print(f.filename)
         # print(filename)
         filenam = f.filename
@@ -59,7 +61,7 @@ def get_file(path=None):
     if path is not None:
         # print("Download a file......")
         # return send_file(path)
-        return send_from_directory(app.config['UPLOAD_FOLDER'], path)
+        return send_file(path)
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
 

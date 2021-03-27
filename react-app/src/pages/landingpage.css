@@ -60,8 +60,14 @@ ul {
   margin-bottom: 0px;
 }
 
+.hire-button {
+  width: 8rem;
+  height: 3rem;
+}
+
 .section {
   position: relative;
+  min-height: 80vh;
   padding-top: 100px;
   padding-bottom: 80px;
 }

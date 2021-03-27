@@ -1,8 +1,6 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { Card, Button, Row, Col, OverlayTrigger, Tooltip } from "react-bootstrap";
+import React from "react";
+import { Button, Card, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { UserProfile } from "../pages/UserProfile";
 import "./Applicant.css";
 
 interface IForm {

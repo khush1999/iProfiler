@@ -1,14 +1,14 @@
-import Applicant from "../components/Applicants";
-import { Row, Col, Dropdown, Nav, Navbar, Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import "./DashboardPage.css";
 import "font-awesome/css/font-awesome.min.css";
-import { Link, useHistory } from "react-router-dom";
-import iprofiler from "../assets/LogoFinal.png";
-import { LinkContainer } from "react-router-bootstrap";
 import Fuse from "fuse.js";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Nav, Navbar, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { useHistory } from "react-router-dom";
+import iprofiler from "../assets/LogoFinal.png";
+import Applicant from "../components/Applicants";
 import FilterForm from "../components/FilterForm";
+import "./DashboardPage.css";
 
 interface IForm {
   email: string;
