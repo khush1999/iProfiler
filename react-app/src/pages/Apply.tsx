@@ -1,9 +1,7 @@
-import './apply.css';
-import { Form, Col, Button, Modal } from "react-bootstrap";
-import axios from 'axios';
-
 import { useState } from 'react';
-import { NavigationBar } from '../components/NavigationBar';
+import { Button, Col, Form, Modal } from "react-bootstrap";
+import './apply.css';
+
 interface IForm {
     email: string;
     phone: string;

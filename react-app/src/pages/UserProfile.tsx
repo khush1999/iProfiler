@@ -1,7 +1,9 @@
-import { NavigationBar } from "../components/NavigationBar";
-import { useParams } from "react-router-dom";
-import './userprofile.css';
+import axios from "axios";
+import React from "react";
+import { Button } from "react-bootstrap";
 import userprofile from '../assets/userprofile.jpg';
+import { NavigationBar } from "../components/NavigationBar";
+import './userprofile.css';
 
 interface IForm {
     email: string;
@@ -33,13 +35,52 @@ interface IForm {
 export const UserProfile = (props: { location: { state: IForm; }; }) => {
 
     let profile = props.location.state;
+
+    const handleResume = async () => {
+        console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        console.log(profile.resume_id);
+        axios.get(`http://35.240.139.69:8080/getData/` + profile.resume_id, {
+            headers: {
+                "Content-type": "application/pdf",
+            },
+            responseType: "blob",
+        })
+            .then(function (response) {
+                console.log(response.data);
+                const blobUrl = URL.createObjectURL(response.data);
+
+                // Create a link element
+                const link = document.createElement("a");
+
+                // Set link's href to point to the Blob URL
+                link.href = blobUrl;
+                link.download = profile.resume_id;
+
+                // Append link to the body
+                document.body.appendChild(link);
+
+                // Dispatch click event on the link
+                // This is necessary as link.click() does not work on the latest firefox
+                link.dispatchEvent(
+                    new MouseEvent("click", {
+                        bubbles: true,
+                        cancelable: true,
+                        view: window,
+                    })
+                );
+
+                // Remove link from body
+                document.body.removeChild(link);
+            });
+    }
+
     return (
         <>
             <NavigationBar />
             <div className="profile">
                 <div className="page-content page-container" id="page-content">
                     <div className="padding">
-                        <div className="row container d-flex justify-content-center">
+                        <div className="row container profiler-container d-flex justify-content-center">
                             <div className="row-xl-6 row-md-30">
                                 <div className="card user-card-full">
                                     <div className="row m-l-0 m-r-0">
@@ -124,6 +165,16 @@ export const UserProfile = (props: { location: { state: IForm; }; }) => {
                                                     <div className="col">
                                                         <p className="m-b-10 f-w-600">Experience</p>
                                                         <h6 className="text-muted f-w-400">{profile.total_exp} yrs</h6>
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col">
+                                                        <Button
+                                                            variant="dark align-self-end"
+                                                            onClick={handleResume}
+                                                        >
+                                                            Download Resume
+                                                        </Button>
                                                     </div>
                                                 </div>
                                             </div>

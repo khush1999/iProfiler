@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import "./contact.css";
-import "font-awesome/css/font-awesome.min.css";
-import { NavigationBar } from "./NavigationBar";
 import emailjs from "emailjs-com";
-import { useHistory } from "react-router";
-import { ExecFileOptionsWithStringEncoding } from "node:child_process";
+import "font-awesome/css/font-awesome.min.css";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./contact.css";
+import { NavigationBar } from "./NavigationBar";
 
 interface IForm {
   email: string;

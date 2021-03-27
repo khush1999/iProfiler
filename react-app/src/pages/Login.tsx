@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { NavigationBar } from "../components/NavigationBar";
-import loginSvg from "./login.svg";
 import "./login.css";
+import loginSvg from "./login.svg";
 
 const divColor = { backgroundColor: "#AE4DFF" };
 const mainWidth = { width: "60%", marginTop: "10rem" };
@@ -34,14 +34,14 @@ export const Login = () => {
                 history.push('/DashboardPage');
             }
             else if (res.data === "Wrong password") {
-                setPwdError("You entered wrong password!!");
+                setPwdError("Invalid Password!!");
             }
 
             else if (res.data === "Email not found") {
-                setEmailError("You entered wrong Email!!");
+                setEmailError("Invalid Email!!");
             }
         } catch (err) {
-                if (err.response.status === 500) {
+            if (err.response.status === 500) {
                 setMessage("There was a problem with the server");
             } else {
                 setMessage(err.response.data.msg);
@@ -56,12 +56,12 @@ export const Login = () => {
                 <Row>
                     <Col sm={5} style={divColor} className="text-white font-weight-bold p-3 col-container-1">
                         <div>
-                            <h3>Best Hiring Platform</h3>
+                            <h3>The New Norm for Recruitment</h3>
                         </div>
                         <img src={loginSvg} alt="logo" />
                         <div>
                             <p>Reduce Your Hiring Cost With Us !</p>
-                            <p>Choose Your Plan & Start Hiring Now</p>
+                            <p className="mb-3">Choose Your Plan & Start Hiring Now</p>
                             <Button variant="dark" onClick={handleClick}>Buy Now {'>>'}</Button> {' '}
                         </div>
                     </Col>

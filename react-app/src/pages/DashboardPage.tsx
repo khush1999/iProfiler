@@ -1,14 +1,14 @@
-import Applicant from "../components/Applicants";
-import { Row, Col, Dropdown, Nav, Navbar, Button } from "react-bootstrap";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import "./DashboardPage.css";
 import "font-awesome/css/font-awesome.min.css";
-import { Link, useHistory } from "react-router-dom";
-import iprofiler from "../assets/LogoFinal.png";
-import { LinkContainer } from "react-router-bootstrap";
 import Fuse from "fuse.js";
+import React, { useEffect, useState } from "react";
+import { Button, Col, Nav, Navbar, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
+import { useHistory } from "react-router-dom";
+import iprofiler from "../assets/LogoFinal.png";
+import Applicant from "../components/Applicants";
 import FilterForm from "../components/FilterForm";
+import "./DashboardPage.css";
 
 interface IForm {
   email: string;
@@ -100,19 +100,32 @@ const DashboardPage = () => {
     console.log("!!!!!!!!!!!!!!!!!!!!!", filterData);
 
     setData(Defdata);
-    if(isSearched) {
-      setData(applicantData);
-    }
+    // if (isSearched) {
+    //   setData(applicantData);
+    //   console.log("Hiiiii");
+    // }
+
+    console.log("After set applicant data", applicantData);
+    console.log("After set applicant data", data);
 
     //If Skills is not all and a selected one
     if (filterData.Skills != "") {
       //filteredData consists of selected skill
-      processedData = data.filter(
-        (user) =>
-          user.skills1.toLowerCase() == filterData.Skills.toLowerCase() ||
-          user.skills2.toLowerCase() == filterData.Skills.toLowerCase() ||
-          user.skills3.toLowerCase() == filterData.Skills.toLowerCase()
-      );
+      if (!isSearched) {
+        processedData = data.filter(
+          (user) =>
+            user.skills1.toLowerCase() == filterData.Skills.toLowerCase() ||
+            user.skills2.toLowerCase() == filterData.Skills.toLowerCase() ||
+            user.skills3.toLowerCase() == filterData.Skills.toLowerCase()
+        );
+      } else {
+        processedData = applicantData.filter(
+          (user) =>
+            user.skills1.toLowerCase() == filterData.Skills.toLowerCase() ||
+            user.skills2.toLowerCase() == filterData.Skills.toLowerCase() ||
+            user.skills3.toLowerCase() == filterData.Skills.toLowerCase()
+        );
+      }
       console.log("Ifffffff reached Skills", processedData);
     } else {
       //If skills is ALL
@@ -145,11 +158,13 @@ const DashboardPage = () => {
         console.log("reached designation", processedData);
       }
     }
-    console.log();
+
 
     setFileteredProcessedData(processedData);
     setIsFiltered(true);
     setIsSearched(false);
+    console.log("Filterrrrr", processedData);
+    console.log("Filterrrrr", applicantData);
   };
 
   function GetData() {
@@ -192,7 +207,7 @@ const DashboardPage = () => {
       return;
     }
     // If filter is applied and then we search
-    if(isFiltered) {
+    if (isFiltered) {
       setApplicantData(processedData);
     }
 
@@ -211,7 +226,7 @@ const DashboardPage = () => {
       setApplicantData(matches);
     }
     setIsFiltered(false);
-};
+  };
 
   return (
     <>
@@ -222,60 +237,107 @@ const DashboardPage = () => {
           handleClose={handleClose}
           handleFilterSubmit={handleFilterSubmit}
         />
-        <div className="sidebar" id="side">
-          <Navbar.Brand href="#" className="brand-border" id="sidebar-logo">
-            <img src={iprofiler} alt="iprofiler" className="logo-dashboard" />
+        <Navbar expand="lg" fixed="top">
+          <Navbar.Brand href="/" className="brand-border">
+            <img src={iprofiler} alt="iprofiler" className="logo-image" />
           </Navbar.Brand>
-          <Link
-            to={{
-              pathname: "/",
-              state: !homePage,
-            }}
-          >
-            <i className="fa fa-home pr-2" style={{ fontSize: "1.75em" }} />
-            Home
-          </Link>
-          <a className="active sidebar-link" href="#">
-            <i className="fa fa-user pr-2" style={{ fontSize: "1.75em" }} />
-            Applicants
-          </a>
-          <a href="#">
-            <i
-              className="fa fa-briefcase pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
-            Job Postings
-          </a>
-          <a href="#" onClick={handleClick}>
-            <i
-              className="fa fa-power-off pr-2"
-              style={{ fontSize: "1.75em" }}
-            />
-            Logout
-          </a>
-        </div>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+              {/* <LinkContainer to={{
+                pathname: "/",
+                state: !homePage,
+              }}>
+                <Nav.Link id="home-link">Home</Nav.Link>
+              </LinkContainer> */}
+              <LinkContainer to="/DashboardPage">
+                <Nav.Link className="active">Applicants</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="#">
+                <Nav.Link>Job Postings</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="#" onClick={handleClick}>
+                <Nav.Link>Logout</Nav.Link>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
 
-        <div className="content">
-          <Row className="heading-style">
-            <h3 className="display-applicant">Displaying Applicants</h3>
-            <LinkContainer to="/SendEmail">
-              <Nav.Link>
-                <i
-                  className="fa fa-user-plus"
-                  style={{ fontSize: "1.75em", color: "#AE4DFF" }}
-                ></i>
-              </Nav.Link>
-            </LinkContainer>
-          </Row>
+        <div className="content shadow-lg">
+
+          <div>
+            <Row className="heading-style">
+              <h3 className="welcome-content">Welcome User</h3>
+              <div className="icons-container">
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>
+                      Invite Applicant
+                    </Tooltip>
+                  }
+                >
+                  <LinkContainer to="/SendEmail">
+                    <Nav.Link className="p-0">
+                      <i
+                        className="fa fa-user-plus"
+                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                      ></i>
+                    </Nav.Link>
+                  </LinkContainer>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>
+                      Notifications
+                    </Tooltip>
+                  }
+                >
+                  <LinkContainer to="#">
+                    <Nav.Link className="p-0">
+                      <i
+                        className="fa fa-bell"
+                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                      ></i>
+                    </Nav.Link>
+                  </LinkContainer>
+                </OverlayTrigger>
+                <OverlayTrigger
+                  key="top"
+                  placement="top"
+                  overlay={
+                    <Tooltip id={`tooltip-top`}>
+                      Hello, User
+                    </Tooltip>
+                  }
+                >
+                  <LinkContainer to="#">
+                    <Nav.Link className="p-0">
+                      <i
+                        className="fa fa-user-circle-o"
+                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                      ></i>
+                    </Nav.Link>
+                  </LinkContainer>
+                </OverlayTrigger>
+              </div>
+            </Row>
+          </div>
 
           <div className="filter">
             <Row className="filter-row">
-              <Col md={6} className="dashboard-filters">
+              <Col md={7}>
+                <h3 className="display-applicant">Displaying Applicants</h3>
+              </Col>
+              <Col md={1} className="dashboard-filters">
                 <Button variant="dark" onClick={handleShow}>
                   Filters
                 </Button>
               </Col>
-              <Col md={6} className="pr-0">
+              <Col md={4} className="pr-0">
                 <div className="search mr-0">
                   <input
                     type="search"
@@ -292,6 +354,8 @@ const DashboardPage = () => {
               </Col>
             </Row>
           </div>
+
+          <hr className="filter-hr" />
 
           <p className="text-danger">{message}</p>
           <div className="grid-container justify-content-center">

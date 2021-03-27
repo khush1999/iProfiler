@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 interface IProps {
     show: boolean;
@@ -60,13 +59,13 @@ const FilterForm: React.FC<IProps> = ({ show, handleClose, handleFilterSubmit })
                     <Modal.Title>Filtering Options</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={submitFilter}>
+                    <Form onSubmit={submitFilter} className="p-1">
                         <fieldset onChange={handleSkills}>
-                            <Form.Group as={Row}>
-                                <Form.Label as="legend" column sm={2}>
+                            <Form.Group as={Row} className="align-items-baseline">
+                                <Form.Label as="legend" column sm={3}>
                                     Skills
                                 </Form.Label>
-                                <Col sm={10}>
+                                <Col sm={9}>
                                     <Form.Check
                                         type="radio"
                                         label="All"
@@ -114,11 +113,11 @@ const FilterForm: React.FC<IProps> = ({ show, handleClose, handleFilterSubmit })
                             </Form.Group>
                         </fieldset>
                         <fieldset onChange={handleExperience}>
-                            <Form.Group as={Row}>
-                                <Form.Label as="legend" column sm={2}>
+                            <Form.Group as={Row} className="align-items-baseline">
+                                <Form.Label as="legend" column sm={3}>
                                     Experience
                                 </Form.Label>
-                                <Col sm={10}>
+                                <Col sm={9}>
                                     <Form.Check
                                         type="radio"
                                         label="All"
@@ -159,11 +158,11 @@ const FilterForm: React.FC<IProps> = ({ show, handleClose, handleFilterSubmit })
                             </Form.Group>
                         </fieldset>
                         <fieldset onChange={handleDesignation}>
-                            <Form.Group as={Row}>
-                                <Form.Label as="legend" column sm={2}>
+                            <Form.Group as={Row} className="align-items-baseline">
+                                <Form.Label as="legend" column sm={3}>
                                     Designation
                                 </Form.Label>
-                                <Col sm={10}>
+                                <Col sm={9}>
                                     <Form.Check
                                         type="radio"
                                         label="All"
@@ -203,17 +202,15 @@ const FilterForm: React.FC<IProps> = ({ show, handleClose, handleFilterSubmit })
                                 </Col>
                             </Form.Group>
                         </fieldset>
-                        <Form.Group as={Row}>
-                            <Col sm={{ span: 10, offset: 2 }}>
-                                <Button variant="dark" type="submit">
-                                    Apply Filters</Button>
-                            </Col>
-                        </Form.Group>
-                        {/* <Modal.Footer>
-                            <Button variant="secondary" type="submit">
-                                Close
-                            </Button>
-                        </Modal.Footer> */}
+                        <Modal.Footer>
+                            <Form.Group as={Row}>
+                                <Col sm={{ span: 10, offset: 2 }}>
+                                    <Button variant="dark" type="submit"
+                                        style={{ width: "130%", height: "3rem" }}>
+                                        Apply Filters</Button>
+                                </Col>
+                            </Form.Group>
+                        </Modal.Footer>
                     </Form>
                 </Modal.Body>
             </Modal>
