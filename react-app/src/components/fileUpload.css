@@ -36,6 +36,7 @@
 .jd-col {
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
+    background-image: linear-gradient(127deg, #a759d1 0%, #8261ee 91%);
 }
 
 .upload-col {

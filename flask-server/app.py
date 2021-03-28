@@ -1,16 +1,17 @@
-from flask import Flask, render_template, request, url_for, redirect, session, send_file, send_from_directory
-from flask_pymongo import PyMongo
-import bcrypt
-import urllib.request
 import json
-import requests
-import PyPDF2
 import os
+import urllib.request
 import uuid
-from werkzeug.utils import secure_filename
-from resume_parser import resumeparse
+
+import bcrypt
+import PyPDF2
+import requests
 import spacy
-import uuid
+from flask import (Flask, redirect, render_template, request, send_file,
+                   send_from_directory, session, url_for)
+from flask_pymongo import PyMongo
+from resume_parser import resumeparse
+from werkzeug.utils import secure_filename
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__name__")
@@ -26,6 +27,7 @@ app.config['UPLOAD_FOLDER'] = '../react-app/src/resumes/'
 def check():
     return """ <h2> Health Check!!! 200 OK </h2> """
 
+
 @app.route("/")
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
@@ -40,7 +42,8 @@ def upload_file():
         # fileName = str(uuid.uuid4())[:8]
         filename = secure_filename(f.filename)
         basedir = os.path.abspath(os.path.dirname(__file__))
-        f.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
+        # f.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
+        f.save(filename)
         # print(f.filename)
         # print(filename)
         filenam = f.filename
@@ -58,11 +61,9 @@ def upload_file():
 def get_file(path=None):
     if path is not None:
         print("Download a file......")
-        return redirect(app.config['UPLOAD_FOLDER']+path)
+        # return redirect(app.config['UPLOAD_FOLDER']+path)
         # return send_file(path)
-        # with open(app.config['UPLOAD_FOLDER']+path, 'rb') as static_file:
-        #     return send_file(static_file, attachment_filename=path)
-        # return send_from_directory(app.config['UPLOAD_FOLDER'], path)
+        return send_file(path)
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
 
@@ -84,35 +85,43 @@ def create():
     global data
     if request.method == 'POST':
         print("Came inside", request.form.get('skills1'))
-        mongo.db.users.insert_one({
-            'fname': request.form.get('fname'),
-            'lname': request.form.get('lname'),
-            'dob': request.form.get('dob'),
-            'email': request.form.get('email'),
-            'address': request.form.get('address'),
-            'city': request.form.get('city'),
-            'state': request.form.get('state'),
-            'zip': request.form.get('zip'),
-            'phone1': request.form.get('phone1'),
-            'phone2': request.form.get('phone2'),
-            'pgDegree': request.form.get('pgDegree'),
-            'pg_University': request.form.get('pg_University'),
-            'pgPercentage': request.form.get('pgPercentage'),
-            'ugDegree': request.form.get('ugDegree'),
-            'ug_University': request.form.get('ug_University'),
-            'ugPercentage': request.form.get('ugPercentage'),
-            'ugDegree': request.form.get('ugDegree'),
-            'skills1': request.form.get('skills1'),
-            'skills2': request.form.get('skills2'),
-            'skills3': request.form.get('skills3'),
-            'total_exp': request.form.get('total_exp'),
-            'designition': request.form.get('desig'),
-            'Companies worked at': request.form.get('Companies worked at'),
-            'resume_id': request.form.get('resume_id'),
+        email = request.form.get("email")
+        print(email)
+        print("****************")
+        email_found = mongo.db.users.find_one({"email": email})
+        print(email_found)
+        if email_found is None:
+            mongo.db.users.insert_one({
+                'fname': request.form.get('fname'),
+                'lname': request.form.get('lname'),
+                'dob': request.form.get('dob'),
+                'email': request.form.get('email'),
+                'address': request.form.get('address'),
+                'city': request.form.get('city'),
+                'state': request.form.get('state'),
+                'zip': request.form.get('zip'),
+                'phone1': request.form.get('phone1'),
+                'phone2': request.form.get('phone2'),
+                'pgDegree': request.form.get('pgDegree'),
+                'pg_University': request.form.get('pg_University'),
+                'pgPercentage': request.form.get('pgPercentage'),
+                'ugDegree': request.form.get('ugDegree'),
+                'ug_University': request.form.get('ug_University'),
+                'ugPercentage': request.form.get('ugPercentage'),
+                'ugDegree': request.form.get('ugDegree'),
+                'skills1': request.form.get('skills1'),
+                'skills2': request.form.get('skills2'),
+                'skills3': request.form.get('skills3'),
+                'total_exp': request.form.get('total_exp'),
+                'designition': request.form.get('desig'),
+                'Companies worked at': request.form.get('Companies worked at'),
+                'resume_id': request.form.get('resume_id'),
 
-        })
-        # print(list(mongo.db.users.find()))
-    return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
+            })
+            # print(list(mongo.db.users.find()))
+            return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
+        else:
+            return """ <h2 class="text-center mt-4"> you have filled this form already </h2> """
 
 
 # HR
@@ -133,7 +142,7 @@ def index():
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
         # if found in database showcase that it's found
-        user_found = mongo.db.LoginAuth.find_one({"company_name": user})
+        # user_found = mongo.db.LoginAuth.find_one({"company_name": user})
         email_found = mongo.db.LoginAuth.find_one({"email": email})
         # if user_found:
         #     message = 'There already is a user by that name'
@@ -156,7 +165,7 @@ def index():
             user_data = mongo.db.LoginAuth.find_one({"email": email})
             new_email = user_data['email']
             # if registered redirect to logged in as the registered user
-            return "You are Logged in!!!!"
+            return "Go to Login"
 
 
 @app.route("/login", methods=["POST", "GET"])
@@ -221,5 +230,6 @@ def logout():
         # print("Logged out here!!!!!!!!!!!1")
         return "YO logged out here"
 
+
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True, host="0.0.0.0", port=8080)

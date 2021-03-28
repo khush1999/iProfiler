@@ -1,20 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import { NavigationBar } from "../components/NavigationBar";
-import loginSvg from "./login.svg";
 import "./login.css";
+import loginSvg from "./login.svg";
 
 const divColor = { backgroundColor: "#AE4DFF" };
 const mainWidth = { width: "60%", marginTop: "10rem" };
 export const Login = () => {
-  const [email, setEmail] = useState("Email");
-  const [password, setPassword] = useState("Password");
-  const [message, setMessage] = useState("");
-  const [pwdError, setPwdError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const history = useHistory();
   // let isLoggedin = false;
   // const checkLoggedIn = async () => {
   //   try {
@@ -33,43 +27,44 @@ export const Login = () => {
   //   }
   // };
 
+  const [email, setEmail] = useState("Email");
+  const [password, setPassword] = useState("Password");
+  const [message, setMessage] = useState("");
+  const [pwdError, setPwdError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const history = useHistory();
   const handleClick = () => history.push("/Pricing");
   const handleClick1 = async (e) => {
     e.preventDefault();
-    if (email.length == 0 && password.length == 0) {
-      setMessage("Please Enter all fields");
-    } else {
-      const formData = new FormData();
-      formData.append("email", email);
-      formData.append("password", password);
-      try {
-        const res = await axios.post("/login", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        console.log("*****************************");
-        console.log(res.data);
-        if (res.data.includes("@gmail.com")) {
-          history.push("/DashboardPage");
-        } else if (res.data === "Wrong password") {
-          setPwdError("You entered wrong password!!");
-        } else if (res.data === "Email not found") {
-          setEmailError("Email Not Found!!");
-        }
-      } catch (err) {
-        if (err.response.status === 500) {
-          setMessage("There was a problem with the server");
-        } else {
-          setMessage(err.response.data.msg);
-        }
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+    try {
+      const res = await axios.post("/login", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("*****************************");
+      console.log(res.data);
+      if (res.data.includes("@gmail.com")) {
+        history.push("/DashboardPage");
+      } else if (res.data === "Wrong password") {
+        setPwdError("Invalid Password!!");
+      } else if (res.data === "Email not found") {
+        setEmailError("Invalid Email!!");
+      }
+    } catch (err) {
+      if (err.response.status === 500) {
+        setMessage("There was a problem with the server");
+      } else {
+        setMessage(err.response.data.msg);
       }
     }
   };
 
   return (
     <>
-      {/* {checkLoggedIn()} */}
       <NavigationBar navigationState={false} />
       <Container
         style={mainWidth}
@@ -82,12 +77,12 @@ export const Login = () => {
             className="text-white font-weight-bold p-3 col-container-1"
           >
             <div>
-              <h3>Best Hiring Platform</h3>
+              <h3>The New Norm for Recruitment</h3>
             </div>
             <img src={loginSvg} alt="logo" />
             <div>
               <p>Reduce Your Hiring Cost With Us !</p>
-              <p>Choose Your Plan & Start Hiring Now</p>
+              <p className="mb-3">Choose Your Plan & Start Hiring Now</p>
               <Button variant="dark" onClick={handleClick}>
                 Buy Now {">>"}
               </Button>{" "}

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-import styled from 'styled-components';
-import { Route, Switch, BrowserRouter as Router, Link, useHistory } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
+import styled from 'styled-components';
 import iprofilerlogo from '../assets/LogoFinal.png';
 
 const Styles = styled.div`
@@ -21,8 +20,7 @@ const Styles = styled.div`
   a, .navbar-nav .nav-link {
     color: #000000;
     &:hover {
-      color: #000000;
-      border-bottom: 3px solid #AE4DFF;
+      color: #AE4DFF;
     }
   }
   .navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, 
@@ -54,12 +52,6 @@ const Styles = styled.div`
 `;
 
 export const NavigationBar = (props) => {
-
-  // const history = useHistory();
-  // const handleClick = () => {
-  //   console.log("I am clicked!!!!!!!!!!");
-  //   history.push('/DashboardPage');
-  // }
 
   return (
     <Styles>

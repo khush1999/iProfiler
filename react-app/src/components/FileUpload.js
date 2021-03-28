@@ -99,7 +99,6 @@ const FileUpload = () => {
         <Row>
           <Col
             sm={6}
-            style={divColor}
             className="text-white font-weight-bold p-4 jd-col"
           >
             <JobDes />
@@ -107,7 +106,7 @@ const FileUpload = () => {
           <Col sm={6} className="bg-light text-dark form-container upload-col">
             <form onSubmit={OnSubmit} className="form-upload">
               {message ? <Message msg={message} /> : null}
-              <h2>Resume Upload</h2>
+              <h2 className="mb-3">Resume Upload</h2>
               <div className="custom-file mb-4">
                 <br></br>
                 <input

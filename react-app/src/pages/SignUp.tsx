@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Container, Row, Col, Form } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
-import { NavigationBar } from "../components/NavigationBar";
 import signup from "../assets/signin.svg";
+import { NavigationBar } from "../components/NavigationBar";
 import "./SignUp.css";
 
 const mainWidth = { width: "60%", marginTop: "10rem" };
@@ -20,8 +20,9 @@ export const SignUp = () => {
 
   const history = useHistory();
 
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const handleClick = async (event) => {
+    event.preventDefault();
+
     const formData = new FormData();
     formData.append("email", email);
     formData.append("password1", password1);
@@ -36,7 +37,8 @@ export const SignUp = () => {
       });
       console.log("^^^^^^^^^^^^^^^^^^^");
       console.log(res.data);
-      if (res.data === "You are Logged in!!!!") {
+      if (res.data === "Go to Login") {
+        // alert("Reached inside");
         history.push("/Login");
       } else if (res.data === "This email already exists in database") {
         setEmailError("Email Id already exist!");
@@ -96,7 +98,7 @@ export const SignUp = () => {
                     onChange={(e) => setCompanyName(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group controlId="SignUpEmail">
+                <Form.Group controlId="SignUpPassword">
                   <Form.Control
                     type="email"
                     required
@@ -119,7 +121,7 @@ export const SignUp = () => {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="formHorizontalPassword">
+                <Form.Group controlId="formHorizontalConfirmPassword">
                   <Form.Control
                     type="password"
                     required
