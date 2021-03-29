@@ -116,6 +116,7 @@ def create():
                 'designition': request.form.get('desig'),
                 'Companies worked at': request.form.get('Companies worked at'),
                 'resume_id': request.form.get('resume_id'),
+                'status': 'Available',
 
             })
             # print(list(mongo.db.users.find()))

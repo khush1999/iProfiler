@@ -29,6 +29,7 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
+  status: string;
 }
 
 export default function IncommingRounds(props: { location: { state: IForm } }) {

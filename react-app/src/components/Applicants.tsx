@@ -1,5 +1,12 @@
 import React from "react";
-import { Button, Card, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import {
+  Button,
+  Card,
+  Col,
+  OverlayTrigger,
+  Row,
+  Tooltip,
+} from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import "./Applicant.css";
 
@@ -27,6 +34,7 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
+  status: string;
 }
 
 type TForm = {
@@ -35,13 +43,13 @@ type TForm = {
 
 const Applicants = ({ passData }: TForm) => {
   // const [getResume, setGetResume] = useState('');
-  let setGetResume;
-  const status = useParams();
-  console.log(status);
+  // let setGetResume;
+  // const status = useParams();
+  // console.log(status);
 
-  if (passData != null) {
-    setGetResume = passData.resume_id;
-  }
+  // if (passData != null) {
+  //   setGetResume = passData.resume_id;
+  // }
 
   return (
     <Card
@@ -109,19 +117,29 @@ const Applicants = ({ passData }: TForm) => {
           </ul>
         </Card.Text>
         <Row className="justify-content-center" id="button-content">
-          <Link
-            to={{
-              pathname: "/UserProfile",
-              state: passData,
-            }}
-          >
+          <Col sm={6}>
+            <Link
+              to={{
+                pathname: "/UserProfile",
+                state: passData,
+              }}
+            >
+              <Button
+                variant="dark align-self-end"
+                className="pricingTable-firstTable_table__getstart"
+              >
+                View Profile
+              </Button>
+            </Link>
+          </Col>
+          <Col sm={6}>
             <Button
               variant="dark align-self-end"
               className="pricingTable-firstTable_table__getstart"
             >
-              View Profile
+              Available
             </Button>
-          </Link>
+          </Col>
           {/* <Col sm={6}>
             <Button variant="dark align-self-end" onClick={handleResume} className="pricingTable-firstTable_table__getstart">
               View Resume
