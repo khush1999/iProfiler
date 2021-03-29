@@ -62,7 +62,7 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
           // fs.writeFile('status.json', status, (err) => {
           //   if (err) throw err;
           // })
-          const res = await axios.get(`http://127.0.0.1:5000/create/` + email);
+          const res = await axios.get(`/create/` + email);
           console.log(res.data);
         },
         (error) => {
