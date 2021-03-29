@@ -43,6 +43,8 @@ export const UserProfile = (props: { location: { state: IForm; }; }) => {
         axios.get(`/getData/` + profile.resume_id, {
             headers: {
                 "Content-type": "application/pdf",
+                'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
             },
             responseType: "blob",
         })
