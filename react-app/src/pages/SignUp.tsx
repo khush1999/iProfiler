@@ -20,8 +20,9 @@ export const SignUp = () => {
 
   const history = useHistory();
 
-  const handleClick = async (e) => {
-    e.preventDefault();
+  const handleClick = async (event) => {
+    event.preventDefault();
+
     const formData = new FormData();
     formData.append("email", email);
     formData.append("password1", password1);
@@ -36,7 +37,8 @@ export const SignUp = () => {
       });
       console.log("^^^^^^^^^^^^^^^^^^^");
       console.log(res.data);
-      if (res.data === "You are Logged in!!!!") {
+      if (res.data === "Go to Login") {
+        // alert("Reached inside");
         history.push("/Login");
       } else if (res.data === "This email already exists in database") {
         setEmailError("Email Id already exist!");
@@ -137,7 +139,7 @@ export const SignUp = () => {
                     size="lg"
                     block
                     type="submit"
-                    onSubmit={handleClick}
+                    onClick={handleClick}
                   >
                     {" "}
                     Create Account{" "}

@@ -27,6 +27,7 @@ app.config['UPLOAD_FOLDER'] = '../react-app/src/resumes/'
 def check():
     return """ <h2> Health Check!!! 200 OK </h2> """
 
+
 @app.route("/")
 def my_index():
     return render_template("index.html", flask_token="Hello   world")
@@ -59,11 +60,13 @@ def upload_file():
 @app.route("/getData/<path>")
 def get_file(path=None):
     if path is not None:
-        # print("Download a file......")
+        print("Download a file......")
+        # return redirect(app.config['UPLOAD_FOLDER']+path)
         # return send_file(path)
         return send_file(path)
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
+
 
 @app.route('/getData', methods=['GET', 'POST'])
 def form_files():
@@ -152,7 +155,7 @@ def create():
 #             'resume_id': request.form.get('resume_id'),
 #             'status': request.form.get('status'),
 #         })
-    
+
 #     # if request.method == 'PUT':
 #     #     print("Came inside", request.form.get('status'))
 #     #     email=request.form.get('email')
@@ -162,21 +165,22 @@ def create():
 #     #     #mongo.db.users.update_one({'status': "available"}, {'$set': {'status': "invited"}})
 #     #     return 'updated'
 
-        
+
 #         # print(list(mongo.db.users.find()))
 #     return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
 
 
-
-@app.route("/create/<email>",methods=['GET'])
+@app.route("/create/<email>", methods=['GET'])
 def get_email(email=None):
     if email is not None:
         print("email found......")
         # return send_file(path)
-        mongo.db.users.find_one_and_update({'email': email}, {'$set': {'status': 'invited'}})
+        mongo.db.users.find_one_and_update(
+            {'email': email}, {'$set': {'status': 'invited'}})
         return ("updated")
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
+
 
 # HR
 app.secret_key = "secret"
@@ -187,15 +191,16 @@ app.secret_key = "secret"
 def index():
     message = ''
     # if method post in index
-    if "email" in session:
-        return redirect(url_for("logged_in"))
+    # if "email" in session:
+    #     return redirect(url_for("logged_in"))
+
     if request.method == "POST":
         user = request.form.get("company_name")
         email = request.form.get("email")
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
         # if found in database showcase that it's found
-        user_found = mongo.db.LoginAuth.find_one({"company_name": user})
+        # user_found = mongo.db.LoginAuth.find_one({"company_name": user})
         email_found = mongo.db.LoginAuth.find_one({"email": email})
         # if user_found:
         #     message = 'There already is a user by that name'
@@ -218,14 +223,14 @@ def index():
             user_data = mongo.db.LoginAuth.find_one({"email": email})
             new_email = user_data['email']
             # if registered redirect to logged in as the registered user
-            return "You are Logged in!!!!"
+            return "Go to Login"
 
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
     message = 'Please login to your account'
-    if "email" in session:
-        return redirect(url_for("logged_in"))
+    # if "email" in session:
+    #     return redirect(url_for("logged_in"))
 
     if request.method == "POST":
         email = request.form.get("email")
@@ -241,10 +246,9 @@ def login():
             # encode the password and check if it matches
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return redirect(url_for('logged_in'))
+                return email_val
+                # return redirect(url_for('logged_in'))
             else:
-                if "email" in session:
-                    return redirect(url_for("logged_in"))
                 message = 'Wrong password'
                 return message
         else:
@@ -254,14 +258,23 @@ def login():
         return "Try to Login Again!!!!"
 
 
-@app.route('/logged_in')
-def logged_in():
-    if "email" in session:
-        email = session["email"]
-        # print("Logged_in here!!!!!!!!!!!1")
-        return email
-    else:
-        return redirect(url_for("login"))
+# @app.route('/logged_in')
+# def logged_in():
+#     if "email" in session:
+#         email = session["email"]
+#         # print("Logged_in here!!!!!!!!!!!1")
+#         return email
+#     else:
+#         return redirect(url_for("login"))
+
+# @app.route('/checkLogin')
+# def checkLogin():
+#     if "email" in session:
+#         email = session["email"]
+#         # print("Logged_in here!!!!!!!!!!!1")
+#         return "Go To Dashboard"
+#     else:
+#         return redirect(url_for("login"))
 
 
 @app.route("/logout", methods=["POST", "GET"])
@@ -269,10 +282,11 @@ def logout():
     # print("Khush You are entered in logout!!!")
     if "email" in session:
         session.pop("email", None)
+        print(session)
         return "EmailID"
     else:
         # print("Logged out here!!!!!!!!!!!1")
         return "YO logged out here"
 
 
-app.run(host="0.0.0.0",port="8080")
+app.run(host="0.0.0.0", port="8080")

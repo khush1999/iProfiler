@@ -31,18 +31,15 @@ interface IForm {
   zip: string;
   resume_id: string;
   status: string;
-
 }
 
-
 export default function IncommingRounds(props: { location: { state: IForm } }) {
-
   const history = useHistory();
-  const [status,setStatus] = useState("");
-  let email;
+  const [status, setStatus] = useState("");
+  let email, sentMsg;
   function sendEmail(e) {
     e.preventDefault();
-    email=props.location.state.email;
+    email = props.location.state.email;
     emailjs
       .sendForm(
         "service_i5xkb9q",
@@ -54,6 +51,9 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
         async (result) => {
           console.log(result.text);
           setStatus(result.text);
+          if (result.text === "OK") {
+            sentMsg = "Message Sent!!!!!!!!";
+          }
           // history.push({
           //   pathname: "/Applicant",
           //   state: {status:status},
@@ -70,7 +70,6 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
         }
       );
     e.target.reset();
-
   }
   return (
     <>
@@ -92,6 +91,7 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
                 </div>
               </div>
             </div>
+            {sentMsg && <h2>{sentMsg}</h2>}
             <div className="row">
               <div className="col-md-8">
                 <div className="contact-page-form">

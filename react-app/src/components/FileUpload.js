@@ -111,10 +111,7 @@ const FileUpload = () => {
         className="text-center shadow-lg mb-5 bg-white rounde upload-main"
       >
         <Row>
-          <Col
-            sm={6}
-            className="text-white font-weight-bold p-4 jd-col"
-          >
+          <Col sm={6} className="text-white font-weight-bold p-4 jd-col">
             <JobDes />
           </Col>
           <Col sm={6} className="bg-light text-dark form-container upload-col">

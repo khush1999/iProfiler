@@ -2,7 +2,15 @@ import axios from "axios";
 import "font-awesome/css/font-awesome.min.css";
 import Fuse from "fuse.js";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Nav, Navbar, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Nav,
+  Navbar,
+  OverlayTrigger,
+  Row,
+  Tooltip,
+} from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 import iprofiler from "../assets/LogoFinal.png";
@@ -68,7 +76,7 @@ const DashboardPage = () => {
     state: "",
     zip: "",
     resume_id: "",
-    status:"available",
+    status: "available",
   };
 
   const filData = {
@@ -161,7 +169,6 @@ const DashboardPage = () => {
       }
     }
 
-
     setFileteredProcessedData(processedData);
     setIsFiltered(true);
     setIsSearched(false);
@@ -191,8 +198,10 @@ const DashboardPage = () => {
       const res = await axios.get("/logout");
       console.log("$$$$$$$$$$$$$$$$$$$$$$");
       console.log(res.data);
+
       if (res.data === "EmailID") {
-        history.push("/Login");
+        // history.push("/Login");
+        history.go(-1);
       }
     } catch (err) {
       if (err.response.status == 500) {
@@ -266,7 +275,6 @@ const DashboardPage = () => {
         </Navbar>
 
         <div className="content shadow-lg">
-
           <div>
             <Row className="heading-style">
               <h3 className="welcome-content">Welcome User</h3>
@@ -275,16 +283,18 @@ const DashboardPage = () => {
                   key="top"
                   placement="top"
                   overlay={
-                    <Tooltip id={`tooltip-top`}>
-                      Invite Applicant
-                    </Tooltip>
+                    <Tooltip id={`tooltip-top`}>Invite Applicant</Tooltip>
                   }
                 >
                   <LinkContainer to="/SendEmail">
                     <Nav.Link className="p-0">
                       <i
                         className="fa fa-user-plus"
-                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                        style={{
+                          fontSize: "1.75em",
+                          color: "darkslategray",
+                          paddingLeft: "1.5rem",
+                        }}
                       ></i>
                     </Nav.Link>
                   </LinkContainer>
@@ -292,17 +302,17 @@ const DashboardPage = () => {
                 <OverlayTrigger
                   key="top"
                   placement="top"
-                  overlay={
-                    <Tooltip id={`tooltip-top`}>
-                      Notifications
-                    </Tooltip>
-                  }
+                  overlay={<Tooltip id={`tooltip-top`}>Notifications</Tooltip>}
                 >
                   <LinkContainer to="#">
                     <Nav.Link className="p-0">
                       <i
                         className="fa fa-bell"
-                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                        style={{
+                          fontSize: "1.75em",
+                          color: "darkslategray",
+                          paddingLeft: "1.5rem",
+                        }}
                       ></i>
                     </Nav.Link>
                   </LinkContainer>
@@ -310,17 +320,17 @@ const DashboardPage = () => {
                 <OverlayTrigger
                   key="top"
                   placement="top"
-                  overlay={
-                    <Tooltip id={`tooltip-top`}>
-                      Hello, User
-                    </Tooltip>
-                  }
+                  overlay={<Tooltip id={`tooltip-top`}>Hello, User</Tooltip>}
                 >
                   <LinkContainer to="#">
                     <Nav.Link className="p-0">
                       <i
                         className="fa fa-user-circle-o"
-                        style={{ fontSize: "1.75em", color: "darkslategray", paddingLeft: "1.5rem" }}
+                        style={{
+                          fontSize: "1.75em",
+                          color: "darkslategray",
+                          paddingLeft: "1.5rem",
+                        }}
                       ></i>
                     </Nav.Link>
                   </LinkContainer>
