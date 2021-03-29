@@ -34,6 +34,7 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
+  status: string;
 }
 
 interface IFilterData {
@@ -67,6 +68,7 @@ const DashboardPage = () => {
     state: "",
     zip: "",
     resume_id: "",
+    status:"available",
   };
 
   const filData = {

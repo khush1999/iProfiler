@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Applicant.css";
 
@@ -27,7 +27,7 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
-
+  status: string;
 }
 
 interface IState {
@@ -116,6 +116,7 @@ const Applicants = ({ passData }: TForm) => {
           </ul>
         </Card.Text>
         <Row className="justify-content-center" id="button-content">
+         <Col sm={6}>
           <Link
             to={{
               pathname: "/UserProfile",
@@ -124,6 +125,12 @@ const Applicants = ({ passData }: TForm) => {
           >
             <Button variant="dark align-self-end" className="pricingTable-firstTable_table__getstart">View Profile</Button>
           </Link>
+          </Col>
+          <Col sm={6}>
+          <Button variant="dark align-self-end" className="pricingTable-firstTable_table__getstart">
+              {passData.status}
+            </Button>
+          </Col>
           {/* <Col sm={6}>
             <Button variant="dark align-self-end" onClick={handleResume} className="pricingTable-firstTable_table__getstart">
               View Resume
