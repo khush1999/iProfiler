@@ -40,7 +40,7 @@ export const UserProfile = (props: { location: { state: IForm; }; }) => {
     const handleResume = async () => {
         console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         console.log(profile.resume_id);
-        axios.get(`http://35.240.139.69:8080/getData/` + profile.resume_id, {
+        axios.get(`/getData/` + profile.resume_id, {
             headers: {
                 "Content-type": "application/pdf",
             },
