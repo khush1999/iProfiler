@@ -36,8 +36,7 @@ function App() {
           <Route exact path="/UserProfile" component={UserProfile} />
           <Route exact path="/SendEmail" component={SendEmail} />
           <Route exact path="/IncommingRounds" component={IncommingRounds} />
-          <Route exact path="/Applicants" component={Applicants} />
-          <Route exact path="/Applicants:status" component={Applicants} />
+          <Route exact path="/Applicant" component={Applicants} />
         </Fragment>
       </BrowserRouter>
     </div>

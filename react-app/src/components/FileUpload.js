@@ -7,6 +7,7 @@ import "./fileUpload.css";
 import { NavigationBar } from "./NavigationBar";
 import { Row, Col, Container } from "react-bootstrap";
 import { JobDes } from "./JobDes";
+import loader from '../assets/loader.gif';
 
 const mainWidth = { width: "80%", marginTop: "10rem" };
 const divColor = { backgroundColor: "#AE4DFF" };
@@ -23,6 +24,7 @@ const FileUpload = () => {
     skills: [],
     Companies_worked_at: [],
     resume_id: "",
+    status: "",
   };
   const [file, setFile] = useState("");
   const [data, setData] = useState(ip);
@@ -50,6 +52,18 @@ const FileUpload = () => {
       setIsLoading(false);
     }, 5000);
   };
+
+  const Loader = () => {
+    return(
+      <>
+     <div className="loading-text">Keep calm, sit back, we are processing your resume!!
+     </div>
+     <div className="load"> 
+    <img src= {loader} />
+    </div>
+    </>
+    );
+  }
 
   const OnSubmit = async (e) => {
     e.preventDefault();
@@ -136,9 +150,7 @@ const FileUpload = () => {
       </Container>
       {console.log("Value is =", data)}
       {isLoading ? (
-        <div className="load">
-          <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" />
-        </div>
+          <Loader />
       ) : (
         " "
       )}

@@ -1,10 +1,9 @@
-import { NavigationBar } from "../components/NavigationBar";
-import { useParams } from "react-router-dom";
-import "./userprofile.css";
-import userprofile from "../assets/userprofile.jpg";
 import axios from "axios";
 import React from "react";
 import { Button } from "react-bootstrap";
+import userprofile from "../assets/userprofile.jpg";
+import { NavigationBar } from "../components/NavigationBar";
+import "./userprofile.css";
 
 interface IForm {
   email: string;
@@ -30,17 +29,22 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
+  status: string;
 }
 
 export const UserProfile = (props: { location: { state: IForm } }) => {
   let profile = props.location.state;
-  function handleResume() {
+
+  const handleResume = async () => {
     console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     console.log(profile.resume_id);
     axios
-      .get(`http://127.0.0.1:8080/getData/` + profile.resume_id, {
+      .get(`/getData/` + profile.resume_id, {
+        withCredentials: false,
         headers: {
           "Content-type": "application/pdf",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
         },
         responseType: "blob",
       })
@@ -71,14 +75,15 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
         // Remove link from body
         document.body.removeChild(link);
       });
-  }
+  };
+
   return (
     <>
       <NavigationBar />
       <div className="profile">
         <div className="page-content page-container" id="page-content">
           <div className="padding">
-            <div className="row container d-flex justify-content-center">
+            <div className="row container profiler-container d-flex justify-content-center">
               <div className="row-xl-6 row-md-30">
                 <div className="card user-card-full">
                   <div className="row m-l-0 m-r-0">
@@ -226,7 +231,7 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
                               variant="dark align-self-end"
                               onClick={handleResume}
                             >
-                              View Resume
+                              Download Resume
                             </Button>
                           </div>
                         </div>

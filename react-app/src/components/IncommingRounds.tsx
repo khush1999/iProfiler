@@ -1,3 +1,4 @@
+import axios from "axios";
 import emailjs from "emailjs-com";
 import "font-awesome/css/font-awesome.min.css";
 import React, { useState } from "react";
@@ -33,13 +34,12 @@ interface IForm {
 }
 
 export default function IncommingRounds(props: { location: { state: IForm } }) {
-  const [status, setStatus] = useState("");
-  const [sentMsg, setSentMsg] = useState("");
   const history = useHistory();
-
+  const [status, setStatus] = useState("");
+  let email, sentMsg;
   function sendEmail(e) {
     e.preventDefault();
-
+    email = props.location.state.email;
     emailjs
       .sendForm(
         "service_i5xkb9q",
@@ -48,11 +48,22 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
         "user_g4abNbCtzFbXRaay1AgZK"
       )
       .then(
-        (result) => {
+        async (result) => {
           console.log(result.text);
+          setStatus(result.text);
           if (result.text === "OK") {
-            // setSentMsg(!sentMsg);
+            sentMsg = "Message Sent!!!!!!!!";
           }
+          // history.push({
+          //   pathname: "/Applicant",
+          //   state: {status:status},
+          // });
+          // const fs = require('fs')
+          // fs.writeFile('status.json', status, (err) => {
+          //   if (err) throw err;
+          // })
+          const res = await axios.get(`/create/` + email);
+          console.log(res.data);
         },
         (error) => {
           console.log(error.text);

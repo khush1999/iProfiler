@@ -35,7 +35,7 @@ const Apply = ({ passData }: TForm) => {
     skills3 = "",
     Companies_worked_at = "",
     resume_id = "",
-    status = "";
+    status = "available";
   console.log("This is passData ********************");
   console.log(passData);
 
@@ -53,7 +53,6 @@ const Apply = ({ passData }: TForm) => {
     skills2 = passData.skills[1];
     skills3 = passData.skills[2];
     resume_id = passData.resume_id;
-    status = "Available";
   }
 
   const [show, setShow] = useState(false);
@@ -482,6 +481,18 @@ const Apply = ({ passData }: TForm) => {
               {" "}
               Please enter resume ID{" "}
             </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group as={Col} controlId="formGridSkillDes">
+            <Form.Label>Status</Form.Label>
+            <Form.Control
+              id="status"
+              name="status"
+              required
+              type="text"
+              placeholder="Resume ID"
+              value={status}
+            />
+            <Form.Control.Feedback type="invalid">status</Form.Control.Feedback>
           </Form.Group>
         </Form.Row>
 

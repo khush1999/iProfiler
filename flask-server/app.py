@@ -87,7 +87,7 @@ def create():
         print("Came inside", request.form.get('skills1'))
         email = request.form.get("email")
         print(email)
-        print("****************")
+        print("******")
         email_found = mongo.db.users.find_one({"email": email})
         print(email_found)
         if email_found is None:
@@ -122,7 +122,64 @@ def create():
             # print(list(mongo.db.users.find()))
             return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
         else:
-            return """ <h2 class="text-center mt-4"> you have filled this form already </h2> """
+            return """ <h2 class="text-center mt-4"> you have already applied for this job role </h2> """
+# @app.route('/create', methods=['GET', 'POST'])
+# def create():
+#     global data
+#     if request.method == 'POST':
+#         print("Came inside", request.form.get('skills1'))
+#         mongo.db.users.insert_one({
+#             'fname': request.form.get('fname'),
+#             'lname': request.form.get('lname'),
+#             'dob': request.form.get('dob'),
+#             'email': request.form.get('email'),
+#             'address': request.form.get('address'),
+#             'city': request.form.get('city'),
+#             'state': request.form.get('state'),
+#             'zip': request.form.get('zip'),
+#             'phone1': request.form.get('phone1'),
+#             'phone2': request.form.get('phone2'),
+#             'pgDegree': request.form.get('pgDegree'),
+#             'pg_University': request.form.get('pg_University'),
+#             'pgPercentage': request.form.get('pgPercentage'),
+#             'ugDegree': request.form.get('ugDegree'),
+#             'ug_University': request.form.get('ug_University'),
+#             'ugPercentage': request.form.get('ugPercentage'),
+#             'ugDegree': request.form.get('ugDegree'),
+#             'skills1': request.form.get('skills1'),
+#             'skills2': request.form.get('skills2'),
+#             'skills3': request.form.get('skills3'),
+#             'total_exp': request.form.get('total_exp'),
+#             'designition': request.form.get('desig'),
+#             'Companies worked at': request.form.get('Companies worked at'),
+#             'resume_id': request.form.get('resume_id'),
+#             'status': request.form.get('status'),
+#         })
+
+#     # if request.method == 'PUT':
+#     #     print("Came inside", request.form.get('status'))
+#     #     email=request.form.get('email')
+#     #     #email_found = mongo.db.users.find_one({"email": email})
+#     #     print(email)
+#     #     mongo.db.users.find_one_and_update({'email': email}, {'$set': {'status': 'invited'}})
+#     #     #mongo.db.users.update_one({'status': "available"}, {'$set': {'status': "invited"}})
+#     #     return 'updated'
+
+
+#         # print(list(mongo.db.users.find()))
+#     return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
+
+
+@app.route("/create/<email>", methods=['GET'])
+def get_email(email=None):
+    if email is not None:
+        print("email found......")
+        # return send_file(path)
+        mongo.db.users.find_one_and_update(
+            {'email': email}, {'$set': {'status': 'invited'}})
+        return ("updated")
+    else:
+        print("Sorryyyyyyyyyyyyyyyyyy!")
 
 
 # HR
@@ -232,5 +289,4 @@ def logout():
         return "YO logged out here"
 
 
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=8080)
+app.run(host="0.0.0.0", port="8080")

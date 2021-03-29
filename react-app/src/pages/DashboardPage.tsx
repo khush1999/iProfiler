@@ -76,7 +76,7 @@ const DashboardPage = () => {
     state: "",
     zip: "",
     resume_id: "",
-    status: "",
+    status: "available",
   };
 
   const filData = {

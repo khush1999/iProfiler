@@ -7,7 +7,7 @@ import {
   Row,
   Tooltip,
 } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Applicant.css";
 
 interface IForm {
@@ -37,110 +37,118 @@ interface IForm {
   status: string;
 }
 
+interface IState {
+  status?: string;
+}
+
 type TForm = {
   passData: IForm;
 };
 
 const Applicants = ({ passData }: TForm) => {
   // const [getResume, setGetResume] = useState('');
-  // let setGetResume;
-  // const status = useParams();
-  // console.log(status);
+  // const [invite, setInvite] = useState(false);
+  // let location,history,status;
 
-  // if (passData != null) {
-  //   setGetResume = passData.resume_id;
-  // }
+  let setGetResume;
+  if (passData != null) {
+    setGetResume = passData.resume_id;
+  }
 
   return (
-    <Card
-      style={{ width: "18rem", backgroundColor: "#f8f8ff" }}
-      className="shadow-lg p-3 mb-5 
+    <>
+      {/* {invite && HandleStatus()} */}
+      <Card
+        style={{ width: "18rem", backgroundColor: "#f8f8ff" }}
+        className="shadow-lg p-3 mb-5 
     bg-white rounded"
-    >
-      <Card.Body>
-        <div className="card-header-container">
-          <Card.Title className="text-left card-name">
-            <p className="card-display-name">
-              <span>{passData.fname}</span>
-              <span>{passData.lname}</span>
-            </p>
-          </Card.Title>
+      >
+        <Card.Body>
+          <div className="card-header-container">
+            <Card.Title className="text-left card-name">
+              <p className="card-display-name">
+                <span>{passData.fname}</span>
+                <span>{passData.lname}</span>
+              </p>
+            </Card.Title>
 
-          <OverlayTrigger
-            key="top"
-            placement="top"
-            overlay={<Tooltip id={`tooltip-top`}>Invite for Interview</Tooltip>}
-          >
-            <Link
-              to={{
-                pathname: "/IncommingRounds",
-                state: passData,
-              }}
+            <OverlayTrigger
+              key="top"
+              placement="top"
+              overlay={
+                <Tooltip id={`tooltip-top`}>Invite for Interview</Tooltip>
+              }
             >
-              <i
-                className="fa fa-envelope"
-                style={{ fontSize: "1.75em", color: "#AE4DFF" }}
-              ></i>
-            </Link>
-          </OverlayTrigger>
-        </div>
+              <Link
+                to={{
+                  pathname: "/IncommingRounds",
+                  state: passData,
+                }}
+              >
+                <i
+                  className="fa fa-envelope"
+                  style={{ fontSize: "1.75em", color: "#AE4DFF" }}
+                ></i>
+              </Link>
+            </OverlayTrigger>
+          </div>
 
-        <hr className="card-hr" />
-        {/* <Card.Subtitle className="mb-2 text-muted">
+          <hr className="card-hr" />
+          {/* <Card.Subtitle className="mb-2 text-muted">
         {passData.pgDegree.length()>1?({passData.ugDegree} + {'-'} + {passData.pgdegree}):{passData.ugDegree}}
         </Card.Subtitle> */}
 
-        {passData.pgDegree.length > 1 ? (
-          <Card.Subtitle className="mb-2 text-muted card-degree">
-            {passData.ugDegree} {" | "} {passData.pgDegree}
-          </Card.Subtitle>
-        ) : (
-          <Card.Subtitle className="mb-2 text-muted">
-            {passData.ugDegree}
-          </Card.Subtitle>
-        )}
+          {passData.pgDegree.length > 1 ? (
+            <Card.Subtitle className="mb-2 text-muted card-degree">
+              {passData.ugDegree} {" | "} {passData.pgDegree}
+            </Card.Subtitle>
+          ) : (
+            <Card.Subtitle className="mb-2 text-muted">
+              {passData.ugDegree}
+            </Card.Subtitle>
+          )}
 
-        <Card.Text className="text-left">
-          <h5 className="font-weight-bold">
-            Experience of {passData.total_exp} Years
-          </h5>
-          {/* <h6>Skills:</h6> */}
-          {/* <ul>
+          <Card.Text className="text-left">
+            <h5 className="font-weight-bold">
+              Experience of {passData.total_exp} Years
+            </h5>
+            {/* <h6>Skills:</h6> */}
+            {/* <ul>
             <li>{passData.skills1}</li>
             <li>{passData.skills2}</li>
             <li>{passData.skills3}</li>
           </ul> */}
-          <ul className="card-ul">
-            <li>{passData.skills1} </li>
-            <li> {passData.skills2} </li>
-            <li> {passData.skills3}</li>
-          </ul>
-        </Card.Text>
-        <Row className="justify-content-center" id="button-content">
-          <Col sm={6}>
-            <Link
-              to={{
-                pathname: "/UserProfile",
-                state: passData,
-              }}
-            >
+            <ul className="card-ul">
+              <li>{passData.skills1} </li>
+              <li> {passData.skills2} </li>
+              <li> {passData.skills3}</li>
+            </ul>
+          </Card.Text>
+          <Row className="justify-content-center" id="button-content">
+            <Col sm={6}>
+              <Link
+                to={{
+                  pathname: "/UserProfile",
+                  state: passData,
+                }}
+              >
+                <Button
+                  variant="dark align-self-end"
+                  className="pricingTable-firstTable_table__getstart"
+                >
+                  View Profile
+                </Button>
+              </Link>
+            </Col>
+            <Col sm={6}>
               <Button
                 variant="dark align-self-end"
                 className="pricingTable-firstTable_table__getstart"
               >
-                View Profile
+                {passData.status}
               </Button>
-            </Link>
-          </Col>
-          <Col sm={6}>
-            <Button
-              variant="dark align-self-end"
-              className="pricingTable-firstTable_table__getstart"
-            >
-              Available
-            </Button>
-          </Col>
-          {/* <Col sm={6}>
+            </Col>
+            {/* <Col sm={6}>
             <Button variant="dark align-self-end" onClick={handleResume} className="pricingTable-firstTable_table__getstart">
               View Resume
             </Button>
@@ -148,10 +156,11 @@ const Applicants = ({ passData }: TForm) => {
             {/* <Link to={url} target="_blank" download>
               Download
             </Link> */}
-          {/* <a href={require('../resumes/Resume.pdf')} target="_blank">Download Pdf</a> */}
-        </Row>
-      </Card.Body>
-    </Card>
+            {/* <a href={require('../resumes/Resume.pdf')} target="_blank">Download Pdf</a> */}
+          </Row>
+        </Card.Body>
+      </Card>
+    </>
   );
 };
 
