@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
+import { Button, Card, Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Applicant.css";
 
@@ -27,6 +27,11 @@ interface IForm {
   state: string;
   zip: string;
   resume_id: string;
+  status: string;
+}
+
+interface IState {
+  status?: string;
 }
 
 type TForm = {
@@ -35,12 +40,17 @@ type TForm = {
 
 const Applicants = ({ passData }: TForm) => {
   // const [getResume, setGetResume] = useState('');
+  // const [invite, setInvite] = useState(false);
+  // let location,history,status;
+
   let setGetResume;
   if (passData != null) {
     setGetResume = passData.resume_id;
   }
 
   return (
+    <>
+    {/* {invite && HandleStatus()} */}
     <Card
       style={{ width: "18rem", backgroundColor: "#f8f8ff" }}
       className="shadow-lg p-3 mb-5 
@@ -106,6 +116,7 @@ const Applicants = ({ passData }: TForm) => {
           </ul>
         </Card.Text>
         <Row className="justify-content-center" id="button-content">
+         <Col sm={6}>
           <Link
             to={{
               pathname: "/UserProfile",
@@ -114,6 +125,12 @@ const Applicants = ({ passData }: TForm) => {
           >
             <Button variant="dark align-self-end" className="pricingTable-firstTable_table__getstart">View Profile</Button>
           </Link>
+          </Col>
+          <Col sm={6}>
+          <Button variant="dark align-self-end" className="pricingTable-firstTable_table__getstart">
+              {passData.status}
+            </Button>
+          </Col>
           {/* <Col sm={6}>
             <Button variant="dark align-self-end" onClick={handleResume} className="pricingTable-firstTable_table__getstart">
               View Resume
@@ -126,6 +143,7 @@ const Applicants = ({ passData }: TForm) => {
         </Row>
       </Card.Body >
     </Card >
+    </>
   );
 };
 

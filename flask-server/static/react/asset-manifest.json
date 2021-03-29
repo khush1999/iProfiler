@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.98cd84e5.chunk.css",
-    "main.js": "/static/react/js/main.4c119b4d.chunk.js",
-    "main.js.map": "/static/react/js/main.4c119b4d.chunk.js.map",
+    "main.css": "/static/react/css/main.5af66077.chunk.css",
+    "main.js": "/static/react/js/main.1f245db1.chunk.js",
+    "main.js.map": "/static/react/js/main.1f245db1.chunk.js.map",
     "runtime-main.js": "/static/react/js/runtime-main.8ed8ed80.js",
     "runtime-main.js.map": "/static/react/js/runtime-main.8ed8ed80.js.map",
     "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
-    "js/2.ce02a110.chunk.js": "/static/react/js/2.ce02a110.chunk.js",
-    "js/2.ce02a110.chunk.js.map": "/static/react/js/2.ce02a110.chunk.js.map",
+    "js/2.f4d920ea.chunk.js": "/static/react/js/2.f4d920ea.chunk.js",
+    "js/2.f4d920ea.chunk.js.map": "/static/react/js/2.f4d920ea.chunk.js.map",
     "js/3.a8c2add9.chunk.js": "/static/react/js/3.a8c2add9.chunk.js",
     "js/3.a8c2add9.chunk.js.map": "/static/react/js/3.a8c2add9.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
     "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
-    "css/main.98cd84e5.chunk.css.map": "/static/react/css/main.98cd84e5.chunk.css.map",
-    "js/2.ce02a110.chunk.js.LICENSE.txt": "/static/react/js/2.ce02a110.chunk.js.LICENSE.txt",
+    "css/main.5af66077.chunk.css.map": "/static/react/css/main.5af66077.chunk.css.map",
+    "js/2.f4d920ea.chunk.js.LICENSE.txt": "/static/react/js/2.f4d920ea.chunk.js.LICENSE.txt",
     "media/LogoFinal.bb79a7c2.png": "/static/react/media/LogoFinal.bb79a7c2.png",
     "media/landingpage.css": "/static/react/media/bannerbg.b495063f.png",
     "media/font-awesome.min.css": "/static/react/media/fontawesome-webfont.f691f37e.woff",
     "media/leftimg.fba23aec.png": "/static/react/media/leftimg.fba23aec.png",
+    "media/loader.71053b70.gif": "/static/react/media/loader.71053b70.gif",
     "media/login.bdd13956.svg": "/static/react/media/login.bdd13956.svg",
     "media/rightimg.24c2051c.png": "/static/react/media/rightimg.24c2051c.png",
     "media/signin.b494b87e.svg": "/static/react/media/signin.b494b87e.svg",
@@ -28,8 +29,8 @@
   "entrypoints": [
     "js/runtime-main.8ed8ed80.js",
     "css/2.26dd8153.chunk.css",
-    "js/2.ce02a110.chunk.js",
-    "css/main.98cd84e5.chunk.css",
-    "js/main.4c119b4d.chunk.js"
+    "js/2.f4d920ea.chunk.js",
+    "css/main.5af66077.chunk.css",
+    "js/main.1f245db1.chunk.js"
   ]
 }

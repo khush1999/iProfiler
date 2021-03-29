@@ -13,6 +13,7 @@ interface IForm {
     skills: string[];
     Companies_worked_at: string[];
     resume_id: string;
+    status: string;
 }
 
 type TForm = {
@@ -20,7 +21,7 @@ type TForm = {
 }
 
 const Apply = ({ passData }: TForm) => {
-    let fname = "", lname = "", email = "", phone = "", total_exp = 0, ug_University = "", pg_University = "", ugDegree = "", pgDegree = "", skills1 = "", skills2 = "", skills3 = "", Companies_worked_at = "", resume_id = "";
+    let fname = "", lname = "", email = "", phone = "", total_exp = 0, ug_University = "", pg_University = "", ugDegree = "", pgDegree = "", skills1 = "", skills2 = "", skills3 = "", Companies_worked_at = "", resume_id = "",status="available";
     console.log("This is passData ********************");
     console.log(passData);
 
@@ -260,6 +261,11 @@ const Apply = ({ passData }: TForm) => {
                         <Form.Label>Resume ID</Form.Label>
                         <Form.Control id="resume_id" name="resume_id" required type="text" placeholder="Resume ID" value={resume_id} />
                         <Form.Control.Feedback type="invalid"> Please enter resume ID </Form.Control.Feedback>
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridSkillDes">
+                        <Form.Label>Status</Form.Label>
+                        <Form.Control id="status" name="status" required type="text" placeholder="Resume ID" value={status} />
+                        <Form.Control.Feedback type="invalid">status</Form.Control.Feedback>
                     </Form.Group>
                 </Form.Row>
 

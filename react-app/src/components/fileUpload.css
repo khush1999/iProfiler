@@ -44,6 +44,14 @@
     border-bottom-right-radius: 25px;
 }
 
+.loading-text{
+    position: fixed;
+    top: 60%;
+    left: 50%;
+    text-align: center;
+    color: #071c34;
+}
+
 @media only screen and (max-width: 650px) {
     .jd-col {
         border-radius: 0;
