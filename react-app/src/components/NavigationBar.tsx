@@ -68,7 +68,7 @@ export const NavigationBar = (props) => {
             <LinkContainer to="/Pricing">
               <Nav.Link>Pricing</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/Apply">
+            <LinkContainer to="/Apply" style={{display:"none"}}>
               <Nav.Link>Apply</Nav.Link>
             </LinkContainer>
             {props.navigationState ?

@@ -19,6 +19,7 @@ footer {
 .footer-text {
   color:white;
   text-decoration: none;
+  display: inline-block;
 }
 
 .footer-text:hover {

@@ -12,7 +12,6 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
     return (
         <>
             <NavigationBar navigationState={props.location.state} />
-            <a id="top"></a>
             <div className="welcome-area" id="welcome">
 
                 <div className="header-text">
@@ -41,7 +40,7 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
                                             <i><img src={featured} alt="discover" /></i>
                                         </div>
                                         <h5 className="features-title">Discover</h5>
-                                        <h6 className="font-weight-bold">Find talent with a human machine collaboration </h6>
+                                        <h6 className="font-weight-bold card-line">Find talent with a human machine collaboration </h6>
                                         <p className="feature-description">Humans are innately creative and iprofiler brings first of its kind talent intelligence to source, screen and assess candidates.</p>
                                     </div>
                                 </div>
@@ -52,7 +51,7 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
                                             <i><img src={featured} alt="shortlist" /></i>
                                         </div>
                                         <h5 className="features-title">Shortlisting</h5>
-                                        <h6 className="font-weight-bold">Profile shortlisting is an important process in recruitment</h6>
+                                        <h6 className="font-weight-bold card-line">Profile shortlisting is an important process in recruitment</h6>
                                         <p className="feature-description">With Iprofiler, more detailed profiling solution that helps to incorporate qualitative and quantitative parameters.</p>
                                     </div>
                                 </div>
@@ -63,7 +62,7 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
                                             <i><img src={featured} alt="structure" /></i>
                                         </div>
                                         <h5 className="features-title">Structure</h5>
-                                        <h6 className="font-weight-bold">Build a structured and efficient shortlisting process</h6>
+                                        <h6 className="font-weight-bold card-line">Build a structured and efficient shortlisting process</h6>
                                         <p className="feature-description">An efficient shortlisting process to keep track of talent pipeline and generate insightful candidate list. </p>
                                     </div>
                                 </div>
