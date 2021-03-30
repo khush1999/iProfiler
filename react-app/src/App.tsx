@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Applicants from "./components/Applicants";
 import Contact from "./components/Contact";
@@ -24,21 +24,21 @@ let token = window.token;
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Fragment>
+      <HashRouter basename="/">
+        <Switch>
           <Route exact path="/" component={Landingpage} />
-          <Route exact path="/Pricing" component={Pricing} />
-          <Route exact path="/Apply" component={FileUpload} />
-          <Route exact path="/Login" component={Login} />
-          <Route exact path="/SignUp" component={SignUp} />
-          <Route exact path="/DashboardPage" component={DashboardPage} />
-          <Route exact path="/Contact" component={Contact} />
-          <Route exact path="/UserProfile" component={UserProfile} />
-          <Route exact path="/SendEmail" component={SendEmail} />
-          <Route exact path="/IncommingRounds" component={IncommingRounds} />
-          <Route exact path="/Applicant" component={Applicants} />
-        </Fragment>
-      </BrowserRouter>
+          <Route path="/Pricing" component={Pricing} />
+          <Route path="/Apply" component={FileUpload} />
+          <Route path="/Login" component={Login} />
+          <Route path="/SignUp" component={SignUp} />
+          <Route path="/DashboardPage" component={DashboardPage} />
+          <Route path="/Contact" component={Contact} />
+          <Route path="/UserProfile" component={UserProfile} />
+          <Route path="/SendEmail" component={SendEmail} />
+          <Route path="/IncommingRounds" component={IncommingRounds} />
+          <Route path="/Applicant" component={Applicants} />
+        </Switch>
+      </HashRouter>
     </div>
   );
 }
