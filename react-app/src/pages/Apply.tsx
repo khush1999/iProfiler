@@ -52,6 +52,7 @@ const Apply = ({ passData }: TForm) => {
     skills1 = passData.skills[0];
     skills2 = passData.skills[1];
     skills3 = passData.skills[2];
+    Companies_worked_at = passData.Companies_worked_at[0];
     resume_id = passData.resume_id;
   }
 
@@ -253,7 +254,7 @@ const Apply = ({ passData }: TForm) => {
               required
               placeholder="eg:- 932154XXXX"
               defaultValue={
-                phone.length != 10 ? "Enter your 10 digit mobile number" : phone
+                phone.length != 10 ? "" : phone
               }
               onChange={(e) => (phone = e.target.value)}
             />
@@ -308,10 +309,12 @@ const Apply = ({ passData }: TForm) => {
           <Form.Group as={Col} controlId="formGridPGPercentage">
             <Form.Label>Percentage</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               id="pgPercentage"
               name="pgPercentage"
               placeholder="Enter PG Percentage"
+              min={0}
+              max={100}
             />
           </Form.Group>
         </Form.Row>
@@ -357,8 +360,10 @@ const Apply = ({ passData }: TForm) => {
               id="ugPercentage"
               name="ugPercentage"
               required
-              type="text"
+              type="number"
               placeholder="Enter UG Percentage"
+              min={0}
+              max={100}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -462,6 +467,7 @@ const Apply = ({ passData }: TForm) => {
               id="Companies_worked_at"
               required
               placeholder="Previous Company"
+              defaultValue={Companies_worked_at}
             />
             <Form.Control.Feedback type="invalid">
               Please enter previous company. Write NA if not available{" "}

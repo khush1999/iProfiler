@@ -20,7 +20,7 @@ app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mong
 mongo = PyMongo(app)
 db = mongo
 filename = ""
-app.config['UPLOAD_FOLDER'] = '../react-app/src/resumes/'
+app.config['UPLOAD_FOLDER'] = '/resumes'
 
 
 @app.route("/check")
@@ -289,4 +289,4 @@ def logout():
         return "YO logged out here"
 
 
-app.run(host="0.0.0.0", port="8080")
+app.run(debug=True)

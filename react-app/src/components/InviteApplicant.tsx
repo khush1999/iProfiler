@@ -39,7 +39,7 @@ export default function InviteApplicant() {
                       <i className="fa fa-user-plus"></i>
                     </div>
                     <div className="contact-info-text">
-                      <h2>Send an invitation to the Candidate</h2>\{" "}
+                      <h2>Send an invitation to the Candidate</h2>{" "}
                     </div>
                   </div>
                 </div>
