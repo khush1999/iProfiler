@@ -108,7 +108,7 @@ const Applicants = ({ passData }: TForm) => {
               {passData.ugDegree} {" | "} {passData.pgDegree}
             </Card.Subtitle>
           ) : (
-            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Subtitle className="mb-2 text-muted card-degree">
               {passData.ugDegree}
             </Card.Subtitle>
           )}

@@ -12,6 +12,7 @@ from flask import (Flask, redirect, render_template, request, send_file,
 from flask_pymongo import PyMongo
 from resume_parser import resumeparse
 from werkzeug.utils import secure_filename
+from re import sub
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__name__")
@@ -79,6 +80,9 @@ def form_files():
     # print(result)
     return res
 
+def camelCase(string):
+  string = sub(r"(_|-)+", " ", string).title().replace(" ", "")
+  return string[0].lower() + string[1:]
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
@@ -92,29 +96,29 @@ def create():
         print(email_found)
         if email_found is None:
             mongo.db.users.insert_one({
-                'fname': request.form.get('fname'),
-                'lname': request.form.get('lname'),
+                'fname': camelCase(request.form.get('fname')),
+                'lname': camelCase(request.form.get('lname')),
                 'dob': request.form.get('dob'),
                 'email': request.form.get('email'),
-                'address': request.form.get('address'),
-                'city': request.form.get('city'),
-                'state': request.form.get('state'),
+                'address': camelCase(request.form.get('address')),
+                'city': camelCase(request.form.get('city')),
+                'state': camelCase(request.form.get('state')),
                 'zip': request.form.get('zip'),
                 'phone1': request.form.get('phone1'),
                 'phone2': request.form.get('phone2'),
-                'pgDegree': request.form.get('pgDegree'),
-                'pg_University': request.form.get('pg_University'),
+                'pgDegree': camelCase(request.form.get('pgDegree')),
+                'pg_University': camelCase(request.form.get('pg_University')),
                 'pgPercentage': request.form.get('pgPercentage'),
-                'ugDegree': request.form.get('ugDegree'),
-                'ug_University': request.form.get('ug_University'),
+                'ugDegree': camelCase(request.form.get('ugDegree')),
+                'ug_University': camelCase(request.form.get('ug_University')),
                 'ugPercentage': request.form.get('ugPercentage'),
-                'ugDegree': request.form.get('ugDegree'),
-                'skills1': request.form.get('skills1'),
-                'skills2': request.form.get('skills2'),
-                'skills3': request.form.get('skills3'),
+                'ugDegree': camelCase(request.form.get('ugDegree')),
+                'skills1': camelCase(request.form.get('skills1')),
+                'skills2': camelCase(request.form.get('skills2')),
+                'skills3': camelCase(request.form.get('skills3')),
                 'total_exp': request.form.get('total_exp'),
                 'designition': request.form.get('desig'),
-                'Companies worked at': request.form.get('Companies worked at'),
+                'Companies_worked_at': camelCase(request.form.get('Companies_worked_at')),
                 'resume_id': request.form.get('resume_id'),
                 'status': 'Available',
 
@@ -176,7 +180,7 @@ def get_email(email=None):
         print("email found......")
         # return send_file(path)
         mongo.db.users.find_one_and_update(
-            {'email': email}, {'$set': {'status': 'invited'}})
+            {'email': email}, {'$set': {'status': 'Invited'}})
         return ("updated")
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
@@ -231,7 +235,8 @@ def login():
     message = 'Please login to your account'
     # if "email" in session:
     #     return redirect(url_for("logged_in"))
-
+    test = mongo.db.sample.insert_one({"id":1})
+    print(test)
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")

@@ -12,7 +12,6 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
     return (
         <>
             <NavigationBar navigationState={props.location.state} />
-            <a id="top"></a>
             <div className="welcome-area" id="welcome">
 
                 <div className="header-text">
