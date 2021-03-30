@@ -1,8 +1,8 @@
 import React from 'react';
-import { Jumbotron as Jumbo, Container, Row, Col, Button } from 'react-bootstrap';
+import { Button, Container, Jumbotron as Jumbo } from 'react-bootstrap';
 import styled from 'styled-components';
-import banner from './banner.jpg';
 import './banner.css';
+import banner from './banner.jpg';
 
 const Styles = styled.div`
   .jumbo {

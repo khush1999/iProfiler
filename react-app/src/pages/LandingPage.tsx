@@ -1,11 +1,10 @@
-import iprofilerlogo from '../assets/iprofilerlogo.png';
+import { Link } from 'react-router-dom';
 import featured from '../assets/featured.png';
 import leftimg from '../assets/leftimg.png';
 import rightimg from '../assets/rightimg.png';
-import { Link } from 'react-router-dom';
-import '../pages/landingpage.css';
-import { NavigationBar } from '../components/NavigationBar';
 import Footer from '../components/Footer';
+import { NavigationBar } from '../components/NavigationBar';
+import '../pages/landingpage.css';
 
 export const Landingpage = (props: { location: { state: Boolean; }; }) => {
 
@@ -23,7 +22,7 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
                                 <h1><strong>iProfiler</strong><br />Take the <strong>hassle </strong>out,<br />
                         for the <strong>remote </strong>recruitment process.</h1>
                                 <Link to="/Login">
-                                    <button className="main-button-slider">Hire{' >>'}</button>
+                                    <button className="btn btn-dark hire-button">Let's Hire{' >>'}</button>
                                 </Link>
                             </div>
                         </div>
@@ -42,7 +41,7 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
                                             <i><img src={featured} alt="discover" /></i>
                                         </div>
                                         <h5 className="features-title">Discover</h5>
-                                        <h6>Find talent with a human machine collaboration</h6>
+                                        <h6 className="font-weight-bold">Find talent with a human machine collaboration </h6>
                                         <p className="feature-description">Humans are innately creative and iprofiler brings first of its kind talent intelligence to source, screen and assess candidates.</p>
                                     </div>
                                 </div>
@@ -53,7 +52,7 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
                                             <i><img src={featured} alt="shortlist" /></i>
                                         </div>
                                         <h5 className="features-title">Shortlisting</h5>
-                                        <h6>Profile shortlisting is an important process in recruitment</h6>
+                                        <h6 className="font-weight-bold">Profile shortlisting is an important process in recruitment</h6>
                                         <p className="feature-description">With Iprofiler, more detailed profiling solution that helps to incorporate qualitative and quantitative parameters.</p>
                                     </div>
                                 </div>
@@ -64,8 +63,8 @@ export const Landingpage = (props: { location: { state: Boolean; }; }) => {
                                             <i><img src={featured} alt="structure" /></i>
                                         </div>
                                         <h5 className="features-title">Structure</h5>
-                                        <h6>Build a structured and efficient shortlisting process</h6>
-                                        <p className="feature-description">An efficient shortlisting process to keep track of talent pipeline and generate insightful candidate list all on the same platform.</p>
+                                        <h6 className="font-weight-bold">Build a structured and efficient shortlisting process</h6>
+                                        <p className="feature-description">An efficient shortlisting process to keep track of talent pipeline and generate insightful candidate list. </p>
                                     </div>
                                 </div>
                             </div>

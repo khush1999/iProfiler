@@ -7,6 +7,7 @@ import "./fileUpload.css";
 import { NavigationBar } from "./NavigationBar";
 import { Row, Col, Container } from "react-bootstrap";
 import { JobDes } from "./JobDes";
+import loader from '../assets/loader.gif';
 
 const mainWidth = { width: "80%", marginTop: "10rem" };
 const divColor = { backgroundColor: "#AE4DFF" };
@@ -23,6 +24,7 @@ const FileUpload = () => {
     skills: [],
     Companies_worked_at: [],
     resume_id: "",
+    status: "",
   };
   const [file, setFile] = useState("");
   const [data, setData] = useState(ip);
@@ -50,6 +52,18 @@ const FileUpload = () => {
       setIsLoading(false);
     }, 5000);
   };
+
+  const Loader = () => {
+    return(
+      <>
+     <div className="loading-text">Keep calm, sit back, we are processing your resume!!
+     </div>
+     <div className="load"> 
+    <img src= {loader} />
+    </div>
+    </>
+    );
+  }
 
   const OnSubmit = async (e) => {
     e.preventDefault();
@@ -97,16 +111,13 @@ const FileUpload = () => {
         className="text-center shadow-lg mb-5 bg-white rounde upload-main"
       >
         <Row>
-          <Col
-            sm={6}
-            className="text-white font-weight-bold p-4 jd-col"
-          >
+          <Col sm={6} className="text-white font-weight-bold p-4 jd-col">
             <JobDes />
           </Col>
           <Col sm={6} className="bg-light text-dark form-container upload-col">
             <form onSubmit={OnSubmit} className="form-upload">
               {message ? <Message msg={message} /> : null}
-              <h2>Resume Upload</h2>
+              <h2 className="mb-3">Resume Upload</h2>
               <div className="custom-file mb-4">
                 <br></br>
                 <input
@@ -139,9 +150,7 @@ const FileUpload = () => {
       </Container>
       {console.log("Value is =", data)}
       {isLoading ? (
-        <div className="load">
-          <img src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" />
-        </div>
+          <Loader />
       ) : (
         " "
       )}
