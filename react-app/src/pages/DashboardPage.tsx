@@ -13,10 +13,14 @@ import {
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
-import iprofiler from "../assets/LogoFinal.png";
+// import iprofiler from "../assets/LogoFinal.png";
 import Applicant from "../components/Applicants";
 import FilterForm from "../components/FilterForm";
 import "./DashboardPage.css";
+import { NavDashboard } from "../components/NavDashboard";
+import { BannerDashboard } from "../components/BannerDashboard";
+import Iframe from 'react-iframe';
+
 
 interface IForm {
   email: string;
@@ -87,16 +91,13 @@ const DashboardPage = () => {
   let processedData = [ip];
 
   const [filteredProcessedData, setFileteredProcessedData] = useState([ip]);
-
   const [userData, setUserData] = useState(false);
   const [data, setData] = useState([ip]);
   const [Defdata, setDefData] = useState([ip]);
   const [isSearched, setIsSearched] = useState(false);
   const [applicantData, setApplicantData] = useState(data);
-  const [homePage, setHomePage] = useState(false);
   const [show, setShow] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
-  const [message, setMessage] = useState("");
 
   const history = useHistory();
 
@@ -191,26 +192,6 @@ const DashboardPage = () => {
       }
     }, [data]);
   }
-  const handleClick = async (e) => {
-    e.preventDefault();
-
-    try {
-      const res = await axios.get("/logout");
-      console.log("$$$$$$$$$$$$$$$$$$$$$$");
-      console.log(res.data);
-
-      if (res.data === "EmailID") {
-        // history.push("/Login");
-        history.go(-1);
-      }
-    } catch (err) {
-      if (err.response.status == 500) {
-        setMessage("There was a problem with the server");
-      } else {
-        setMessage(err.response.data.msg);
-      }
-    }
-  };
 
   const searchData = (pattern) => {
     if (!pattern) {
@@ -248,96 +229,10 @@ const DashboardPage = () => {
           handleClose={handleClose}
           handleFilterSubmit={handleFilterSubmit}
         />
-        <Navbar expand="lg" fixed="top">
-          <Navbar.Brand href="/" className="brand-border">
-            <img src={iprofiler} alt="iprofiler" className="logo-image" />
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ml-auto">
-              {/* <LinkContainer to={{
-                pathname: "/",
-                state: !homePage,
-              }}>
-                <Nav.Link id="home-link">Home</Nav.Link>
-              </LinkContainer> */}
-              <LinkContainer to="/DashboardPage">
-                <Nav.Link>Applicants</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="#">
-                <Nav.Link>Job Postings</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="#" onClick={handleClick}>
-                <Nav.Link>Logout</Nav.Link>
-              </LinkContainer>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
+        <NavDashboard />
 
         <div className="content shadow-lg">
-          <div>
-            <Row className="heading-style">
-              <h3 className="welcome-content">Welcome User</h3>
-              <div className="icons-container">
-                <OverlayTrigger
-                  key="top"
-                  placement="top"
-                  overlay={
-                    <Tooltip id={`tooltip-top`}>Invite Applicant</Tooltip>
-                  }
-                >
-                  <LinkContainer to="/SendEmail">
-                    <Nav.Link className="p-0">
-                      <i
-                        className="fa fa-user-plus"
-                        style={{
-                          fontSize: "1.75em",
-                          color: "darkslategray",
-                          paddingLeft: "1.5rem",
-                        }}
-                      ></i>
-                    </Nav.Link>
-                  </LinkContainer>
-                </OverlayTrigger>
-                <OverlayTrigger
-                  key="top"
-                  placement="top"
-                  overlay={<Tooltip id={`tooltip-top`}>Notifications</Tooltip>}
-                >
-                  <LinkContainer to="#">
-                    <Nav.Link className="p-0">
-                      <i
-                        className="fa fa-bell"
-                        style={{
-                          fontSize: "1.75em",
-                          color: "darkslategray",
-                          paddingLeft: "1.5rem",
-                        }}
-                      ></i>
-                    </Nav.Link>
-                  </LinkContainer>
-                </OverlayTrigger>
-                <OverlayTrigger
-                  key="top"
-                  placement="top"
-                  overlay={<Tooltip id={`tooltip-top`}>Hello, User</Tooltip>}
-                >
-                  <LinkContainer to="#">
-                    <Nav.Link className="p-0">
-                      <i
-                        className="fa fa-user-circle-o"
-                        style={{
-                          fontSize: "1.75em",
-                          color: "darkslategray",
-                          paddingLeft: "1.5rem",
-                        }}
-                      ></i>
-                    </Nav.Link>
-                  </LinkContainer>
-                </OverlayTrigger>
-              </div>
-            </Row>
-          </div>
+          <BannerDashboard />
 
           <div className="filter">
             <Row className="filter-row">
@@ -369,7 +264,7 @@ const DashboardPage = () => {
 
           <hr className="filter-hr" />
 
-          <p className="text-danger">{message}</p>
+          {/* <p className="text-danger">{message}</p> */}
           <div className="grid-container justify-content-center">
             {/* For displaying all data*/}
             {!isSearched &&
@@ -392,6 +287,10 @@ const DashboardPage = () => {
             )}
           </div>
         </div>
+      </div>
+
+      <div>
+        <Iframe url="https://charts.mongodb.com/charts-iprofiler-krpsa/embed/charts?id=0fd6f242-ac72-4357-95ef-8b70303b9bf4&theme=dark" styles={{ background: "#21313C", border: "none", borderRadius: "2px", boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)", width: "640", height: "480" }}></Iframe>
       </div>
     </>
   );
