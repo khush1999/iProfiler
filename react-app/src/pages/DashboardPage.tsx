@@ -91,16 +91,13 @@ const DashboardPage = () => {
   let processedData = [ip];
 
   const [filteredProcessedData, setFileteredProcessedData] = useState([ip]);
-
   const [userData, setUserData] = useState(false);
   const [data, setData] = useState([ip]);
   const [Defdata, setDefData] = useState([ip]);
   const [isSearched, setIsSearched] = useState(false);
   const [applicantData, setApplicantData] = useState(data);
-  const [homePage, setHomePage] = useState(false);
   const [show, setShow] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
-  // const [message, setMessage] = useState("");
 
   const history = useHistory();
 

@@ -80,6 +80,16 @@ def form_files():
     # print(result)
     return res
 
+@app.route('/getJobData', methods=['GET', 'POST'])
+def job_files():
+    result = []
+    abc = mongo.db.jobs.find()
+    for a in abc:
+        a['_id'] = str(a['_id'])
+        result.append(a)
+    res = json.dumps(result)
+    return res
+
 def camelCase(string):
   string = sub(r"(_|-)+", " ", string).title().replace(" ", "")
   return string[0].lower() + string[1:]

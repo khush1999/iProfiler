@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { Button, Col, Form, Modal, Row } from 'react-bootstrap'
+import React, { useState } from 'react';
+import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
+import nextId from "react-id-generator";
 
 
 interface IProps {
@@ -12,7 +13,7 @@ export const JobForm = ({
     handleClose
 }) => {
 
-    let id = Math.floor(Math.random() * 100);
+    let JobId = nextId("job-id-");
 
     // Form Validation:
     const [validated, setValidated] = useState(false);
@@ -50,8 +51,7 @@ export const JobForm = ({
                                     name="jobId"
                                     placeholder="Enter Job ID"
                                     required
-                                    value={id}
-                                    onChange={(e) => (e.target.value)}
+                                    value={JobId}
                                 />
                             </Form.Group>
                             <Form.Group as={Col} controlId="job-role">
