@@ -132,7 +132,7 @@ const Apply = ({ passData }: TForm) => {
               placeholder="Enter First Name"
               required
               defaultValue={fname}
-              onChange={(e) => (fname = e.target.value)}
+              onChange={(e) => (fname = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -149,7 +149,7 @@ const Apply = ({ passData }: TForm) => {
               placeholder="Enter Last Name"
               required
               defaultValue={lname}
-              onChange={(e) => (lname = e.target.value)}
+              onChange={(e) => (lname = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -252,9 +252,8 @@ const Apply = ({ passData }: TForm) => {
               minLength={10}
               required
               placeholder="eg:- 932154XXXX"
-              defaultValue={
-                phone.length != 10 ? "Enter your 10 digit mobile number" : phone
-              }
+              pattern="((\+*)((0[ -]+)*|(91 )*)(\d{12}+|\d{10}+))|\d{5}([- ]*)\d{6}"
+              defaultValue={phone}
               onChange={(e) => (phone = e.target.value)}
             />
             <Form.Control.Feedback type="invalid">
@@ -289,7 +288,7 @@ const Apply = ({ passData }: TForm) => {
               name="pgDegree"
               placeholder="Enter PG Course"
               defaultValue={pgDegree}
-              onChange={(e) => (pgDegree = e.target.value)}
+              onChange={(e) => (pgDegree = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
           </Form.Group>
 
@@ -301,17 +300,19 @@ const Apply = ({ passData }: TForm) => {
               name="pg_University"
               placeholder="Enter PG College"
               defaultValue={pg_University}
-              onChange={(e) => (pg_University = e.target.value)}
+              onChange={(e) => (pg_University = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
           </Form.Group>
 
           <Form.Group as={Col} controlId="formGridPGPercentage">
             <Form.Label>Percentage</Form.Label>
             <Form.Control
-              type="text"
+              type="number"
               id="pgPercentage"
               name="pgPercentage"
               placeholder="Enter PG Percentage"
+              min={0}
+              max={100}
             />
           </Form.Group>
         </Form.Row>
@@ -326,7 +327,7 @@ const Apply = ({ passData }: TForm) => {
               name="ugDegree"
               placeholder="Enter UG Course"
               defaultValue={ugDegree}
-              onChange={(e) => (ugDegree = e.target.value)}
+              onChange={(e) => (ugDegree = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -343,7 +344,7 @@ const Apply = ({ passData }: TForm) => {
               type="text"
               placeholder="Enter UG College"
               defaultValue={ug_University}
-              onChange={(e) => (ug_University = e.target.value)}
+              onChange={(e) => (ug_University = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -357,8 +358,10 @@ const Apply = ({ passData }: TForm) => {
               id="ugPercentage"
               name="ugPercentage"
               required
-              type="text"
+              type="number"
               placeholder="Enter UG Percentage"
+              min={0}
+              max={100}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -381,7 +384,7 @@ const Apply = ({ passData }: TForm) => {
               name="skills1"
               placeholder="Enter Skill"
               defaultValue={skills1}
-              onChange={(e) => (skills1 = e.target.value)}
+              onChange={(e) => (skills1 = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -398,7 +401,7 @@ const Apply = ({ passData }: TForm) => {
               name="skills2"
               placeholder="Enter Skill"
               defaultValue={skills2}
-              onChange={(e) => (skills2 = e.target.value)}
+              onChange={(e) => (skills2 = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
             <Form.Control.Feedback type="invalid">
               {" "}
@@ -415,7 +418,7 @@ const Apply = ({ passData }: TForm) => {
               name="skills3"
               placeholder="Enter Skill"
               defaultValue={skills3}
-              onChange={(e) => (skills3 = e.target.value)}
+              onChange={(e) => (skills3 = e.target.value.charAt(0).toUpperCase()+ e.target.value.slice(1).toLowerCase())}
             />
             <Form.Control.Feedback type="invalid">
               {" "}

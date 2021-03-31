@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 .card-name {
@@ -45,6 +46,46 @@
     font-size: 0.7em;
     padding: 2px;
     text-align: center;
+}
+
+.status-tag{
+    position: absolute;
+    color: white;
+    display: block;
+    background-color: #AE4DFF;
+    text-align: center;
+    right: -30px;
+    top: -30px;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    font-size: 0.5em;
+    padding-top: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    transition: all 0.5s ease;
+    font-weight: 900;
+}
+
+.status-tag-1{
+    position: absolute;
+    color: white;
+    display: block;
+    background-color: #071c34;
+    text-align: center;
+    right: -30px;
+    top: -30px;
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    font-size: 0.5em;
+    padding-top: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    transition: all 0.5s ease;
+    font-weight: 900;
 }
 
 @media screen and (max-width: 1068px) {

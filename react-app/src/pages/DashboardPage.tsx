@@ -262,7 +262,7 @@ const DashboardPage = () => {
                 <Nav.Link id="home-link">Home</Nav.Link>
               </LinkContainer> */}
               <LinkContainer to="/DashboardPage">
-                <Nav.Link className="active">Applicants</Nav.Link>
+                <Nav.Link>Applicants</Nav.Link>
               </LinkContainer>
               <LinkContainer to="#">
                 <Nav.Link>Job Postings</Nav.Link>

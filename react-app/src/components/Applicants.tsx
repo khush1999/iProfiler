@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Badge,
   Button,
   Card,
   Col,
@@ -64,6 +65,10 @@ const Applicants = ({ passData }: TForm) => {
     bg-white rounded"
       >
         <Card.Body>
+        
+        {passData.status=="Available"?<div className="status-tag">{passData.status}</div>:
+        <div className="status-tag-1">{passData.status}</div>}
+        
           <div className="card-header-container">
             <Card.Title className="text-left card-name">
               <p className="card-display-name">
@@ -103,7 +108,7 @@ const Applicants = ({ passData }: TForm) => {
               {passData.ugDegree} {" | "} {passData.pgDegree}
             </Card.Subtitle>
           ) : (
-            <Card.Subtitle className="mb-2 text-muted">
+            <Card.Subtitle className="mb-2 text-muted card-degree">
               {passData.ugDegree}
             </Card.Subtitle>
           )}
@@ -125,7 +130,7 @@ const Applicants = ({ passData }: TForm) => {
             </ul>
           </Card.Text>
           <Row className="justify-content-center" id="button-content">
-            <Col sm={6}>
+    
               <Link
                 to={{
                   pathname: "/UserProfile",
@@ -139,15 +144,9 @@ const Applicants = ({ passData }: TForm) => {
                   View Profile
                 </Button>
               </Link>
-            </Col>
-            <Col sm={6}>
-              <Button
-                variant="dark align-self-end"
-                className="pricingTable-firstTable_table__getstart"
-              >
-                {passData.status}
-              </Button>
-            </Col>
+            
+              
+            
             {/* <Col sm={6}>
             <Button variant="dark align-self-end" onClick={handleResume} className="pricingTable-firstTable_table__getstart">
               View Resume

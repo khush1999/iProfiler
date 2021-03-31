@@ -339,6 +339,10 @@ ul {
   }
 }
 
+.card-line{
+  line-height: 1.8;
+}
+
 @media (max-width: 820px) {
   .welcome-area .header-text {
     top: 65% !important;
