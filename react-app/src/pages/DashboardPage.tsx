@@ -19,8 +19,7 @@ import FilterForm from "../components/FilterForm";
 import "./DashboardPage.css";
 import { NavDashboard } from "../components/NavDashboard";
 import { BannerDashboard } from "../components/BannerDashboard";
-import Iframe from 'react-iframe';
-
+import Iframe from "react-iframe";
 
 interface IForm {
   email: string;
@@ -287,10 +286,6 @@ const DashboardPage = () => {
             )}
           </div>
         </div>
-      </div>
-
-      <div>
-        <Iframe url="https://charts.mongodb.com/charts-iprofiler-krpsa/embed/charts?id=0fd6f242-ac72-4357-95ef-8b70303b9bf4&theme=dark" styles={{ background: "#21313C", border: "none", borderRadius: "2px", boxShadow: "0 2px 10px 0 rgba(70, 76, 79, .2)", width: "640", height: "480" }}></Iframe>
       </div>
     </>
   );
