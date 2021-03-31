@@ -1,0 +1,22 @@
+
+  .heading-style {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-image: linear-gradient(127deg, #a759d1 0%, #8261ee 91%);
+    color: white;
+  }
+  
+  .welcome-content {
+    font-weight: bold;
+    margin-left: 1rem;
+    color: whitesmoke;
+  }
+
+  .icons-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }

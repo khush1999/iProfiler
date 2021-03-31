@@ -96,32 +96,31 @@ def create():
         print(email_found)
         if email_found is None:
             mongo.db.users.insert_one({
-                'fname': camelCase(request.form.get('fname')),
-                'lname': camelCase(request.form.get('lname')),
+                'fname': request.form.get('fname').title(),
+                'lname': request.form.get('lname').title(),
                 'dob': request.form.get('dob'),
                 'email': request.form.get('email'),
-                'address': camelCase(request.form.get('address')),
-                'city': camelCase(request.form.get('city')),
-                'state': camelCase(request.form.get('state')),
+                'address': request.form.get('address').title(),
+                'city': request.form.get('city').title(),
+                'state': request.form.get('state').title(),
                 'zip': request.form.get('zip'),
                 'phone1': request.form.get('phone1'),
                 'phone2': request.form.get('phone2'),
-                'pgDegree': camelCase(request.form.get('pgDegree')),
-                'pg_University': camelCase(request.form.get('pg_University')),
-                'pgPercentage': request.form.get('pgPercentage'),
-                'ugDegree': camelCase(request.form.get('ugDegree')),
-                'ug_University': camelCase(request.form.get('ug_University')),
+                'pgDegree': request.form.get('pgDegree').title(),
+                'pg_University': request.form.get('pg_University').title(),
+                'pgPercentage': request.form.get('pgPercentage').title(),
+                'ugDegree': request.form.get('ugDegree').title(),
+                'ug_University': request.form.get('ug_University').title(),
                 'ugPercentage': request.form.get('ugPercentage'),
-                'ugDegree': camelCase(request.form.get('ugDegree')),
-                'skills1': camelCase(request.form.get('skills1')),
-                'skills2': camelCase(request.form.get('skills2')),
-                'skills3': camelCase(request.form.get('skills3')),
+                'ugDegree': request.form.get('ugDegree').title(),
+                'skills1': request.form.get('skills1').title(),
+                'skills2': request.form.get('skills2').title(),
+                'skills3': request.form.get('skills3').title(),
                 'total_exp': request.form.get('total_exp'),
                 'designition': request.form.get('desig'),
-                'Companies_worked_at': camelCase(request.form.get('Companies_worked_at')),
+                'Companies_worked_at': request.form.get('Companies_worked_at').title(),
                 'resume_id': request.form.get('resume_id'),
                 'status': 'Available',
-
             })
             # print(list(mongo.db.users.find()))
             return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
@@ -173,6 +172,30 @@ def create():
 #         # print(list(mongo.db.users.find()))
 #     return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
 
+
+@app.route('/jobPost', methods=['GET', 'POST'])
+def createJob():
+    global data
+    if request.method == 'POST':
+        print("Came inside", request.form.get('jobRole'))
+        jobRole = request.form.get('jobRole')
+        print("******")
+        jobRole_found = mongo.db.jobs.find_one({"jobRole": jobRole})
+        print(jobRole_found)
+        if jobRole_found is None:
+            mongo.db.jobs.insert_one({
+                'jobId': request.form.get('jobId'),
+                'jobRole': request.form.get('jobRole'),
+                'jobOffer': request.form.get('jobOffer'),
+                'jobCtc' : request.form.get('jobCtc'),
+                'skills1': request.form.get('skills1').title(),
+                'skills2': request.form.get('skills2').title(),
+                'skills3': request.form.get('skills3').title(),
+            })
+            # print(list(mongo.db.users.find()))
+            return redirect("/#/DashboardPage", code=302)
+        else:
+            return """ <h2 class="text-center mt-4"> You have already added this job role </h2> """
 
 @app.route("/create/<email>", methods=['GET'])
 def get_email(email=None):

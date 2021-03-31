@@ -7,6 +7,7 @@ import FileUpload from "./components/FileUpload";
 import IncommingRounds from "./components/IncommingRounds";
 import SendEmail from "./components/InviteApplicant";
 import DashboardPage from "./pages/DashboardPage";
+import { JobPosting } from "./pages/JobPosting";
 import { Landingpage } from "./pages/LandingPage";
 import { Login } from "./pages/Login";
 import Pricing from "./pages/Pricing";
@@ -37,6 +38,7 @@ function App() {
           <Route path="/SendEmail" component={SendEmail} />
           <Route path="/IncommingRounds" component={IncommingRounds} />
           <Route path="/Applicant" component={Applicants} />
+          <Route path="/JobPostings" component={JobPosting} />
         </Switch>
       </HashRouter>
     </div>
