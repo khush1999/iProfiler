@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 
 interface IProps {
@@ -18,7 +19,22 @@ const FilterForm: React.FC<IProps> = ({
   handleClose,
   handleFilterSubmit,
 }) => {
+
   let filterData = data;
+
+  const ip = {
+    "jobId": "",
+    "jobRole": "",
+    "jobOffer": "",
+    "jobCtc": "",
+    "skills1": "",
+    "skills2": "",
+    "skills3": ""
+  }
+
+  const [jobData, setJobData] = useState(false);
+  const [desData, setDesData] = useState([ip]);
+
   const handleSkills = (e) => {
     console.log("Skilllllllsssssss");
     if (e.target.value === "All") {
@@ -55,8 +71,21 @@ const FilterForm: React.FC<IProps> = ({
     handleClose();
   };
 
+  function GetData() {
+    useEffect(() => {
+      if (jobData == false) {
+        axios.get("/getJobData").then((res) => {
+          console.log("////////////////////////////////////", res.data);
+          setDesData(res.data);
+          setJobData(true);
+        });
+      }
+    }, [data]);
+  }
+
   return (
     <>
+      {GetData()}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Filtering Options</Modal.Title>
@@ -174,7 +203,18 @@ const FilterForm: React.FC<IProps> = ({
                     id="all"
                     required
                   />
-                  <Form.Check
+                  {jobData &&
+                    desData.map((job) =>
+                      <Form.Check
+                        type="radio"
+                        label={job.jobRole}
+                        value={job.jobRole}
+                        name="designation"
+                        id={job.jobRole.toLowerCase()}
+                        required
+                      />
+                    )}
+                  {/* <Form.Check
                     type="radio"
                     label="SDE"
                     value="SDE"
@@ -201,7 +241,7 @@ const FilterForm: React.FC<IProps> = ({
                     value="DevOps"
                     name="designation"
                     id="devops"
-                  />
+                  /> */}
                 </Col>
               </Form.Group>
             </fieldset>

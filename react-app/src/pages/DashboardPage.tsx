@@ -163,7 +163,7 @@ const DashboardPage = () => {
     if (processedData.length > 0) {
       if (filterData.Designation != "") {
         processedData = processedData.filter(
-          (user) => user.designition === filterData.Designation
+          (user) => user.designition.toLowerCase() === filterData.Designation.toLowerCase()
         );
         console.log("reached designation", processedData);
       }
