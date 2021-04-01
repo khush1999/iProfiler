@@ -151,6 +151,22 @@ export const JobForm = ({
                                 </Form.Control.Feedback>
                             </Form.Group>
                         </Form.Row>
+                        <Form.Row>
+                        <Form.Group as={Col} controlId="job-des">
+                                <Form.Label>Job Description</Form.Label>
+                                <Form.Control as="textarea"
+                                    id="job-des"
+                                    name="job-des"
+                                    placeholder="Enter job description"
+                                    required
+                                    onChange={(e) => (e.target.value)}
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    {" "}
+                            Please Enter Job Description{" "}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+                        </Form.Row>
                         <Modal.Footer>
                             <Form.Group as={Row}>
                                 <Col sm={{ span: 10, offset: 2 }}>

@@ -16,7 +16,8 @@ export const JobPosting = () => {
         "jobCtc": "",
         "skills1": "",
         "skills2": "",
-        "skills3": ""
+        "skills3": "",
+        "jobDes":"",
     }
 
     const [show, setShow] = useState(false);

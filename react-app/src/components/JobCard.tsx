@@ -11,7 +11,8 @@ interface IJob {
     jobCtc: string,
     skills1: string,
     skills2: string,
-    skills3: string
+    skills3: string,
+    jobDes: string
 }
 
 type TJob = {

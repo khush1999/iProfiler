@@ -136,7 +136,7 @@ export const Login = () => {
 
               <hr />
               <p>
-                New Client ? <Link to="/SignUp">Sign Up</Link>
+                New Client ? <Link to="/SignUp" id="signup">Sign Up</Link>
               </p>
             </div>
           </Col>

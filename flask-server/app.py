@@ -149,9 +149,9 @@ def create():
                 'status': 'Available',
             })
             # print(list(mongo.db.users.find()))
-            return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
+            return redirect("/#/SuccessSubmit", code=302)
         else:
-            return """ <h2 class="text-center mt-4"> you have already applied for this job role </h2> """
+            return redirect("/#/AlreadySubmit", code=302)
 # @app.route('/create', methods=['GET', 'POST'])
 # def create():
 #     global data
@@ -217,9 +217,10 @@ def createJob():
                 'skills1': request.form.get('skills1').title(),
                 'skills2': request.form.get('skills2').title(),
                 'skills3': request.form.get('skills3').title(),
+                'jobDes' : request.form.get('job-des'),
             })
             # print(list(mongo.db.users.find()))
-            return redirect("/#/DashboardPage", code=302)
+            return redirect("/#/JobPostings", code=302)
         else:
             return """ <h2 class="text-center mt-4"> You have already added this job role </h2> """
 
