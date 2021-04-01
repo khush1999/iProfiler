@@ -229,6 +229,7 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
                           <div className="col">
                             <Button
                               variant="dark align-self-end"
+                              className="mt-2"
                               onClick={handleResume}
                             >
                               Download Resume

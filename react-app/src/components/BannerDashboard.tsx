@@ -29,7 +29,7 @@ export const BannerDashboard = () => {
                             </Nav.Link>
                         </LinkContainer>
                     </OverlayTrigger>
-                    <OverlayTrigger
+                    {/* <OverlayTrigger
                         key="top"
                         placement="top"
                         overlay={<Tooltip id={`tooltip-top`}>Notifications</Tooltip>}
@@ -46,7 +46,7 @@ export const BannerDashboard = () => {
                                 ></i>
                             </Nav.Link>
                         </LinkContainer>
-                    </OverlayTrigger>
+                    </OverlayTrigger> */}
                     <OverlayTrigger
                         key="top"
                         placement="top"
