@@ -77,7 +77,7 @@ const FileUpload = () => {
           setTimeout(() => setProgressBar(!progressBar), 10000);
         },
       });
-
+      console.log("%%%%%%%%%%%%%%%%%%%%%%", res);
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });

@@ -1,5 +1,6 @@
-import React from 'react'
-import { Button, Col, Row } from 'react-bootstrap'
+import axios from 'axios';
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import './JobCard.css';
 
@@ -50,7 +51,9 @@ export const JobCard = ({ jobData }: TJob) => {
             <i className="fa fa-pencil-square-o" aria-hidden="true" style={{fontSize:"1.75rem"}}></i>
             </Col>
             <Col md={1} className="job-card-apply-col">
-            <i className="fa fa-trash" aria-hidden="true" style={{color:"red",fontSize:"1.75rem"}}></i>
+            <i className="fa fa-trash" aria-hidden="true" style={{color:"red",fontSize:"1.75rem"}} onClick= {() => {
+                axios.get(`/delete/` + jobData.jobRole);
+            }}></i>
             </Col>
         </Row>
     )
