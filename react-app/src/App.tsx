@@ -14,6 +14,9 @@ import Pricing from "./pages/Pricing";
 import { SignUp } from "./pages/SignUp";
 import { UserProfile} from "./pages/UserProfile";
 import Analytics from "./pages/Analytics";
+import JobDetails from "./pages/JobDetails";
+import SuccessSubmit from "./components/SuccessSubmit";
+import AlreadySubmit from "./components/AlreadySubmit";
 
 declare global {
   interface Window {
@@ -41,9 +44,13 @@ function App() {
           <Route path="/Applicant" component={Applicants} />
           <Route path="/JobPostings" component={JobPosting} />
           <Route path="/Analytics" component={Analytics} />
+          <Route path="/JobDetails" component={JobDetails} />
+          <Route path="/SuccessSubmit" component={SuccessSubmit} />
+          <Route path="/AlreadySubmit" component={AlreadySubmit} />
         </Switch>
       </HashRouter>
     </div>
+    
   );
 }
 
