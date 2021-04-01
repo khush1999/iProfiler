@@ -54,5 +54,5 @@ export const NavDashboard = () => {
         </Navbar.Collapse>
       </Navbar>
     </div>
-  );
-};
+  )
+}
