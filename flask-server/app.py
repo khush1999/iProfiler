@@ -16,6 +16,7 @@ from re import sub
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__name__")
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 # Mongo Setup
 app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mongodb.net/applicants?retryWrites=true&w=majority'
 mongo = PyMongo(app)
