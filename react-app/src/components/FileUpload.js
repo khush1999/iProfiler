@@ -7,9 +7,9 @@ import "./fileUpload.css";
 import { NavigationBar } from "./NavigationBar";
 import { Row, Col, Container } from "react-bootstrap";
 import { JobDes } from "./JobDes";
-import loadicon from '../assets/loadicon.gif';
+import iprofilerlogo from '../assets/LogoFinal.png';
 
-const mainWidth = { width: "80%", marginTop: "10rem" };
+const mainWidth = { width: "80%", marginTop: "5rem" };
 const divColor = { backgroundColor: "#AE4DFF" };
 
 const FileUpload = () => {
@@ -77,7 +77,7 @@ const FileUpload = () => {
           setTimeout(() => setProgressBar(!progressBar), 10000);
         },
       });
-
+      console.log("%%%%%%%%%%%%%%%%%%%%%%", res);
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });
@@ -97,7 +97,14 @@ const FileUpload = () => {
 
   return (
     <Fragment>
-      <NavigationBar navigationState={false} />
+      <Row className="apply-nav">
+        <Col md={8}>
+      <img src={iprofilerlogo} alt="iprofiler" className="apply-logo"/>
+      </Col>
+      <Col md={4}>
+      <h4>Excel your Career with Us...</h4>
+      </Col>
+      </Row>
       <Container
         style={mainWidth}
         className="text-center shadow-lg mb-5 bg-white rounde upload-main"

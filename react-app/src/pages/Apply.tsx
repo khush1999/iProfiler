@@ -30,7 +30,8 @@ const Apply = ({ passData }: TForm) => {
     "jobCtc": "",
     "skills1": "",
     "skills2": "",
-    "skills3": ""
+    "skills3": "",
+    "jobDes":"",
   }
 
   let fname = "",

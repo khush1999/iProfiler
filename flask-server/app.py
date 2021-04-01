@@ -51,8 +51,26 @@ def upload_file():
         filenam = f.filename
         mongo.save_file(filename, f)
         #   mongo.send_file()
-        data = resumeparse.read_file(filename)
-        data["resume_id"] = filename
+        try: 
+            data = resumeparse.read_file(filename)
+            data["resume_id"] = filename
+        except:
+            data = {
+                "Companies_worked_at": [],
+                "degree": [],
+                "designition": "",
+                "email": "",
+                "name": "",
+                "phone": "",
+                "resume_id": "",
+                "skills": [],
+                "status": "",
+                "total_exp": 0,
+                "university": []
+            }
+            print("reached here broooo")
+            data["resume_id"] = filename
+            print(data)
 
         with open("../react-app/src/sample.json", "w") as outfile:
             json.dump(data, outfile)
@@ -131,9 +149,9 @@ def create():
                 'status': 'Available',
             })
             # print(list(mongo.db.users.find()))
-            return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
+            return redirect("/#/SuccessSubmit", code=302)
         else:
-            return """ <h2 class="text-center mt-4"> you have already applied for this job role </h2> """
+            return redirect("/#/AlreadySubmit", code=302)
 # @app.route('/create', methods=['GET', 'POST'])
 # def create():
 #     global data
@@ -199,9 +217,10 @@ def createJob():
                 'skills1': request.form.get('skills1').title(),
                 'skills2': request.form.get('skills2').title(),
                 'skills3': request.form.get('skills3').title(),
+                'jobDes' : request.form.get('job-des'),
             })
             # print(list(mongo.db.users.find()))
-            return redirect("/#/DashboardPage", code=302)
+            return redirect("/#/JobPostings", code=302)
         else:
             return """ <h2 class="text-center mt-4"> You have already added this job role </h2> """
 
@@ -209,13 +228,49 @@ def createJob():
 def get_email(email=None):
     if email is not None:
         print("email found......")
-        # return send_file(path)
         mongo.db.users.find_one_and_update(
             {'email': email}, {'$set': {'status': 'Invited'}})
         return ("updated")
     else:
         print("Sorryyyyyyyyyyyyyyyyyy!")
 
+# Updating Existing Job Posting
+# @app.route('/job_update', methods=['POST'])
+# def job_update():
+# 	data = request.json
+# 	_id = data['_id']
+# 	_name = data['job']
+# 	_email = data['email']
+# 	_password = data['pwd']		
+# 	# validate the received values
+# 	if _name and _email and _password and _id and request.method == 'PUT':
+# 		#do not save password as a plain text
+# 		_hashed_password = generate_password_hash(_password)
+# 		# save edits
+# 		mongo.db.user.update_one({'_id': ObjectId(_id['$oid']) if '$oid' in _id else ObjectId(_id)}, {'$set': {'name': _name, 'email': _email, 'pwd': _hashed_password}})
+# 		resp = jsonify('Job updated successfully!')
+# 		resp.status_code = 200
+# 		return resp
+# 	else:
+# 		return not_found()
+
+# Deleting an existing job posting
+@app.route('/delete/<role>', methods=['GET'])
+def delete_job(role):
+    item = mongo.db.jobs.find_one({'jobRole',role})
+    print("*************************")
+    print(item)
+    mongo.db.jobs.delete_one({_id: item._id})
+    res = jsonify('Job Deleted')
+    res.status_code = 200
+    return res
+    # deleted = mongo.db.jobs.remove({_id: item._id});
+    # msg = ""
+    # if deleted is not None:
+    #     msg = "Delete Sucessfully"
+    # else:
+    #     msg = "Job Not Found"
+    # return msg
 
 # HR
 app.secret_key = "secret"
@@ -282,7 +337,7 @@ def login():
             # encode the password and check if it matches
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return email_val
+                return "Login Sucessful"
                 # return redirect(url_for('logged_in'))
             else:
                 message = 'Wrong password'
