@@ -193,7 +193,7 @@ def createJob():
         if jobRole_found is None:
             mongo.db.jobs.insert_one({
                 'jobId': request.form.get('jobId'),
-                'jobRole': request.form.get('jobRole'),
+                'jobRole': request.form.get('jobRole').upper(),
                 'jobOffer': request.form.get('jobOffer'),
                 'jobCtc' : request.form.get('jobCtc'),
                 'skills1': request.form.get('skills1').title(),
