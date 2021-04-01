@@ -21,8 +21,8 @@ export const NavDashboard = () => {
             console.log(res.data);
 
             if (res.data === "EmailID") {
-                // history.push("/Login");
-                history.go(-1);
+                history.replace("/Login");
+                // history.go(-1);
             }
         } catch (err) {
             if (err.response.status == 500) {

@@ -4,6 +4,8 @@ import { Button, Col, Form } from 'react-bootstrap'
 import { BannerDashboard } from '../components/BannerDashboard';
 import { JobForm } from '../components/JobForm';
 import { NavDashboard } from '../components/NavDashboard';
+import { JobCard } from '../components/JobCard';
+import './JobPosting.css'
 
 export const JobPosting = () => {
 
@@ -53,6 +55,10 @@ export const JobPosting = () => {
                     <BannerDashboard />
                     <div className="p-5">
                         <Button variant="dark" onClick={handleShow}>Create Job Posting</Button>
+                    </div>
+                    <div className="jobs-container">
+                        {jobData &&
+                            data.map((job) => <JobCard jobData={job} />)}
                     </div>
                 </div>
             </div>
