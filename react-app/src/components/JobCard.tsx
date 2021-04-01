@@ -36,21 +36,21 @@ export const JobCard = ({ jobData }: TJob) => {
                 </div>
             </Col>
             <Col md={4} className="job-card-skills-col">
-                <div className="job-card-skill1">
+                <div className="job-card-skill">
                     {jobData.skills1}
                 </div>
-                <div className="job-card-skill2">
+                <div className="job-card-skill">
                     {jobData.skills2}
                 </div>
-                <div className="job-card-skill3">
+                <div className="job-card-skill">
                     {jobData.skills3}
                 </div>
             </Col>
-            <Col md={2} className="job-card-apply-col">
-                <Button className="job-card-apply" variant="dark"
-                    onClick={() => history.push("/Apply")}>
-                    Apply
-                </Button>
+            <Col md={1} className="job-card-apply-col">
+            <i className="fa fa-pencil-square-o" aria-hidden="true" style={{fontSize:"1.75rem"}}></i>
+            </Col>
+            <Col md={1} className="job-card-apply-col">
+            <i className="fa fa-trash" aria-hidden="true" style={{color:"red",fontSize:"1.75rem"}}></i>
             </Col>
         </Row>
     )

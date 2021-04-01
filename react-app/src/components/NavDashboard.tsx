@@ -35,7 +35,7 @@ export const NavDashboard = () => {
   return (
     <div>
       <Navbar expand="lg" fixed="top">
-        <Navbar.Brand href="/" className="brand-border">
+        <Navbar.Brand className="brand-border">
           <img src={iprofiler} alt="iprofiler" className="logo-image" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -46,6 +46,9 @@ export const NavDashboard = () => {
             </LinkContainer>
             <LinkContainer to="/JobPostings">
               <Nav.Link>Job Postings</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Analytics">
+              <Nav.Link>Analytics</Nav.Link>
             </LinkContainer>
             <LinkContainer to="#" onClick={handleClick}>
               <Nav.Link>Logout</Nav.Link>

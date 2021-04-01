@@ -12,7 +12,8 @@ import { Landingpage } from "./pages/LandingPage";
 import { Login } from "./pages/Login";
 import Pricing from "./pages/Pricing";
 import { SignUp } from "./pages/SignUp";
-import { UserProfile } from "./pages/UserProfile";
+import { UserProfile} from "./pages/UserProfile";
+import Analytics from "./pages/Analytics";
 
 declare global {
   interface Window {
@@ -39,6 +40,7 @@ function App() {
           <Route path="/IncommingRounds" component={IncommingRounds} />
           <Route path="/Applicant" component={Applicants} />
           <Route path="/JobPostings" component={JobPosting} />
+          <Route path="/Analytics" component={Analytics} />
         </Switch>
       </HashRouter>
     </div>
