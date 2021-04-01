@@ -16,6 +16,7 @@ from re import sub
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__name__")
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 # Mongo Setup
 app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mongodb.net/applicants?retryWrites=true&w=majority'
 mongo = PyMongo(app)
@@ -80,9 +81,16 @@ def form_files():
     # print(result)
     return res
 
-def camelCase(string):
-  string = sub(r"(_|-)+", " ", string).title().replace(" ", "")
-  return string[0].lower() + string[1:]
+@app.route('/getJobData', methods=['GET', 'POST'])
+def job_files():
+    result = []
+    abc = mongo.db.jobs.find()
+    for a in abc:
+        a['_id'] = str(a['_id'])
+        result.append(a)
+    res = json.dumps(result)
+    return res
+
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
@@ -185,7 +193,7 @@ def createJob():
         if jobRole_found is None:
             mongo.db.jobs.insert_one({
                 'jobId': request.form.get('jobId'),
-                'jobRole': request.form.get('jobRole'),
+                'jobRole': request.form.get('jobRole').upper(),
                 'jobOffer': request.form.get('jobOffer'),
                 'jobCtc' : request.form.get('jobCtc'),
                 'skills1': request.form.get('skills1').title(),
@@ -258,8 +266,8 @@ def login():
     message = 'Please login to your account'
     # if "email" in session:
     #     return redirect(url_for("logged_in"))
-    test = mongo.db.sample.insert_one({"id":1})
-    print(test)
+    # test = mongo.db.sample.insert_one({"id":1})
+    # print(test)
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
@@ -317,4 +325,5 @@ def logout():
         return "YO logged out here"
 
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port="8080")

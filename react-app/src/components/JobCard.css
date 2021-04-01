@@ -1,0 +1,42 @@
+.job-card-row {
+    width: 80%;
+    justify-content: center;
+    background-color: white;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.job-card-ctc {
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    width: 100%;
+    font-size: large;
+    font-weight: 700;
+    color: darkslategray;
+}
+
+.job-card-skills-col {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.job-card-apply-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.job-card-role {
+    font-size: large;
+    font-weight: 600;
+    color: darkslategray;
+}
+
+.job-card-skill{
+    font-weight: bold;
+}
+

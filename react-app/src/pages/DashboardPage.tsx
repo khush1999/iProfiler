@@ -19,8 +19,7 @@ import FilterForm from "../components/FilterForm";
 import "./DashboardPage.css";
 import { NavDashboard } from "../components/NavDashboard";
 import { BannerDashboard } from "../components/BannerDashboard";
-import Iframe from 'react-iframe';
-
+import Iframe from "react-iframe";
 
 interface IForm {
   email: string;
@@ -91,16 +90,13 @@ const DashboardPage = () => {
   let processedData = [ip];
 
   const [filteredProcessedData, setFileteredProcessedData] = useState([ip]);
-
   const [userData, setUserData] = useState(false);
   const [data, setData] = useState([ip]);
   const [Defdata, setDefData] = useState([ip]);
   const [isSearched, setIsSearched] = useState(false);
   const [applicantData, setApplicantData] = useState(data);
-  const [homePage, setHomePage] = useState(false);
   const [show, setShow] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
-  // const [message, setMessage] = useState("");
 
   const history = useHistory();
 
@@ -167,7 +163,7 @@ const DashboardPage = () => {
     if (processedData.length > 0) {
       if (filterData.Designation != "") {
         processedData = processedData.filter(
-          (user) => user.designition === filterData.Designation
+          (user) => user.designition.toLowerCase() === filterData.Designation.toLowerCase()
         );
         console.log("reached designation", processedData);
       }

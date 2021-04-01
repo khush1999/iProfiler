@@ -1,0 +1,10 @@
+.jobs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    min-height: 100vh;
+}
