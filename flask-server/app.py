@@ -16,6 +16,7 @@ from re import sub
 
 nlp = spacy.load("en_core_web_sm")
 app = Flask("__name__")
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 # Mongo Setup
 app.config['MONGO_URI'] = 'mongodb+srv://codekhal:khushal11@mycluster.omgad.mongodb.net/applicants?retryWrites=true&w=majority'
 mongo = PyMongo(app)
@@ -90,9 +91,6 @@ def job_files():
     res = json.dumps(result)
     return res
 
-def camelCase(string):
-  string = sub(r"(_|-)+", " ", string).title().replace(" ", "")
-  return string[0].lower() + string[1:]
 
 @app.route('/create', methods=['GET', 'POST'])
 def create():
@@ -268,8 +266,8 @@ def login():
     message = 'Please login to your account'
     # if "email" in session:
     #     return redirect(url_for("logged_in"))
-    test = mongo.db.sample.insert_one({"id":1})
-    print(test)
+    # test = mongo.db.sample.insert_one({"id":1})
+    # print(test)
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")

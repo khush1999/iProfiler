@@ -1,1 +1,22 @@
-{"email": "an431999@gmail.com", "phone": "+919717504706", "name": "Ayush Nagar", "total_exp": 1, "university": [], "designition": ["full stack developer", "python developer", "angular developer", "cab driver"], "degree": [], "skills": ["Nodejs Reactjs JavaScript Data Science MongoDB C++", "React Native MySQL Python Bootstrap Flask Git"], "Companies worked at": ["01/2020"], "resume_id": "Ayush-Nagar-17104012_-_Ayush_Nagar.pdf"}
+{
+    "email": "an431999@gmail.com",
+    "phone": "+919717504706",
+    "name": "Ayush Nagar",
+    "total_exp": 1,
+    "university": [],
+    "designition": [
+        "full stack developer",
+        "python developer",
+        "angular developer",
+        "cab driver"
+    ],
+    "degree": [],
+    "skills": [
+        "Nodejs Reactjs JavaScript Data Science MongoDB C++",
+        "React Native MySQL Python Bootstrap Flask Git"
+    ],
+    "Companies worked at": [
+        "01/2020"
+    ],
+    "resume_id": "Ayush-Nagar-17104012_-_Ayush_Nagar.pdf"
+}
