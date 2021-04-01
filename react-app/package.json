@@ -110,7 +110,7 @@
             "react-app/jest"
         ]
     },
-    "homepage": "/static/react/",
+    "homepage": "/static/react",
     "browserslist": {
         "production": [
             ">0.2%",
@@ -159,7 +159,7 @@
                 "react-app/jest"
             ]
         },
-        "homepage": "/static/react/",
+        "homepage": "/static/react",
         "browserslist": {
             "production": [
                 ">0.2%",
@@ -208,7 +208,7 @@
                     "react-app/jest"
                 ]
             },
-            "homepage": "/static/react/",
+            "homepage": "/static/react",
             "browserslist": {
                 "production": [
                     ">0.2%",
