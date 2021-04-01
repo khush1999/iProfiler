@@ -48,6 +48,9 @@ export const NavDashboard = () => {
                         <LinkContainer to="/JobPostings">
                             <Nav.Link>Job Postings</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to="/Analytics">
+                            <Nav.Link>Analytics</Nav.Link>
+                        </LinkContainer>
                         <LinkContainer to="#" onClick={handleClick}>
                             <Nav.Link>Logout</Nav.Link>
                         </LinkContainer>

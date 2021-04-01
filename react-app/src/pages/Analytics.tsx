@@ -1,0 +1,54 @@
+import React from 'react';
+import { Col, Row } from 'react-bootstrap';
+import Iframe from 'react-iframe'
+import { BannerDashboard } from '../components/BannerDashboard';
+import { NavDashboard } from '../components/NavDashboard';
+import './analytics.css';
+import Data from '../assets/Data.png';
+
+const Analytics = () => {
+return(
+    <>
+    <NavDashboard />
+        <div className="content shadow-lg">
+                    <BannerDashboard />
+
+            <div className="row tm-content-row">
+                <div className="col-12">
+                        <div className="embed-responsive embed-responsive-16by9 z-depth-1">
+                        <img src={Data} className="embed-responsive-item" />
+                        </div>
+                </div>
+                <div className="col-12 tm-block-col">
+                        <h3 className="tm-block-title">Popular skills amongst applicants</h3>
+                        <div className="embed-responsive embed-responsive-16by9 z-depth-1">
+                        <Iframe url="https://charts.mongodb.com/charts-iprofiler-krpsa/embed/charts?id=d65c384c-25a5-46ff-a013-59d489e3583c&theme=dark" allowFullScreen className="embed-responsive-item applicant-stats-1" ></Iframe>
+                        </div>
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                        <h3 className="tm-block-title">Status of Applicants(in %)</h3>
+                        <div className="embed-responsive embed-responsive-16by9 z-depth-1">
+                        <Iframe url="https://charts.mongodb.com/charts-iprofiler-krpsa/embed/charts?id=0fd6f242-ac72-4357-95ef-8b70303b9bf4&theme=dark" allowFullScreen className="embed-responsive-item applicant-stats"></Iframe>
+                        </div>
+                </div>
+                <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+                        <h3 className="tm-block-title">Applicant Count by Experience(in Years)</h3>
+                        <div className="embed-responsive embed-responsive-16by9 z-depth-1">
+                        <Iframe url="https://charts.mongodb.com/charts-iprofiler-krpsa/embed/charts?id=9af51764-664e-4fb1-96a2-56f019224b93&theme=dark" allowFullScreen className="embed-responsive-item applicant-stats"></Iframe>
+                        </div>
+                </div>
+                <div className="col-12 tm-block-col">
+                        <h3 className="tm-block-title">Applicant Count by Job Role</h3>
+                        <div className="embed-responsive embed-responsive-16by9 z-depth-1">
+                        <Iframe url="https://charts.mongodb.com/charts-iprofiler-krpsa/embed/charts?id=2334b60a-0322-4857-8be5-d3dfb07f71cd&theme=dark" allowFullScreen className="embed-responsive-item applicant-stats-1"></Iframe>
+                        </div>  
+                </div>
+            </div>
+        </div>    
+    </>
+
+
+)
+}
+
+export default Analytics;
