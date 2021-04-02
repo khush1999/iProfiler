@@ -1,6 +1,8 @@
 import axios from "axios";
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useHistory } from "react-router";
+import { Link } from "react-router-dom";
 import userprofile from "../assets/userprofile.jpg";
 import { NavDashboard } from "../components/NavDashboard";
 import "./userprofile.css";
@@ -34,6 +36,8 @@ interface IForm {
 
 export const UserProfile = (props: { location: { state: IForm } }) => {
   let profile = props.location.state;
+
+  const history = useHistory();
 
   const handleResume = async () => {
     console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
@@ -79,11 +83,16 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
 
   return (
     <>
-      <div className="profile">
+      <Link to="/DashboardPage">
+        <i className="fa fa-chevron-circle-left back-icon" aria-hidden="true"
+          onClick={() => history.push("/DashboardPage")}></i>
+        Back to Dashboard
+      </Link>
+      <div className="profile mb-5">
         <div className="page-content page-container" id="page-content">
           <div className="padding">
-            <div className="row container profiler-container d-flex justify-content-center">
-              <div className="row-xl-6 row-md-30">
+            <div className="row">
+              <div className="row-xl-6 row-md-30 profile-main">
                 <div className="card user-card-full">
                   <div className="row m-l-0 m-r-0">
                     <div className="row-sm-4 bg-c-lite-green user-profile">
@@ -147,7 +156,7 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
                             </h6>
                           </div>
                           <div className="col">
-                            <p className="m-b-10 f-w-600">college</p>
+                            <p className="m-b-10 f-w-600">College</p>
                             <h6 className="text-muted f-w-400 below-space">
                               {profile.ug_University}
                             </h6>
@@ -167,7 +176,7 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
                             </h6>
                           </div>
                           <div className="col">
-                            <p className="m-b-10 f-w-600">college</p>
+                            <p className="m-b-10 f-w-600">College</p>
                             <h6 className="text-muted f-w-400 below-space">
                               {profile.pg_University}
                             </h6>
