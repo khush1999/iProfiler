@@ -1,7 +1,6 @@
 import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import jobhunt from '../assets/Jobhunt.png';
 import './JobDes.css';
-import jobhunt from '../assets/jobhunt.png';
 
 export const JobDes = () => {
     return (

@@ -42,10 +42,11 @@ const FileUpload = () => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
     setDisableButton(!disableButton);
+    setProgressBar(!progressBar);
   };
 
   let form;
-
+  
   const FormDisplay = () => {
     setIsLoading(true);
     setLoadText(true);
@@ -77,7 +78,7 @@ const FileUpload = () => {
           setTimeout(() => setProgressBar(!progressBar), 10000);
         },
       });
-
+      console.log("%%%%%%%%%%%%%%%%%%%%%%", res);
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });
@@ -93,6 +94,8 @@ const FileUpload = () => {
       }
     }
     FormDisplay();
+    setDisableButton(!disableButton);
+    
   };
 
   return (

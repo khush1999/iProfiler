@@ -47,8 +47,8 @@ export const Login = () => {
       });
       console.log("*****************************");
       console.log(res.data);
-      if (res.data.includes("@gmail.com")) {
-        history.push("/DashboardPage");
+      if (res.data.includes('@')) {
+        history.replace("/DashboardPage");
       } else if (res.data === "Wrong password") {
         setPwdError("Invalid Password!!");
       } else if (res.data === "Email not found") {
@@ -62,7 +62,15 @@ export const Login = () => {
       }
     }
   };
-
+  // useEffect(() => {
+  //   console.log("If useEffect Triggerd");
+  //   return () => {
+  //   console.log("Reached return *************");
+  //     if(history.action == 'POP') {
+  //       history.go(-1);
+  //     }
+  //   }
+  // }, [])
   return (
     <>
       <NavigationBar navigationState={false} />

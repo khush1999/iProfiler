@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import iprofiler from "../assets/LogoFinal.png";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
+import iprofiler from "../assets/LogoFinal.png";
 import "./Navdashboard.css";
 
 export const NavDashboard = () => {
@@ -21,7 +21,6 @@ export const NavDashboard = () => {
 
       if (res.data === "EmailID") {
         history.replace("/Login");
-        // history.go(-1);
       }
     } catch (err) {
       if (err.response.status == 500) {
