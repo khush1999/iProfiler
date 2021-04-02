@@ -47,7 +47,7 @@ export const Login = () => {
       });
       console.log("*****************************");
       console.log(res.data);
-      if (res.data === "Login Sucessful") {
+      if (res.data.includes('@')) {
         history.replace("/DashboardPage");
       } else if (res.data === "Wrong password") {
         setPwdError("Invalid Password!!");

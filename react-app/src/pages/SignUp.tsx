@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import { Link, useHistory } from "react-router-dom";
 import signup from "../assets/signin.svg";
 import { NavigationBar } from "../components/NavigationBar";
@@ -29,6 +29,19 @@ export const SignUp = () => {
     formData.append("password2", password2);
     formData.append("company_name", companyName);
 
+    var passwordValidator = require('password-validator');
+    var schema = new passwordValidator();
+    schema
+    .is().min(6)                                    // Minimum length 6
+    .is().max(20)                                   // Maximum length 20
+    .has().uppercase()                              // Must have uppercase letters
+    .has().lowercase()                              // Must have lowercase letters
+    .has().digits(1)                                // Must have at least 1 digits
+    .has().not().spaces()                           // Should not have spaces
+    .is().not().oneOf(['Passw0rd', 'Password123']); //
+
+    if(schema.validate(password1) && schema.validate(password2))
+    {
     try {
       const res = await axios.post("/auth", formData, {
         headers: {
@@ -52,6 +65,12 @@ export const SignUp = () => {
         setMessage(err.response.data.msg);
       }
     }
+  }
+
+  else
+  {
+    setPwdMatchError("Follow the password convention");
+  }
   };
   return (
     <>
@@ -105,11 +124,25 @@ export const SignUp = () => {
                     placeholder="Company Email"
                     id="email"
                     name="email"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <div className="text-danger">{emailError}</div>
                 </Form.Group>
 
+                <OverlayTrigger
+                        key="right"
+                        placement="right"
+                        overlay={<Tooltip id={`tooltip-right`}>
+                          <p>Your Password should contain:</p>
+                          <p>Minimun length 6 characters,</p>
+                          <p>Maximum length 20 characters,</p>
+                          <p>Must have uppercase letters,</p>
+                          <p>Must have lowercase letters,</p>
+                          <p>Must have at least 1 digits,</p>
+                          <p>Should not have spaces</p> 
+                        </Tooltip>}
+                >
                 <Form.Group controlId="formHorizontalPassword">
                   <Form.Control
                     type="password"
@@ -120,7 +153,21 @@ export const SignUp = () => {
                     onChange={(e) => setPassword1(e.target.value)}
                   />
                 </Form.Group>
+                </OverlayTrigger>
 
+                <OverlayTrigger
+                        key="right"
+                        placement="right"
+                        overlay={<Tooltip id={`tooltip-right`}>
+                          <p>Your Password should contain:</p>
+                          <p>Minimun length 6 characters,</p>
+                          <p>Maximum length 20 characters,</p>
+                          <p>Must have uppercase letters,</p>
+                          <p>Must have lowercase letters,</p>
+                          <p>Must have at least 1 digits,</p>
+                          <p>Should not have spaces</p>
+                        </Tooltip>}
+                 >
                 <Form.Group controlId="formHorizontalConfirmPassword">
                   <Form.Control
                     type="password"
@@ -132,6 +179,7 @@ export const SignUp = () => {
                   />
                   <div className="text-danger">{pwdMatchError}</div>
                 </Form.Group>
+                </OverlayTrigger>
                 {/* <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4'/> */}
                 <div className="">
                   <Button

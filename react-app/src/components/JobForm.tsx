@@ -88,7 +88,7 @@ export const JobForm = ({
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group as={Col} controlId="job-ctc">
-                                <Form.Label>CTC</Form.Label>
+                                <Form.Label>CTC(in LPA)</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="jobCtc"

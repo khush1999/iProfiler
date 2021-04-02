@@ -1,0 +1,13 @@
+.success{
+    width:30%;
+    margin-left: 35%;
+}
+
+.submit-form h2{
+    text-align: center;
+    padding: 2rem;
+}
+
+.submit-form{
+    background-color: #f2f2fe;    
+}

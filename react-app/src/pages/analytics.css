@@ -96,11 +96,6 @@ https://templatemo.com/tm-524-product-admin
   transform: scale(1.03); 
 }
 
-.analytics-img{
-  width:80%;
-  height:230px;
-}
-
 @media (max-width: 480px) {
   .applicant-stats,.applicant-stats-1{
     width: 20rem;

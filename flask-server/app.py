@@ -363,7 +363,7 @@ def login():
             # encode the password and check if it matches
             if bcrypt.checkpw(password.encode('utf-8'), passwordcheck):
                 session["email"] = email_val
-                return "Login Sucessful"
+                return email_val
                 # return redirect(url_for('logged_in'))
             else:
                 message = 'Wrong password'

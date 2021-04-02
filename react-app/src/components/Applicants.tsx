@@ -66,8 +66,23 @@ const Applicants = ({ passData }: TForm) => {
       >
         <Card.Body>
         
-        {passData.status=="Available"?<div className="status-tag">{passData.status}</div>:
-        <div className="status-tag-1">{passData.status}</div>}
+        {passData.status=="Available"?
+        <OverlayTrigger
+        key="top"
+        placement="top"
+        overlay={<Tooltip id={`tooltip-top`}>{passData.status}</Tooltip>}>
+        <div className="status-tag">A</div>
+        </OverlayTrigger>:
+        <OverlayTrigger
+        key="top"
+        placement="top"
+        overlay={
+            <Tooltip id={`tooltip-top`}>{passData.status}</Tooltip>
+        }
+    >
+        <div className="status-tag-1">I</div>
+        </OverlayTrigger>
+        }
         
           <div className="card-header-container">
             <Card.Title className="text-left card-name">

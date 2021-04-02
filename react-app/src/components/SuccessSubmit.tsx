@@ -1,12 +1,13 @@
 import React from 'react'
 import Success from '../assets/Success.jpg';
+import './submission.css';
 
 const SuccessSubmit = () => {
     return (
-        <div>
-             <h2> We have received your response , you can now close this window!! </h2>
+        <div className="submit-form">
+             <h2> Hurray, We have received your response , you can now close this window!! </h2>
             <br />
-            <img src={Success} alt="Success" />
+            <img src={Success} alt="Success" className="success"/>
         </div>
     )
 }
