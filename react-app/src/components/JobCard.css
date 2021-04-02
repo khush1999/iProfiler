@@ -1,4 +1,4 @@
-.job-card-row {
+/* .job-card-row {
     width: 80%;
     justify-content: center;
     background-color: white;
@@ -42,4 +42,57 @@
     font-weight: bold;
     margin-right: 1rem;
 }
+ */
 
+#job-skills {
+    font-size: 1.2rem;
+    color: #919AA3;
+    font-weight: 600;
+ }
+
+ .job-icons-1 {
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: mediumblue;
+    padding-left: 0.5rem;
+    vertical-align: middle;
+ }
+ .job-icons-2 {
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: #f44336;
+    padding-left: 0.5rem;
+    vertical-align: middle;
+ }
+
+ .job-card-link-1 {
+     font-size: 1rem;
+     font-weight: 600;
+     color: mediumblue;
+ }
+ .job-card-link-2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f44336;
+}
+
+ .job-links-container {
+     display: flex;
+     justify-content: space-around;
+     align-items: center;
+ }
+
+ .card-job-role {
+     font-size: 1.5rem;
+ }
+
+ .card-job-font {
+     font-size: 1.2rem;
+ }
+
+ .job-card-rule {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2px solid rgba(0,0,0,.1);
+ }

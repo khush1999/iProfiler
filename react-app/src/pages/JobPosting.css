@@ -8,3 +8,17 @@
 .content {
     min-height: 100vh;
 }
+
+.job-posting-section {
+    margin-left: 3.5%;
+    margin-right: 3.5%;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+}
+
+.create-job-button {
+    text-align: end;
+    padding-right: 2rem;
+}
