@@ -20,8 +20,10 @@
 
 .job-card-skills-col {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
 }
 
 .job-card-apply-col {
@@ -38,5 +40,6 @@
 
 .job-card-skill{
     font-weight: bold;
+    margin-right: 1rem;
 }
 

@@ -23,7 +23,7 @@ export const JobCard = ({ jobData }: TJob) => {
     console.log("******************", jobData);
     return (
         <Row className="job-card-row shadow-lg">
-            <Col md={4} className="job-card-job-col">
+            <Col md={3} className="job-card-job-col">
                 <div className="job-card-role">
                     {jobData.jobRole}
                 </div>
@@ -36,7 +36,7 @@ export const JobCard = ({ jobData }: TJob) => {
                     {jobData.jobCtc}{" LPA"}
                 </div>
             </Col>
-            <Col md={4} className="job-card-skills-col">
+            <Col md={5} className="job-card-skills-col">
                 <div className="job-card-skill">
                     {jobData.skills1}
                 </div>
