@@ -27,7 +27,7 @@ app.config['UPLOAD_FOLDER'] = '/resumes'
 
 @app.route("/check")
 def check():
-    return """ <h2> Health Check!!! 200 OK </h2> """
+    return """ <h2> Health Check Up!!! 200 OK </h2> """
 
 
 @app.route("/")
