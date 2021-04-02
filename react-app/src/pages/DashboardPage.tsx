@@ -249,7 +249,7 @@ const DashboardPage = () => {
                     type="search"
                     name="search"
                     id=""
-                    placeholder="Search Applicant by Name"
+                    placeholder="Search by Name"
                     className="search-input"
                     onChange={(e) => {
                       setIsSearched(!isSearched);

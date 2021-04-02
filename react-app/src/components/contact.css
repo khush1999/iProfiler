@@ -114,3 +114,9 @@ ul {
 .contact-page-form form {
     padding: 20px 15px 0;
 }
+
+.send-mail{
+    color:green;
+    font-size:1.75rem;
+    padding:1rem;
+}

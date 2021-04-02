@@ -2,7 +2,7 @@ import axios from "axios";
 import React from "react";
 import { Button } from "react-bootstrap";
 import userprofile from "../assets/userprofile.jpg";
-import { NavigationBar } from "../components/NavigationBar";
+import { NavDashboard } from "../components/NavDashboard";
 import "./userprofile.css";
 
 interface IForm {
@@ -79,7 +79,6 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
 
   return (
     <>
-      <NavigationBar />
       <div className="profile">
         <div className="page-content page-container" id="page-content">
           <div className="padding">
@@ -229,6 +228,7 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
                           <div className="col">
                             <Button
                               variant="dark align-self-end"
+                              className="mt-2"
                               onClick={handleResume}
                             >
                               Download Resume

@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
-import iprofiler from "../assets/LogoFinal.png";
 import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
+import iprofiler from "../assets/LogoFinal.png";
 import "./Navdashboard.css";
 
 export const NavDashboard = () => {
@@ -21,7 +21,6 @@ export const NavDashboard = () => {
 
       if (res.data === "EmailID") {
         history.replace("/Login");
-        // history.go(-1);
       }
     } catch (err) {
       if (err.response.status == 500) {
@@ -35,7 +34,7 @@ export const NavDashboard = () => {
   return (
     <div>
       <Navbar expand="lg" fixed="top">
-        <Navbar.Brand href="/" className="brand-border">
+        <Navbar.Brand className="brand-border">
           <img src={iprofiler} alt="iprofiler" className="logo-image" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -46,6 +45,12 @@ export const NavDashboard = () => {
             </LinkContainer>
             <LinkContainer to="/JobPostings">
               <Nav.Link>Job Postings</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/Analytics">
+              <Nav.Link>Analytics</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/JobDetails" style={{display:"none"}}>
+              <Nav.Link>Job Details</Nav.Link>
             </LinkContainer>
             <LinkContainer to="#" onClick={handleClick}>
               <Nav.Link>Logout</Nav.Link>

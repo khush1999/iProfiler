@@ -1,10 +1,22 @@
 import emailjs from "emailjs-com";
 import "font-awesome/css/font-awesome.min.css";
-import React from "react";
+import React, { useState } from "react";
 import "./contact.css";
 import { NavigationBar } from "./NavigationBar";
 
 export default function Contact() {
+  const [sent, setSent] = useState(false);
+
+  const MailResponse = () => {
+    <>
+    <i className="fa fa-check send-mail" aria-hidden="true"></i>
+    <p>Mail sent successfully!!</p>
+    </>
+    setTimeout(() => {
+      setSent(false);
+    }, 5000);
+  };
+
   function sendEmail(e) {
     e.preventDefault();
 
@@ -18,6 +30,8 @@ export default function Contact() {
       .then(
         (result) => {
           console.log(result.text);
+          if(result.text==='OK')
+          setSent(true);
         },
         (error) => {
           console.log(error.text);
@@ -128,6 +142,7 @@ export default function Contact() {
                       </div>
                       <div className="single-input-fieldsbtn">
                         <input type="submit" value="Send Now" />
+                        {sent && MailResponse()}
                       </div>
                     </div>
                   </form>

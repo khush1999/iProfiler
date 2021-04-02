@@ -1,3 +1,4 @@
+import { userInfo } from 'node:os';
 import React from 'react';
 import { Nav, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
@@ -7,7 +8,7 @@ export const BannerDashboard = () => {
     return (
         <div>
             <Row className="heading-style">
-                <h3 className="welcome-content">Welcome User</h3>
+                <h3 className="welcome-content">My Dashboard</h3>
                 <div className="icons-container">
                     <OverlayTrigger
                         key="top"
@@ -32,25 +33,7 @@ export const BannerDashboard = () => {
                     <OverlayTrigger
                         key="top"
                         placement="top"
-                        overlay={<Tooltip id={`tooltip-top`}>Notifications</Tooltip>}
-                    >
-                        <LinkContainer to="#">
-                            <Nav.Link className="p-0">
-                                <i
-                                    className="fa fa-bell"
-                                    style={{
-                                        fontSize: "1.75em",
-                                        color: "darkslategray",
-                                        paddingLeft: "1.5rem",
-                                    }}
-                                ></i>
-                            </Nav.Link>
-                        </LinkContainer>
-                    </OverlayTrigger>
-                    <OverlayTrigger
-                        key="top"
-                        placement="top"
-                        overlay={<Tooltip id={`tooltip-top`}>Hello, User</Tooltip>}
+                        overlay={<Tooltip id={`tooltip-top`}>Hi, there!</Tooltip>}
                     >
                         <LinkContainer to="#">
                             <Nav.Link className="p-0">

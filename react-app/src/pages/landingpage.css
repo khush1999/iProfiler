@@ -63,6 +63,7 @@ ul {
 .hire-button {
   width: 8rem;
   height: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .section {
@@ -455,7 +456,7 @@ ul {
 
 .feature-description{
   margin-top: 10px;
-  text-align: justify;
+  text-align: center;
 }
 
 .features-small-item a {

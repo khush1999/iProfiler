@@ -13,7 +13,9 @@
   a, .navbar-nav .nav-link {
     color: #000000;
   }
-  
+  .navbar-light .navbar-nav .nav-link:hover{
+    color:  #AE4DFF;
+}
   a, .navbar-nav .nav-link:hover {
     color: #AE4DFF;
   }
