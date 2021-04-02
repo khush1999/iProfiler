@@ -51,7 +51,7 @@ def upload_file():
         filenam = f.filename
         mongo.save_file(filename, f)
         #   mongo.send_file()
-        try: 
+        try:
             data = resumeparse.read_file(filename)
             data["resume_id"] = filename
         except:
@@ -98,6 +98,7 @@ def form_files():
     res = json.dumps(result)
     # print(result)
     return res
+
 
 @app.route('/getJobData', methods=['GET', 'POST'])
 def job_files():
@@ -198,7 +199,6 @@ def create():
 #         # print(list(mongo.db.users.find()))
 #     return """ <h2 class="text-center mt-4"> We have received your response , you can now close this window!! </h2> """
 
-
 @app.route('/jobPost', methods=['GET', 'POST'])
 def createJob():
     global data
@@ -213,16 +213,17 @@ def createJob():
                 'jobId': request.form.get('jobId'),
                 'jobRole': request.form.get('jobRole').upper(),
                 'jobOffer': request.form.get('jobOffer'),
-                'jobCtc' : request.form.get('jobCtc'),
+                'jobCtc': request.form.get('jobCtc'),
                 'skills1': request.form.get('skills1').title(),
                 'skills2': request.form.get('skills2').title(),
                 'skills3': request.form.get('skills3').title(),
-                'jobDes' : request.form.get('job-des'),
+                'jobDes': request.form.get('job-des'),
             })
             # print(list(mongo.db.users.find()))
             return redirect("/#/JobPostings", code=302)
         else:
             return """ <h2 class="text-center mt-4"> You have already added this job role </h2> """
+
 
 @app.route("/create/<email>", methods=['GET'])
 def get_email(email=None):
@@ -235,35 +236,59 @@ def get_email(email=None):
         print("Sorryyyyyyyyyyyyyyyyyy!")
 
 # Updating Existing Job Posting
-# @app.route('/job_update', methods=['POST'])
-# def job_update():
-# 	data = request.json
-# 	_id = data['_id']
-# 	_name = data['job']
-# 	_email = data['email']
-# 	_password = data['pwd']		
-# 	# validate the received values
-# 	if _name and _email and _password and _id and request.method == 'PUT':
-# 		#do not save password as a plain text
-# 		_hashed_password = generate_password_hash(_password)
-# 		# save edits
-# 		mongo.db.user.update_one({'_id': ObjectId(_id['$oid']) if '$oid' in _id else ObjectId(_id)}, {'$set': {'name': _name, 'email': _email, 'pwd': _hashed_password}})
-# 		resp = jsonify('Job updated successfully!')
-# 		resp.status_code = 200
-# 		return resp
-# 	else:
-# 		return not_found()
+
+
+@app.route('/job_update', methods=['POST'])
+def job_update():
+    if request.method == 'POST':
+        print("Came inside", request.form.get('jobRole'))
+        jobRoles = request.form.get('jobRole')
+        print("******")
+        jobRole_found = mongo.db.jobs.find_one({"jobRole": jobRoles})
+        print(jobRole_found)
+        if jobRole_found is not None:
+            mongo.db.jobs.find_one_and_update({'jobRole': jobRoles},
+                                              {'$set': {
+                                                  'jobId': request.form.get('jobId'),
+                                                  'jobRole': request.form.get('jobRole').upper(),
+                                                  'jobOffer': request.form.get('jobOffer'),
+                                                  'jobCtc': request.form.get('jobCtc'),
+                                                  'skills1': request.form.get('skills1').title(),
+                                                  'skills2': request.form.get('skills2').title(),
+                                                  'skills3': request.form.get('skills3').title(),
+                                                  'jobDes': request.form.get('job-des'),
+                                              }}
+                                              )
+            return redirect("/#/JobPostings", code=302)
+        else:
+            return """ <h2 class="text-center mt-4"> You have already added this job role 
+                </h2> """
 
 # Deleting an existing job posting
-@app.route('/delete/<role>', methods=['GET'])
-def delete_job(role):
-    item = mongo.db.jobs.find_one({'jobRole',role})
-    print("*************************")
-    print(item)
-    mongo.db.jobs.delete_one({_id: item._id})
-    res = jsonify('Job Deleted')
-    res.status_code = 200
-    return res
+
+
+@app.route('/getJobData/<role>', methods=['GET'])
+def getJobData(role=None):
+    if role is not None:
+        print("*************************")
+        print(role, "triggered ////////////////////////")
+        ip = {'jobRole': role}
+        # print(type(mongo.db.jobs.find_one(ip)),
+        #       "triggered ////////////////////////")
+        deleted = str(mongo.db.jobs.find_one_and_delete(ip))
+        print("*************************")
+        msg = ""
+        if deleted is not None:
+            msg = "Delete Sucessfully"
+        else:
+            msg = "Job Not Found"
+        return msg
+        # print(item)
+        # mongo.db.jobs.delete_one({_id: item._id})
+        # res = jsonify('Job Deleted')
+        # res.status_code = 200
+        # print(res)
+        # return res
     # deleted = mongo.db.jobs.remove({_id: item._id});
     # msg = ""
     # if deleted is not None:
@@ -271,6 +296,7 @@ def delete_job(role):
     # else:
     #     msg = "Job Not Found"
     # return msg
+
 
 # HR
 app.secret_key = "secret"
