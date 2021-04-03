@@ -6,12 +6,13 @@ import Footer from '../components/Footer';
 import { NavigationBar } from '../components/NavigationBar';
 import '../pages/landingpage.css';
 
+// Home Page of the Project
 export const Landingpage = (props: { location: { state: Boolean; }; }) => {
 
-    console.log("**************", props.location.state);
     return (
         <>
             <NavigationBar navigationState={props.location.state} />
+            
             <div className="welcome-area" id="welcome">
 
                 <div className="header-text">

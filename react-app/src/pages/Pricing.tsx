@@ -2,10 +2,12 @@ import React from "react";
 import { NavigationBar } from "../components/NavigationBar";
 import './pricing.css';
 
+// Pricing Page 
 const Pricing = () => {
   return (
     <>
       <NavigationBar navigationState={false} />
+
       <div className="pricingTable">
         <h2 className="pricingTable-title">Find a plan that's right for you.</h2>
         <h3 className="pricingTable-subtitle">Every plan comes with a 10-day free trial.</h3>
@@ -21,6 +23,7 @@ const Pricing = () => {
             </ul>
             <div className="pricingTable-firstTable_table__getstart">Get Started Now</div>
           </li>
+
           <li className="pricingTable-firstTable_table">
             <h1 className="pricingTable-firstTable_table__header">Standard</h1>
             <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>89</span><span>/Month</span></p>
@@ -32,6 +35,7 @@ const Pricing = () => {
             </ul>
             <div className="pricingTable-firstTable_table__getstart">Get Started Now</div>
           </li>
+
           <li className="pricingTable-firstTable_table">
             <h1 className="pricingTable-firstTable_table__header">Pro</h1>
             <p className="pricingTable-firstTable_table__pricing"><span>$</span><span>149</span><span>/Month</span></p>
@@ -42,6 +46,7 @@ const Pricing = () => {
             </ul>
             <div className="pricingTable-firstTable_table__getstart">Get Started Now</div>
           </li>
+          
         </ul>
       </div>
     </>
