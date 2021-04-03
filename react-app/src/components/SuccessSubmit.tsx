@@ -2,6 +2,7 @@ import React from 'react';
 import Success from '../assets/Success.jpg';
 import './submission.css';
 
+/*This  component acknowledges successful submission of application */
 const SuccessSubmit = () => {
     return (
         <div className="submit-form">

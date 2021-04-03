@@ -51,26 +51,33 @@ const Styles = styled.div`
 }
 `;
 
+/* This component is the navigation bar in landing page */
 export const NavigationBar = (props) => {
 
   return (
     <Styles>
       <Navbar expand="lg" fixed="top">
+
         <Navbar.Brand href="/" className="brand-border">
           <img src={iprofilerlogo} alt="iprofiler" />
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ml-auto">
+
             <LinkContainer to="/Contact">
               <Nav.Link>Contact Us</Nav.Link>
             </LinkContainer>
+
             <LinkContainer to="/Pricing">
               <Nav.Link>Pricing</Nav.Link>
             </LinkContainer>
+
             <LinkContainer to="/Apply" style={{display:"none"}}>
               <Nav.Link>Apply</Nav.Link>
             </LinkContainer>
+
             {props.navigationState ?
               (<LinkContainer to="/DashboardPage">
                 <Nav.Link><i className="fa fa-user-circle" style={{ fontSize: "1.75em" }} />
@@ -79,6 +86,7 @@ export const NavigationBar = (props) => {
               (<LinkContainer to="/Login">
                 <Nav.Link>Login</Nav.Link>
               </LinkContainer>)}
+              
           </Nav>
         </Navbar.Collapse>
       </Navbar>

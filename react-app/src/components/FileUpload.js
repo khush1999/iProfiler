@@ -9,10 +9,12 @@ import { Row, Col, Container } from "react-bootstrap";
 import { JobDes } from "./JobDes";
 import iprofilerlogo from '../assets/LogoFinal.png';
 
-const mainWidth = { width: "80%", marginTop: "5rem" };
-const divColor = { backgroundColor: "#AE4DFF" };
+/*This component allows applicant to upload resume */
 
 const FileUpload = () => {
+
+  /* Structure for Applicant Data */
+
   const ip = {
     email: "",
     phone: "",
@@ -26,6 +28,9 @@ const FileUpload = () => {
     resume_id: "",
     status: "",
   };
+
+  /* Managing states for file upload */
+
   const [file, setFile] = useState("");
   const [data, setData] = useState(ip);
   const [filename, setFilename] = useState("Choose File");
@@ -38,6 +43,7 @@ const FileUpload = () => {
   const [progressBar, setProgressBar] = useState(true);
   const [loadText, setLoadText] = useState(false);
 
+  /* Setting the target as the uploaded resume*/
   const onChange = (e) => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
@@ -47,6 +53,7 @@ const FileUpload = () => {
 
   let form;
   
+  /*Function to display Loading icon */
   const FormDisplay = () => {
     setIsLoading(true);
     setLoadText(true);
@@ -58,10 +65,13 @@ const FileUpload = () => {
   };
 
 
+  /*Function for sending resume for parsing after successful submission */
   const OnSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
+
+    /* Axios call to post the parsed resume data */
     try {
       const res = await axios.post("/upload", formData, {
         headers: {
@@ -78,13 +88,14 @@ const FileUpload = () => {
           setTimeout(() => setProgressBar(!progressBar), 10000);
         },
       });
-      console.log("%%%%%%%%%%%%%%%%%%%%%%", res);
+  
       const { fileName, filePath } = res.data;
 
       setUploadedFile({ fileName, filePath });
       setData(res.data);
       setMessage("File Uploaded");
     } catch (err) {
+      /* Setting message to handle error state */
       if (err.response.status === 500) {
         setMessage(
           "Your resume is not ATS Comaptible, Please try with another format"
@@ -108,8 +119,8 @@ const FileUpload = () => {
       <h4>Excel your Career with Us...</h4>
       </Col>
       </Row>
+
       <Container
-        style={mainWidth}
         className="text-center shadow-lg mb-5 bg-white rounde upload-main"
       >
         <Row>
@@ -153,7 +164,8 @@ const FileUpload = () => {
           </Col>
         </Row>
       </Container>
-      {console.log("Value is =", data)}
+
+      {/*Handling state of Loading icon */ }
       {isLoading ? (
           <img className="load" src="https://media.giphy.com/media/y1ZBcOGOOtlpC/giphy.gif" />
       ) : (

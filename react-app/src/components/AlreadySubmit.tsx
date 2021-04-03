@@ -2,6 +2,8 @@ import React from 'react';
 import Already from '../assets/alreadySubmitted.jpg';
 import './submission.css';
 
+// This component handles the response for cases in which Applicant has already applied
+
 const AlreadySubmit = () => {
     return (
         <div className="submit-form">
