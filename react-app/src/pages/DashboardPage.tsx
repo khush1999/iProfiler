@@ -5,21 +5,15 @@ import React, { useEffect, useState } from "react";
 import {
   Button,
   Col,
-  Nav,
-  Navbar,
-  OverlayTrigger,
-  Row,
-  Tooltip,
+  Row
 } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 import { useHistory } from "react-router-dom";
 // import iprofiler from "../assets/LogoFinal.png";
 import Applicant from "../components/Applicants";
-import FilterForm from "../components/FilterForm";
-import "./DashboardPage.css";
-import { NavDashboard } from "../components/NavDashboard";
 import { BannerDashboard } from "../components/BannerDashboard";
-import Iframe from "react-iframe";
+import FilterForm from "../components/FilterForm";
+import { NavDashboard } from "../components/NavDashboard";
+import "./DashboardPage.css";
 
 interface IForm {
   email: string;

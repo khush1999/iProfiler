@@ -1,12 +1,10 @@
 import React from "react";
 import {
-  Badge,
   Button,
   Card,
-  Col,
   OverlayTrigger,
   Row,
-  Tooltip,
+  Tooltip
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Applicant.css";

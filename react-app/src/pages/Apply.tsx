@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Button, Col, Form, Modal } from "react-bootstrap";
+import { Col, Form } from "react-bootstrap";
 import "./apply.css";
 
 interface IForm {

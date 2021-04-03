@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.4b02f662.chunk.css",
-    "main.js": "/static/react/js/main.aeebf2c3.chunk.js",
-    "main.js.map": "/static/react/js/main.aeebf2c3.chunk.js.map",
+    "main.css": "/static/react/css/main.19c3f490.chunk.css",
+    "main.js": "/static/react/js/main.6f84d19a.chunk.js",
+    "main.js.map": "/static/react/js/main.6f84d19a.chunk.js.map",
     "runtime-main.js": "/static/react/js/runtime-main.8e2dea38.js",
     "runtime-main.js.map": "/static/react/js/runtime-main.8e2dea38.js.map",
     "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
-    "js/2.9a4daff9.chunk.js": "/static/react/js/2.9a4daff9.chunk.js",
-    "js/2.9a4daff9.chunk.js.map": "/static/react/js/2.9a4daff9.chunk.js.map",
+    "js/2.4c416c31.chunk.js": "/static/react/js/2.4c416c31.chunk.js",
+    "js/2.4c416c31.chunk.js.map": "/static/react/js/2.4c416c31.chunk.js.map",
     "js/3.6dd9f604.chunk.js": "/static/react/js/3.6dd9f604.chunk.js",
     "js/3.6dd9f604.chunk.js.map": "/static/react/js/3.6dd9f604.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
     "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
-    "css/main.4b02f662.chunk.css.map": "/static/react/css/main.4b02f662.chunk.css.map",
-    "js/2.9a4daff9.chunk.js.LICENSE.txt": "/static/react/js/2.9a4daff9.chunk.js.LICENSE.txt",
+    "css/main.19c3f490.chunk.css.map": "/static/react/css/main.19c3f490.chunk.css.map",
+    "js/2.4c416c31.chunk.js.LICENSE.txt": "/static/react/js/2.4c416c31.chunk.js.LICENSE.txt",
     "media/Data.1715248d.png": "/static/react/media/Data.1715248d.png",
     "media/Jobhunt.07dd69cc.png": "/static/react/media/Jobhunt.07dd69cc.png",
     "media/LogoFinal.bb79a7c2.png": "/static/react/media/LogoFinal.bb79a7c2.png",
@@ -32,8 +32,8 @@
   "entrypoints": [
     "js/runtime-main.8e2dea38.js",
     "css/2.26dd8153.chunk.css",
-    "js/2.9a4daff9.chunk.js",
-    "css/main.4b02f662.chunk.css",
-    "js/main.aeebf2c3.chunk.js"
+    "js/2.4c416c31.chunk.js",
+    "css/main.19c3f490.chunk.css",
+    "js/main.6f84d19a.chunk.js"
   ]
 }
