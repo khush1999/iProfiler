@@ -1,62 +1,64 @@
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    color: #fff;
-    background-color: #AE4DFF;
-    margin-bottom: 1rem;
-    font-weight: bold;
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #ae4dff;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
-.company-head{
-    text-align: center;
-    padding: 1rem;
-    font-weight: bolder;
-    color: darkslategrey;
-    margin-top: 1rem;
+.company-head {
+  text-align: center;
+  padding: 1rem;
+  font-weight: bolder;
+  color: darkslategrey;
+  margin-top: 1rem;
 }
 
-.company-about{
-    margin-left:10%;
-    margin-right:10%;
-    
+.company-about {
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-.job-des-section{
-    margin-left:10%;
-    margin-right:10%;
-    background-color: #fff; 
-    padding:1.5rem; 
+.job-des-section {
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #fff;
+  padding: 1.5rem;
 }
 
-.abt{
-    padding: 1rem;
-    font-weight: bold;
+.abt {
+  padding: 1rem;
+  font-weight: bold;
 }
 
-.company-about p{
-    padding: 1.5rem;
-    padding-top: 0;
-    text-align: justify;
+.company-about p {
+  padding: 1.5rem;
+  padding-top: 0;
+  text-align: justify;
+  font-size: 1rem;
 }
 
-.job-des-section h4{
-    margin-bottom: 1rem;
-    font-weight: bold;
+.job-des-section h4 {
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
-.job-des-section h6{
-    margin-bottom: 1rem;
+.job-des-section h6 {
+  margin-bottom: 1rem;
 }
 
-.skill-item{
-    font-size: 1rem;
-    list-style-type: circle;
-    margin-left: 1.5rem;
- }
+.skill-item {
+  font-size: 1rem;
+  list-style-type: circle;
+  margin-left: 1.5rem;
+}
 
- .skill-list{
-     margin-bottom: 1.5rem;
- }
+.skill-list {
+  margin-bottom: 1.5rem;
+}
 
- .job-des-section p{
-     text-align: justify;
-     margin-bottom: 1rem;
- }
+.job-des-section p {
+  text-align: justify;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
