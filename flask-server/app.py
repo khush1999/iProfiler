@@ -398,7 +398,8 @@ def login():
 def logout():
     # print("Khush You are entered in logout!!!")
     if "email" in session:
-        session.pop("email", None)
+        print("Hiiiiiiiiiiiiiiiii")
+        session.pop("email", None)      
         print(session)
         return "EmailID"
     else:

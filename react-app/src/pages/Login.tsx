@@ -62,15 +62,7 @@ export const Login = () => {
       }
     }
   };
-  // useEffect(() => {
-  //   console.log("If useEffect Triggerd");
-  //   return () => {
-  //   console.log("Reached return *************");
-  //     if(history.action == 'POP') {
-  //       history.go(-1);
-  //     }
-  //   }
-  // }, [])
+
   return (
     <>
       <NavigationBar navigationState={false} />

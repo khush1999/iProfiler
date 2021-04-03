@@ -49,7 +49,7 @@ export const NavDashboard = () => {
             <LinkContainer to="/Analytics">
               <Nav.Link>Analytics</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/JobDetails" style={{display:"none"}}>
+            <LinkContainer to="/JobDetails" style={{ display: "none" }}>
               <Nav.Link>Job Details</Nav.Link>
             </LinkContainer>
             <LinkContainer to="#" onClick={handleClick}>

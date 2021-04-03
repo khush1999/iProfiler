@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/react/css/main.127a42ed.chunk.css",
-    "main.js": "/static/react/js/main.78f79531.chunk.js",
-    "main.js.map": "/static/react/js/main.78f79531.chunk.js.map",
-    "runtime-main.js": "/static/react/js/runtime-main.187892d1.js",
-    "runtime-main.js.map": "/static/react/js/runtime-main.187892d1.js.map",
+    "main.css": "/static/react/css/main.4b02f662.chunk.css",
+    "main.js": "/static/react/js/main.b3f6acee.chunk.js",
+    "main.js.map": "/static/react/js/main.b3f6acee.chunk.js.map",
+    "runtime-main.js": "/static/react/js/runtime-main.8e2dea38.js",
+    "runtime-main.js.map": "/static/react/js/runtime-main.8e2dea38.js.map",
     "css/2.26dd8153.chunk.css": "/static/react/css/2.26dd8153.chunk.css",
-    "js/2.5869481e.chunk.js": "/static/react/js/2.5869481e.chunk.js",
-    "js/2.5869481e.chunk.js.map": "/static/react/js/2.5869481e.chunk.js.map",
-    "js/3.4fd882db.chunk.js": "/static/react/js/3.4fd882db.chunk.js",
-    "js/3.4fd882db.chunk.js.map": "/static/react/js/3.4fd882db.chunk.js.map",
+    "js/2.d7136c91.chunk.js": "/static/react/js/2.d7136c91.chunk.js",
+    "js/2.d7136c91.chunk.js.map": "/static/react/js/2.d7136c91.chunk.js.map",
+    "js/3.6dd9f604.chunk.js": "/static/react/js/3.6dd9f604.chunk.js",
+    "js/3.6dd9f604.chunk.js.map": "/static/react/js/3.6dd9f604.chunk.js.map",
     "../../templates/index.html": "/static/react/../../templates/index.html",
     "css/2.26dd8153.chunk.css.map": "/static/react/css/2.26dd8153.chunk.css.map",
-    "css/main.127a42ed.chunk.css.map": "/static/react/css/main.127a42ed.chunk.css.map",
-    "js/2.5869481e.chunk.js.LICENSE.txt": "/static/react/js/2.5869481e.chunk.js.LICENSE.txt",
+    "css/main.4b02f662.chunk.css.map": "/static/react/css/main.4b02f662.chunk.css.map",
+    "js/2.d7136c91.chunk.js.LICENSE.txt": "/static/react/js/2.d7136c91.chunk.js.LICENSE.txt",
     "media/Data.1715248d.png": "/static/react/media/Data.1715248d.png",
     "media/Jobhunt.07dd69cc.png": "/static/react/media/Jobhunt.07dd69cc.png",
     "media/LogoFinal.bb79a7c2.png": "/static/react/media/LogoFinal.bb79a7c2.png",
@@ -30,10 +30,10 @@
     "service-worker.js.map": "/static/react/service-worker.js.map"
   },
   "entrypoints": [
-    "js/runtime-main.187892d1.js",
+    "js/runtime-main.8e2dea38.js",
     "css/2.26dd8153.chunk.css",
-    "js/2.5869481e.chunk.js",
-    "css/main.127a42ed.chunk.css",
-    "js/main.78f79531.chunk.js"
+    "js/2.d7136c91.chunk.js",
+    "css/main.4b02f662.chunk.css",
+    "js/main.b3f6acee.chunk.js"
   ]
 }

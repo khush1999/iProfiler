@@ -2,20 +2,14 @@ import emailjs from "emailjs-com";
 import "font-awesome/css/font-awesome.min.css";
 import React, { useState } from "react";
 import "./contact.css";
+import { MailsModal } from "./MailsModal";
 import { NavigationBar } from "./NavigationBar";
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
 
-  const MailResponse = () => {
-    <>
-    <i className="fa fa-check send-mail" aria-hidden="true"></i>
-    <p>Mail sent successfully!!</p>
-    </>
-    setTimeout(() => {
-      setSent(false);
-    }, 5000);
-  };
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
 
   function sendEmail(e) {
     e.preventDefault();
@@ -30,8 +24,9 @@ export default function Contact() {
       .then(
         (result) => {
           console.log(result.text);
-          if(result.text==='OK')
-          setSent(true);
+          if (result.text === 'OK') {
+            setShow(true);
+          }
         },
         (error) => {
           console.log(error.text);
@@ -42,6 +37,9 @@ export default function Contact() {
   return (
     <>
       <NavigationBar navigationState={false} />
+      <MailsModal show={show}
+        handleClose={handleClose}
+        modalInput="We have recieved your query, we will get in touch with you !!" />
       <div className="margins">
         <section className="contact-page-sec">
           <div className="container">
@@ -68,8 +66,8 @@ export default function Contact() {
                     </div>
                     <div className="contact-info-text">
                       <h2>E-mail us at </h2>
-                      <span>info@iprofiler.com</span>
-                      <span>queries@iprofiler.com</span>
+                      <span>contact-iprofiler@gmail.com</span>
+                      <span>queries-iprofiler@gmail.com</span>
                     </div>
                   </div>
                 </div>
@@ -142,7 +140,6 @@ export default function Contact() {
                       </div>
                       <div className="single-input-fieldsbtn">
                         <input type="submit" value="Send Now" />
-                        {sent && MailResponse()}
                       </div>
                     </div>
                   </form>

@@ -46,7 +46,6 @@ https://templatemo.com/tm-524-product-admin
   justify-content: space-between;
   margin-left: -20px;
   margin-right: -20px;
-  margin-top: 30px;
   padding-top: 0rem;
   padding-right: 4rem;
   padding-bottom: 4rem;
@@ -98,9 +97,9 @@ https://templatemo.com/tm-524-product-admin
 }
 
 .analytics-img-style {
-  width: 30%;
-  margin-left: 35%;
-  margin-right: 35%;
+  width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 @media (max-width: 480px) {

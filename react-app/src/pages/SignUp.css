@@ -16,3 +16,8 @@
 .sign-container {
     border-radius: 40px 15px 40px 15px;
 }
+
+.required:after {
+    content:" *";
+    color: red;
+  }
