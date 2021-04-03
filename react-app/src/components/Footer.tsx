@@ -1,7 +1,7 @@
 import React from "react";
 import './footer.css';
 
-
+/* Footer on Landing Page */
 const Footer = () => {
     return (
         <footer>
