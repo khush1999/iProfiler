@@ -2,18 +2,21 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 
+/* Structure for Modal props */
 interface IProps {
   show: boolean;
   handleClose: () => void;
   handleFilterSubmit: (data: any) => void;
 }
 
+/* Structure for data from Modal */
 let data = {
   Skills: "",
   Experience: "",
   Designation: "",
 };
 
+/*This component allows HR to filter Applicants based on skills, designation and experience*/
 const FilterForm: React.FC<IProps> = ({
   show,
   handleClose,
@@ -22,6 +25,7 @@ const FilterForm: React.FC<IProps> = ({
 
   let filterData = data;
 
+  /* Structure for job post */
   const ip = {
     "jobId": "",
     "jobRole": "",
@@ -36,47 +40,46 @@ const FilterForm: React.FC<IProps> = ({
   const [jobData, setJobData] = useState(false);
   const [desData, setDesData] = useState([ip]);
 
+  /* Setting target value for Skils */
   const handleSkills = (e) => {
-    console.log("Skilllllllsssssss");
     if (e.target.value === "All") {
       filterData.Skills = "";
     } else {
       filterData.Skills = e.target.value;
     }
-    console.log(filterData.Skills);
   };
 
+  /* Setting target value for Experience */
   const handleExperience = (e) => {
-    console.log("Expeeeeeeeerienceeeeeeee");
     if (e.target.value === "All") {
       filterData.Experience = "";
     } else {
       filterData.Experience = e.target.value;
     }
-    console.log(filterData.Experience);
   };
 
+  /* Setting target value for Designation */
   const handleDesignation = (e) => {
-    console.log("Designationnnnnnnnnnnnnnn");
     if (e.target.value === "All") {
       filterData.Designation = "";
     } else {
       filterData.Designation = e.target.value;
     }
-    console.log(filterData.Designation);
   };
 
+  /* Function that submits the filter request */
   const submitFilter = (e) => {
     e.preventDefault();
     handleFilterSubmit(filterData);
     handleClose();
   };
 
+
+  /* Axios call for fetching the Job Data */
   function GetData() {
     useEffect(() => {
       if (jobData == false) {
         axios.get("/getJobData").then((res) => {
-          console.log("////////////////////////////////////", res.data);
           setDesData(res.data);
           setJobData(true);
         });
@@ -87,12 +90,15 @@ const FilterForm: React.FC<IProps> = ({
   return (
     <>
       {GetData()}
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Filtering Options</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
           <Form onSubmit={submitFilter} className="p-1">
+
             <fieldset onChange={handleSkills}>
               <Form.Group as={Row} className="align-items-baseline">
                 <Form.Label as="legend" column sm={3}>
@@ -145,6 +151,7 @@ const FilterForm: React.FC<IProps> = ({
                 </Col>
               </Form.Group>
             </fieldset>
+
             <fieldset onChange={handleExperience}>
               <Form.Group as={Row} className="align-items-baseline">
                 <Form.Label as="legend" column sm={3}>
@@ -190,6 +197,7 @@ const FilterForm: React.FC<IProps> = ({
                 </Col>
               </Form.Group>
             </fieldset>
+
             <fieldset onChange={handleDesignation}>
               <Form.Group as={Row} className="align-items-baseline">
                 <Form.Label as="legend" column sm={3}>
@@ -215,37 +223,11 @@ const FilterForm: React.FC<IProps> = ({
                         required
                       />
                     )}
-                  {/* <Form.Check
-                    type="radio"
-                    label="SDE"
-                    value="SDE"
-                    name="designation"
-                    id="sde"
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="SDET"
-                    value="SDET"
-                    name="designation"
-                    id="sdet"
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="HR"
-                    value="HR"
-                    name="designation"
-                    id="hr"
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="DevOps"
-                    value="DevOps"
-                    name="designation"
-                    id="devops"
-                  /> */}
+                  
                 </Col>
               </Form.Group>
             </fieldset>
+
             <Modal.Footer>
               <Form.Group as={Row}>
                 <Col sm={{ span: 10, offset: 2 }}>
@@ -259,6 +241,7 @@ const FilterForm: React.FC<IProps> = ({
                 </Col>
               </Form.Group>
             </Modal.Footer>
+
           </Form>
         </Modal.Body>
       </Modal>
@@ -268,4 +251,3 @@ const FilterForm: React.FC<IProps> = ({
 
 export default FilterForm;
 
-// onSubmit = {() => { handleFilterSubmit(filterData) }}

@@ -2,6 +2,7 @@ import React from 'react';
 import jobhunt from '../assets/Jobhunt.png';
 import './JobDes.css';
 
+/* Illustration on Apply page */
 export const JobDes = () => {
     return (
         <div>

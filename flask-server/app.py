@@ -70,9 +70,7 @@ def upload_file():
                 "total_exp": 0,
                 "university": []
             }
-            print("reached here broooo")
             data["resume_id"] = filename
-            print(data)
 
         with open("../react-app/src/sample.json", "w") as outfile:
             json.dump(data, outfile)
@@ -85,7 +83,7 @@ def get_file(path=None):
         print("Download a file......")
         return send_file(path)
     else:
-        print("Sorryyyyyyyyyyyyyyyyyy!")
+        print("Download Fail!")
 
 # Displaying Applicants Data
 @app.route('/getData', methods=['GET', 'POST'])

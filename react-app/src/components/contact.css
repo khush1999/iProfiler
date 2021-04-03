@@ -1,3 +1,5 @@
+
+/*General Styling for Contact Page*/
 section {
     padding: 60px 0;
     min-height: 100vh;
@@ -10,6 +12,9 @@ section {
 ul {
     text-align: left;
 }
+
+/*Styling for Contact Form*/
+
 .contact-info {
     display: inline-block;
     width: 100%;

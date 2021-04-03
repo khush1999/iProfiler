@@ -5,12 +5,17 @@ import "./contact.css";
 import { MailsModal } from "./MailsModal";
 import { NavigationBar } from "./NavigationBar";
 
+/*Contact Support for HR*/
+
 export default function Contact() {
 
+  /*Modal handling functions for email functionality*/
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
 
+  /*Logic for Email Service*/
+  
   function sendEmail(e) {
     e.preventDefault();
 

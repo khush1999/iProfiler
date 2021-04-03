@@ -5,6 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./contact.css";
 import { MailsModal } from "./MailsModal";
 
+/* This components allows HR to invite new applicants for a job role */
 export default function InviteApplicant() {
 
   const [show, setShow] = useState(false);
@@ -13,6 +14,7 @@ export default function InviteApplicant() {
 
   const history = useHistory();
 
+  /* Function for email service */
   function sendEmail(e) {
     e.preventDefault();
 
@@ -41,11 +43,13 @@ export default function InviteApplicant() {
       <MailsModal show={show}
         handleClose={handleClose}
         modalInput="Invitation has been sent successfully to the candidate !!" />
+
       <Link to="/DashboardPage">
         <i className="fa fa-chevron-circle-left back-icon" aria-hidden="true"
           onClick={() => history.push("/DashboardPage")}></i>
         <span className="back-span">Back to Dashboard</span>
       </Link>
+
       <section className="contact-page-sec">
         <div className="container">
           <div className="row">
@@ -62,10 +66,12 @@ export default function InviteApplicant() {
               </div>
             </div>
           </div>
+
           <div className="row">
             <div className="col-md-8">
               <div className="contact-page-form">
                 <h2>Get in Touch</h2>
+
                 <form onSubmit={sendEmail}>
                   <div className="row">
                     <div className="col-md-6 col-sm-6 col-xs-12">
@@ -77,6 +83,7 @@ export default function InviteApplicant() {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-6 col-sm-6 col-xs-12">
                       <div className="single-input-field">
                         <input
@@ -87,6 +94,7 @@ export default function InviteApplicant() {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-6 col-sm-6 col-xs-12">
                       <div className="single-input-field">
                         <input
@@ -96,6 +104,7 @@ export default function InviteApplicant() {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-6 col-sm-6 col-xs-12">
                       <div className="single-input-field">
                         <input
@@ -105,6 +114,7 @@ export default function InviteApplicant() {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-12 message-input">
                       <div className="single-input-field">
                         <textarea
@@ -113,11 +123,14 @@ export default function InviteApplicant() {
                         ></textarea>
                       </div>
                     </div>
+
                     <div className="single-input-fieldsbtn">
                       <input type="submit" value="Send Invitation" />
                     </div>
+
                   </div>
                 </form>
+                
               </div>
             </div>
           </div>

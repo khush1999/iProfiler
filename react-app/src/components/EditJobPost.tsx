@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import nextId from "react-id-generator";
+
+/*Structure for a Job Post*/
 interface IJob {
   jobId: string;
   jobRole: string;
@@ -12,16 +14,19 @@ interface IJob {
   jobDes: string;
 }
 
+/*Structure for a Modal props*/
 interface IProps {
   show: boolean;
   handleClose: () => void;
   jobData: IJob;
 }
 
+/*This component allows HR to edit a Job Post*/
 export const EditJobPost = ({ show, handleClose, jobData }: IProps) => {
+  
   let JobId = nextId("job-id-");
 
-  // Form Validation:
+  // Form Validation
   const [validated, setValidated] = useState(false);
   const handleSubmit1 = (event) => {
     const form = event.currentTarget;

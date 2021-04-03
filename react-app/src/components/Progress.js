@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/* This component handles the status of progress bar in file upload */
 const Progress = ({ percentage }) => {
   return (
     <div className='progress'>
