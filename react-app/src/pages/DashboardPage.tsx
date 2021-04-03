@@ -7,14 +7,13 @@ import {
   Col,
   Row
 } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
-// import iprofiler from "../assets/LogoFinal.png";
 import Applicant from "../components/Applicants";
 import { BannerDashboard } from "../components/BannerDashboard";
 import FilterForm from "../components/FilterForm";
 import { NavDashboard } from "../components/NavDashboard";
 import "./DashboardPage.css";
 
+// Interface structure for Applicant data
 interface IForm {
   email: string;
   phone1: string;
@@ -42,13 +41,17 @@ interface IForm {
   status: string;
 }
 
+// Structure for data filtering options
 interface IFilterData {
   Skills: string;
   Experience: string;
   Designation: string;
 }
 
+// Main Dashboard Page
 const DashboardPage = () => {
+
+  // Structure for Applicant data
   const ip = {
     email: "",
     phone1: "",
@@ -76,13 +79,10 @@ const DashboardPage = () => {
     status: "available",
   };
 
-  const filData = {
-    Skills: "",
-    Experience: "",
-    Designation: "",
-  };
+  // Storing Filtered data
   let processedData = [ip];
 
+  // States for dashboard functionalities
   const [filteredProcessedData, setFileteredProcessedData] = useState([ip]);
   const [userData, setUserData] = useState(false);
   const [data, setData] = useState([ip]);
@@ -92,25 +92,17 @@ const DashboardPage = () => {
   const [show, setShow] = useState(false);
   const [isFiltered, setIsFiltered] = useState(false);
 
-  const history = useHistory();
-
+  // Toggling the state of filter modal
   const handleShow = () => {
     setShow(true);
   };
   const handleClose = () => {
     setShow(false);
   };
+
+  // Applying filter functionalities
   const handleFilterSubmit = async (filterData: any) => {
-    console.log("!!!!!!!!!!!!!!!!!!!!!", filterData);
-
     setData(Defdata);
-    // if (isSearched) {
-    //   setData(applicantData);
-    //   console.log("Hiiiii");
-    // }
-
-    console.log("After set applicant data", applicantData);
-    console.log("After set applicant data", data);
 
     //If Skills is not all and a selected one
     if (filterData.Skills != "") {
@@ -122,7 +114,9 @@ const DashboardPage = () => {
             user.skills2.toLowerCase() == filterData.Skills.toLowerCase() ||
             user.skills3.toLowerCase() == filterData.Skills.toLowerCase()
         );
-      } else {
+      } 
+      // Filtering after Search is applied
+      else {
         processedData = applicantData.filter(
           (user) =>
             user.skills1.toLowerCase() == filterData.Skills.toLowerCase() ||
@@ -130,13 +124,12 @@ const DashboardPage = () => {
             user.skills3.toLowerCase() == filterData.Skills.toLowerCase()
         );
       }
-      console.log("Ifffffff reached Skills", processedData);
     } else {
       //If skills is ALL
       processedData = Defdata;
-      console.log("Elseeeeee reached Skills", processedData);
-    } //Fine
+    }
 
+    // Filter based on Experience
     if (processedData.length > 0) {
       if (filterData.Experience != "") {
         processedData = processedData.filter((user) => {
@@ -150,48 +143,52 @@ const DashboardPage = () => {
             return user.total_exp > 9;
           }
         });
-        console.log("reached experience", processedData);
       }
     }
 
+    // Filter based on Job Roles
     if (processedData.length > 0) {
       if (filterData.Designation != "") {
         processedData = processedData.filter(
           (user) => user.designition.toLowerCase() === filterData.Designation.toLowerCase()
         );
-        console.log("reached designation", processedData);
       }
     }
 
+    // Setting filtered data
     setFileteredProcessedData(processedData);
+
+    // Setting search and filter state
     setIsFiltered(true);
     setIsSearched(false);
-    console.log("Filterrrrr", processedData);
-    console.log("Filterrrrr", applicantData);
   };
 
+  // Getting applicants data from database (Backend)
   function GetData() {
     useEffect(() => {
       if (userData == false) {
         axios.get("/getData").then((res) => {
-          console.log("////////////////////////////////////", res.data);
+          // Storing applicant data in our state
           setData(res.data);
           setDefData(res.data);
           setApplicantData(res.data);
           setUserData(true);
         });
-      } else {
+      } 
+      // Toggling for search state, showing only searched results
+      else {
         setIsSearched(!setIsSearched);
       }
-    }, [data]);
+    }, [data]); // After axios call, whenever data will change use effect will triger
   }
 
+  // Search Functionality using Fuse.js Library
   const searchData = (pattern) => {
     if (!pattern) {
       setApplicantData(data);
       return;
     }
-    // If filter is applied and then we search
+    // If filter is applied and then we set applicant data since we want search to happen over it
     if (isFiltered) {
       setApplicantData(processedData);
     }
@@ -200,8 +197,12 @@ const DashboardPage = () => {
       keys: ["fname", "lname"],
     });
 
+    // Fuzzy based searching
     const result = fuse.search(pattern);
+
+    // For storing our searched results
     const matches: IForm[] = [];
+    // If no results match we store empty array
     if (!result.length) {
       setApplicantData([]);
     } else {
@@ -210,18 +211,23 @@ const DashboardPage = () => {
       });
       setApplicantData(matches);
     }
+
+    // Toggling between both the filter and search functionalities
     setIsFiltered(false);
   };
 
   return (
     <>
+
+      {/* Getting applicants data from get API */}
       {GetData()}
+
       <div className="main-dashboard">
         <FilterForm
           show={show}
           handleClose={handleClose}
-          handleFilterSubmit={handleFilterSubmit}
-        />
+          handleFilterSubmit={handleFilterSubmit} />
+
         <NavDashboard />
 
         <div className="content shadow-lg">
@@ -257,7 +263,6 @@ const DashboardPage = () => {
 
           <hr className="filter-hr" />
 
-          {/* <p className="text-danger">{message}</p> */}
           <div className="grid-container justify-content-center">
             {/* For displaying all data*/}
             {!isSearched &&

@@ -5,19 +5,25 @@ import { BannerDashboard } from "../components/BannerDashboard";
 import { NavDashboard } from "../components/NavDashboard";
 import "./analytics.css";
 
+// Added Analytics for showing Applicant data overview
 const Analytics = () => {
   return (
     <>
+      {/* Nav Bar for this page */}
       <NavDashboard />
       <div className="content shadow-lg">
+
+        {/* Dashboard banner */}
         <BannerDashboard />
 
         <div className="row tm-content-row">
+
           <div className="col-12">
             <div>
               <img src={Data} className="analytics-img-style" />
             </div>
           </div>
+
           <div className="col-12 tm-block-col">
             <h3 className="tm-block-title">
               Popular skills amongst applicants
@@ -30,6 +36,7 @@ const Analytics = () => {
               ></Iframe>
             </div>
           </div>
+
           <div className="col-12 tm-block-col">
             <h3 className="tm-block-title">Status of Applicants(in %)</h3>
             <div className="embed-responsive embed-responsive-16by9 z-depth-1">
@@ -40,6 +47,7 @@ const Analytics = () => {
               ></Iframe>
             </div>
           </div>
+
           <div className="col-12 tm-block-col">
             <h3 className="tm-block-title">
               Applicant Count by Experience(in Years)
@@ -52,6 +60,7 @@ const Analytics = () => {
               ></Iframe>
             </div>
           </div>
+
           <div className="col-12 tm-block-col">
             <h3 className="tm-block-title">Applicant Count by Job Role</h3>
             <div className="embed-responsive embed-responsive-16by9 z-depth-1">
@@ -62,6 +71,7 @@ const Analytics = () => {
               ></Iframe>
             </div>
           </div>
+          
         </div>
       </div>
     </>

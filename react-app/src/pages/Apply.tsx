@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Col, Form } from "react-bootstrap";
 import "./apply.css";
 
+// Interface for Applicant Form
 interface IForm {
   email: string;
   phone: string;
@@ -17,12 +18,15 @@ interface IForm {
   status: string;
 }
 
+// Type for IForm
 type TForm = {
   passData: IForm;
 };
 
+// Apply page for Applicants
 const Apply = ({ passData }: TForm) => {
 
+  // Structure of our passData
   const ip = {
     "jobId": "",
     "jobRole": "",
@@ -34,6 +38,7 @@ const Apply = ({ passData }: TForm) => {
     "jobDes": "",
   }
 
+  // variables to store onChange values
   let fname = "",
     lname = "",
     email = "",
@@ -49,9 +54,8 @@ const Apply = ({ passData }: TForm) => {
     Companies_worked_at = "",
     resume_id = "",
     status = "available";
-  console.log("This is passData ********************");
-  console.log(passData);
 
+  // PreFilling initial values in the form
   if (passData != null) {
     fname = passData.name.split(" ")[0];
     lname = passData.name.split(" ")[1];
@@ -68,9 +72,7 @@ const Apply = ({ passData }: TForm) => {
     resume_id = passData.resume_id;
   }
 
-  // const [show, setShow] = useState(false);
-  // const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
+  // States for job data and applicant data
   const [jobData, setJobData] = useState(false);
   const [data, setData] = useState([ip]);
 
@@ -96,15 +98,12 @@ const Apply = ({ passData }: TForm) => {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    // if (form.checkValidity() === true) {
-    //   handleShow();
-    // }
     setValidated(true);
   };
 
   return (
     <>
+      {/* Fetching all the job data */}
       {GetData()}
       <div className="main-form mb-4 shadow-lg p-4">
         <Form
@@ -118,6 +117,7 @@ const Apply = ({ passData }: TForm) => {
           <br></br>
           <h2>General Details</h2>
           <br></br>
+
           <Form.Row>
             <Form.Group as={Col} controlId="formGridFirstName">
               <Form.Label className="required">First Name</Form.Label>
@@ -437,21 +437,6 @@ const Apply = ({ passData }: TForm) => {
               Please Enter total experience (in years..){" "}
               </Form.Control.Feedback>
             </Form.Group>
-            {/* <Form.Group as={Col} controlId="formGridSkillDes">
-              <Form.Label>Designation</Form.Label>
-              <Form.Control
-                id="desig"
-                name="desig"
-                required
-                type="text"
-                placeholder="Write Designation applying for"
-              />
-              <Form.Control.Feedback type="invalid">
-                {" "}
-              Please Enter Post applying for.{" "}
-              </Form.Control.Feedback>
-            </Form.Group> */}
-
 
             <Form.Group as={Col} controlId="formGridDesignation">
               <Form.Label className="required">Applying For</Form.Label>

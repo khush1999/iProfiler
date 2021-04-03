@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 import iprofilerlogo from "../assets/LogoFinal.png";
 import "./jobdetails.css";
 
+// Displaying all the JD's in this Page
 const JobDetails = () => {
+
+  // Structure of Job Postings
   const ip = {
     jobId: "",
     jobRole: "",
@@ -17,15 +20,15 @@ const JobDetails = () => {
     jobDes: "",
   };
 
-  const [show, setShow] = useState(false);
+  // State for job data
   const [jobData, setJobData] = useState(false);
   const [data, setData] = useState([ip]);
 
+  // Get API for getting Job data from database
   function GetData() {
     useEffect(() => {
       if (jobData == false) {
         axios.get("/getJobData").then((res) => {
-          console.log("////////////////////////////////////", res.data);
           setData(res.data);
           setJobData(true);
         });
@@ -35,7 +38,9 @@ const JobDetails = () => {
 
   return (
     <>
+      {/* Getting all the job data  */}
       {GetData()}
+
       <Row className="apply-nav">
         <Col md={8}>
           <img src={iprofilerlogo} alt="iprofiler" className="apply-logo" />
@@ -44,9 +49,13 @@ const JobDetails = () => {
           <h4>Excel your Career with Us...</h4>
         </Col>
       </Row>
+
       <h1 className="company-head">Company: HashedIn Technologies</h1>
+
       <div className="company-about mb-2">
+
         <h2 className="abt">Who We Are</h2>
+
         <p>
           A software development firm that isn't like the others.
           We build SAAS products and platforms that are high-tech.
@@ -56,16 +65,20 @@ const JobDetails = () => {
           and support a growing product, including the method, enthusiasm,
           and hard work that goes into it.
         </p>
+
         <p>
           Let's make something fun, get it out there quickly, and
           keep iterating until we get it right.
         </p>
+
         <h2 className="abt">Opportunities with us</h2>
       </div>
+
       <div className="job-des-section shadow-lg">
         {data.map((jobInfo) => (
           <Tab.Container id="left-tabs-example" defaultActiveKey="job-role">
             <Row>
+
               <Col sm={3}>
                 <Nav variant="pills" className="flex-column">
                   <Nav.Item>
@@ -73,6 +86,7 @@ const JobDetails = () => {
                   </Nav.Item>
                 </Nav>
               </Col>
+
               <Col sm={9}>
                 <Tab.Content>
                   <Tab.Pane eventKey="job-role">
@@ -108,6 +122,7 @@ const JobDetails = () => {
                   </Tab.Pane>
                 </Tab.Content>
               </Col>
+              
             </Row>
           </Tab.Container>
         ))}
