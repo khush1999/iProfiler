@@ -143,3 +143,22 @@ h6 {
   margin-left: 0;
   margin-right: 0;
 }
+
+.profile-main {
+  width: 70%;
+  margin: auto;
+}
+
+.back-icon {
+  font-size: 3rem;
+    padding-left: 5rem;
+    padding-top: 1.5rem;
+    color: #AE4DFF;
+    padding-right: 2rem;
+}
+
+.back-span {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: darkslategray;
+}

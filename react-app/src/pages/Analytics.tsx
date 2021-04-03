@@ -15,8 +15,8 @@ const Analytics = () => {
 
         <div className="row tm-content-row">
           <div className="col-12">
-            <div className="embed-responsive embed-responsive-16by9 z-depth-1">
-              <img src={Data} className="embed-responsive-item" />
+            <div>
+              <img src={Data} className="analytics-img-style" />
             </div>
           </div>
           <div className="col-12 tm-block-col">

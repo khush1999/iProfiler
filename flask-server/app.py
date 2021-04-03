@@ -27,7 +27,7 @@ app.config['UPLOAD_FOLDER'] = '/resumes'
 
 @app.route("/check")
 def check():
-    return """ <h2> Health Check!!! 200 OK </h2> """
+    return """ <h2> Health Check Up!!! 200 OK </h2> """
 
 
 @app.route("/")
@@ -398,7 +398,8 @@ def login():
 def logout():
     # print("Khush You are entered in logout!!!")
     if "email" in session:
-        session.pop("email", None)
+        print("Hiiiiiiiiiiiiiiiii")
+        session.pop("email", None)      
         print(session)
         return "EmailID"
     else:

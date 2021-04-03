@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form } from "react-bootstrap";
+import { Button, Col, Form, Row } from "react-bootstrap";
 import { BannerDashboard } from "../components/BannerDashboard";
 import { JobForm } from "../components/JobForm";
 import { NavDashboard } from "../components/NavDashboard";
@@ -56,12 +56,18 @@ export const JobPosting = () => {
         <NavDashboard />
         <div className="content shadow-lg">
           <BannerDashboard />
-          <div className="p-5">
-            <Button variant="dark" onClick={handleShow}>
-              Create Job Posting
+          <Row className="job-posting-section">
+            <Col md={6}>
+              <h3 className="display-applicant">Current Job Postings</h3>
+            </Col>
+            <Col md={6} className="create-job-button">
+              <Button variant="dark" onClick={handleShow}>
+                Create Job Posting
             </Button>
-          </div>
-          <div className="jobs-container">
+            </Col>
+          </Row>
+          <hr className="filter-hr" />
+          <div className="grid-container justify-content-center">
             {jobData &&
               data.map((job) => (
                 <JobCard jobData={job} onDelete={deleteItem} />
