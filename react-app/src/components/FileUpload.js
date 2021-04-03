@@ -125,6 +125,7 @@ const FileUpload = () => {
                 <br></br>
                 <input
                   type="file"
+                  accept=".pdf,.doc,.docx"
                   className="custom-file-input"
                   id="customFile"
                   onChange={onChange}
