@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./contact.css";
 import { MailsModal } from "./MailsModal";
-import { NavigationBar } from "./NavigationBar";
 
+/* Structure for Applicants Data */
 interface IForm {
   email: string;
   phone1: string;
@@ -34,6 +34,7 @@ interface IForm {
   status: string;
 }
 
+/* This component allows HR to send invitation to applicant for further process */
 export default function IncommingRounds(props: { location: { state: IForm } }) {
   const history = useHistory();
 
@@ -42,6 +43,8 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
   const handleClose = () => setShow(false);
 
   let email, sentMsg;
+
+  /* Function for email service */
   function sendEmail(e) {
     e.preventDefault();
     email = props.location.state.email;
@@ -70,14 +73,18 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
   }
   return (
     <>
+      {/* Modal for acknowledgement of email */}
       <MailsModal show={show}
         handleClose={handleClose}
         modalInput="Invitation has been sent successfully to the candidate !!" />
+
       <Link to="/DashboardPage">
         <i className="fa fa-chevron-circle-left back-icon" aria-hidden="true"
           onClick={() => history.push("/DashboardPage")}></i>
         <span className="back-span">Back to Dashboard</span>
       </Link>
+
+      {/* Header */}
       <section className="contact-page-sec">
         <div className="container">
           <div className="row">
@@ -94,11 +101,14 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
               </div>
             </div>
           </div>
+
           {sentMsg && <h2>{sentMsg}</h2>}
+
           <div className="row">
             <div className="col-md-8">
               <div className="contact-page-form">
                 <h2>Get in Touch</h2>
+
                 <form onSubmit={sendEmail}>
                   <div className="row">
                     <div className="col-md-6 col-sm-6 col-xs-12">
@@ -115,6 +125,7 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-6 col-sm-6 col-xs-12">
                       <div className="single-input-field">
                         <input
@@ -126,6 +137,7 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-6 col-sm-6 col-xs-12">
                       <div className="single-input-field">
                         <input
@@ -136,6 +148,7 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-6 col-sm-6 col-xs-12">
                       <div className="single-input-field">
                         <input
@@ -146,6 +159,7 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
                         />
                       </div>
                     </div>
+
                     <div className="col-md-12 message-input">
                       <div className="single-input-field">
                         <textarea
@@ -154,11 +168,14 @@ export default function IncommingRounds(props: { location: { state: IForm } }) {
                         ></textarea>
                       </div>
                     </div>
+
                     <div className="single-input-fieldsbtn">
                       <input type="submit" value="Send Invitation" />
                     </div>
+
                   </div>
                 </form>
+                
               </div>
             </div>
           </div>
