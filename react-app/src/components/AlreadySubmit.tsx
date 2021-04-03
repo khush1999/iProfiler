@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Already from '../assets/alreadySubmitted.jpg';
 import './submission.css';
 

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "./contact.css";
 import { MailsModal } from "./MailsModal";
-import { NavigationBar } from "./NavigationBar";
 
 export default function InviteApplicant() {
 
