@@ -86,7 +86,7 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
       <Link to="/DashboardPage">
         <i className="fa fa-chevron-circle-left back-icon" aria-hidden="true"
           onClick={() => history.push("/DashboardPage")}></i>
-        Back to Dashboard
+        <span className="back-span">Back to Dashboard</span>
       </Link>
       <div className="profile mb-5">
         <div className="page-content page-container" id="page-content">

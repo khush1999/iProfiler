@@ -31,7 +31,7 @@ const Apply = ({ passData }: TForm) => {
     "skills1": "",
     "skills2": "",
     "skills3": "",
-    "jobDes":"",
+    "jobDes": "",
   }
 
   let fname = "",
@@ -68,9 +68,9 @@ const Apply = ({ passData }: TForm) => {
     resume_id = passData.resume_id;
   }
 
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const [show, setShow] = useState(false);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
   const [jobData, setJobData] = useState(false);
   const [data, setData] = useState([ip]);
 
@@ -97,9 +97,9 @@ const Apply = ({ passData }: TForm) => {
       event.stopPropagation();
     }
 
-    if (form.checkValidity() === true) {
-      handleShow();
-    }
+    // if (form.checkValidity() === true) {
+    //   handleShow();
+    // }
     setValidated(true);
   };
 
@@ -107,17 +107,6 @@ const Apply = ({ passData }: TForm) => {
     <>
       {GetData()}
       <div className="main-form mb-4 shadow-lg p-4">
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Your Application has been submitted !!</Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-          </Button>
-          </Modal.Footer>
-        </Modal>
         <Form
           noValidate
           validated={validated}
@@ -131,7 +120,7 @@ const Apply = ({ passData }: TForm) => {
           <br></br>
           <Form.Row>
             <Form.Group as={Col} controlId="formGridFirstName">
-              <Form.Label>First Name</Form.Label>
+              <Form.Label className="required">First Name</Form.Label>
               <Form.Control
                 type="text"
                 id="fname"
@@ -148,7 +137,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridLastName">
-              <Form.Label>Last Name</Form.Label>
+              <Form.Label className="required">Last Name</Form.Label>
               <Form.Control
                 type="text"
                 id="lname"
@@ -167,7 +156,7 @@ const Apply = ({ passData }: TForm) => {
 
           <Form.Row>
             <Form.Group as={Col} controlId="formGridDOB">
-              <Form.Label>Select DOB</Form.Label>
+              <Form.Label className="required">Select DOB</Form.Label>
               <Form.Control
                 type="date"
                 name="dob"
@@ -182,7 +171,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Email</Form.Label>
+              <Form.Label className="required">Email</Form.Label>
               <Form.Control
                 type="email"
                 id="email"
@@ -201,7 +190,7 @@ const Apply = ({ passData }: TForm) => {
           </Form.Row>
 
           <Form.Group controlId="formGridAddress">
-            <Form.Label>Address</Form.Label>
+            <Form.Label className="required">Address</Form.Label>
             <Form.Control
               name="address"
               id="address"
@@ -212,7 +201,7 @@ const Apply = ({ passData }: TForm) => {
 
           <Form.Row>
             <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>City</Form.Label>
+              <Form.Label className="required">City</Form.Label>
               <Form.Control
                 name="city"
                 id="city"
@@ -226,7 +215,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>State</Form.Label>
+              <Form.Label className="required">State</Form.Label>
               <Form.Control
                 name="state"
                 id="state"
@@ -236,7 +225,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Zip</Form.Label>
+              <Form.Label className="required">Zip</Form.Label>
               <Form.Control
                 name="zip"
                 id="zip"
@@ -250,7 +239,7 @@ const Apply = ({ passData }: TForm) => {
 
           <Form.Row>
             <Form.Group as={Col} controlId="formGridPhone1">
-              <Form.Label>Contact Number</Form.Label>
+              <Form.Label className="required">Contact Number</Form.Label>
               <Form.Control
                 type="tel"
                 id="phone1"
@@ -326,7 +315,7 @@ const Apply = ({ passData }: TForm) => {
 
           <Form.Row>
             <Form.Group as={Col} controlId="formGridUnderGraduation">
-              <Form.Label>Under Graduation Course</Form.Label>
+              <Form.Label className="required">Under Graduation Course</Form.Label>
               <Form.Control
                 type="text"
                 id="ugDegree"
@@ -343,7 +332,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPGCollege">
-              <Form.Label>College</Form.Label>
+              <Form.Label className="required">College</Form.Label>
               <Form.Control
                 id="ug_University"
                 required
@@ -360,7 +349,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridPGPercentage">
-              <Form.Label>Percentage</Form.Label>
+              <Form.Label className="required">Percentage</Form.Label>
               <Form.Control
                 id="ugPercentage"
                 name="ugPercentage"
@@ -383,7 +372,7 @@ const Apply = ({ passData }: TForm) => {
 
           <Form.Row>
             <Form.Group as={Col} controlId="formGridSkill1">
-              <Form.Label>Skill 1</Form.Label>
+              <Form.Label className="required">Skill 1</Form.Label>
               <Form.Control
                 type="text"
                 id="skills1"
@@ -400,7 +389,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridSkill2">
-              <Form.Label>Skill 2</Form.Label>
+              <Form.Label className="required">Skill 2</Form.Label>
               <Form.Control
                 type="text"
                 id="skills2"
@@ -417,7 +406,7 @@ const Apply = ({ passData }: TForm) => {
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridSkill3">
-              <Form.Label>Skill 3</Form.Label>
+              <Form.Label className="required">Skill 3</Form.Label>
               <Form.Control
                 type="text"
                 id="skills3"
@@ -436,7 +425,7 @@ const Apply = ({ passData }: TForm) => {
 
           <Form.Row>
             <Form.Group as={Col} controlId="formGridAddress">
-              <Form.Label>Total Experience </Form.Label>
+              <Form.Label className="required">Total Experience </Form.Label>
               <Form.Control
                 name="total_exp"
                 id="total_exp"
@@ -465,7 +454,7 @@ const Apply = ({ passData }: TForm) => {
 
 
             <Form.Group as={Col} controlId="formGridDesignation">
-              <Form.Label>Applying For</Form.Label>
+              <Form.Label className="required">Applying For</Form.Label>
               <Form.Control as="select" defaultValue="Choose..."
                 id="desig"
                 name="desig"
@@ -481,7 +470,7 @@ const Apply = ({ passData }: TForm) => {
 
           <Form.Row>
             <Form.Group as={Col} controlId="formGridPreCom">
-              <Form.Label>Previous Company</Form.Label>
+              <Form.Label className="required">Previous Company</Form.Label>
               <Form.Control
                 name="Companies_worked_at"
                 id="Companies_worked_at"
@@ -493,7 +482,7 @@ const Apply = ({ passData }: TForm) => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} controlId="formGridSkillDes">
-              <Form.Label>Resume ID</Form.Label>
+              <Form.Label className="required">Resume ID</Form.Label>
               <Form.Control
                 id="resume_id"
                 name="resume_id"
@@ -508,7 +497,7 @@ const Apply = ({ passData }: TForm) => {
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group as={Col} controlId="formGridSkillDes">
-              <Form.Label>Status</Form.Label>
+              <Form.Label className="required">Status</Form.Label>
               <Form.Control
                 id="status"
                 name="status"

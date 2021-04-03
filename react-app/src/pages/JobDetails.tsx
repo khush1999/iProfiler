@@ -44,23 +44,25 @@ const JobDetails = () => {
           <h4>Excel your Career with Us...</h4>
         </Col>
       </Row>
-      <h2 className="company-head">Company: HashedIn Technologies</h2>
-      <div className="company-about">
-        <h4 className="abt">Who We Are</h4>
+      <h1 className="company-head">Company: HashedIn Technologies</h1>
+      <div className="company-about mb-2">
+        <h2 className="abt">Who We Are</h2>
         <p>
-          A software development company, with a difference. We build deep tech
-          SAASproducts and platforms. Our experts in Analytics, Machine Learning
-          & Integrations, build upon learnings and frameworks from a decade of
-          launching 225+ products. We understand the process, passion and hard
-          work it takes to launch and support a growing product.
+          A software development firm that isn't like the others.
+          We build SAAS products and platforms that are high-tech.
+          Our analytics, machine learning, and integrations experts draw
+          on lessons learned and frameworks established across a decade of
+          launching over 225 products. We understand what it takes to launch
+          and support a growing product, including the method, enthusiasm,
+          and hard work that goes into it.
         </p>
         <p>
-          Let’s build something delightful, launch quickly and iterate to
-          success.
+          Let's make something fun, get it out there quickly, and
+          keep iterating until we get it right.
         </p>
+        <h2 className="abt">Opportunities with us</h2>
       </div>
       <div className="job-des-section shadow-lg">
-        <h4>Opportunities with us</h4>
         {data.map((jobInfo) => (
           <Tab.Container id="left-tabs-example" defaultActiveKey="job-role">
             <Row>

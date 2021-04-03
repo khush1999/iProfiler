@@ -32,45 +32,43 @@ export const SignUp = () => {
     var passwordValidator = require('password-validator');
     var schema = new passwordValidator();
     schema
-    .is().min(6)                                    // Minimum length 6
-    .is().max(20)                                   // Maximum length 20
-    .has().uppercase()                              // Must have uppercase letters
-    .has().lowercase()                              // Must have lowercase letters
-    .has().digits(1)                                // Must have at least 1 digits
-    .has().not().spaces()                           // Should not have spaces
-    .is().not().oneOf(['Passw0rd', 'Password123']); //
+      .is().min(6)                                    // Minimum length 6
+      .is().max(20)                                   // Maximum length 20
+      .has().uppercase()                              // Must have uppercase letters
+      .has().lowercase()                              // Must have lowercase letters
+      .has().digits(1)                                // Must have at least 1 digits
+      .has().not().spaces()                           // Should not have spaces
+      .is().not().oneOf(['Passw0rd', 'Password123']); //
 
-    if(schema.validate(password1) && schema.validate(password2))
-    {
-    try {
-      const res = await axios.post("/auth", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("^^^^^^^^^^^^^^^^^^^");
-      console.log(res.data);
-      if (res.data === "Go to Login") {
-        // alert("Reached inside");
-        history.push("/Login");
-      } else if (res.data === "This email already exists in database") {
-        setEmailError("Email Id already exist!");
-      } else if (res.data === "Passwords should match!") {
-        setPwdMatchError("Passwords should match!");
-      }
-    } catch (err) {
-      if (err.response.status == 500) {
-        setMessage("There was a problem with the server");
-      } else {
-        setMessage(err.response.data.msg);
+    if (schema.validate(password1) && schema.validate(password2)) {
+      try {
+        const res = await axios.post("/auth", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        console.log("^^^^^^^^^^^^^^^^^^^");
+        console.log(res.data);
+        if (res.data === "Go to Login") {
+          // alert("Reached inside");
+          history.push("/Login");
+        } else if (res.data === "This email already exists in database") {
+          setEmailError("Email Id already exist!");
+        } else if (res.data === "Passwords should match!") {
+          setPwdMatchError("Passwords should match!");
+        }
+      } catch (err) {
+        if (err.response.status == 500) {
+          setMessage("There was a problem with the server");
+        } else {
+          setMessage(err.response.data.msg);
+        }
       }
     }
-  }
 
-  else
-  {
-    setPwdMatchError("Follow the password convention");
-  }
+    else {
+      setPwdMatchError("Follow the password convention");
+    }
   };
   return (
     <>
@@ -131,43 +129,30 @@ export const SignUp = () => {
                 </Form.Group>
 
                 <OverlayTrigger
-                        key="right"
-                        placement="right"
-                        overlay={<Tooltip id={`tooltip-right`}>
-                          <p>Your Password should contain:</p>
-                          <p>Minimun length 6 characters,</p>
-                          <p>Maximum length 20 characters,</p>
-                          <p>Must have uppercase letters,</p>
-                          <p>Must have lowercase letters,</p>
-                          <p>Must have at least 1 digits,</p>
-                          <p>Should not have spaces</p> 
-                        </Tooltip>}
+                  key="right"
+                  placement="right"
+                  overlay={<Tooltip id={`tooltip-right`}>
+                    <p>Your Password should contain:</p>
+                    <p>Minimun length 6 characters,</p>
+                    <p>Maximum length 20 characters,</p>
+                    <p>Must have uppercase letters,</p>
+                    <p>Must have lowercase letters,</p>
+                    <p>Must have at least 1 digits,</p>
+                    <p>Should not have spaces</p>
+                  </Tooltip>}
                 >
-                <Form.Group controlId="formHorizontalPassword">
-                  <Form.Control
-                    type="password"
-                    required
-                    placeholder="Password"
-                    id="password1"
-                    name="password1"
-                    onChange={(e) => setPassword1(e.target.value)}
-                  />
-                </Form.Group>
+                  <Form.Group controlId="formHorizontalPassword">
+                    <Form.Control
+                      type="password"
+                      required
+                      placeholder="Password"
+                      id="password1"
+                      name="password1"
+                      onChange={(e) => setPassword1(e.target.value)}
+                    />
+                  </Form.Group>
                 </OverlayTrigger>
 
-                <OverlayTrigger
-                        key="right"
-                        placement="right"
-                        overlay={<Tooltip id={`tooltip-right`}>
-                          <p>Your Password should contain:</p>
-                          <p>Minimun length 6 characters,</p>
-                          <p>Maximum length 20 characters,</p>
-                          <p>Must have uppercase letters,</p>
-                          <p>Must have lowercase letters,</p>
-                          <p>Must have at least 1 digits,</p>
-                          <p>Should not have spaces</p>
-                        </Tooltip>}
-                 >
                 <Form.Group controlId="formHorizontalConfirmPassword">
                   <Form.Control
                     type="password"
@@ -179,7 +164,6 @@ export const SignUp = () => {
                   />
                   <div className="text-danger">{pwdMatchError}</div>
                 </Form.Group>
-                </OverlayTrigger>
                 {/* <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4'/> */}
                 <div className="">
                   <Button

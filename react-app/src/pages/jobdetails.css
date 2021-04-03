@@ -29,13 +29,13 @@
 .abt {
   padding: 1rem;
   font-weight: bold;
+  color: black;
 }
 
 .company-about p {
-  padding: 1.5rem;
-  padding-top: 0;
-  text-align: justify;
-  font-size: 1rem;
+  padding: 0 8rem 1.5rem;
+    text-align: justify;
+    font-size: 1.5rem;
 }
 
 .job-des-section h4 {
