@@ -1,22 +1,22 @@
-import React, { Fragment } from "react";
-import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
+import React from "react";
+import { HashRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
+import AlreadySubmit from "./components/AlreadySubmit";
 import Applicants from "./components/Applicants";
 import Contact from "./components/Contact";
 import FileUpload from "./components/FileUpload";
 import IncommingRounds from "./components/IncommingRounds";
 import SendEmail from "./components/InviteApplicant";
+import SuccessSubmit from "./components/SuccessSubmit";
+import Analytics from "./pages/Analytics";
 import DashboardPage from "./pages/DashboardPage";
+import JobDetails from "./pages/JobDetails";
 import { JobPosting } from "./pages/JobPosting";
 import { Landingpage } from "./pages/LandingPage";
 import { Login } from "./pages/Login";
 import Pricing from "./pages/Pricing";
 import { SignUp } from "./pages/SignUp";
-import { UserProfile} from "./pages/UserProfile";
-import Analytics from "./pages/Analytics";
-import JobDetails from "./pages/JobDetails";
-import SuccessSubmit from "./components/SuccessSubmit";
-import AlreadySubmit from "./components/AlreadySubmit";
+import { UserProfile } from "./pages/UserProfile";
 
 declare global {
   interface Window {

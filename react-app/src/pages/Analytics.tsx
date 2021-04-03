@@ -1,10 +1,9 @@
 import React from "react";
-import { Col, Row } from "react-bootstrap";
 import Iframe from "react-iframe";
+import Data from "../assets/Data.png";
 import { BannerDashboard } from "../components/BannerDashboard";
 import { NavDashboard } from "../components/NavDashboard";
 import "./analytics.css";
-import Data from "../assets/Data.png";
 
 const Analytics = () => {
   return (

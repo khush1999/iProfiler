@@ -9,4 +9,4 @@ export const preloader = () => {
                 </div>
             </div>  
         },5000))
-    }
+}

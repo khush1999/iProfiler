@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Accordion, Button, Card, Col, Nav, Row, Tab } from "react-bootstrap";
+import { Button, Col, Nav, Row, Tab } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "./jobdetails.css";
 import iprofilerlogo from "../assets/LogoFinal.png";
+import "./jobdetails.css";
 
 const JobDetails = () => {
   const ip = {

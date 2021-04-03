@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { useHistory } from "react-router";
 import { EditJobPost } from "./EditJobPost";
 import "./JobCard.css";

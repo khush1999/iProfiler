@@ -9,23 +9,6 @@ import loginSvg from "./login.svg";
 const divColor = { backgroundColor: "#AE4DFF" };
 const mainWidth = { width: "60%", marginTop: "10rem" };
 export const Login = () => {
-  // let isLoggedin = false;
-  // const checkLoggedIn = async () => {
-  //   try {
-  //     const res = await axios.get("/login");
-  //     console.log("*****************************");
-  //     console.log(res.data);
-  //     if (res.data == "Go To Dashboard") {
-  //         isLoggedin = true;
-  //     }
-  //   } catch (err) {
-  //     if (err.response.status === 500) {
-  //       setMessage("There was a problem with the server");
-  //     } else {
-  //       setMessage(err.response.data.msg);
-  //     }
-  //   }
-  // };
 
   const [email, setEmail] = useState("Email");
   const [password, setPassword] = useState("Password");

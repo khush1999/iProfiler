@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button, Col, Form, Modal, Row } from 'react-bootstrap';
 import nextId from "react-id-generator";
 
-
 interface IProps {
     show: boolean;
     handleClose: () => void;

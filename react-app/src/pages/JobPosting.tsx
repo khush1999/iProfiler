@@ -1,10 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import { BannerDashboard } from "../components/BannerDashboard";
+import { JobCard } from "../components/JobCard";
 import { JobForm } from "../components/JobForm";
 import { NavDashboard } from "../components/NavDashboard";
-import { JobCard } from "../components/JobCard";
 import "./JobPosting.css";
 
 export const JobPosting = () => {
