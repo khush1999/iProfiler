@@ -4,12 +4,16 @@ import { Nav, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import './BannerDashboard.css';
 
+/*Specialised Banner for Dashboard*/
+
 export const BannerDashboard = () => {
     return (
         <div>
             <Row className="heading-style">
                 <h3 className="welcome-content">My Dashboard</h3>
                 <div className="icons-container">
+
+                    {/* Invite New Applicants for a Job Role    */}
                     <OverlayTrigger
                         key="top"
                         placement="top"

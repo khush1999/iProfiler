@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import "./Applicant.css";
 
+/* Structure for Applicants' Data */ 
 
 interface IForm {
   email: string;
@@ -63,8 +64,9 @@ const Applicants = ({ passData }: TForm) => {
         className="shadow-lg p-3 mb-5 
     bg-white rounded"
       >
+
         <Card.Body>
-        
+          {/* Applicants' status */}
         {passData.status=="Available"?
         <OverlayTrigger
         key="top"
@@ -91,6 +93,7 @@ const Applicants = ({ passData }: TForm) => {
               </p>
             </Card.Title>
 
+            {/* email-icon for interview invite */}
             <OverlayTrigger
               key="top"
               placement="top"
@@ -135,6 +138,8 @@ const Applicants = ({ passData }: TForm) => {
               <li> {passData.skills3}</li>
             </ul>
           </Card.Text>
+          
+          {/* View Applicant's Profile */}
           <Row className="justify-content-center" id="button-content">
     
               <Link
