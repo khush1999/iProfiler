@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import userprofile from "../assets/userprofile.jpg";
 import "./userprofile.css";
 
+// Applicant Data Structure
 interface IForm {
   email: string;
   phone1: string;
@@ -33,11 +34,13 @@ interface IForm {
   status: string;
 }
 
+// User Profile Page
 export const UserProfile = (props: { location: { state: IForm } }) => {
   let profile = props.location.state;
 
   const history = useHistory();
 
+  // Resume Download Feature
   const handleResume = async () => {
     console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     console.log(profile.resume_id);
@@ -52,7 +55,6 @@ export const UserProfile = (props: { location: { state: IForm } }) => {
         responseType: "blob",
       })
       .then(function (response) {
-        console.log(response.data);
         const blobUrl = URL.createObjectURL(response.data);
 
         // Create a link element

@@ -9,6 +9,7 @@ import "./SignUp.css";
 const mainWidth = { width: "60%", marginTop: "10rem" };
 const divColor = { backgroundColor: "#AE4DFF" };
 
+// SignUp Page for our Project
 export const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
@@ -50,7 +51,6 @@ export const SignUp = () => {
         console.log("^^^^^^^^^^^^^^^^^^^");
         console.log(res.data);
         if (res.data === "Go to Login") {
-          // alert("Reached inside");
           history.push("/Login");
         } else if (res.data === "This email already exists in database") {
           setEmailError("Email Id already exist!");
@@ -73,16 +73,15 @@ export const SignUp = () => {
   return (
     <>
       <NavigationBar navigationState={false} />
+
       <Container
         style={mainWidth}
-        className="sign-container bg-light text-dark shadow-lg mb-5 bg-white rounde"
-      >
+        className="sign-container bg-light text-dark shadow-lg mb-5 bg-white rounde">
         <Row>
           <Col
             sm={5}
             style={divColor}
-            className="text-white font-weight-bold p-3 col-container-1"
-          >
+            className="text-white font-weight-bold p-3 col-container-1">
             <div>
               <h3 className="text-center">Join Us To Hire !</h3>
             </div>
@@ -96,10 +95,10 @@ export const SignUp = () => {
               </p>
             </div>
           </Col>
+          
           <Col
             sm={7}
-            className="bg-light text-dark parent-sign col-container-2"
-          >
+            className="bg-light text-dark parent-sign col-container-2">
             <div className="child-sign">
               <h2 className=" text-center mb-4 font-weight-bold">
                 Sign Up Now !
@@ -112,8 +111,7 @@ export const SignUp = () => {
                     placeholder="Company Name"
                     id="company_name"
                     name="company_name"
-                    onChange={(e) => setCompanyName(e.target.value)}
-                  />
+                    onChange={(e) => setCompanyName(e.target.value)} />
                 </Form.Group>
                 <Form.Group controlId="SignUpPassword">
                   <Form.Control
@@ -123,8 +121,7 @@ export const SignUp = () => {
                     id="email"
                     name="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
+                    onChange={(e) => setEmail(e.target.value)} />
                   <div className="text-danger">{emailError}</div>
                 </Form.Group>
 
@@ -139,8 +136,7 @@ export const SignUp = () => {
                     <p>Must have lowercase letters,</p>
                     <p>Must have at least 1 digits,</p>
                     <p>Should not have spaces</p>
-                  </Tooltip>}
-                >
+                  </Tooltip>} >
                   <Form.Group controlId="formHorizontalPassword">
                     <Form.Control
                       type="password"
@@ -164,20 +160,20 @@ export const SignUp = () => {
                   />
                   <div className="text-danger">{pwdMatchError}</div>
                 </Form.Group>
-                {/* <input type='submit' value='Submit' className='btn btn-primary btn-block mt-4'/> */}
+                
                 <div className="">
                   <Button
                     variant="dark"
                     size="lg"
                     block
                     type="submit"
-                    onClick={handleClick}
-                  >
+                    onClick={handleClick}>
                     {" "}
                     Create Account{" "}
                   </Button>
                 </div>
               </Form>
+
             </div>
           </Col>
         </Row>
