@@ -11,6 +11,7 @@ import {
 import { Link } from "react-router-dom";
 import "./Applicant.css";
 
+
 interface IForm {
   email: string;
   phone1: string;
@@ -46,11 +47,10 @@ type TForm = {
   passData: IForm;
 };
 
-const Applicants = ({ passData }: TForm) => {
-  // const [getResume, setGetResume] = useState('');
-  // const [invite, setInvite] = useState(false);
-  // let location,history,status;
+//This component renders the details of an applicant in a card format
 
+const Applicants = ({ passData }: TForm) => {
+  
   let setGetResume;
   if (passData != null) {
     setGetResume = passData.resume_id;
@@ -58,7 +58,6 @@ const Applicants = ({ passData }: TForm) => {
 
   return (
     <>
-      {/* {invite && HandleStatus()} */}
       <Card
         style={{ width: "18rem", backgroundColor: "#f8f8ff" }}
         className="shadow-lg p-3 mb-5 
@@ -114,9 +113,6 @@ const Applicants = ({ passData }: TForm) => {
           </div>
 
           <hr className="card-hr" />
-          {/* <Card.Subtitle className="mb-2 text-muted">
-        {passData.pgDegree.length()>1?({passData.ugDegree} + {'-'} + {passData.pgdegree}):{passData.ugDegree}}
-        </Card.Subtitle> */}
 
           {passData.pgDegree.length > 1 ? (
             <Card.Subtitle className="mb-2 text-muted card-degree">
@@ -132,12 +128,7 @@ const Applicants = ({ passData }: TForm) => {
             <h5 className="font-weight-bold">
               Experience of {passData.total_exp} Years
             </h5>
-            {/* <h6>Skills:</h6> */}
-            {/* <ul>
-            <li>{passData.skills1}</li>
-            <li>{passData.skills2}</li>
-            <li>{passData.skills3}</li>
-          </ul> */}
+            
             <ul className="card-ul">
               <li>{passData.skills1} </li>
               <li> {passData.skills2} </li>
@@ -159,18 +150,6 @@ const Applicants = ({ passData }: TForm) => {
                   View Profile
                 </Button>
               </Link>
-            
-              
-            
-            {/* <Col sm={6}>
-            <Button variant="dark align-self-end" onClick={handleResume} className="pricingTable-firstTable_table__getstart">
-              View Resume
-            </Button>
-
-            {/* <Link to={url} target="_blank" download>
-              Download
-            </Link> */}
-            {/* <a href={require('../resumes/Resume.pdf')} target="_blank">Download Pdf</a> */}
           </Row>
         </Card.Body>
       </Card>
