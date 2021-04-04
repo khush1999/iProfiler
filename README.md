@@ -107,3 +107,10 @@ Thus, iProfiler is a handy tool for all HR representatives.
 - *Improvising Resume Parser* :​ Currently the parser is able to parse the resume depensing upon the structure of the resume. We plan to improve the efficieny of resume parsing through different DL/NLP based techniques.
 
 - *Pricing* -​ We could integrate the payment gateway to our application and provide the customised features according to plan the users choose.
+
+## :star2: Present Contributors
+Team Iprofiler: <br>
+- Pratik Sabata
+- Isha Gupta
+- Astha Dwivedi
+- Khushal Vyas
