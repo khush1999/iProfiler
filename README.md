@@ -43,3 +43,39 @@
 Thus, iProfiler is a handy tool for all HR representatives.
 
 > Note: Our target customers are the HR representatives of a firm.
+
+## :open_file_folder: File Structure
+
+- File structure with the basic details about files and directories.
+
+```bash
+- __iprofiler__
+├── .venv
+├── flask-server
+│   ├── static
+|   |   ├── react
+|   |   |   ├── css
+|   |   |   ├── js
+|   |   |   ├── media
+│   ├── templates
+|   |   ├── index.html
+│   ├── app.py
+├── react-app
+│   ├── build
+│   ├── config
+│   ├── public
+|   |   ├── index.html
+│   ├── scripts
+│   ├── src
+|   |   ├── assets
+|   |   ├── components
+|   |   ├── pages
+|   |   ├── App.tsx
+|   |   ├── index.tsx
+│   ├── package.json
+│   ├── tsconfig.json
+├── .gitlab-ci.yml
+├── requirements.txt
+├── .gitlab-ci.yml
+└── README.md
+``` 
