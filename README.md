@@ -10,7 +10,7 @@
 
 > Working prototype [*here*](https://bit.ly/2R5WF6T)
 
->  Demo of the Product [*here*](https://drive.google.com/file/d/1ijbb6Gd8YhRvifMsdgbIdopXVGKcNi16/view?usp=sharing)
+>  Demo of the Product [*here*](https://drive.google.com/file/d/1R9u2lgbVF_dTFD2c67mJo2kPjE3r7GuV/view?usp=sharing)
 
 ## :ledger: Index
 
@@ -30,7 +30,6 @@
 - Evaluating each incoming application is tedious and counterproductive.
 - Recruiting the best candidates  for the requirement of a job  role can be cumbersome.
 - Difficulty in keeping track of  promising applications which  weren’t processed earlier.
-<br>
 
 > Why iProfiler?
 
