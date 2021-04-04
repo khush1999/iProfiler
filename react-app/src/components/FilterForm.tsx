@@ -201,7 +201,7 @@ const FilterForm: React.FC<IProps> = ({
             <fieldset onChange={handleDesignation}>
               <Form.Group as={Row} className="align-items-baseline">
                 <Form.Label as="legend" column sm={3}>
-                  Designation
+                  Job Roles
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Check
