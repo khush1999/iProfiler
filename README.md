@@ -99,3 +99,11 @@ Thus, iProfiler is a handy tool for all HR representatives.
   <img src="./react-app/src/assets/flow.png" width="400"> <br>
   Final Output <br><hr/><br>
 </p>
+
+## :scroll: Future Work
+
+- *Android App* :​ ​Deploy an android app so that HRs could use it through their phone itself and it will provide convenience to daily basic needs.
+
+- *Improvising Resume Parser* :​ Currently the parser is able to parse the resume depensing upon the structure of the resume. We plan to improve the efficieny of resume parsing through different DL/NLP based techniques.
+
+- *Pricing* -​ We could integrate the payment gateway to our application and provide the customised features according to plan the users choose.
