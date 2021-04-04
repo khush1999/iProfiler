@@ -114,3 +114,7 @@ Team Iprofiler: <br>
 - Isha Gupta
 - Astha Dwivedi
 - Khushal Vyas
+
+### Want to share your ideas
+
+`Feel free to reach out to us`
