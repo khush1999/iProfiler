@@ -79,3 +79,9 @@ Thus, iProfiler is a handy tool for all HR representatives.
 ├── .gitlab-ci.yml
 └── README.md
 ``` 
+## Flow Chart
+
+<p align="center">
+  <img src="./react-app/src/assets/flow.png" width="400"> <br>
+</p>
+
