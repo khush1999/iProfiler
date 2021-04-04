@@ -93,10 +93,10 @@ Thus, iProfiler is a handy tool for all HR representatives.
 </p>
 <p align="center">
   <img src="./react-app/src/assets/applicants.png" width="400"> <br>
-  Hr Dashboard<br><hr/><br>
+  HR Dashboard<br><hr/><br>
 </p>
 <p align="center">
-  <img src="./react-app/src/assets/analytics.png" width="400"> <br>
+  <img src="./react-app/src/assets/analyticspage.png" width="400"> <br>
   Analytics Page<br><hr/><br>
 </p>
 <p align="center">
