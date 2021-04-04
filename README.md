@@ -12,3 +12,14 @@
 
 >  Demo of the Product [*here*](https://drive.google.com/file/d/1ijbb6Gd8YhRvifMsdgbIdopXVGKcNi16/view?usp=sharing)
 
+## :ledger: Index
+
+- [Index](#index)
+- [About](#about)
+- [File Structure](#file-structure)
+- [Flow Chart](#flow-chart)
+- [Info Gallery](#gallery)
+- [Future Work](#future-work)
+- [Resources](#resources)
+- [Present Contributors](#contributors)
+- [License](#license)
