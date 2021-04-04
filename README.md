@@ -88,16 +88,24 @@ Thus, iProfiler is a handy tool for all HR representatives.
 ## :camera: Info Gallery
 
 <p align="center">
-  <img src="./react-app/src/assets/flow.png" width="400"> <br>
-  Pyzbar Decoding of our vedio frame <br><hr/><br>
+  <img src="./react-app/src/assets/homepage.png" width="400"> <br>
+  Home Page<br><hr/><br>
 </p>
 <p align="center">
-  <img src="./react-app/src/assets/flow.png" width="400"> <br>
-  Final Working of our Model <br><hr/><br>
+  <img src="./react-app/src/assets/applicants.png" width="400"> <br>
+  Hr Dashboard<br><hr/><br>
 </p>
 <p align="center">
-  <img src="./react-app/src/assets/flow.png" width="400"> <br>
-  Final Output <br><hr/><br>
+  <img src="./react-app/src/assets/analytics.png" width="400"> <br>
+  Analytics Page<br><hr/><br>
+</p>
+<p align="center">
+  <img src="./react-app/src/assets/profile.png" width="400"> <br>
+  Applicant Profile Page <br><hr/><br>
+</p>
+<p align="center">
+  <img src="./react-app/src/assets/contact.png" width="400"> <br>
+  Contact Service through e-mail <br><hr/><br>
 </p>
 
 ## :scroll: Future Work
